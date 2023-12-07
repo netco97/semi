@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.6'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.semi'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'javax.servlet:jstl:1.2'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'	
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '21.8.0.0'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '21.8.0.0'
+implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '21.8.0.0'
+implementation group: 'com.oracle.database.security', name: 'osdt_core', version: '21.8.0.0'
+
+
+	
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
