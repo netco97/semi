@@ -15,7 +15,7 @@ public class HumanC {
 	
 	@GetMapping("/")
 	public String home() {
-		return "input";
+		return "input.jsp";
 	}
 	
 	@GetMapping("/getone")
