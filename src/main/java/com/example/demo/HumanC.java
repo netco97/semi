@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -14,8 +15,9 @@ public class HumanC {
 	TestService_Model testService_model;	
 	
 	@GetMapping("/")
-	public String home() {
-		return "input";
+	public String home(Model model) {
+		model.addAttribute("hello", "hello");
+		return "index";
 	}
 	
 	@GetMapping("/getone")
@@ -38,6 +40,20 @@ public class HumanC {
 		testService_model.regHuman(h);
 		
 		return "NewFile";
+	}
+	@GetMapping("/chat")
+	public String chat() {
+		return "21_Chat";
+			
+	}
+	@GetMapping("/login")
+	public String login() {
+		return "04_Login";
+	}
+	
+	@GetMapping("/signup")
+	public String signup() {
+		return "05_SignUp"; 
 	}
 	
 }

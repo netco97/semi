@@ -1,0 +1,31 @@
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px black solid;
+    flex-direction: column;
+}
+
+#section {
+    width: 600px;
+    height: 623px;
+    background: #D0D0D0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+/* 수정: #article을 클래스로 변경 */
+.article {
+    width: 465px;
+    height: 87px;
+    margin-bottom: 15%;
+    background: #EAEAEA;
+}

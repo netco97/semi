@@ -1,0 +1,101 @@
+#container {
+    display: flex;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#mail-sidebar {
+    width: 150px;
+    background: #4050b5;
+    padding: 10px;
+    border-right: 1px solid #333;
+}
+
+.sidebar-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.sidebar-item:hover {
+    background-color: #333;
+}
+
+#mail-content {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+#mail-list {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mail-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.mail-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sender {
+    font-weight: bold;
+}
+
+.subject {
+    color: #333;
+}
+
+.date {
+    color: #777;
+    font-size: 12px;
+}
+
+#pagination {
+    margin-top: 20px;
+}
+
+.page-link {
+    margin-right: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #ddd;
+    transition: background-color 0.3s ease;
+    color: #333;
+}
+
+.page-link:hover {
+    background-color: #bbb;
+}
+
+#compose-button {
+    text-align: right;
+    margin-top: 10px;
+}
+
+#compose-button button {
+    padding: 8px 15px;
+    background-color: #4050b5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#compose-button button:hover {
+    background-color: #2c3a8d;
+}
