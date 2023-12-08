@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.musicMenu-container {
+  position: relative;
+  width: 100vw;
+}
+
+.musicMenu-inner {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.musicMenu-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.musicMenu-search {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.musicMenu-searchInput {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.musicMenu-searchInput input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.musicMenu-searchInput button {
+  padding: 10px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.musicMenu-searchOption {
+  display: flex;
+  justify-content: space-between;
+}
+
+.musicMenu-searchOption div {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.musicMenu-searchTag {
+  margin-top: 15px;
+  color: #555;
+  display: none; /* 초기에 searchTag를 숨김 */
+  cursor: pointer;
+}
+
+.musicMenu-searchTagInput {
+  margin-top: 15px;
+  color: #555;
+  display: none; /* 초기에 searchTagInput을 숨김 */
+}
+
+.musicList {
+  width: 100%;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.misicList-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.musicList-title {
+  display: flex;
+  align-items: center;
+}
+
+.musicList-title img {
+  max-width: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.musicList-title div {
+  display: flex;
+  flex-direction: column;
+}
+
+.musicList-PlaySpace,
+.musicList-option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.musicList-info {
+  margin-top: 10px;
+}
+.musicMenu-searchTag.hidden,
+.musicMenu-searchTagInput.hidden {
+  display: block; /* hidden 클래스가 없을 때 요소를 표시 */
+}
