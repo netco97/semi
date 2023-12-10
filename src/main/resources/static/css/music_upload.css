@@ -1,0 +1,122 @@
+form {
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	margin: 0px;
+}
+
+main {
+    max-width: 800px;
+	padding: 30px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+section{
+	width: 350px;
+	padding: 25px;
+}
+
+.sectionRight{
+	display: flex;
+	justify-content: center;
+}
+
+
+
+.title{
+	width:100%;
+	text-align: center;
+}
+
+label {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button-box{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+#musicGenre {
+	height: 150px;
+	text-align: center;
+	
+}
+
+.musicMood {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.musicMood-text{
+}
+
+.musicMoodMax {
+	text-align: center;
+	margin: 10px;
+}
+
+.musicMood-box{
+	width: 250px;
+	padding-top: 20px;
+	padding-left: 30px;
+	
+}
+
+.musicMood input{
+	width: auto;
+}
+
+#musicMoodTitle{
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	
+}
+.musicMood label {
+    display: inline-block;
+    width: 20%;
+}
+
+#albumArtContainer {
+    margin: 10px;
+    text-align: center;
+}
+
+#albumArtPreview {
+    max-width: 100%;
+    max-height: 200px;
+    
+}
+

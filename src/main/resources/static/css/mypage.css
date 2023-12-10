@@ -1,0 +1,43 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f4f4f4; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* 세로 중앙 정렬을 위해 추가 */
+        }
+
+        .my-page-title {
+            margin: 20px 0; /* 위아래 간격 설정 */
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            max-width: 800px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .menu-box {
+            background-color: black;
+            color: white;
+            padding: 60px; /* 더 큰 정사각형으로 설정 */
+            margin: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .menu-box:hover {
+            background-color: #555;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 16pt;
+        }

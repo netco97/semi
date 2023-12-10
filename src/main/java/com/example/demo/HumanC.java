@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+//@Controller
+//@RestController
 
 @Controller
 public class HumanC {
@@ -22,7 +25,7 @@ public class HumanC {
 	
 	@GetMapping("/getone")
 	public String test() {
-		Human h = testService_model.getHuman("1");
+		Human h = testService_model.getHuman("20");
 		System.out.println(h);
 		return "NewFile";
 	}
@@ -41,5 +44,50 @@ public class HumanC {
 		
 		return "NewFile";
 	}
+	
+	/* */
+	
+	@GetMapping("artist_reg")
+	public String artist_reg() {
+		return "artist_reg";
+	}
+	
+	@GetMapping("artist_update")
+	public String artist_update() {
+		return "artist_update";
+	}
+	
+//	@GetMapping("artist_detail_viewer")
+//	public String artist_detail_viewer(Model model) {
+//	    
+//		return "artist_detail_viewer";
+//	}
+	
+	@GetMapping("artist_detail_viewer")
+	public String artist_detail_viewer() {
+	    return "artist_detail_viewer";
+	}
+	
+	@GetMapping("artist_detail_owner")
+	public String artist_detail_owner() {
+		return "artist_detail_owner";
+	}
+	
+	@GetMapping("/music_upload")
+	public String music_upload() {
+		return "music_upload";
+	}
+	
+	@GetMapping("/mypage_artist")
+	public String mypage_artist() {
+		return "mypage_artist";
+	}
+	
+	@GetMapping("/mypage_user")
+	public String mypage_user() {
+		return "mypage_user";
+	}
+	
+	
 	
 }

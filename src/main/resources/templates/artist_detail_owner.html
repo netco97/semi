@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/artist_detail.css">
+<script type="text/javascript" src="js/artist_detail.js"></script>
+</head>
+<body>
+<body>
+	<form action="">
+	    <div class="main-container">
+	        <div class="artist-profile">
+	            <img src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png" alt="아티스트 프로필 사진">
+	            <div class="rating-container">
+	                <div class="rating-stars">
+	                    <span class="star" data-value="1">&#9733;</span>
+	                    <span class="star" data-value="2">&#9733;</span>
+	                    <span class="star" data-value="3">&#9733;</span>
+	                    <span class="star" data-value="4">&#9733;</span>
+	                    <span class="star" data-value="5">&#9733;</span>
+	                </div>
+	                <p id="rating-value">평가 없음</p>
+	            </div>
+	            <button id="followBtn">팔로우</button>
+	            <button id="messageBtn">쪽지 보내기</button>
+	        </div>
+	        
+	        <div class="artist-profile-text">
+	            <h2>아티스트 이름</h2>
+	            아티스트 등록시 이름
+	            <h2>주로 만드는 장르</h2>
+	            아티스트 등록시 가져온 값
+	            <h2>자기 소개</h2>
+	            아티스트 등록시 자기소개
+	        
+	        </div>
+	        <div class="music-list">
+			    <div class="music-player">
+			        <div class="music-info">
+			            <div class="album-art">
+			                <img src="https://post-phinf.pstatic.net/MjAxOTA4MDJfMjM1/MDAxNTY0NzE0ODEyMDk4.5nXLk7-27EPK8Q0NyLFVaeE_umpkqwfV73UWtu0ZD5Ug.j9RXuTc1EAgw66FZB0wl32sLBNaY4R9HZYvzOkei38Ag.JPEG/%EB%94%94%EB%85%B8%EB%A7%88%EB%93%9C%ED%95%99%EA%B5%90_%EC%95%84%ED%8A%B8%EB%94%94%EB%A0%89%ED%84%B0_NSH_%EC%95%A8%EB%B2%94_%EC%BB%A4%EB%B2%84_%EB%94%94%EC%9E%90%EC%9D%B8_8.jpg?type=w800_q75" alt="Album Art">
+			            </div>
+			            <div class="music-details">
+			                <div class="music-title">Song Title</div>
+			                <div class="artist-name">Artist Name</div>
+			            </div>
+			        </div>
+			        <div class="music-controls">
+			            <button class="play-button">Play</button>
+			            <div class="time">0:00 / 3:30</div>
+			            <button class="comment-button">Comment</button>
+			        </div>
+			    </div>
+			    <div class="progress-bar">
+			        <div class="progress"></div>
+			    </div>
+			
+	        </div>
+	    </div>
+
+	    <div class="comment-container">
+	        <h2>댓글</h2>
+	        <span>닉네임</span>
+	        <textarea id="commentInput" placeholder="댓글을 입력하세요."></textarea>
+	        <button id="commentBtn">댓글 작성</button>
+	        <div id="commentList">
+	            <!-- 서버에서 가져온 댓글 목록을 표시 -->
+	            <div class="comment">사용자1: 좋아요!</div>
+	            <div class="comment">사용자2: 응원합니다!</div>
+	            <!-- ... -->
+	        </div>
+	    </div>
+	</form>
+</body>
+</html>

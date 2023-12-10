@@ -1,0 +1,220 @@
+body {
+	margin: 0;
+}
+
+form {
+	width: 100vw;
+    margin: 0;
+}
+
+main{
+	width: 1200px;
+}
+	
+.main-container {
+	width: 100vw;
+    display: flex;
+    height: 500px;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* 아티스트 섹션 */
+
+.artist-profile {
+	width: 250px;
+    max-width: 300px;
+    text-align: center;
+    margin: 20px;
+}
+
+.artist-profile img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.artist-profile-text {
+	width: 30%;
+	
+}
+
+.rating-container {
+    margin-top: 10px;
+}
+
+.rating-stars {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.rating-stars .star {
+    display: inline-block;
+    margin: 0px;
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+.rating-stars .star:hover,
+.rating-stars .star.active {
+    color: #f8d71c;
+}
+
+/* .artist-profile-text {
+	
+} */
+
+#followBtn {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#messageBtn {
+	background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 음악 목록 */
+.music-list {
+	border: 2px solid black;
+	width: 300px;
+    flex: 1;
+    margin-left: 20px;
+}
+
+/*  음악 플레이어 */
+
+.music-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+}
+
+.album-art {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-title {
+    font-weight: bold;
+}
+
+.artist-name {
+    font-style: italic;
+}
+
+.play-button {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    margin-left: 10px;
+}
+
+.comment-button {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    /* margin-top: 10px; */
+    position: relative;
+}
+
+.progress {
+    height: 5px;
+    border-radius: 4px;
+    background-color: black;
+    width: 50%; /* Set initial progress width */
+}
+
+/* 하단 코멘트 섹션 */
+.comment-container {
+	width: 100vw;
+	height: 600px;
+	padding: 40px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.comment-container-inner {
+	width: 800px;
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+#commentInput {
+    width: 60%;
+    margin: 30px;
+}
+
+#commentBtn {
+    background-color: #fff;
+    border-radius: 4px;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    height: 35px;
+}
+
+#commentBtn:hover {
+}
+
+#commentList {
+	width: 60%;
+}
