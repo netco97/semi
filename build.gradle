@@ -29,8 +29,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '21.8.0.0'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+	
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'osdt_core', version: '21.8.0.0'

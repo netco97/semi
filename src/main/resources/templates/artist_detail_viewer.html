@@ -10,7 +10,7 @@
 <body>
 	<form action="">
 	<main>
-	    <div class="main-container">
+		<section class="artist-section">
 	        <div class="artist-profile">
 	            <img src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png" alt="아티스트 프로필 사진">
 	            <div class="rating-container">
@@ -21,27 +21,27 @@
 	                    <span class="star" data-value="4">&#9733;</span>
 	                    <span class="star" data-value="5">&#9733;</span>
 	                </div>
-	                <p id="rating-value">평가 없음</p>
+	                <p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
 	            </div>
-			<div class="artist-profile-funtion">
-	            <button id="followBtn">팔로우</button>
-	            <button id="messageBtn">쪽지 보내기</button>
-	        </div>
+				<div class="artist-profile-funtion">
+		            <button id="followBtn">팔로우</button>
+		            <button id="messageBtn">쪽지 보내기</button>
+		        </div>
 	        </div>
 	        
 	        <div class="artist-profile-text">
-	            <h2>아티스트 이름</h2>
-	            <h2>주 장르</h2>
+	            <h2>composer_name</h2>
+	            <h2>composer_janre</h2>
 	            아티스트 등록시 가져온 값
-	            <h2>자기 소개</h2>
-	            user_pr
+	            <h2>자기소개</h2>
+	            composer_introduce
 	        </div>
 	        
 	        <div class="music-list">
 			    <div class="music-player">
 			        <div class="music-info">
 			            <div class="album-art">
-			                <img src="img/Default_Profile_Picture.png" alt="Album Art">
+			                <img src="https://post-phinf.pstatic.net/MjAxOTA4MDJfMjM1/MDAxNTY0NzE0ODEyMDk4.5nXLk7-27EPK8Q0NyLFVaeE_umpkqwfV73UWtu0ZD5Ug.j9RXuTc1EAgw66FZB0wl32sLBNaY4R9HZYvzOkei38Ag.JPEG/%EB%94%94%EB%85%B8%EB%A7%88%EB%93%9C%ED%95%99%EA%B5%90_%EC%95%84%ED%8A%B8%EB%94%94%EB%A0%89%ED%84%B0_NSH_%EC%95%A8%EB%B2%94_%EC%BB%A4%EB%B2%84_%EB%94%94%EC%9E%90%EC%9D%B8_8.jpg?type=w800_q75" alt="Album Art">
 			            </div>
 			            <div class="music-details">
 			                <div class="music-title">Song Title</div>
@@ -49,9 +49,12 @@
 			            </div>
 			        </div>
 			        <div class="music-controls">
-			            <button class="play-button">Play</button>
+			           <!--  <button class="play-button">Play</button> -->
+			           <!-- <img style="width: 20px" src="https://w7.pngwing.com/pngs/800/189/png-transparent-multimedia-music-play-player-song-video-multimedia-controls-solid-icon.png"> -->
+			           <button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
+			            
 			            <div class="time">0:00 / 3:30</div>
-			            <button class="comment-button">Comment</button>
+			            <!-- <button class="comment-button">Comment</button> -->
 			        </div>
 			    </div>
 			    <div class="progress-bar">
@@ -59,24 +62,25 @@
 			    </div>
 			
 	        </div>
-	    </div>
+	        </section>
 
 		    <section class="comment-container">
 			    <div class="comment-container-inner">
 			    	<div style="width: 100%;">
-			    		<h2>댓글</h2>
+			    		<h2>코멘트</h2>
 			    	</div>
-				    <div style="width: 100%; display: flex; justify-content: center;">
-				    	<div style="align-self: center;">닉네임</div>
-				        <textarea id="commentInput" placeholder="댓글을 입력하세요."></textarea>
-				        <button id="commentBtn">댓글 작성</button>
+				    <div class="commentInputBox">
+				    	<div style="align-self: center;">user_name</div>
+				        <textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
+				        <button id="commentBtn">코멘트 작성</button>
 				    </div>
-			        <div id="commentList" style="width: 800px">
-			            <div class="comment">사용자1: 좋아요!</div>
-			            <div class="comment">사용자2: 응원합니다!</div>
-			        </div>
+				        <div id="commentList">
+				            <div class="comment">사용자1: 좋아요!</div>
+				            <div class="comment">사용자2: 응원합니다!</div>
+				        </div>
 		        </div>
 		    </section>
+		    
 	    </main>
 	</form>
 </body>

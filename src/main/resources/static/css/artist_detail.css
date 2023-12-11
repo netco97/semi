@@ -2,24 +2,18 @@ body {
 	margin: 0;
 }
 
-form {
-	width: 100vw;
-    margin: 0;
-}
 
 main{
-	width: 1200px;
-}
-	
-.main-container {
 	width: 100vw;
-    display: flex;
     height: 500px;
     justify-content: space-between;
-    padding: 20px;
 }
 
 /* 아티스트 섹션 */
+
+.artist-section {
+	display: flex;
+}
 
 .artist-profile {
 	width: 250px;
@@ -43,7 +37,7 @@ main{
 }
 
 .rating-stars {
-    font-size: 2em;
+    font-size: 1.8em;
     cursor: pointer;
 }
 
@@ -72,6 +66,10 @@ main{
     cursor: pointer;
 }
 
+#followBtn:hover {
+	background-color: #555;
+}
+
 #messageBtn {
 	background-color: black;
     color: #fff;
@@ -81,10 +79,12 @@ main{
     cursor: pointer;
 }
 
+#messageBtn:hover {
+	background-color: #555;
+}
+
 /* 음악 목록 */
 .music-list {
-	border: 2px solid black;
-	width: 300px;
     flex: 1;
     margin-left: 20px;
 }
@@ -179,26 +179,31 @@ main{
 
 /* 하단 코멘트 섹션 */
 .comment-container {
-	width: 100vw;
 	height: 600px;
-	padding: 40px;
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
-    
 }
 
 .comment-container-inner {
 	width: 800px;
+	padding: 30px;
 }
 
 .comment {
+	width: 100%;
     margin-bottom: 10px;
 }
 #commentInput {
     width: 60%;
     margin: 30px;
+}
+
+.commentInputBox {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 #commentBtn {
@@ -216,5 +221,7 @@ main{
 }
 
 #commentList {
-	width: 60%;
+	padding-left: 150px;
+	padding-right: 150px;
+	
 }
