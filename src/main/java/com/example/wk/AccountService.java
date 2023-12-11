@@ -1,13 +1,21 @@
 package com.example.wk;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class AccountService {
+	public interface AccountService {
+	    List<AccountDTO> getAccountAll();
+	}	
 	
-	private final AccountMapper accountMapper;
 	
-	public AccountService(AccountMapper accountMapper) {
-		this.accountMapper = accountMapper;
-	}
-}
+	//private final AccountMapper accountMapper;
+//	
+//    void registerAccount(AccountDTO account);
+//    
+//    AccountDTO getAccountById(String aId);
+//    
+    //public List<AccountDTO> getAccountAll() {
+    	//return accountMapper.getAccountAll();
+    	
+//    }
+//
+//}

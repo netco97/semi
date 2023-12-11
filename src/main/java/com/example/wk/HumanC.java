@@ -44,45 +44,4 @@ public class HumanC {
 		
 		return "NewFile";
 	}
-	
-//	@GetMapping("artist_reg")
-//	public String artist_reg() {
-//		return "artist_reg";
-//	}
-//	
-//	@GetMapping("artist_update")
-//	public String artist_update() {
-//		return "artist_update";
-//	}
-	
-//	@GetMapping("artist_detail_viewer")
-//	public String artist_detail_viewer(Model model) {
-//	    
-//		return "artist_detail_viewer";
-//	}
-	
-//	@GetMapping("artist_detail_viewer")
-//	public String artist_detail_viewer() {
-//	    return "artist_detail_viewer";
-//	}
-//	
-//	@GetMapping("artist_detail_owner")
-//	public String artist_detail_owner() {
-//		return "artist_detail_owner";
-//	}
-//	
-//	@GetMapping("/music_upload")
-//	public String music_upload() {
-//		return "music_upload";
-//	}
-//	
-//	@GetMapping("/mypage_artist")
-//	public String mypage_artist() {
-//		return "mypage_artist";
-//	}
-//	
-//	@GetMapping("/mypage_user")
-//	public String mypage_user() {
-//		return "mypage_user";
-//	}
 }
