@@ -10,4 +10,5 @@
   <insert id="regHuman">
 	  insert into human_test values(#{h_name}, #{h_age})
   </insert>
-</mapper>
+  
+  </mapper>
