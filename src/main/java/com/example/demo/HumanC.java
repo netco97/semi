@@ -43,14 +43,7 @@ public class HumanC {
 		
 		return "NewFile";
 	}
-	@GetMapping("/musicMenu")
-	public String musicMenu() {
-		return "musicMenu";
-	}
-	@GetMapping("/musicDetail")
-	public String musicDetail() {
-		return "musicDetail";
-	}
+	
 	
 
 	

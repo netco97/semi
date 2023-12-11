@@ -1,90 +1,99 @@
-// document.addEventListener("DOMContentLoaded", function () {
 
-//   // 더미 데이터를 musicMenu-searchTag에 추가하는 함수
-//   function addDummyDataToTag() {
-//     var searchTag = document.querySelector(".musicMenu-searchTag");
+function clickTag(tag) {
+	let $searchTagInput = $('.musicMenu-searchTagInput');
 
-//     // 기존의 태그들을 모두 지움
-//     searchTag.innerHTML = "";
-
-//     // 더미 데이터를 순회하며 각각의 태그를 추가
-//     dummyData.forEach(function (data) {
-//       var tagDiv = document.createElement("div");
-//       tagDiv.textContent = data.genre;
-//       searchTag.appendChild(tagDiv);
-//     });
-//   }
-
-//   // 초기에 더미 데이터를 추가
-//   addDummyDataToTag();
-
-//   // searchOption div 각각에 클릭 이벤트 리스너 추가
-//   var searchOptionDivs = document.querySelectorAll(
-//     ".musicMenu-searchOption div"
-//   );
-//   searchOptionDivs.forEach(function (optionDiv) {
-//     optionDiv.addEventListener("click", function () {
-//       // musicMenu-searchTag의 가시성을 토글
-//       var searchTag = document.querySelector(".musicMenu-searchTag");
-//       searchTag.classList.toggle("hidden");
-
-//       // searchTagInput의 가시성을 토글
-//       var searchTagInput = document.querySelector(".musicMenu-searchTagInput");
-//       searchTagInput.classList.toggle("hidden");
-//     });
-//   });
-
-//   // searchTag의 div를 클릭했을 때 searchTagInput을 토글
-//   var searchTag = document.querySelector(".musicMenu-searchTag");
-//   searchTag.addEventListener("click", function () {
-//     var searchTagInput = document.querySelector(".musicMenu-searchTagInput");
-//     searchTagInput.classList.toggle("hidden");
-//   });
-// });
-
-// 선택한 값을 저장할 Set
-const selectedValues = new Set();
-
-function clickSearchOption(value) {
-  // 선택한 값이 이미 있다면 제거, 없다면 추가
-  if (selectedValues.has(value)) {
-    selectedValues.delete(value);
-  } else {
-    selectedValues.add(value);
-  }
-
-  updateSearchTagContainer(); // 선택한 값들을 searchTag에 업데이트
+	// 선택한 태그를 추가 또는 제거
+	if ($searchTagInput.find(`#${tag}`).length) {
+		// 이미 존재하는 태그인 경우 제거
+		$searchTagInput.find(`#${tag}`).remove();
+	} else {
+		// 존재하지 않는 태그인 경우 추가
+		$searchTagInput.append(`<div id='${tag}'>${tag}</div>`);
+	}
 }
 
-function updateSearchTagContainer() {
-  const searchTagContainer = document.getElementById("searchTagContainer");
-  searchTagContainer.innerHTML = ""; // 기존의 내용을 비웁니다.
 
-  // 선택한 값을 searchTag에 추가
-  selectedValues.forEach((value) => {
-    const tagElement = document.createElement("div");
-    tagElement.innerText = value;
-    tagElement.addEventListener("click", () => clickSearchTag(value));
-    searchTagContainer.appendChild(tagElement);
-  });
+
+function clickOption(option) {
+	let click = [];
+	let $searchTag = $('.musicMenu-searchTag');
+
+
+	if ($searchTag.hasClass('active')) {
+
+		if (option == 'genre' && !($searchTag.hasClass('genre'))) {
+			click = ['재즈', '힙합'];
+			updateSearchTag(click);
+			$searchTag.removeClass('mood');
+			$searchTag.removeClass('instrument');
+
+			$searchTag.addClass('genre');
+		} else if (option == 'mood' && !($searchTag.hasClass('mood'))) {
+			click = ['활기찬', '당당한'];
+			updateSearchTag(click);
+			$searchTag.removeClass('genre');
+			$searchTag.removeClass('instrument');
+
+			$searchTag.addClass('mood');
+		} else if (option == 'instrument' && !($searchTag.hasClass('instrument'))) {
+			click = ['피아노', '바이올린'];
+			updateSearchTag(click);
+			$searchTag.removeClass('genre');
+			$searchTag.removeClass('mood');
+
+			$searchTag.addClass('instrument');
+		} else {
+			$searchTag.removeClass('active');
+		}
+
+	} else {
+		if (option == 'genre') {
+			click = ['재즈', '힙합'];
+			updateSearchTag(click);
+			$searchTag.addClass('genre');
+		} else if (option == 'mood') {
+			click = ['활기찬', '당당한'];
+			updateSearchTag(click);
+			$searchTag.addClass('mood');
+
+		} else if (option == 'instrument') {
+			click = ['피아노', '바이올린'];
+			updateSearchTag(click);
+			$searchTag.addClass('instrument');
+
+		}
+		$searchTag.addClass('active');
+	}
+
+
+
+
+
+
+
 }
 
-function clickSearchTag(value) {
-  const searchTagInput = document.getElementById("searchTagInput");
 
-  // 클릭한 값이 이미 있다면 제거, 없다면 추가
-  if (selectedValues.has(value)) {
-    selectedValues.delete(value);
-  } else {
-    selectedValues.add(value);
-  }
+function updateSearchTag(tags) {
+	let $searchTag = $('.musicMenu-searchTag');
 
-  // searchTagInput에 추가된 값들을 텍스트로 표시
-  searchTagInput.innerText = Array.from(selectedValues).join(", ");
+	// 기존 태그들을 비우고 선택한 태그들을 추가
+	$searchTag.empty();
+	console.log(tags);
+	tags.forEach(tag => {
+		console.log(tag);
+		$searchTag.append(`<div id='${tag}' onclick="clickTag('${tag}')">${tag}</div>`);
+	});
 }
 
-function search() {
-  // 검색 기능을 구현할 수 있습니다.
-  // 선택한 값들은 selectedValues에서 가져와서 활용할 수 있습니다.
-  console.log("검색 중...", Array.from(selectedValues));
-}
+
+
+
+
+
+
+
+
+
+
+
