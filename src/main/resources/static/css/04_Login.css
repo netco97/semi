@@ -1,13 +1,21 @@
 #container {
     width: 100vw;
-    height: 100vh;
+    height: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1px black solid;
+    
     flex-direction: column;
+}
+
+#header {
+    width: 100%;
+    height: 140px;
+    background: #040404;
+    margin-bottom: 80px;
 }
 
 #section {
@@ -22,10 +30,16 @@
     border-radius: 20px;
 }
 
-/* 수정: #article을 클래스로 변경 */
-.article {
+#article {
     width: 465px;
     height: 87px;
-    margin-bottom: 15%;
-    background: #EAEAEA;
+    margin-bottom: 15%; /* 간격을 더 넓게 설정 */
+    background: #EAEAEA; /* 더 옅은 색상 */
+}
+
+#footer {
+    width: 100%;
+    height: 140px;
+    background: black;
+    margin-top: 80px;
 }
