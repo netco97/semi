@@ -7,19 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Controller
+@RequiredArgsConstructor
 public class HumanC {
 
-	@Autowired
-	TestService_Model testService_model;	
-	
-	@GetMapping("/")
+	private final TestService_Model testService_model;
+
+	@GetMapping("/index")
 	public String home(Model model) {
 		model.addAttribute("hello", "hello");
 		return "index";
 	}
-	
 	@GetMapping("/getone")
 	public String test() {
 		Human h = testService_model.getHuman("1");
@@ -27,7 +28,7 @@ public class HumanC {
 		return "NewFile";
 	}
 	@GetMapping("/getAll")
-	public String test2() {
+	public String test2(Model model) {
 		List<Human> h = testService_model.getAllHuman();
 		for (Human human : h) {
 			System.out.println(human);
