@@ -17,17 +17,17 @@ public class HumanC {
 	@Autowired
 	TestService_Model testService_model;	
 	
-	@GetMapping("/")
-	public String home(Model model) {
-		model.addAttribute("hello", "hello");
-		return "index";
-	}
+//	@GetMapping("/")
+//	public String home(Model model) {
+//		model.addAttribute("hello", "hello");
+//		return "test/index";
+//	}
 	
 	@GetMapping("/getone")
 	public String test() {
 		Human h = testService_model.getHuman("20");
 		System.out.println(h);
-		return "NewFile";
+		return "test/NewFile";
 	}
 	@GetMapping("/getAll")
 	public String test2() {
@@ -35,13 +35,13 @@ public class HumanC {
 		for (Human human : h) {
 			System.out.println(human);
 		}
-		return "NewFile";
+		return "test/NewFile";
 	}
 	
 	@GetMapping("/reg")
 	public String reg(Human h) {
 		testService_model.regHuman(h);
 		
-		return "NewFile";
+		return "test/NewFile";
 	}
 }

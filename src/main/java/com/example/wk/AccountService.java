@@ -2,20 +2,26 @@ package com.example.wk;
 
 import java.util.List;
 
-	public interface AccountService {
-	    List<AccountDTO> getAccountAll();
-	}	
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class AccountService {
 	
+	private final AccountMapper accountMapper;
 	
-	//private final AccountMapper accountMapper;
-//	
-//    void registerAccount(AccountDTO account);
-//    
-//    AccountDTO getAccountById(String aId);
-//    
-    //public List<AccountDTO> getAccountAll() {
-    	//return accountMapper.getAccountAll();
-    	
-//    }
-//
-//}
+	public AccountService(AccountMapper accountMapper) {
+		this.accountMapper = accountMapper;
+	}
+	
+	public List<AccountDTO> getAccountAll(){
+		return accountMapper.getAccountAll();
+		
+	}
+	
+	public AccountDTO login(String a_id, String a_pw) {
+		return accountMapper.login(a_id, a_pw);
+	}
+	
+}	
+

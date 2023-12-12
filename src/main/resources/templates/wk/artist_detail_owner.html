@@ -10,7 +10,7 @@
 	<form action="">
 	<main>
 		<section class="artist-section">
-	        <article class="artist-profile">
+	        <div class="artist-profile">
 	            <img src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png" alt="아티스트 프로필 사진">
 	            <div class="rating-container">
 	                <div class="rating-stars">
@@ -20,23 +20,22 @@
 	                    <span class="star" data-value="4">&#9733;</span>
 	                    <span class="star" data-value="5">&#9733;</span>
 	                </div>
-	                <p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
+	                <p id="rating-value">내가 받은 별점은?</p>
 	            </div>
 				<div class="artist-profile-funtion">
-		            <button id="followBtn">팔로우</button>
-		            <button id="messageBtn">쪽지 보내기</button>
+				
+		            <button onclick="location.href='wk/artist_update'" id="profileUpdateBtn">내 프로필 수정</button>
+		            <button onclick="" id="followerBtn">내 팔로워 보기</button>
 		        </div>
-	        </article>
+	        </div>
 	        
-	        <article class="artist-profile-text-box">
 	        <div class="artist-profile-text">
 	            <h2>composer_name</h2>
-	            <h2>주 장르</h2>
-	            <span></span>
+	            <h2>composer_janre</h2>
+	            아티스트 등록시 가져온 값
 	            <h2>자기소개</h2>
-	            <span></span> 
+	            composer_introduce
 	        </div>
-	        </article>
 	        
 	        <div class="music-list">
 			    <div class="music-player">

@@ -53,11 +53,20 @@ main{
     color: #f8d71c;
 }
 
-/* .artist-profile-text {
-	
-} */
+button {
+	background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-#followBtn {
+button:hover {
+	background-color: #555;
+}
+
+/* #followBtn {
     background-color: black;
     color: #fff;
     border: none;
@@ -81,7 +90,7 @@ main{
 
 #messageBtn:hover {
 	background-color: #555;
-}
+} */
 
 /* 음악 목록 */
 .music-list {
@@ -133,14 +142,16 @@ main{
     font-style: italic;
 }
 
-.play-button {
-    background-color: black;
+#playPauseBtn {
+  	background-color: black;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 5px;
     border-radius: 4px;
     cursor: pointer;
 }
+
+
 
 .music-controls {
     display: flex;
@@ -198,6 +209,7 @@ main{
 #commentInput {
     width: 60%;
     margin: 30px;
+    resize: none;
 }
 
 .commentInputBox {

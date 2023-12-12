@@ -31,6 +31,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
 	
+	
 	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '21.8.0.0'

@@ -58,7 +58,7 @@ textarea {
 
 input[type="file"] {
     display: none;
-/*     background-color: #fff;
+/*  background-color: #fff;
     color: #333;
     padding: 10px 20px;
     border: none;
@@ -104,6 +104,10 @@ input[type="file"] {
 #profilePicture{
 }
 
+#musicGenre {
+	text-align: center;
+}
+
 .buttonContainer{
 	width: 100%;
 	display: flex;
@@ -129,5 +133,6 @@ button {
 
 .introduce{
 	height: 300px;
+	resize: none;
 }
 

@@ -1,0 +1,48 @@
+package com.example.wk;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class HomeC {
+
+	private final AccountMapper accountMapper;
+	
+	
+	public HomeC(AccountMapper accountMapper) {
+		this.accountMapper = accountMapper;
+	}
+
+	@GetMapping("/")
+	public String index() {
+		return "wk/index";
+	}
+	
+    @PostMapping("/login")
+    public String login(@RequestParam String id, @RequestParam String password, HttpSession session, Model model) {
+        // 간단한 로그인 로직: 예시로 username이 "user", password가 "password"인 경우에 로그인 성공으로 가정
+    	AccountDTO accountDTO = accountMapper.login(id, password);
+        if (accountDTO != null && password.equals(accountDTO.getA_pw())) {
+            // 세션에 로그인 정보 저장
+            session.setAttribute("id", id);
+            session.setAttribute("name", accountDTO.getA_name());
+            return "wk/index"; // 로그인 성공 시 이동할 페이지
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "wk/index"; // 로그인 실패 시 로그인 페이지로 다시 이동
+        }
+    }
+    // 로그아웃 처리
+    @PostMapping("/logout")
+    public String logout(HttpSession session) {
+        // 세션에서 로그인 정보 삭제
+        session.removeAttribute("id");
+        return "wk/index"; // 로그아웃 시 이동할 페이지
+    }
+    
+}
