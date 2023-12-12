@@ -11,7 +11,7 @@ public class MusicUploadDTO {
 	private String musicTitle;
 	private MultipartFile musicFile;
     private MultipartFile albumArt;
-    private List<String> musicGenre;
+    private String musicGenre;
     private List<String> musicMood;
     private List<String> musicInstrument;
     
