@@ -10,27 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MusicSearchC {
+	
 	private final MusicSearch_Model musicSearch_Model;
-	
-	
 	
 	public MusicSearchC(MusicSearch_Model musicSearch_Model) {
 		this.musicSearch_Model = musicSearch_Model;
 	}
-
+	
 	@GetMapping("/MusicSearchTag")
-	public List<SongsDTO> MusicSearchTag (@RequestParam("tags") String tags) {
+	public List<SongsDTO> MusicSearchTag(@RequestParam("genre") String genre,@RequestParam("mood") String mood,@RequestParam("instrument") String instrument ) {
+		
+	
+		System.out.println("장르 : "+ genre);
+		System.out.println("분위기 : " + mood);
+		System.out.println("악기 : "+ instrument);
 		
 		
-		System.out.println(tags);
-		List<SongsDTO> result = musicSearch_Model.searchTag(tags);
-		
-		for(SongsDTO s : result)
-		{
-			System.out.println(s);
-		}
-		
-		
-		return result;
-	}
+//		  List<SongsDTO> result = musicSearch_Model.MusicSearchTag(); // String
+//		  genre = ""; 
+//		  
+//		 
+//		  for(SongsDTO s : result) { // System.out.println(s); // }
+		 		return null;
+//	}
+		  
 }
+	}

@@ -6,9 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MusicMapper {
+	
+	
+	List<SongsDTO> searchTag(String tag);
 
 
-	List<SongsDTO> searchTag(String tags);
+
+
 	
 	
 	

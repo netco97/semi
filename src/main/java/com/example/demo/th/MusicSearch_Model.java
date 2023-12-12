@@ -13,9 +13,11 @@ public class MusicSearch_Model {
 		this.musicMapper = musicMapper;
 	}
 
-	public List<SongsDTO> searchTag(String tags) {
+	public List<SongsDTO> MusicSearchTag(String tags) {
+	
 		return musicMapper.searchTag(tags);
-
+	
 	}
+
 
 }
