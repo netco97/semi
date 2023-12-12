@@ -6,18 +6,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MusicSearch_Model {
+    private final MusicMapper musicMapper;
 
-	private final MusicMapper musicMapper;
+    public MusicSearch_Model(MusicMapper musicMapper) {
+        this.musicMapper = musicMapper;
+    }
 
-	public MusicSearch_Model(MusicMapper musicMapper) {
-		this.musicMapper = musicMapper;
-	}
+    public List<SongsDTO> getGenreId(String g) {
+        return musicMapper.searchGenreId(g);
+    }
 
-	public List<SongsDTO> MusicSearchTag(String tags) {
-	
-		return musicMapper.searchTag(tags);
-	
-	}
+    public List<SongsDTO> getMoodId(String m) {
+        return musicMapper.searchMoodId(m);
+    }
 
-
+    public List<SongsDTO> getInstrumentId(String i) {
+        return musicMapper.searchInstrumentId(i);
+    }
 }
+
+

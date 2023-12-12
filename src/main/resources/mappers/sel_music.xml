@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.th.MusicMapper">
-  <select id="searchTag" resultType="SongsDTO">
-	select * from songs where genre_id = (select genre_id from genres where genre_name = #{val})
-  </select>
+
+	<select id="searchGenreId" resultType="SongsDTO">
+		select * from songs where genre_id = #{val}
+
+	</select>
+	<select id="searchMoodId" resultType="SongsDTO">
+		select * from songs where mood_id = #{val}
+	</select>
+	<select id="searchInstrumentId" resultType="SongsDTO">
+		select * from songs where instrument_id = #{val}
+	</select>
+
 </mapper>

@@ -10,6 +10,14 @@ public interface MusicMapper {
 	
 	List<SongsDTO> searchTag(String tag);
 
+	List<SongsDTO> searchGenreId(String s);
+
+	List<SongsDTO> searchMoodId(String s);
+
+	List<SongsDTO> searchInstrumentId(String s);
+
+
+
 
 
 
