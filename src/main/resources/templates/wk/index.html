@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>My Website</title>
-    <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
     <!-- 헤더 영역 -->
     <header>
-        <h1>My Website</h1>
+        <h1>Music</h1>
 
         <!-- 로그인 폼 -->
         <form th:action="@{/login}" method="post" th:if="${session.id == null}">
@@ -34,10 +33,11 @@
 	                <button type="submit">Logout</button>
 	            </div>
                 <div class="login-menu">
-	                <a th:href="@{/artist_detail_owner}">아티스트 상세 - 오너</a>
-	                <a th:href="@{/artist_detail_viewer}">아티스트 상세 - 게스트</a>
 	                <a th:href="@{/artist_reg}">아티스트 등록</a>
 	                <a th:href="@{/artist_update}">아티스트 수정</a>
+	                <a th:href="@{/artist_detail}">아티스트 상세</a>
+	                <a th:href="@{/artist_detail/1}">1번 아티스트 상세</a>
+	                <a th:href="@{/artist_detail/2}">2번 아티스트 상세</a>
 	                <a th:href="@{/music_upload}">음악 업로드</a>
 	                <a th:href="@{/mypage_artist}">마이 페이지 - 아티스트</a>
 	                <a th:href="@{/mypage_user}">마이 페이지 - 일반</a>
@@ -48,8 +48,7 @@
 
     <!-- 페이지 내용 영역 -->
     <main th:fragment="content">
-       <!--  <!-- 페이지 내용을 여기에 추가 -->
-     <!--    <div th:include="${contentFragment} :: contentFragment"></div> -->
+     	<!-- <div th:replace="${contentFragment} :: contentFragment"></div> -->
     </main>
 
     <!-- 푸터 영역 -->

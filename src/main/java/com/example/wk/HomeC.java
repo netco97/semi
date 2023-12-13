@@ -31,6 +31,7 @@ public class HomeC {
             // 세션에 로그인 정보 저장
             session.setAttribute("id", id);
             session.setAttribute("name", accountDTO.getA_name());
+            session.setAttribute("introduce", accountDTO.getA_introduce());
             return "wk/index"; // 로그인 성공 시 이동할 페이지
         } else {
             model.addAttribute("error", "Invalid username or password");

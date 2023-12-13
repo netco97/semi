@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wk.ComposerMapper">
+
+    <resultMap id="composerResultMap" type="com.example.wk.ComposerDTO">
+        <id property="id" column="composer_id"/>
+        <result property="name" column="composer_name"/>
+        <!-- 다른 필드에 대한 매핑 추가 -->
+    </resultMap>
+
+    <select id="findById" resultMap="composerResultMap">
+        SELECT * FROM composers WHERE composer_id = #{id}
+    </select>
+
+    <!-- 다른 쿼리들을 추가할 수 있습니다. -->
+
+</mapper>

@@ -48,14 +48,32 @@ document.addEventListener("DOMContentLoaded", function() {
         alert('쪽지를 보냈습니다!');
     });
 
+//    commentBtn.addEventListener('click', () => {
+//        const commentText = commentInput.value;
+//        if (commentText.trim() !== '') {
+//            const commentDiv = document.createElement('div');
+//            commentDiv.className = 'comment';
+//            commentDiv.innerText = `${sessionUserName}: ${commentText}`;
+//            commentList.appendChild(commentDiv);
+//            commentInput.value = '';
+//        }
+//    });
+
     commentBtn.addEventListener('click', () => {
         const commentText = commentInput.value;
+        const sessionUserName = document.getElementById('sessionUserName').value;
+
         if (commentText.trim() !== '') {
             const commentDiv = document.createElement('div');
             commentDiv.className = 'comment';
-            commentDiv.innerText = `사용자: ${commentText}`;
+            commentDiv.innerText = `${sessionUserName}: ${commentText}`;
             commentList.appendChild(commentDiv);
             commentInput.value = '';
         }
     });
+
+	
+
+
+
 });

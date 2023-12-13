@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,11 @@ public class AccountC {
 		return "wk/index";
 	}
 	
+//	@GetMapping("/artist_detail")
+//	public String artist_detail_owner() {
+//		return "wk/artist_detail";
+//	}
+	
 	@GetMapping("artist_reg")
 	public String artist_reg() {
 		return "wk/artist_reg";
@@ -33,18 +39,6 @@ public class AccountC {
 	@GetMapping("artist_update")
 	public String artist_update() {
 		return "wk/artist_update";
-	}
-	
-	@GetMapping("artist_detail_owner")
-	public String artist_detail_owner() {
-		return "wk/artist_detail_owner";
-	}
-	
-	@GetMapping("artist_detail_viewer")
-	public String artist_detail_viewer(HttpSession session) {
-		String name = (String) session.getAttribute("name");
-		System.out.println(name);
-		return "wk/artist_detail_viewer";
 	}
 	
 	@GetMapping("/music_upload")

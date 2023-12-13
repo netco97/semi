@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">My Website</title>
+    <!-- 다양한 헤더 설정 -->
+</head>
+<body>
+    <div layout:fragment="header">
+        <!-- 헤더 삽입 -->
+        <th:block th:include="wk/fragments/header :: header"></th:block>
+    </div>
+    
+    <div layout:fragment="content">
+        <!-- 페이지마다 변경되는 내용 -->
+        <th:block th:replace="${content}"></th:block>
+    </div>
+    
+    <div layout:fragment="footer">
+        <!-- 푸터 삽입 -->
+        <th:block th:include="wk/fragments/footer :: footer"></th:block>
+    </div>
+</body>
+</html>
