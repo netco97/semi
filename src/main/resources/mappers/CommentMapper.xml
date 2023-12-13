@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.wk.CommentMapper">
+
+    <resultMap id="CommentResultMap" type="com.example.wk.CommentDTO">
+        <id property="commentId" column="comment_id"/>
+        <result property="composerId" column="composer_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <select id="getCommentsByComposerId" resultMap="CommentResultMap">
+        SELECT * FROM comments WHERE composer_id = #{composerId}
+    </select>
+
+    <insert id="insertComment" parameterType="com.example.wk.CommentDTO">
+        INSERT INTO comments (composer_id, user_name, content) 
+        VALUES (#{composerId}, #{userName}, #{content})
+    </insert>
+
+</mapper>
