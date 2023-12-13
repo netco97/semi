@@ -1,59 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-<link rel="stylesheet" href="css/index.css">
+<meta charset="UTF-8">
+<title>세미 홈페이지</title>
+<link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
-    <!-- 헤더 영역 -->
-    <header>
-        <h1>Music</h1>
 
-        <!-- 로그인 폼 -->
-        <form th:action="@{/login}" method="post" th:if="${session.id == null}">
-        	<div class="login-input">
-	            <label for="id">ID:</label>
-	            <input type="text" id="id" name="id" required>
-	            <label for="password">Password:</label>
-	            <input type="password" id="password" name="password" required>
-	            <button type="submit">Login</button>
-	        </div>
-            <div class="login-menu">
-	            <a href="">회원가입</a>
-	            <a th:href="@{/getAccountAll}">회원목록</a>
-            </div>
-        </form>
+	<!-- 헤더 -->
+    <div th:replace="wk/fragments/header :: header"></div>
+    
+    <!-- 중간 페이지 내용 -->
+    <div th:insert="${content}"></div>
+    
+    <!-- 푸터 -->
+    <div th:replace="wk/fragments/footer :: footer"></div>
 
-        <!-- 로그아웃 버튼 -->
-        <div th:if="${session.id != null}">
-            <form th:action="@{/logout}" method="post">
-	            <div class="login-input">
-	            	<p th:text="'환영합니다, ' + ${session.name} + '님!'"></p>
-	                <button type="submit">Logout</button>
-	            </div>
-                <div class="login-menu">
-	                <a th:href="@{/artist_reg}">아티스트 등록</a>
-	                <a th:href="@{/artist_update}">아티스트 수정</a>
-	                <a th:href="@{/artist_detail}">아티스트 상세</a>
-	                <a th:href="@{/artist_detail/1}">1번 아티스트 상세</a>
-	                <a th:href="@{/artist_detail/2}">2번 아티스트 상세</a>
-	                <a th:href="@{/music_upload}">음악 업로드</a>
-	                <a th:href="@{/mypage_artist}">마이 페이지 - 아티스트</a>
-	                <a th:href="@{/mypage_user}">마이 페이지 - 일반</a>
-                </div>
-            </form>
-        </div>
-    </header>
-
-    <!-- 페이지 내용 영역 -->
-    <main th:fragment="content">
-     	<!-- <div th:replace="${contentFragment} :: contentFragment"></div> -->
-    </main>
-
-    <!-- 푸터 영역 -->
-    <footer>
-        <p>My Website Footer</p>
-    </footer>
 </body>
 </html>

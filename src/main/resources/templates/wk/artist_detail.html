@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 상세</title>
 <link rel="stylesheet" href="/css/artist_detail.css">
+
 </head>
 <body>
-	<form action="">
 	<main>
 		<section class="artist-section">
 	        <div class="artist-profile">
@@ -22,8 +22,38 @@
 	                <p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
 	            </div>
 				<div class="artist-profile-funtion">
+				
+				
+				
+				
+<!-- 			<th:block th:if="${session.artistId == composerDTO.id}">
+                본인이 아티스트 페이지를 방문한 경우에만 표시되는 메뉴
+                <a th:href="@{/artist_update}">내 프로필 수정</a>
+                <a th:href="@{/follower_list}">내 팔로워 보기</a>
+            </th:block>
+            <th:block th:unless="${session.artistId == composerDTO.id}">
+                다른 아티스트 페이지를 방문한 경우에만 표시되는 메뉴
 					<button id="followBtn">팔로우</button>
 		            <button id="messageBtn">쪽지 보내기</button>
+                <a th:href="@{/follow_artist/{id}(id=${composerDTO.id})}">팔로우</a>
+                <a th:href="@{/send_message/{id}(id=${composerDTO.id})}">쪽지 보내기</a>
+				
+            </th:block> -->
+            
+            <!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
+<!-- HTML 요소에 직접 th:if를 사용합니다. -->
+<a th:if="${session.artistId == composerDTO.id}" th:href="@{/artist_update}">내 프로필 수정</a>
+<a th:if="${session.artistId == composerDTO.id}" th:href="@{/follower_list}">내 팔로워 보기</a>
+
+<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
+<!-- <button id="followBtn" th:unless="${session.artistId == composerDTO.id}">팔로우</button>
+<button id="messageBtn" th:unless="${session.artistId == composerDTO.id}">쪽지 보내기</button>
+<a th:unless="${session.artistId == composerDTO.id}" th:href="@{/follow_artist/{id}(id=${composerDTO.id})}">팔로우</a>
+<a th:unless="${session.artistId == composerDTO.id}" th:href="@{/send_message/{id}(id=${composerDTO.id})}">쪽지 보내기</a> -->
+				
+				
+				
+				
 		            <!-- <button onclick="location.href='wk/artist_update'" id="profileUpdateBtn">내 프로필 수정</button>
 		            <button onclick="" id="followerBtn">내 팔로워 보기</button> -->
 		        </div>
@@ -31,7 +61,7 @@
 	        
 	        <div class="artist-profile-text">
 	            <h2 th:text="${composerDTO.name}">composer_name</h2>
-	            <h2>composer_janre</h2>
+	            <h2>composer_Genre</h2>
 	            아티스트 등록시 가져온 값
 	            <h2>자기소개</h2>
 	            composer_introduce
@@ -72,7 +102,7 @@
 				    <div class="commentInputBox">
 				    	<div th:text="${session.name}" style="align-self: center;">user_name</div>
 				        <textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-				        <button id="commentBtn">코멘트 작성</button>
+				        <button id="commentBtn" onclick="">코멘트 작성</button>
 				    </div>
 				    <div id="commentList">
 				        <div class="comment">사용자1: 좋아요!</div>
@@ -81,7 +111,6 @@
 		        </div>
 		    </section>
 	    </main>
-	</form>
 </body>
 <script type="text/javascript" src="/js/artist_detail.js"></script>
 </html>

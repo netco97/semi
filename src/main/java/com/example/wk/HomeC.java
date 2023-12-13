@@ -18,10 +18,24 @@ public class HomeC {
 		this.accountMapper = accountMapper;
 	}
 
-	@GetMapping("/")
-	public String index() {
-		return "wk/index";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "wk/index";
+//	}
+	
+    @GetMapping("/")
+    public String home(Model model) {
+        // 중간 페이지 내용을 설정
+        model.addAttribute("content", "wk/home");
+        return "wk/index";
+    }
+    
+    @GetMapping("/about")
+    public String about(Model model) {
+        // 중간 페이지 내용을 설정
+        model.addAttribute("content", "wk/about");
+        return "wk/index";
+    }
 	
     @PostMapping("/login")
     public String login(@RequestParam String id, @RequestParam String password, HttpSession session, Model model) {
@@ -31,18 +45,21 @@ public class HomeC {
             // 세션에 로그인 정보 저장
             session.setAttribute("id", id);
             session.setAttribute("name", accountDTO.getA_name());
-            session.setAttribute("introduce", accountDTO.getA_introduce());
-            return "wk/index"; // 로그인 성공 시 이동할 페이지
+            model.addAttribute("content", "wk/home");
+            return "wk/index";
+            //return "wk/index"; // 로그인 성공 시 이동할 페이지
         } else {
             model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("content", "wk/home");
             return "wk/index"; // 로그인 실패 시 로그인 페이지로 다시 이동
         }
     }
     // 로그아웃 처리
     @PostMapping("/logout")
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session, Model model) {
         // 세션에서 로그인 정보 삭제
         session.removeAttribute("id");
+        model.addAttribute("content", "wk/home");
         return "wk/index"; // 로그아웃 시 이동할 페이지
     }
     

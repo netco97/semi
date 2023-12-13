@@ -1,11 +1,12 @@
-form {
+/* form {
 	width: 100vw;
 	display: flex;
 	justify-content: center;
 	margin: 0px;
 }
 
-main {
+ */
+ main {
     max-width: 800px;
 	padding: 30px;
     width: 100%;

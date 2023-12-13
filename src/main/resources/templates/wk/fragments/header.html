@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-	    <!-- 헤더 내용 -->
-	    <nav>
-	        <ul>
-	            <li><a href="wk/">Home</a></li>
-	            <li><a href="/about">About</a></li>
-	            <!-- 다른 메뉴 항목 추가 -->
-	        </ul>
-	    </nav>
-	</header>
+    <header>
+        <a th:href="@{/}" id="title">Home</a>
+
+        <!-- 로그인 폼 -->
+        <form th:action="@{/login}" method="post" th:if="${session.id == null}">
+        	<div class="login-input">
+	            <label for="id">ID:</label>
+	            <input type="text" id="id" name="id" required>
+	            <label for="password">Password:</label>
+	            <input type="password" id="password" name="password" required>
+	            <button type="submit">Login</button>
+	        </div>
+            <div class="login-menu">
+	            <a href="">회원가입</a>
+	            <a th:href="@{/getAccountAll}">회원목록</a>
+            </div>
+        </form>
+
+        <!-- 로그아웃 버튼 -->
+        <div th:if="${session.id != null}">
+            <form th:action="@{/logout}" method="post">
+	            <div class="login-input">
+	            	<p th:text="'환영합니다, ' + ${session.name} + '님!'"></p>
+	                <button type="submit">Logout</button>
+	            </div>
+                <div class="login-menu">
+	                <a th:href="@{/artist_reg}">아티스트 등록</a>
+	                <a th:href="@{/artist_update}">아티스트 수정</a>
+	                <a th:href="@{/artist_detail/1}">ID: 1 아티스트</a>
+	                <a th:href="@{/artist_detail/2}">ID: 2 아티스트</a>
+	                <a th:href="@{/music_upload}">음악 업로드</a>
+	                <a th:href="@{/mypage_artist}">마이 페이지 - 아티스트</a>
+	                <a th:href="@{/mypage_user}">마이 페이지 - 일반</a>
+                </div>
+            </form>
+        </div>
+    </header>
 
 </body>
 </html>

@@ -1,12 +1,16 @@
-body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+		main {
             /* background-color: #f4f4f4; */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column; /* 세로 중앙 정렬을 위해 추가 */
+            main {
+    background-color: #fff;
+    width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
         }
 
         .my-page-title {
@@ -34,10 +38,4 @@ body {
 
         .menu-box:hover {
             background-color: #555;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-            font-size: 16pt;
         }

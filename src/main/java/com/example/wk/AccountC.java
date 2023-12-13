@@ -32,28 +32,33 @@ public class AccountC {
 //	}
 	
 	@GetMapping("artist_reg")
-	public String artist_reg() {
-		return "wk/artist_reg";
+	public String artist_reg(Model model) {
+		model.addAttribute("content", "wk/artist_reg");
+		return "wk/index";
 	}
 	
 	@GetMapping("artist_update")
-	public String artist_update() {
-		return "wk/artist_update";
+	public String artist_update(Model model) {
+		model.addAttribute("content", "wk/artist_update");
+		return "wk/index";
 	}
 	
 	@GetMapping("/music_upload")
-	public String music_upload() {
-		return "wk/music_upload";
+	public String music_upload(Model model) {
+		model.addAttribute("content", "wk/music_upload");
+		return "wk/index";
 	}
 	
 	@GetMapping("/mypage_artist")
-	public String mypage_artist() {
-		return "wk/mypage_artist";
+	public String mypage_artist(Model model) {
+		model.addAttribute("content", "wk/mypage_artist");
+		return "wk/index";
 	}
 	
 	@GetMapping("/mypage_user")
-	public String mypage_user() {
-		return "wk/mypage_user";
+	public String mypage_user(Model model) {
+		model.addAttribute("content", "wk/mypage_user");
+		return "wk/index";
 	}
 	
 }

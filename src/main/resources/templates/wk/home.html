@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      layout:decorate="~{layout}">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-    <!-- 페이지마다 변경되는 내용 작성 -->
-    <h1>Welcome to the Home Page!</h1>
+    <section th:fragment="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is the home page content.</p>
+    </section>
 </body>
 </html>
