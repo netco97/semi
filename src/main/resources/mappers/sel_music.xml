@@ -4,13 +4,44 @@
 
 	<select id="searchGenreId" resultType="SongsDTO">
 		select * from songs where genre_id = #{val}
-
 	</select>
-	<select id="searchMoodId" resultType="SongsDTO">
-		select * from songs where mood_id = #{val}
-	</select>
+	
 	<select id="searchInstrumentId" resultType="SongsDTO">
 		select * from songs where instrument_id = #{val}
 	</select>
+
+
+<select id="searchTag" resultType="SongsDTO">
+    SELECT *
+    FROM songs
+    WHERE
+    <if test="genreArray[0] == 'all'">
+        (genre_id like '%')
+    </if>
+    <if test="genreArray[0] != 'all'">
+        <foreach collection="genreArray" item="genre" open="(" close=")" separator=" or ">
+            genre_id like '%' || #{genre} || '%'
+        </foreach>
+    </if>
+    and
+    <if test="moodArray[0] == 'all'">
+        (mood_id like '%' || #{moodArray[0]} || '%')
+    </if>
+    <if test="moodArray[0] != 'all'">
+        <foreach collection="moodArray" item="mood" open="(" close=")" separator=" and ">
+            mood_id like '%'
+        </foreach>
+    </if>
+    and
+    <if test="instrumentArray[0] == 'all'">
+        (instrument_id like '%')
+    </if>
+    <if test="instrumentArray[0] != 'all'">
+        <foreach collection="instrumentArray" item="instrument" open="(" close=")" separator=" and ">
+            instrument_id like '%' || #{instrument} || '%'
+        </foreach>
+    </if>
+</select>
+
 
 </mapper>

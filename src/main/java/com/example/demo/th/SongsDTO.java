@@ -8,7 +8,7 @@ import lombok.ToString;
 public class SongsDTO {
 	private int song_id;
 	private String song_name;
-	private int genre_id;
+	private String genre_id;
 	private String instrument_id;
 	private String mood_id;
 	private String composer_name;
