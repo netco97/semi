@@ -12,24 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.sm.genre.GenreService;
-import com.example.demo.sm.instrument.InstrumentService;
-import com.example.demo.sm.mood.MoodMapper;
-import com.example.demo.sm.mood.MoodService;
-
 @Controller
 public class MusicController {
-	
-	private final GenreService genreService;
-	private final MoodService moodService;
 	private final MusicService musicService;
-	private final InstrumentService instrumentService;
 	
-	public MusicController(GenreService genreService, MoodService moodService, MusicService musicService, InstrumentService instrumentService) {
-		this.genreService = genreService;
-		this.moodService = moodService;
+	public MusicController(MusicService musicService) {
 		this.musicService = musicService;
-		this.instrumentService = instrumentService;
 	}
 	
 	@GetMapping("/music_upload")
@@ -51,12 +39,12 @@ public class MusicController {
 	    List<String> musicInstrument = musicUploadDTO.getMusicInstrument();
 	    
 	    // mood 변수
-	    List <String> mood_arr = new ArrayList<>();
 	    String mood_result = "";
+	    mood_result = String.join("#", musicMood);
 	    
 	    // instrument 변수
-	    List <String> instrument_arr = new ArrayList<>();
 	    String instrument_result = "";
+	    instrument_result = String.join("#", musicInstrument);
 	    
 	    // Test composer_name 변수
 	    String composer_name = "sm";
@@ -67,26 +55,14 @@ public class MusicController {
 	    System.out.println("선택된 음악 분위기: " + musicMood);
 	    System.out.println("선택된 악기 종류 : " + musicInstrument);
 	    
-	    int genrePK = genreService.getGenreId(musicUploadDTO.getMusicGenre());
-	    System.out.println("장르 pk 확인 : " + genrePK);
-	    for(String s : musicMood) {
-	    	mood_arr.add(moodService.getMoodId(s));
-	    }
-	    for(String s : musicInstrument) {
-	    	instrument_arr.add(instrumentService.getInstrumentId(s));
-	    }
-	    
-	    mood_result = String.join("#", mood_arr);
-	    instrument_result = String.join("#", instrument_arr);
-	    
 	    System.out.println("분위기 pk# 합친것 결과 : " + mood_result );
 	    System.out.println("악기 pk# 합친것 결과 : " + instrument_result);
 	    
 	    
 	    // songs DB save 세팅
 	    SongsDTO songsDTO = SongsDTO.builder()
-	    .song_name(musicUploadDTO.getMusicGenre())
-	    .genre_id(genrePK)
+	    .song_name(musicUploadDTO.getMusicTitle())
+	    .genre_id(musicUploadDTO.getMusicGenre())
 	    .instrument_id(instrument_result)
 	    .mood_id(mood_result)
 	    .composer_name(composer_name)

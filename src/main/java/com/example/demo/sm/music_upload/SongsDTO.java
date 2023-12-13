@@ -7,7 +7,7 @@ import lombok.Data;
 public class SongsDTO {
     private int song_id;
     private String song_name;
-    private int genre_id;
+    private String genre_id;
     private String instrument_id;
     private String mood_id;
     private String composer_name;
@@ -15,7 +15,7 @@ public class SongsDTO {
     private String song_audio;
     
     @Builder
-    public SongsDTO(String song_name, int genre_id, String instrument_id, String mood_id, String composer_name, String song_img, String song_audio) {
+    public SongsDTO(String song_name, String genre_id, String instrument_id, String mood_id, String composer_name, String song_img, String song_audio) {
     	this.song_name = song_name;
     	this.genre_id = genre_id;
     	this.instrument_id = instrument_id;
