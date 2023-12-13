@@ -41,19 +41,7 @@ public class HumanC {
 		
 		return "NewFile";
 	}
-	@GetMapping("/chat")
-	public String chat() {
-		return "21_Chat";
-			
-	}
-	@GetMapping("/login")
-	public String login() {
-		return "04_Login";
-	}
-	
-	@GetMapping("/signup")
-	public String signup() {
-		return "05_SignUp"; 
-	}
+
+
 	
 }

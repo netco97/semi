@@ -7,6 +7,11 @@
     <link rel="stylesheet" th:href="@{/css/05_SignUp.css}">
 </head>
 <body>
+	
+	<p>User ID: <span th:text="${session.userId}"></span></p>
+    <p>User Email: <span th:text="${session.userEmail}"></span></p>
+    <p>User Nickname: <span th:text="${session.userNickname}"></span></p>
+    
     <div id="container">
         <div id="section-container">
             <div id="section">
