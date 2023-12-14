@@ -57,7 +57,7 @@ public class MusicController {
 	    
 	    System.out.println("분위기 pk# 합친것 결과 : " + mood_result );
 	    System.out.println("악기 pk# 합친것 결과 : " + instrument_result);
-	    
+	    	
 	    
 	    // songs DB save 세팅
 	    SongsDTO songsDTO = SongsDTO.builder()
@@ -69,6 +69,7 @@ public class MusicController {
 	    .song_img(FileNames.get(0))
 	    .song_audio(FileNames.get(1))
 	    .build();
+	    
 	    System.out.println(songsDTO);
 	    // DB save
 	    musicService.saveSongs(songsDTO);
