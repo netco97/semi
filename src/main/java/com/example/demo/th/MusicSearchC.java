@@ -29,4 +29,28 @@ public class MusicSearchC {
     	System.out.println(result);
     	return result;
     }
+    
+    @GetMapping("/MusicSearchText")
+    public List<SongsDTO> MusicSearchText(@RequestParam("text") String text){
+    	System.out.println("컨트롤러 text : " + text);
+    	
+    	List<SongsDTO> result = musicSearch_Model.searchMusicByText(text);
+    	
+    	
+    	return result;
+    }
+    
+    @GetMapping("/getMusicDetail")
+    public List<SongsDTO> getMusicDetail(@RequestParam("song_id") int song_id){
+    	System.out.println(song_id);
+    	
+    	List<SongsDTO> result = musicSearch_Model.getMusicDetail(song_id);
+    	System.out.println("상세페이지 : " + result);
+    	
+    	return result;
+    }
+    
+    
+    
+    
 }

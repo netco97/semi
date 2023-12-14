@@ -144,43 +144,78 @@ body {
 	color: white; /* 마우스 오버 시 텍스트 색상 변경 */
 }
 
-.musicList {
-	width: 100%;
-	border: 1px solid black;
-	margin-top: 20px;
+.musicMenu-searchTag.hidden, .musicMenu-searchTagInput.hidden {
+	display: block; /* hidden 클래스가 없을 때 요소를 표시 */
 }
 
-.misicList-menu {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+
+
+
+/* musicList */
+
+.musicList{
+	position: relative;	
+	
+}
+.musicList-inner {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 내부 컨테이너를 세로로 가운데 정렬 */
+    justify-content: center; /* 내부 컨테이너를 가로로 가운데 정렬 */
+}
+
+.musicList-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%; /* 노래 컨테이너를 100%로 설정 */
+    box-sizing: border-box; /* padding을 포함한 크기로 설정 */
 }
 
 .musicList-title {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .musicList-title img {
-	max-width: 100%;
-	margin-right: 10px;
-	border-radius: 5px;
+    max-width: 50px; /* 이미지의 최대 너비를 조절합니다. 원하는 크기로 조절하세요. */
+    margin-right: 10px;
+    border-radius: 5px; /* 이미지 테두리 둥글게 설정 */
 }
 
-.musicList-title div {
+.musicList-title,
+.musicList-option {
+    display: contents;
+    flex-direction: column;
+}
+.musicList-info{
 	display: flex;
 	flex-direction: column;
+	font-size: 10px;
 }
 
-.musicList-PlaySpace, .musicList-option {
-	display: flex;
-	justify-content: space-between;
+.musicList-PlaySpace {
+    display: flex;
+    align-items: center;
 }
 
-.musicList-info {
-	margin-top: 10px;
+.audio-player {
+    width: 100%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
 }
 
-.musicMenu-searchTag.hidden, .musicMenu-searchTagInput.hidden {
-	display: block; /* hidden 클래스가 없을 때 요소를 표시 */
+.progress-bar {
+    height: 5px;
+    background-color: #ddd;
+}
+
+.musicList-title div,
+.musicList-option div {
+    margin: 5px 0; /* 각 섹션의 요소들 사이의 간격 설정 */
 }

@@ -47,5 +47,25 @@ public class MusicSearch_Model {
 		
 		return result;
 	}
+
+	public List<SongsDTO> searchMusicByText(String text) {
+		List<SongsDTO> result = new ArrayList<>();
+		
+//		System.out.println("서비스 text : " + text);
+		
+		result = musicMapper.searchText(text);
+		
+		
+		return result;
+	}
+
+	public List<SongsDTO> getMusicDetail(int song_id) {
+		List<SongsDTO> result = new ArrayList<>();
+		
+		result = musicMapper.getMusicDetail(song_id);
+		System.out.println("상세페이지 : " + result);
+		
+		return result;
+	}
 	
 }
