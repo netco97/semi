@@ -1,5 +1,7 @@
 package com.example.wk;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,19 +18,22 @@ public class ComposerC {
 	@Autowired
 	private ComposerService composerService;
 	
-//	@GetMapping("/{id}")
-//	public ResponseEntity<ComposerDTO> getComposerById(@PathVariable Long id) {
-//		ComposerDTO composerDTO = composerService.getComposerById(id);
-//		return new ResponseEntity<>(composerDTO, HttpStatus.OK);
-//	}
+	@Autowired
+	private CommentService commentService;
 	
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public String getComposerById(@PathVariable Long id, Model model) {
-        ComposerDTO composerDTO = composerService.getComposerById(id);
-        model.addAttribute("composerDTO", composerDTO);
+        ComposerDTO composer = composerService.getComposerById(id);
+        List<CommentDTO> comments = commentService.getCommentsByComposerId(id);
+        
+        // 이미지 파일의 경로 설정 (기본 이미지 포함)
+        composer.setImg(composer.getImgOrDefault());
+        
+        model.addAttribute("composer", composer);
+        model.addAttribute("comments", comments);
+        System.out.println(composer);
+        System.out.println(comments);
         model.addAttribute("content", "wk/artist_detail");
-        return "wk/index"; // 뷰 이름 리턴
+        return "wk/index";
     }
 }
-
-

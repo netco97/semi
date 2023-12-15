@@ -7,8 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CommentMapper {
 	
-	List<CommentDTO> getCommentsByComposerId(Long composerId);
-	
+	List<CommentDTO> getAllCommentsByComposerId(Long composerId);
 	void insertComment(CommentDTO comment);
+	void deleteCommentById(Long commentId);
+	
 
 }

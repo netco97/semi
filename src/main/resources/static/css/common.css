@@ -13,6 +13,7 @@ a {
 }
 
 header {
+	height: 200px;
     display: flex;
     justify-content: space-between; /* 자식 요소 사이의 공간을 최대화하여 우측 정렬 */
     background-color: black;
@@ -21,6 +22,7 @@ header {
 }
 
 footer {
+	height: 300px;
 	background-color: black;
     color: white;
     padding: 20px;

@@ -13,9 +13,9 @@
         <section>
         <div class="profileTitle">프로필 사진</div>
             <div id="ProfileContainer">
-	        	<img id="OldProfilePreview" src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png">
+	        	<img id="OldProfilePreview" th:src="@{${composer.getImgOrDefault()}}">
 	        	<div>기존 프로필 사진</div>
-	        	<img id="ProfilePreview" src="https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png">
+	        	<img id="ProfilePreview" src="images/default_profile.png">
 	        <label for="file">
         	  <div class="btn-upload">사진 변경</div>
 			</label>

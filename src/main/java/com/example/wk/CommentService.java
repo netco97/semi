@@ -12,11 +12,17 @@ public class CommentService {
 	private CommentMapper commentMapper;
 	
 	public List<CommentDTO> getCommentsByComposerId(Long composerId) {
-		return commentMapper.getCommentsByComposerId(composerId);
+		System.out.println(composerId);
+		return commentMapper.getAllCommentsByComposerId(composerId);
 	}
 	
 	public void insertComment(CommentDTO comment) {
 		commentMapper.insertComment(comment);
+		System.out.println(comment);
+	}
+	
+	public void deleteCommentById(Long commentId) {
+		commentMapper.deleteCommentById(commentId);
 	}
 
 }

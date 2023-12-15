@@ -1,17 +1,15 @@
 		main {
             /* background-color: #f4f4f4; */
-            main {
-    background-color: #fff;
-    width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-        }
+		    background-color: #fff;
+		    width: 800px;
+		    margin: 50px auto;
+		    padding: 20px;
+		    border-radius: 10px;
+		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		}
 
         .my-page-title {
             margin: 20px 0; /* 위아래 간격 설정 */

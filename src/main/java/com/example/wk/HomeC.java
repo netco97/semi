@@ -18,11 +18,6 @@ public class HomeC {
 		this.accountMapper = accountMapper;
 	}
 
-//	@GetMapping("/")
-//	public String index() {
-//		return "wk/index";
-//	}
-	
     @GetMapping("/")
     public String home(Model model) {
         // 중간 페이지 내용을 설정
@@ -36,6 +31,36 @@ public class HomeC {
         model.addAttribute("content", "wk/about");
         return "wk/index";
     }
+    
+	@GetMapping("artist_reg")
+	public String artist_reg(Model model) {
+		model.addAttribute("content", "wk/artist_reg");
+		return "wk/index";
+	}
+	
+	@GetMapping("artist_update")
+	public String artist_update(Model model) {
+		model.addAttribute("content", "wk/artist_update");
+		return "wk/index";
+	}
+	
+	@GetMapping("/music_upload")
+	public String music_upload(Model model) {
+		model.addAttribute("content", "wk/music_upload");
+		return "wk/index";
+	}
+	
+	@GetMapping("/mypage_artist")
+	public String mypage_artist(Model model) {
+		model.addAttribute("content", "wk/mypage_artist");
+		return "wk/index";
+	}
+	
+	@GetMapping("/mypage_user")
+	public String mypage_user(Model model) {
+		model.addAttribute("content", "wk/mypage_user");
+		return "wk/index";
+	}
 	
     @PostMapping("/login")
     public String login(@RequestParam String id, @RequestParam String password, HttpSession session, Model model) {

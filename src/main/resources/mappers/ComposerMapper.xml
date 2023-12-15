@@ -5,6 +5,9 @@
     <resultMap id="composerResultMap" type="com.example.wk.ComposerDTO">
         <id property="id" column="composer_id"/>
         <result property="name" column="composer_name"/>
+        <result property="genre" column="composer_genre"/>
+        <result property="text" column="composer_text"/>
+        <result property="img" column="composer_img"/>
         <!-- 다른 필드에 대한 매핑 추가 -->
     </resultMap>
 

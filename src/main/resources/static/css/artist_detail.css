@@ -1,7 +1,9 @@
+
 /* 아티스트 섹션 */
 
 .artist-section {
 	display: flex;
+	padding: 30px;
 }
 
 .artist-profile {
@@ -42,7 +44,7 @@
     color: #f8d71c;
 }
 
-button {
+/* button {
 	background-color: black;
     color: #fff;
     border: none;
@@ -53,7 +55,7 @@ button {
 
 button:hover {
 	background-color: #555;
-}
+} */
 
 /* #followBtn {
     background-color: black;
@@ -95,7 +97,6 @@ button:hover {
     justify-content: space-between;
     background-color: #f0f0f0;
     padding: 10px;
-    margin-top: 20px;
     border-radius: 8px;
 }
 
@@ -139,8 +140,6 @@ button:hover {
     border-radius: 4px;
     cursor: pointer;
 }
-
-
 
 .music-controls {
     display: flex;
