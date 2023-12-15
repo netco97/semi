@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sm.chat.chatroom.CreateRoomMapper">
+  <insert id="regChatRooms">
+	  insert into CreateRoom values(#{room_id}, #{from_user}, #{to_user})
+  </insert>
+  <select id="dupliCheck" resultType="Integer">
+    SELECT COUNT(*)
+    FROM CreateRoom
+    WHERE (from_user = #{from_user} AND to_user = #{to_user})
+       OR (from_user = #{to_user} AND to_user = #{from_user})
+</select>
+
+</mapper>

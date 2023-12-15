@@ -6,10 +6,15 @@
 </head>
 <body>
 	<h2>Test Data ~~~ !!!</h2>
-	<form action="connect_chatroom">
-		session ID : <input name="session_id"/><p/>
-		follower ID : <input name="follower_id"/><p/>
-		<button>채팅방 생성</button>
-	</form>
+	<div id="chatroom-form">
+	    <label for="session_id">session ID:</label>
+	    <input type="text" id="session_id" name="session_id"/><br/>
+	    
+	    <label for="follower_id">follower ID:</label>
+	    <input type="text" id="follower_id" name="follower_id"/><br/>
+	    
+	    <button onclick="createChatroom()">채팅방 생성</button>
+	</div>
+<script src="js/roomset.js"></script>
 </body>
 </html>

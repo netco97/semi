@@ -1,4 +1,4 @@
-package com.example.demo.sm.chat;
+package com.example.demo.sm.chat.chatroom;
 
 import java.util.UUID;
 
@@ -8,13 +8,11 @@ import lombok.Data;
 public class ChatRoomDTO{
 	
 	private String roomId;
-	private String name;
 	
-	public static ChatRoomDTO create(String name) {
+	public static ChatRoomDTO create() {
 		ChatRoomDTO room = new ChatRoomDTO();
-		
 		room.roomId = UUID.randomUUID().toString();
-		room.name = name;
+		
 		return room;
 	}
 }
