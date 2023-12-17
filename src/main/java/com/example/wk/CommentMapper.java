@@ -9,7 +9,7 @@ public interface CommentMapper {
 	
 	List<CommentDTO> getAllCommentsByComposerId(Long composerId);
 	void insertComment(CommentDTO comment);
-	void deleteCommentById(Long commentId);
+	void deleteComment(Long commentId);
 	
 
 }

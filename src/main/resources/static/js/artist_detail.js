@@ -51,12 +51,19 @@ $(document).ready(function() {
         // 작성한 코멘트 내용 가져오기
         const commentContent = $("#commentInput").val();
         
+        const composerId = commentBtn.getAttribute('data-composer-id');
+        const userName = commentBtn.getAttribute('data-user-name');
+        
+        
         // CommentDTO 객체 생성
         const comment = {
-            composerId: 2/* 여기에 composerId 값을 가져오는 코드 */,
-            userName: 'wk' /* 여기에 userName 값을 가져오는 코드 */,
+            composerId: composerId /* 여기에 composerId 값을 가져오는 코드 */,
+            userName:  userName /* 여기에 userName 값을 가져오는 코드 */,
             commentContent: commentContent
         };
+        console.log(composerId);
+        console.log(userName);
+       
 
         // Ajax를 통해 서버에 코멘트 추가 요청
         $.ajax({
@@ -76,14 +83,13 @@ $(document).ready(function() {
         });
     });
     
-    $("#delete-btn").on("click", function() {
+    $(".comment-container-inner").on("click", "#delete-btn", function() {
 		const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
 		
 		// 사용자가 확인을 선택한 경우에만 삭제 요청 보내기
 		if(isConfirmed) {
-			
-		
-		const commentId = $(this).data("comment-id");
+			const commentId = $(this).data("commentId");
+			console.log(commentId);
 		
     	// Ajax를 통해 서버에 코멘트 삭제 요청
     	

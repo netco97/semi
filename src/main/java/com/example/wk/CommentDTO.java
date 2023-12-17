@@ -3,7 +3,10 @@ package com.example.wk;
 
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import lombok.Data;
 import lombok.ToString;
@@ -25,7 +28,6 @@ public class CommentDTO {
     	this.composerId = composerId;
     	this.userName = userName;
     	this.commentContent = commentContent;
-    	this.createdAt = LocalDateTime.now();
     }
     
     public String getFormattedCreatedAt() {
@@ -35,8 +37,6 @@ public class CommentDTO {
         }
         return ""; // 또는 다른 기본값을 리턴할 수 있음
     }
-    
 }
-
 
 

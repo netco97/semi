@@ -46,6 +46,7 @@ public class CommentC {
         System.out.println(comments);
     }
     
+    // 코멘트 삭제
     @DeleteMapping("/{commentId}")
     public ResponseEntity<String> deleteCommentById(@PathVariable Long commentId) {
         try {
@@ -53,8 +54,10 @@ public class CommentC {
             System.out.println(commentId);
             return new ResponseEntity<>("Comment deleted successfully", HttpStatus.OK);
         } catch (Exception e) {
+        	e.printStackTrace();
         	System.out.println(commentId);
             return new ResponseEntity<>("Error deleting comment", HttpStatus.INTERNAL_SERVER_ERROR);
+            
         }
     }
     

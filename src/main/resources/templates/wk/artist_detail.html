@@ -11,7 +11,8 @@
 	<main>
 		<section class="artist-section">
 	        <div class="artist-profile">
-	            <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진">
+	            <!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
+	            <img th:src="${composer.getImgOrDefault}" alt="아티스트 프로필 사진">
 	            <div class="rating-container">
 	                <div class="rating-stars">
 	                    <span class="star" data-value="1">&#9733;</span>
@@ -76,23 +77,25 @@
 			    	<div style="width: 100%;">
 			    		<h2>코멘트</h2>
 			    	</div>
+			    	
 				    <div class="commentInputBox">
-					    	<div th:text="${session.name}" style="align-self: center;">user_name</div>
+					    	<div th:text="${session.name}" style="align-self: center;">닉네임</div>
 					        <textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					        <button id="commentBtn">코멘트 작성</button>
+					        <button id="commentBtn" th:attr="data-composer-id=${composer.id}, data-user-name=${session.name}">코멘트 작성</button>
 				    </div>
+				    
 				    <div id="commentList">
-				        <div class="comment"></div>
-				        <div th:each="comment : ${comments}" class="comment">
-                			<span th:text="${comment.userName}"></span>
-                			<div th:text="${comment.commentContent}"></div>
-                			<div style="font-size: 10pt;" th:text="${comment.formattedCreatedAt}"></div>
-                			<button id="delete-btn" data-comment-id="${comment.commentId}">삭제</button>
-				    </div>
+				    	<div class="comment"></div>
+					    <div th:each="comment : ${comments}" class="comment">
+	                		<span th:text="${comment.userName}"></span>
+	                		<div th:text="${comment.commentContent}"></div>
+	                		<div style="font-size: 10pt;" th:text="${comment.formattedCreatedAt}"></div>
+	                		<button id="delete-btn" th:attr="data-comment-id=${comment.commentId}" th:utext="${'삭제'}">Delete</button>
+					    </div>
+					</div>
 				</div>
-				</div>
-		    </section>
-	    </main>
+			</section>
+	</main>
 </body>
 
 </html>

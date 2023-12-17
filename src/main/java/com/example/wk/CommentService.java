@@ -17,12 +17,13 @@ public class CommentService {
 	}
 	
 	public void insertComment(CommentDTO comment) {
-		commentMapper.insertComment(comment);
 		System.out.println(comment);
+		commentMapper.insertComment(comment);
 	}
 	
 	public void deleteCommentById(Long commentId) {
-		commentMapper.deleteCommentById(commentId);
+		System.out.println("CommentService : " + commentId);
+		commentMapper.deleteComment(commentId);
 	}
 
 }

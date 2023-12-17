@@ -19,7 +19,7 @@
         VALUES (#{composerId} , #{userName} , #{commentContent}, SYSDATE)
     </insert>
     
-    <delete id="deleteCommentById">
+    <delete id="deleteComment">
     	DELETE FROM comments WHERE comment_id = #{commentId}
     </delete>
     
