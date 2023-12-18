@@ -22,13 +22,13 @@ public class CommentC {
 	@Autowired
 	private CommentService commentService;
 	
-	@Autowired
-	private ComposerService composerService;
+	//@Autowired
+	//private ComposerService composerService;
 	
 	@GetMapping("{composerId}")
 	public List<CommentDTO> getAllCommentsByComposerId(@PathVariable Long composerId) {
 		System.out.println(composerId);
-		return commentService.getCommentsByComposerId(composerId);
+		return commentService.getAllCommentsByComposerId(composerId);
 	}
     	
     @PostMapping
@@ -41,7 +41,7 @@ public class CommentC {
     	
         commentService.insertComment(comment);
         
-        List<CommentDTO> comments = commentService.getCommentsByComposerId(comment.getComposerId());
+        List<CommentDTO> comments = commentService.getAllCommentsByComposerId(comment.getComposerId());
         model.addAttribute("comments", comments);
         System.out.println(comments);
     }

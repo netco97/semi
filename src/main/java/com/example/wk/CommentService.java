@@ -11,7 +11,7 @@ public class CommentService {
 	@Autowired
 	private CommentMapper commentMapper;
 	
-	public List<CommentDTO> getCommentsByComposerId(Long composerId) {
+	public List<CommentDTO> getAllCommentsByComposerId(Long composerId) {
 		System.out.println(composerId);
 		return commentMapper.getAllCommentsByComposerId(composerId);
 	}

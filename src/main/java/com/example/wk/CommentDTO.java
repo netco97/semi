@@ -21,7 +21,6 @@ public class CommentDTO {
     private LocalDateTime createdAt;
     
     public CommentDTO() {
-    	
     }
     
     public CommentDTO(Long composerId, String userName, String commentContent) {

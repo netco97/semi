@@ -24,7 +24,7 @@ public class ComposerC {
     @GetMapping("{id}")
     public String getComposerById(@PathVariable Long id, Model model) {
         ComposerDTO composer = composerService.getComposerById(id);
-        List<CommentDTO> comments = commentService.getCommentsByComposerId(id);
+        List<CommentDTO> comments = commentService.getAllCommentsByComposerId(id);
         
         // 이미지 파일의 경로 설정 (기본 이미지 포함)
         composer.setImg(composer.getImgOrDefault());
