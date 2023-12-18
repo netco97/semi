@@ -1,4 +1,4 @@
-package com.example.demo.dy.login.google;
+package com.example.demo.dy.login.kakao;
 
 import java.util.List;
 
@@ -16,70 +16,57 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.servlet.http.HttpSession;
-
 @Service
-public class GoogleLoginService {
-	private final GoogleMapper googleMapper; 
+public class KakaoLoginService {
+	private final KakaoMapper kakaoMapper;
 	private final Environment env;
     private final RestTemplate restTemplate = new RestTemplate();
  
-    public GoogleLoginService(Environment env, GoogleMapper googleMapper) {
-    	this.googleMapper = googleMapper;
+    public KakaoLoginService(Environment env, KakaoMapper kakaoMapper) {
+    	this.kakaoMapper = kakaoMapper;
         this.env = env;
     }
-    
     public void socialLogin(String code, String registrationId, HttpSession session) {
         String accessToken = getAccessToken(code, registrationId);
+        System.out.println("112213123213213213123123");
         System.out.println("accessToken = " + accessToken);
-        JsonNode userResourceNode = getUserResource(accessToken, registrationId);
-        System.out.println("userResourceNode = " + userResourceNode);
-
-        String id = userResourceNode.get("id").asText();
-        String email = userResourceNode.get("email").asText();
-        String nickname = userResourceNode.get("name").asText();
+        
+        JsonNode result = getUserInfo(accessToken, registrationId);
+       
+        System.out.println("result test" + result);
+         
+        String id = result.get("id").toString();
+        String email = result.get("kakao_account").get("email").toString().replaceAll("\"", "");
+        String nickname = result.get("properties").get("nickname").toString().replaceAll("\"", "");
+        
         System.out.println("id = " + id);
         System.out.println("email = " + email);
         System.out.println("nickname = " + nickname);
         
         
         
-        
-        
-        // 중복처리
-        List<GoogleUserDTO> existingUsers = googleMapper.SelUser(nickname);
+        List<KakaoUserDTO> existingUsers = kakaoMapper.SelUser(nickname);
 
         if (!existingUsers.isEmpty()) {
-            GoogleUserDTO existingUser = existingUsers.get(0);
+            KakaoUserDTO existingUser = existingUsers.get(0);
             System.out.println("이미 있는 아이디입니다.");
             // 이미 존재하는 사용자에 대한 추가 작업 수행
-            
-            
-            
-            
         } else {
-            GoogleUserDTO newUser = new GoogleUserDTO(id, email, nickname);
+            KakaoUserDTO newUser = new KakaoUserDTO(id, email, nickname);
 
-            if (googleMapper.RegUser(newUser) == 1) {
-                System.out.println("Google 테이블 등록 성공");
+            if (kakaoMapper.RegUser(newUser) == 1) {
+                System.out.println("Kakao 테이블 등록 성공");
             } else {
-                System.out.println("Google 테이블 등록 실패");
+                System.out.println("Kakao 테이블 등록 실패");
             }
         }
-        
-        
+
         session.setAttribute("userId", id);
         session.setAttribute("userEmail", email);
         session.setAttribute("userNickname", nickname);
-        
-       
-        
-        
     }
     
-    
-    
-    
-    private String getAccessToken(String authorizationCode, String registrationId) {
+	private String getAccessToken(String authorizationCode, String registrationId) {
         String clientId = env.getProperty("oauth2." + registrationId + ".client-id");
         String clientSecret = env.getProperty("oauth2." + registrationId + ".client-secret");
         String redirectUri = env.getProperty("oauth2." + registrationId + ".redirect-uri");
@@ -110,18 +97,17 @@ public class GoogleLoginService {
         
         return accessTokenNode.get("access_token").asText();
     }
-    private JsonNode getUserResource(String accessToken, String registrationId) {
-        String resourceUri = env.getProperty("oauth2."+registrationId+".resource-uri");
-
-        HttpHeaders headers = new HttpHeaders();
+    public JsonNode getUserInfo(String accessToken, String registrationId) {
+    	String refresh_uri = env.getProperty("oauth2." + registrationId + ".refresh-token-uri");
+    	
+    	System.out.println("refresh_uri 확인 " + refresh_uri);
+    	HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + accessToken);
         HttpEntity entity = new HttpEntity(headers);
-        System.out.println("다왔따");
-        return restTemplate.exchange(resourceUri, HttpMethod.GET, entity, JsonNode.class).getBody();
+        System.out.println("제이슨 확인");
+        return restTemplate.exchange(refresh_uri, HttpMethod.GET, entity, JsonNode.class).getBody();
+    	
+    	
+    	
     }
-    
-    
-    
-    
 }
-

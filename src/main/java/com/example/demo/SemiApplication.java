@@ -3,9 +3,8 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.GetMapping;
 
-@SpringBootApplication
+@SpringBootApplication()
 @ComponentScan(basePackages = "com.example.demo")
 public class SemiApplication {
 
@@ -13,6 +12,23 @@ public class SemiApplication {
 		SpringApplication.run(SemiApplication.class, args);
 	}
 	
+	
+//	@Bean
+//	public ServletWebServerFactory serverFactort() {
+//		TomcatServletWebServerFactory tomcatServletWebServerFactory
+//		= new TomcatServletWebServerFactory();
+//		
+//		tomcatServletWebServerFactory.addAdditionalTomcatConnectors(createStandardConnector());
+//		
+//		return tomcatServletWebServerFactory;
+//	}
+//	
+//
+//	private Connector createStandardConnector() {
+//		Connector connector = new Connector("org.apache.coyote.http11.http11NioProtocol");
+//		connector.setPort(8089);
+//		return connector;
+//	}
 
 
 

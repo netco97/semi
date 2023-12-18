@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dy.login.google.GoogleMapper">
+  <insert id="RegUser">
+  		insert into GoogleUserInfo values(#{user_id}, #{user_email}, #{user_nickname})
+  </insert>
+  <select id="SelUser" resultType="GoogleUserDTO">
+  		select * from GoogleUserInfo where user_nickname = #{val}
+  </select>
+</mapper>

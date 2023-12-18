@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+
+
 
 @Controller
 public class HumanC {
@@ -15,8 +18,12 @@ public class HumanC {
 	TestService_Model testService_model;	
 	
 	@GetMapping("/")
-	public String home(Model model) {
+	public String home(Model model, HttpServletRequest req) {
 		model.addAttribute("hello", "hello");
+		
+//		String protocol = req.getProtocol();
+//		String scheme = req.getScheme();
+//		return scheme.equals("http") ? "index" : "test";
 		return "index";
 	}
 	

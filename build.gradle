@@ -34,6 +34,7 @@ dependencies {
 	implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '21.8.0.0'
 	implementation group: 'com.oracle.database.security', name: 'osdt_core', version: '21.8.0.0'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-websocket'
 	
 }
 
