@@ -16,8 +16,10 @@ function createChatroom() {
 	    if (xhr.readyState === 4) {
 	        if (xhr.status === 200) {
 				var responseData = JSON.parse(xhr.response);
-				
-	            console.log(responseData);
+				const roomId = responseData.room_id;
+				openModal(roomId);
+				//location.href = "room_detail/" +responseData.roomId;
+	            console.log(roomId);
 	        } else {
 	            console.error("통신 실패: " + xhr.status);
 	        }
@@ -29,4 +31,22 @@ function createChatroom() {
 	};
 	
 	xhr.send(JSON.stringify(data));
+}
+
+// 모달 창 열기
+function openModal(roomId) {
+  var modal = document.getElementById("myModal");
+  var modalContent = document.getElementById("modalContent");
+
+  // 모달 창에 내용 추가
+  modalContent.innerText = "Room ID: " + roomId;
+
+  // 모달 창 표시
+  modal.style.display = "block";
+}
+
+// 모달 창 닫기
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
 }

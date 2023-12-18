@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CreateRoomMapper {
 	int regChatRooms(CreateRoomDTO createRoomDTO);
-	Integer dupliCheck(@Param("from_user") String from_user, @Param("to_user") String to_user);
-
+	Integer dupliCheck(@Param("user1") String user1, @Param("user2") String user2);
+	CreateRoomDTO select_roomID(@Param("user1") String user1, @Param("user2") String user2);
 
 }
