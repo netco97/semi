@@ -178,7 +178,7 @@ button:hover {
 
 /* 하단 코멘트 섹션 */
 .comment-container {
-	height: 600px;
+	height: 1150px;
     background-color: black;
     color: white;
     display: flex;
@@ -225,3 +225,40 @@ button:hover {
 	padding-right: 150px;
 	
 }
+
+/* 페이지 번호를 감싸는 영역 스타일 */
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+/* 각 페이지 번호의 스타일 */
+.pagination li {
+    display: inline-block;
+    margin-right: 5px; /* 각 페이지 번호 사이의 간격 조절 */
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s; /* hover 효과를 부드럽게 만들기 위한 트랜지션 설정 */
+}
+
+/* hover 효과 */
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+/* 활성화된 페이지 번호의 스타일 */
+/* .pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+} */

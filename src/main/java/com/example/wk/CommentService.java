@@ -11,6 +11,15 @@ public class CommentService {
 	@Autowired
 	private CommentMapper commentMapper;
 	
+    public List<CommentDTO> getCommentsByComposerIdWithPaging(Long composerId, int page, int size) {
+        int offset = (page - 1) * size;
+        return commentMapper.getCommentsByComposerIdWithPaging(composerId, offset, size);
+    }
+
+    public int countCommentsByComposerId(Long composerId) {
+        return commentMapper.countCommentsByComposerId(composerId);
+    }
+	
 	public List<CommentDTO> getAllCommentsByComposerId(Long composerId) {
 		System.out.println(composerId);
 		return commentMapper.getAllCommentsByComposerId(composerId);

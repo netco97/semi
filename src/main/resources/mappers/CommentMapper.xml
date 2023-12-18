@@ -14,6 +14,25 @@
         SELECT * FROM comments WHERE composer_id = #{composerId}
     </select>
     
+    <select id="getCommentsByComposerIdWithPaging" resultMap="CommentResultMap">
+                <![CDATA[
+        SELECT * FROM (
+            SELECT c.*, ROWNUM AS rnum
+            FROM (
+                SELECT * FROM comments
+                WHERE composer_id = #{composerId}
+                ORDER BY created_at DESC
+            ) c
+            WHERE ROWNUM <= #{offset} + #{limit}
+        ) 
+        WHERE rnum > #{offset}
+        ]]>
+    </select>
+    
+    <select id="countCommentsByComposerId" resultType="java.lang.Integer" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM comments WHERE composer_id = #{composerId}
+	</select>
+
     <insert id="insertComment" parameterType="com.example.wk.CommentDTO">
         INSERT INTO comments (COMPOSER_ID, USER_NAME, COMMENT_CONTENT, CREATED_AT) 
         VALUES (#{composerId} , #{userName} , #{commentContent}, SYSDATE)

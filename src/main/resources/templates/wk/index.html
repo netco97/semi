@@ -9,13 +9,13 @@
 <body>
 
 	<!-- 헤더 -->
-    <div th:replace="wk/fragments/header :: header"></div>
+    <div th:replace="~{wk/fragments/header :: header}"></div>
     
     <!-- 중간 페이지 내용 -->
-    <div th:insert="${content}"></div>
+    <div th:insert="~{${content}}"></div>
     
     <!-- 푸터 -->
-    <div th:replace="wk/fragments/footer :: footer"></div>
+    <div th:replace="~{wk/fragments/footer :: footer}"></div>
 
 </body>
 </html>

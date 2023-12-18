@@ -109,8 +109,25 @@ $(document).ready(function() {
     
     });
     
-    
-    
-    
 	});
+	
+	function loadCommentsByPage(pageNumber) {
+    // AJAX를 사용하여 해당 페이지의 댓글을 서버에서 가져오는 로직
+    // 페이지 번호를 서버에 전달하고, 서버는 해당 페이지의 댓글을 응답으로 전달
+    
+    $.ajax({
+        type: "GET",
+        url: "/comments/" + composerId + "?page=" + pageNumber,
+        success: function (data) {
+            // 서버에서 받은 데이터로 댓글 목록 업데이트
+            console.log("서버 응답:", data);
+            $("#commentList").html(data);
+        },
+        error: function () {
+            console.error("Error loading comments by page");
+        }
+    });
+}
+	
 });
+

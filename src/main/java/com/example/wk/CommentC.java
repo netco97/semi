@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController // JSON 형태로 객체 데이터를 반환
@@ -25,11 +26,28 @@ public class CommentC {
 	//@Autowired
 	//private ComposerService composerService;
 	
-	@GetMapping("{composerId}")
-	public List<CommentDTO> getAllCommentsByComposerId(@PathVariable Long composerId) {
-		System.out.println(composerId);
-		return commentService.getAllCommentsByComposerId(composerId);
-	}
+//	@GetMapping("{composerId}")
+//	public List<CommentDTO> getAllCommentsByComposerId(@PathVariable Long composerId) {
+//		System.out.println(composerId);
+//		return commentService.getAllCommentsByComposerId(composerId);
+//	}
+	
+    @GetMapping("{composerId}")
+    public List<CommentDTO> getAllCommentsByComposerIdWithPaging(
+            @PathVariable Long composerId,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        int totalComments = commentService.countCommentsByComposerId(composerId);
+        List<CommentDTO> comments = commentService.getCommentsByComposerIdWithPaging(composerId, page, size);
+
+        // 페이징 정보를 클라이언트에 전달하려면 필요에 따라 처리
+        System.out.println(totalComments);
+        System.out.println(comments);
+        
+
+        return comments;
+    }
     	
     @PostMapping
     public void insertComment(@RequestBody CommentDTO comment, Model model) {
