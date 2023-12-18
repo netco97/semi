@@ -1,18 +1,19 @@
-/*package com.example.demo.th.music_like;
+package com.example.demo.th.music_like;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper
 public interface MusicLikeMapper {
 
-	MusicLikeDTO checkLike(int song_id, String fullPhoneNumber);
+	MusicLikeDTO checkLike(@Param("song_id") int song_id, @Param("fullPhoneNumber") String fullPhoneNumber);
 
-	int insertLike(int song_id, String fullPhoneNumber);
+	int insertLike(@Param("song_id") int song_id, @Param("fullPhoneNumber") String fullPhoneNumber);
 
-	int updateLike(int song_like_id, int isLike);
+	int updateLike(@Param("song_like_id") int song_like_id,@Param("isLike") int isLike);
 
 		
 		
@@ -22,4 +23,4 @@ public interface MusicLikeMapper {
 	
 
 
-}*/
+}

@@ -1,4 +1,4 @@
-/*package com.example.demo.th.music_like;
+package com.example.demo.th.music_like;
 
 
 import org.springframework.stereotype.Service;
@@ -33,15 +33,15 @@ public class MusicLikeService {
 
     private int updateLike(MusicLikeDTO isLike) {
         // 좋아요를 누른적이 있을 때
-        if (isLike.getSong_isLike() == 1) {
+        if (isLike.getIsLike() == 1) {
             // 좋아요를 누른적이 있고 눌러져 있을 때 // 1일때
             // 좋아요를 취소해줘야함
-            isLike.setSong_isLike(0);
+            isLike.setIsLike(0);
             return musicLikeMapper.updateLike(isLike.getSong_like_id(), 0);
         } else {
             // 좋아요를 누른적이 있고 지금은 안눌러져 있을 때 // 0 일때
             // 좋아요를 추가해줘야함
-            isLike.setSong_isLike(1);
+            isLike.setIsLike(0);
             return musicLikeMapper.updateLike(isLike.getSong_like_id(), 1);
         }
         
@@ -54,8 +54,8 @@ public class MusicLikeService {
 	public int selLike(int song_id) {
 		MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, fullPhoneNumber);
 		
-		return isLike.getSong_isLike();
+		return isLike.getIsLike();
 	}
     
     
-}*/
+}

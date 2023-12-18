@@ -1,4 +1,4 @@
-/*package com.example.demo.th.music_like;
+package com.example.demo.th.music_like;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +32,4 @@ public class MusicLikeC {
 	
 	
 	
-}*/
+}
