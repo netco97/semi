@@ -16,6 +16,8 @@ public class MusicSearch_Model {
 	}
 
 	public List<SongsDTO> searchMusicByTags(String genre, String mood, String instrument) {
+		
+		System.out.println("1 : "+genre+mood+instrument);
 		List<SongsDTO> result = new ArrayList<>();
 		String[] genreArray = null;
 		String[] moodArray = null;

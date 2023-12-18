@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
-    <link rel="stylesheet" href="/css/musicDetail.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="content">
-        <div class="musicDetail-content-music">
-          <div class="musicDetail-items1">
-            <div class="musicDetail-title">
-              <div class="musicDetail-title-img">
-                <img src="#" alt="music-img" />
-              </div>
-              <div>
-                <div class="musicDetail-title-title">title</div>
-                <div class="musicDetail-title-composer">composer</div>
-              </div>
-            </div>
-            <div class="musicDetail-playSpace">
-              <div>play icon</div>
-              <div>play bar</div>
-            </div>
-            <div class="musicDetail-option">
-              <div class="musicDetail-option-inner">
-                <div>하트</div>
-                <div>평점</div>
-                <div>즐겨찾기</div>
-                <div>공유하기</div>
-              </div>
-            </div>
-          </div>
-          <div class="musicDetail-content-items2">
-            <div>
-              <div>
-                <div>장르</div>
-                <div>(장르 읽어올 영역)</div>
-              </div>
-              <div>
-                <div>분위기</div>
-                <div>(분위기 읽어올 영역)</div>
-              </div>
-              <div>
-                <div>악기</div>
-                <div>(악기 읽어올 영역)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="musicDetail-content-comment">
-          <div class="musicDetail-content-comment-title">댓글</div>
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/musicDetail.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<div class="musicDetail-content-music">
+				<div class="musicDetail-items1">
+					<div class="musicDetail-title">
+						<div class="musicDetail-title-img"></div>
+						<div>
+							<div class="musicDetail-title-title"></div>
+							<div class="musicDetail-title-composer"></div>
+						</div>
+					</div>
+					<div class="musicDetail-playSpace">
+						<!-- 여기에 오디오 플레이어가 들어갈 것입니다. -->
+					</div>
+					<div class="musicDetail-option">
+						<div class="musicDetail-option-inner">
+						
+						</div>
+					</div>
+				</div>
+				<div class="musicDetail-content-items2">
+					<div>
+						<div>
+							<div>장르</div>
+							<div class="genre-area"></div>
+						</div>
+						<div>
+							<div>분위기</div>
+							<div class="mood-area"></div>
+						</div>
+						<div>
+							<div>악기</div>
+							<div class="instrument-area"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="musicDetail-content-comment">
+				<div class="musicDetail-content-comment-title">댓글</div>
 
-          <div class="musicDetail-content-comment-input">
-            <div class="musicDetail-content-comment-inputinner">
-              <div class="musicDetail-content-comment-nickname">닉네임</div>
-              <div class="musicDetail-content-comment-textInput">
-                <input />
-              </div>
-              <div class="musicDetail-content-comment-btn">
-                <button>등록</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="musicDetail-content-comment-comment">
-          <div class="musicDetail-content-comment-user">
-            <div class="musicDetail-content-comment-username">
-              유저네임(닉네임)
-            </div>
+				<div class="musicDetail-content-comment-input">
+					<div class="musicDetail-content-comment-inputinner">
+						<div class="musicDetail-content-comment-nickname">닉네임</div>
+						<div class="musicDetail-content-comment-textInput">
+							<input />
+						</div>
+						<div class="musicDetail-content-comment-btn">
+							<button>등록</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="musicDetail-content-comment-comment">
+				<div class="musicDetail-content-comment-user">
+					<div class="musicDetail-content-comment-username">유저네임(닉네임)</div>
 
-            <div class="musicDetail-content-comment-star">★★☆☆☆</div>
-            <div class="musicDetail-content-comment-score">2점</div>
-          </div>
-
-          <!--나중에 jstl foreach 로 이부분 출력예정 -->
-
-          <div class="musicDetail-content-comments">
-            <div class="musicDetail-content-comment-textbox">
-              <div class="musicDetail-content-comment-text">
-                쇼ㅑㄹ라소ㅑㄹ라
-              </div>
-              <div class="musicDetail-content-comment-like">♡</div>
-            </div>
-            <div class="musicDetail-content-comment-date">2023.15.88</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+					<div class="musicDetail-content-comment-star">★★☆☆☆</div>
+					<div class="musicDetail-content-comment-score">2점</div>
+				</div>
+				<div class="musicDetail-content-comments">
+					<div class="musicDetail-content-comment-textbox">
+						<div class="musicDetail-content-comment-text">쇼ㅑㄹ라소ㅑㄹ라</div>
+						<div class="musicDetail-content-comment-like">♡</div>
+					</div>
+					<div class="musicDetail-content-comment-date">2023.15.88</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/musicDetail.js"></script>
 </html>

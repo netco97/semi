@@ -12,9 +12,7 @@ import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 public interface MusicMapper {
 
 	List<SongsDTO> searchTag(@Param("genreArray") String[] genreArray, @Param("moodArray") String[] moodArray,
-			@Param("instrumentArray") String[] instrumentArray
-
-	);
+			@Param("instrumentArray") String[] instrumentArray);
 
 	List<SongsDTO> searchText(String text);
 

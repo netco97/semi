@@ -170,13 +170,15 @@ function outPutSearch(data) {
         let $songContainer = $('<div class="musicList-menu"></div>');
 
         let $musicListTitle = $('<div class="musicList-title"></div>');
+        // 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
         $musicListTitle.append(`
             <div>
-                <img src=img/"${song.song_img}" />
+                <img src=img/${song.song_img} />
             </div>
             <div>
                 <div onclick="location.href='musicDetail?songs_id=${song.song_id}'">${song.song_name}</div>
-                <div>${song.composer_name}</div>
+              
+                <div onclick="location.href=''">${song.composer_name}</div>
             </div>
         `);
 

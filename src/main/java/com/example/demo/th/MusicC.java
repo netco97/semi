@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MusicC {
 	
-	@Autowired
-	MusicService_Model musicService_Model;
 
 	
 	@GetMapping("/musicMenu")
