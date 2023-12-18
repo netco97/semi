@@ -1,4 +1,3 @@
-// SignupUserDTO.java
 package com.example.demo.dy.signup;
 
 import lombok.Data;
@@ -12,17 +11,28 @@ public class SignupUserDTO {
     private String phoneNumberPart2;
     private String phoneNumberPart3;
     private String userFullPhoneNumber;
+    private String userSongs;
+    private String userFollow;
+    private double userStars;
+    private String userPr;
 
     // 전화번호를 합쳐서 반환하는 메서드 추가
     public String getFullPhoneNumber() {
         return phoneNumberPart1 + phoneNumberPart2 + phoneNumberPart3;
-        
     }
-    
-    SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail){
-    	this.userFullPhoneNumber = userFullPhoneNumber;
-    	this.userNickname = userNickname;
-    	this.userEmail = userEmail;
+
+    // 기본 생성자 추가
+    public SignupUserDTO() {
+        this.userStars = 0;
     }
-    
+
+    // 생성자 추가
+    public SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail, String userSongs, String userFollow, String userPr) {
+        this.userFullPhoneNumber = userFullPhoneNumber;
+        this.userNickname = userNickname;
+        this.userEmail = userEmail;
+        this.userSongs = userSongs;
+        this.userFollow = userFollow;
+        this.userPr = userPr;
+    }
 }

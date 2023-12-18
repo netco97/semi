@@ -51,6 +51,11 @@ public class KakaoLoginService {
             KakaoUserDTO existingUser = existingUsers.get(0);
             System.out.println("이미 있는 아이디입니다.");
             // 이미 존재하는 사용자에 대한 추가 작업 수행
+            
+            
+            
+            
+            
         } else {
             KakaoUserDTO newUser = new KakaoUserDTO(id, email, nickname);
 
