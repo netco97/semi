@@ -13,9 +13,10 @@ public class SongsDTO {
     private String composer_name;
     private String song_img;
     private String song_audio;
+    private int song_like;
     
     @Builder
-    public SongsDTO(String song_name, String genre_id, String instrument_id, String mood_id, String composer_name, String song_img, String song_audio) {
+    public SongsDTO(String song_name, String genre_id, String instrument_id, String mood_id, String composer_name, String song_img, String song_audio, int song_like) {
     	this.song_name = song_name;
     	this.genre_id = genre_id;
     	this.instrument_id = instrument_id;
@@ -23,7 +24,7 @@ public class SongsDTO {
     	this.composer_name = composer_name;
     	this.song_img = song_img;
     	this.song_audio = song_audio;
-    	
+    	this.song_like = song_like;
     }
     
     public SongsDTO() {

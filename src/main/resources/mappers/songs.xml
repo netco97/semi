@@ -10,6 +10,7 @@
 	      #{mood_id},
 	       #{composer_name}, 
 	       #{song_img}, 
-	       #{song_audio})
+	       #{song_audio},
+	       #{song_like})
   </insert>
 </mapper>

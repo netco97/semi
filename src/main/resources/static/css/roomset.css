@@ -1,0 +1,60 @@
+/* 모달 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* 입력창 스타일 */
+#chatInput {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+/* 보내기 버튼 스타일 */
+#sendMessageBtn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* 웹소켓 결과 및 채팅 메시지 영역 스타일 */
+#websocketResult,
+#messageArea {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.message-area {
+    max-height: 200px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤 설정 */
+}
+
+/* 채팅 메시지 스타일 */
+#messageArea div {
+  margin-bottom: 5px;
+}
+
+/* 나머지 input, button 스타일 */
+input:not(#chatInput),
+button:not(#sendMessageBtn) {
+  margin-top: 10px;
+}

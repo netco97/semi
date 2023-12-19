@@ -25,26 +25,31 @@ public class ChatController {
 	
 	@PostMapping("/connect_chatroom")
 	@ResponseBody
-	public ChatRoomDTO creatRoom(@RequestBody RoomSetDTO roomSetDTO) {
+	public CreateRoomDTO creatRoom(@RequestBody RoomSetDTO roomSetDTO) {
 		
 		System.out.println(roomSetDTO.getSession_id() + " " + roomSetDTO.getFollower_id());
 		
 		//변수 세팅
-		String from_user = roomSetDTO.getSession_id();
-		String to_user = roomSetDTO.getFollower_id();
-		ChatRoomDTO result;
+		String user1 = roomSetDTO.getSession_id();
+		String user2 = roomSetDTO.getFollower_id();
+		ChatRoomDTO chatRoomDTO;
+		
+		//front에 반환할 DTO
+		CreateRoomDTO result;
 		
 		//중복처리
-		if (chatService.dupli_check(from_user, to_user) > 0) {
+		if (chatService.dupli_check(user1, user2) > 0) {
 		    // 중복된 경우 처리
-			result = null;
+			CreateRoomDTO roomId = chatService.select_roomId(user1,user2);
+			result = roomId;
 		}
 		
 		// DB 저장
 		else {
-			result = chatService.create();
-			CreateRoomDTO createRoomDTO = new CreateRoomDTO(result.getRoomId(),from_user, to_user);
+			chatRoomDTO = chatService.create();
+			CreateRoomDTO createRoomDTO = new CreateRoomDTO(chatRoomDTO.getRoomId(),user1, user2);
 			chatService.save_createroom(createRoomDTO);
+			result = createRoomDTO;
 		}
 		
 		

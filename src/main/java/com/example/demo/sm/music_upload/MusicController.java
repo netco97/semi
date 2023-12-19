@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class MusicController {
 	private final MusicService musicService;
-	
-	public MusicController(MusicService musicService) {
-		this.musicService = musicService;
-	}
 	
 	@GetMapping("/music_upload")
 	public String music_reg() {
@@ -68,6 +67,7 @@ public class MusicController {
 	    .composer_name(composer_name)
 	    .song_img(FileNames.get(0))
 	    .song_audio(FileNames.get(1))
+	    .song_like(0)
 	    .build();
 	    
 	    System.out.println(songsDTO);
