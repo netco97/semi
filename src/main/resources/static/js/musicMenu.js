@@ -1,28 +1,28 @@
-let click = {
-    genre: [],
-    mood: [],
-    instrument: []
-};
+console.log("genre" + genre);
+console.log("mood" + mood);
+console.log("instrument" + instrument);
+
+
+
 
 function clickOption(option) {
     let $searchTag = $('.musicMenu-searchTag');
     
     if ($searchTag.hasClass('active')) {
         if (option == 'genre' && !($searchTag.hasClass('genre'))) {
-            click.genre = ['팝', '댄스', '일레트로닉', '힙합', 'RB', '클래식', '뉴에이지', '락', '발라드', '인디', '재즈/스윙', '라틴', '국악', '월드뮤직', '앰비언트', '트로트', '기타', '바보'];
-            updateSearchTag(click.genre);
+            updateSearchTag(genre);
             $searchTag.removeClass('mood');
             $searchTag.removeClass('instrument');
             $searchTag.addClass('genre');
         } else if (option == 'mood' && !($searchTag.hasClass('mood'))) {
-            click.mood = ['밝은', '신나는', '경쾌한', '행복한', '청량한', '귀여운', '코믹한', '희망찬', '로맨틱', '사랑스러운', '슬픈', '어두운', '우울한', '쓸쓸한', '아련한', '잔잔한', '웅장한', '비장한', '긴장감', '화난', '박력', '공포', '몽환적인', '신비로운', '나른한', '미래적인', '그루브', '섹시한', '단순한', '중독성', '난해한', '이국적인', '한국적인'];
-            updateSearchTag(click.mood);
+           
+            updateSearchTag(mood);
             $searchTag.removeClass('genre');
             $searchTag.removeClass('instrument');
             $searchTag.addClass('mood');
         } else if (option == 'instrument' && !($searchTag.hasClass('instrument'))) {
-            click.instrument = ['기타', '피아노', '베이스', '바이올린', '드럼', '첼로', '그외'];
-            updateSearchTag(click.instrument);
+
+            updateSearchTag(instrument);
             $searchTag.removeClass('genre');
             $searchTag.removeClass('mood');
             $searchTag.addClass('instrument');
@@ -31,16 +31,16 @@ function clickOption(option) {
         }
     } else {
         if (option == 'genre') {
-            click.genre = ['팝', '댄스', '일레트로닉', '힙합', 'RB', '클래식', '뉴에이지', '락', '발라드', '인디', '재즈/스윙', '라틴', '국악', '월드뮤직', '앰비언트', '트로트', '기타', '바보'];
-            updateSearchTag(click.genre);
+          
+            updateSearchTag(genre);
             $searchTag.addClass('genre');
         } else if (option == 'mood') {
-            click.mood = ['밝은', '신나는', '경쾌한', '행복한', '청량한', '귀여운', '코믹한', '희망찬', '로맨틱', '사랑스러운', '슬픈', '어두운', '우울한', '쓸쓸한', '아련한', '잔잔한', '웅장한', '비장한', '긴장감', '화난', '박력', '공포', '몽환적인', '신비로운', '나른한', '미래적인', '그루브', '섹시한', '단순한', '중독성', '난해한', '이국적인', '한국적인'];
-            updateSearchTag(click.mood);
+          
+            updateSearchTag(mood);
             $searchTag.addClass('mood');
         } else if (option == 'instrument') {
-            click.instrument = ['기타', '피아노', '베이스', '바이올린', '드럼', '첼로', '그외'];
-            updateSearchTag(click.instrument);
+         
+            updateSearchTag(instrument);
             $searchTag.addClass('instrument');
         }
         $searchTag.addClass('active');
@@ -94,6 +94,9 @@ $(document).ready(function () {
         sendTextToServer(searchKeyword);
     });
     
+    
+   // musicMenu 페이지에서 모델에 추가된 tags를 가져와서 click 객체에 할당
+   
 });
 
 function sendTagsToServer() {

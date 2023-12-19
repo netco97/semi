@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class MusicSearch_Model {
-	private final MusicMapper musicMapper;
+	private final MusicSearchMapper musicSearchMapper;
 
-	public MusicSearch_Model(MusicMapper musicMapper) {
-		this.musicMapper = musicMapper;
+	public MusicSearch_Model(MusicSearchMapper musicSearchMapper) {
+		this.musicSearchMapper = musicSearchMapper;
 	}
 
 	public List<SongsDTO> searchMusicByTags(String genre, String mood, String instrument) {
@@ -44,7 +44,7 @@ public class MusicSearch_Model {
 			instrumentArray = new String[1];
 			instrumentArray[0] = "all";
 		}
-		result = musicMapper.searchTag(genreArray,moodArray,instrumentArray);
+		result = musicSearchMapper.searchTag(genreArray,moodArray,instrumentArray);
 		System.out.println(result);
 		
 		return result;
@@ -55,7 +55,7 @@ public class MusicSearch_Model {
 		
 //		System.out.println("서비스 text : " + text);
 		
-		result = musicMapper.searchText(text);
+		result = musicSearchMapper.searchText(text);
 		
 		
 		return result;
@@ -64,7 +64,7 @@ public class MusicSearch_Model {
 	public List<SongsDTO> getMusicDetail(int song_id) {
 		List<SongsDTO> result = new ArrayList<>();
 		
-		result = musicMapper.getMusicDetail(song_id);
+		result = musicSearchMapper.getMusicDetail(song_id);
 		System.out.println("상세페이지 : " + result);
 		
 		return result;
