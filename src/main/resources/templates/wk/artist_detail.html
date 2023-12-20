@@ -91,7 +91,9 @@
 				    <!-- 페이지 번호 출력 -->
 				    <input type="hidden" id="composerId" th:attr="data-composer-id=${composer.id}">
 					<input type="hidden" id="pageNumber" th:attr="data-page-number=${pageNumber}">
-				        <div class="pagination">
+				        
+					<!--
+					<div class="pagination">
 				            <ul>
 				                <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
 				                    <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${pageNumber}}"
@@ -100,17 +102,45 @@
 				                    </a>
 				                </li>
 				            </ul>
-				        </div>
+				        </div> 
+				        -->
+				        
+					    <div id="commentList">
+					    	<div class="comment"></div>
+						    <div th:each="comment : ${comments}" class="comment">
+		                		<span th:text="${comment.userName}"></span>
+		                		<div th:text="${comment.commentContent}"></div>
+		                		<div style="font-size: 10pt;" th:text="${comment.formattedCreatedAt}"></div>
+		                		<button id="delete-btn" th:attr="data-comment-id=${comment.commentId}" th:utext="${'삭제'}">Delete</button>
+						    </div>
+						</div>
+				        
+				        <div class="pagination">
+						    <ul>
+						        <!-- 이전 버튼 -->
+						        <li th:if="${currentPage > 1}">
+						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${currentPage - 1}}" class="pagination-link">
+						                <span>이전</span>
+						            </a>
+						        </li>
+						
+						        <!-- 페이지 번호 -->
+						        <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
+						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${pageNumber}}" 
+						               th:classappend="${pageNumber == currentPage} ? 'active' : 'pagination-link'">
+						                <span th:text="${pageNumber}"></span>
+						            </a>
+						        </li>
+						
+						        <!-- 다음 버튼 -->
+						        <li th:if="${currentPage < totalPages}">
+						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${currentPage + 1}}" class="pagination-link">
+						                <span>다음</span>
+						            </a>
+						        </li>
+						    </ul>
+						</div>
 				    
-				    <div id="commentList">
-				    	<div class="comment"></div>
-					    <div th:each="comment : ${comments}" class="comment">
-	                		<span th:text="${comment.userName}"></span>
-	                		<div th:text="${comment.commentContent}"></div>
-	                		<div style="font-size: 10pt;" th:text="${comment.formattedCreatedAt}"></div>
-	                		<button id="delete-btn" th:attr="data-comment-id=${comment.commentId}" th:utext="${'삭제'}">Delete</button>
-					    </div>
-					</div>
 				</div>
 			</section>
 	</main>

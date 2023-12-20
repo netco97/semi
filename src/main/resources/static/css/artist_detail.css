@@ -257,8 +257,8 @@ button:hover {
 }
 
 /* 활성화된 페이지 번호의 스타일 */
-/* .pagination a.active {
+.pagination a.active {
     background-color: #007bff;
     color: #fff;
     border: 1px solid #007bff;
-} */
+}

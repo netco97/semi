@@ -49,11 +49,9 @@ $(document).ready(function() {
     // 코멘트 작성 버튼 클릭 시 이벤트
     $("#commentBtn").on("click", function() {
         // 작성한 코멘트 내용 가져오기
+        const composerId = $("#commentBtn").data('composer-id');
+        const userName = $("#commentBtn").data('user-name');
         const commentContent = $("#commentInput").val();
-        
-        const composerId = commentBtn.getAttribute('data-composer-id');
-        const userName = commentBtn.getAttribute('data-user-name');
-        
         
         // CommentDTO 객체 생성
         const comment = {
@@ -63,7 +61,6 @@ $(document).ready(function() {
         };
         console.log(composerId);
         console.log(userName);
-       
 
         // Ajax를 통해 서버에 코멘트 추가 요청
         $.ajax({
@@ -75,7 +72,14 @@ $(document).ready(function() {
                 // 코멘트 추가 성공 시, 화면 갱신 등 필요한 작업 수행
                 console.log("코멘트 추가 성공");
                 $("#commentInput").val("");
-                location.reload();
+                //location.reload();
+                
+                // 현재 URL을 가져오고 쿼리 매개변수를 제거합니다.
+        		const currentUrl = window.location.href.split('?')[0];
+
+		        // 업데이트된 댓글이 표시된 아티스트 페이지로 리다이렉트합니다.
+		        window.location.href = currentUrl;
+                
             },
             error: function(error) {
                 console.error("코멘트 추가 실패", error);

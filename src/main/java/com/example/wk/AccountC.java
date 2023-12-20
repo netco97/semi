@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class AccountC {
 	
-	@Autowired
-	AccountService accountService;
+	private final AccountService accountService;
     
 	@GetMapping("/getAccountAll")
 	public String accountAll() {

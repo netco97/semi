@@ -2,7 +2,6 @@ package com.example.wk;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,25 +9,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/artist_detail")
+@RequiredArgsConstructor
 public class ComposerC {
 	
-	@Autowired
-	private ComposerService composerService;
-	
-	@Autowired
-	private CommentService commentService;
+	private final ComposerService composerService;
+	private final CommentService commentService;
 	
     @GetMapping("{id}")
-    public String getComposerById(@PathVariable Long id, Model model) {
+    public String getComposerById(@PathVariable Long id,
+    		@RequestParam(name = "page", defaultValue = "1") int page,
+    		Model model) {
         ComposerDTO composer = composerService.getComposerById(id);
         
         //List<CommentDTO> comments = commentService.getAllCommentsByComposerId(id);
         
         // 페이징 관련 변수
-        int page = 1; // 기본 페이지
         int size = 10; // 한 페이지에 보여질 댓글 수
 
         // 페이지 번호를 받아오는 로직이 있다면 이를 활용하여 page 변수 설정
