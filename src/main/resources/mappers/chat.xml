@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sm.chat.websocket.ChatDetailMapper">
+  <insert id="regChat">
+    insert into chat values (chat_sequence.NEXTVAL, #{roomId}, #{sender}, #{message}, #{cur_date})
+</insert>
+  <select id="get_chatList" resultType="com.example.demo.sm.chat.websocket.ChatMessageDTO">
+	  select chat_id, roomId, sender, message, cur_date
+	  from chat
+	  where roomId = #{roomId}
+	  order by cur_date desc
+	  FETCH FIRST 10 ROWS ONLY
+  </select>
+</mapper>
