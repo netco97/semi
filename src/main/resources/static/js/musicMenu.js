@@ -2,6 +2,13 @@ console.log("genre" + genre);
 console.log("mood" + mood);
 console.log("instrument" + instrument);
 
+let click = {
+    mood: [],
+    instrument: [],
+    genre: []
+};
+
+
 
 
 
@@ -10,19 +17,21 @@ function clickOption(option) {
     
     if ($searchTag.hasClass('active')) {
         if (option == 'genre' && !($searchTag.hasClass('genre'))) {
-            updateSearchTag(genre);
+			click.genre = genre;
+            updateSearchTag(click.genre);
             $searchTag.removeClass('mood');
             $searchTag.removeClass('instrument');
             $searchTag.addClass('genre');
         } else if (option == 'mood' && !($searchTag.hasClass('mood'))) {
+			click.mood = mood;
            
-            updateSearchTag(mood);
+            updateSearchTag(click.mood);
             $searchTag.removeClass('genre');
             $searchTag.removeClass('instrument');
             $searchTag.addClass('mood');
         } else if (option == 'instrument' && !($searchTag.hasClass('instrument'))) {
-
-            updateSearchTag(instrument);
+			click.instrument = instrument;
+            updateSearchTag(click.instrument);
             $searchTag.removeClass('genre');
             $searchTag.removeClass('mood');
             $searchTag.addClass('instrument');
@@ -31,16 +40,16 @@ function clickOption(option) {
         }
     } else {
         if (option == 'genre') {
-          
-            updateSearchTag(genre);
+          click.genre = genre;
+            updateSearchTag(click.genre);
             $searchTag.addClass('genre');
         } else if (option == 'mood') {
-          
-            updateSearchTag(mood);
+          click.mood = mood;
+            updateSearchTag(click.mood);
             $searchTag.addClass('mood');
         } else if (option == 'instrument') {
-         
-            updateSearchTag(instrument);
+         click.instrument = instrument;
+            updateSearchTag(click.instrument);
             $searchTag.addClass('instrument');
         }
         $searchTag.addClass('active');
