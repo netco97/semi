@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>타이틀 | 아티스트 프로필 수정</title>
+<link rel="stylesheet" href="css/artist_reg.css">
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+		<main>
+        <h2 class="title">아티스트 프로필 수정</h2>
+        
+        <section>
+        <div class="profileTitle">프로필 사진</div>
+            <div id="ProfileContainer">
+	        	<img id="OldProfilePreview" th:src="@{${composer.getImgOrDefault()}}">
+	        	<div>기존 프로필 사진</div>
+	        	<img id="ProfilePreview" src="images/default_profile.png">
+	        <label for="file">
+        	  <div class="btn-upload">사진 변경</div>
+			</label>
+        	<input type="file" id="file" name="profilePicture" accept="image/*" onchange="showProfilePicture(this)">
+			</div>
+			
+       	</section>
+        
+        <section>
+	       <div class="profileTitle">아티스트 명</div>
+	        <input type="text" value="composer_name" id="musicFile" name="musicFile">
+	        <div class="profileTitle">주 장르</div>
+	        <select id="musicGenre" name="musicGenre" multiple>
+	            <option value="pop">팝</option>
+	            <option value="dance">댄스</option>
+	            <option value="hiphop">일렉트로닉</option>
+	            <option value="jazz">힙합</option>
+	            <option value="jazz">R&B</option>
+	            <option value="classic">클래식</option>
+	            <option value="newage">뉴에이지</option>
+	            <option value="rock">락</option>
+	            <option value="ballad">발라드</option>
+			    <option value="indie">인디</option>
+			    <option value="jazz_swing">재즈/스윙</option>
+			    <option value="latin">라틴</option>
+			    <option value="korean">국악</option>
+			    <option value="world">월드뮤직</option>
+			    <option value="ambient">앰비언트</option>
+			    <option value="trot">트로트</option>
+			    <option value="etc">기타</option>
+	        </select>
+	        	<div class="profileTitle">자기 소개</div>
+	        	<textarea class="introduce">user_introduce</textarea>
+        	</section>
+        
+			<div class="button-box">
+		        <button type="submit">등록</button>
+		        <button onclick="history.back(-1)">취소</button>
+	        </div>
+		</main>        
+    </form>
+
+</body>
+<script type="text/javascript" src="js/artist_reg.js"></script>
+</html>

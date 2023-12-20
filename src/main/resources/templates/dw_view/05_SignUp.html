@@ -30,6 +30,8 @@
 					<input type="text" class="phone-input" maxlength="4" pattern="\d*" style="background: #4b4949" id="phoneNumberPart2" name="phoneNumberPart2">
 					-
 					<input type="text" class="phone-input" maxlength="4" pattern="\d*" style="background: #4b4949" id="phoneNumberPart3" name="phoneNumberPart3">
+					
+					
 				</div>
 
 				<button type="submit">전송</button>
@@ -55,6 +57,8 @@
 			inputElement.addEventListener("input", function () {
 				// 숫자만 허용하도록 입력값 제한
 				this.value = this.value.replace(/[^\d]/g, "");
+				
+				
 			});
 		});
 

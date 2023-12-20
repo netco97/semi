@@ -1,0 +1,39 @@
+	main {
+            /* background-color: #f4f4f4; */
+		    background-color: #fff;
+		    width: 800px;
+		    margin: 50px auto;
+		    padding: 20px;
+		    border-radius: 10px;
+		    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		}
+
+        .my-page-title {
+            margin: 20px 0; /* 위아래 간격 설정 */
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            max-width: 800px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .menu-box {
+            background-color: black;
+            color: white;
+            padding: 60px; /* 더 큰 정사각형으로 설정 */
+            margin: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .menu-box:hover {
+            background-color: #555;
+        }

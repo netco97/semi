@@ -12,7 +12,6 @@ public class SignupUserDTO {
     private String phoneNumberPart3;
     private String userFullPhoneNumber;
     private String userSongs;
-    private String userFollow;
     private double userStars;
     private String userPr;
 
@@ -27,12 +26,11 @@ public class SignupUserDTO {
     }
 
     // 생성자 추가
-    public SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail, String userSongs, String userFollow, String userPr) {
+    public SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail, String userSongs, String userPr) {
         this.userFullPhoneNumber = userFullPhoneNumber;
         this.userNickname = userNickname;
         this.userEmail = userEmail;
         this.userSongs = userSongs;
-        this.userFollow = userFollow;
         this.userPr = userPr;
     }
 }

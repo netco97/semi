@@ -8,15 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping(value = "/login/oauth2", produces = "application/json")
 public class GoogleController {
 	private final GoogleLoginService googleLoginService;
-	
-	public GoogleController(GoogleLoginService googleLoginService) {
-		this.googleLoginService = googleLoginService;
-	}
 	
 	@GetMapping("/code/{registrationId}")
     public String googleLogin(@RequestParam String code, @PathVariable String registrationId , HttpSession httpsession) {

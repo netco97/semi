@@ -16,17 +16,14 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class GoogleLoginService {
 	private final GoogleMapper googleMapper; 
 	private final Environment env;
     private final RestTemplate restTemplate = new RestTemplate();
- 
-    public GoogleLoginService(Environment env, GoogleMapper googleMapper) {
-    	this.googleMapper = googleMapper;
-        this.env = env;
-    }
     
     public void socialLogin(String code, String registrationId, HttpSession session) {
         String accessToken = getAccessToken(code, registrationId);
