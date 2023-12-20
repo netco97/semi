@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	// 페이지 로드 시, URL에서 음악 ID를 추출
 	const urlParams = new URLSearchParams(window.location.search);
-	const songId = urlParams.get('songs_id');
+	const songId = urlParams.get('song_id');
 
 	// 음악 ID를 사용하여 음악 상세 페이지를 로드
 	loadMusicDetailPage(songId);
