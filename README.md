@@ -1,8 +1,9 @@
-# 프로젝트명
-<p align="center">
-음악 웹사이트 제작
-</p>
-
+<div align="center">
+  <span style="font-size:250%">프로젝트명 </span>  
+  <p>
+  음악 웹사이트 제작
+  </p>
+</div>
 
 ##목차
   -  [개요](#개요)
