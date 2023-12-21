@@ -1,4 +1,4 @@
-package com.example.demo.th;
+package com.example.demo.th.musicsearch;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

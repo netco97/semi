@@ -1,4 +1,4 @@
-package com.example.demo.th;
+package com.example.demo.th.musicsearch;
 
 import org.apache.ibatis.annotations.Mapper;
 
