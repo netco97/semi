@@ -1,12 +1,10 @@
 package com.example.demo.th.musicsearch;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 
 @Mapper
 public interface MusicSearchMapper {

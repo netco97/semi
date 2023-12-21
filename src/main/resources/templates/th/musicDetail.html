@@ -65,17 +65,19 @@
 				<div class="musicDetail-content-comment-user">
 					<div class="musicDetail-content-comment-username"
 						th:text="${comment.fullphonenumber}">)</div>
-					<div class="musicDetail-content-comment-star">★★☆☆☆</div>
-					<div class="musicDetail-content-comment-score">2점</div>
+					<div class="musicDetail-content-comment-star"></div>
+					<div class="musicDetail-content-comment-score"></div>
 				</div>
 				<div class="musicDetail-content-comments">
 					<div class="musicDetail-content-comment-textbox">
 						<div class="musicDetail-content-comment-text"
 							th:text="${comment.comment_text}"></div>
-						<div class="musicDetail-content-comment-like">♡</div>
+						<div class="musicDetail-content-comment=like">    
+<!-- 						<button th:onclick="'DelMusicCommentC?song_id=' + ${comment.comment_song_id}">삭제</button>  -->
+						</div>
 					</div>
 					<div class="musicDetail-content-comment-date"
-						th:text="${comment.comment_date}"></div>
+						th:text="${#dates.format(comment.comment_date, 'yyyy-MM-dd HH:mm')}"></div>
 				</div>
 			</div>
 		</div>

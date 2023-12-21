@@ -152,7 +152,7 @@ body {
 }
 .musicDetail-content-comment-date {
   font-size: 0.8em; /* 폰트 크기를 조절 (조절 가능) */
-  color: rgba(0, 0, 0, 0.6); /* 글씨를 약간 흐려지게 설정 */
+  color: white; /* 글씨를 약간 흐려지게 설정 */
 }
 
 .musicDetail-content-comment,
