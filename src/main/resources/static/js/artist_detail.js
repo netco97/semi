@@ -178,12 +178,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateCommentList(pageNumber) {
 		const composerId = $("#commentBtn").data('composer-id');
+		const newUrl = "/artist_detail/" + composerId + "?page=" + pageNumber;
+		
         $.ajax({
             type: "GET",
-            url: "/artist_detail/" + composerId,
-            data: {
-				page: pageNumber
-			},
+            url: newUrl,
             success: function (data) {
 				console.log('연결 성공');
 				console.log("Current Page: " + currentPage);
@@ -211,6 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	            // 모델에서 전달받은 startPage와 endPage를 사용하여 페이지 번호 업데이트
 	            document.getElementById('startPage').innerText = newStartPage;
 	            document.getElementById('endPage').innerText = newEndPage;
+	            
+	            // 주소창 업데이트
+            	// history.pushState({ page: pageNumber }, null, newUrl);
 
             },
             error: function () {
