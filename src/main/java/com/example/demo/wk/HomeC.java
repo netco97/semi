@@ -62,7 +62,7 @@ public class HomeC {
 		return "wk/index";
 	}
 	
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public String login(@RequestParam String id, @RequestParam String password, HttpSession session, Model model) {
         // 간단한 로그인 로직: 예시로 username이 "user", password가 "password"인 경우에 로그인 성공으로 가정
     	AccountDTO accountDTO = accountMapper.login(id, password);
@@ -87,5 +87,5 @@ public class HomeC {
         model.addAttribute("content", "wk/home");
         return "wk/index"; // 로그아웃 시 이동할 페이지
     }
-    
+    */
 }
