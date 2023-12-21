@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="css/roomset.css">
+    <script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div id="modalContent" class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="websocketResult"></div>
+            <div id="messageArea" class="message-area"></div>
+            <input type="text" id="chatInput" placeholder="Type your message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <input type="text" id="session_id" placeholder="Session ID">
+    <input type="text" id="follower_id" placeholder="Follower ID">
+    <button onclick="createChatroom()">Create Chatroom</button>
+
+    <script src="js/roomset.js"></script>
+</body>
+</html>

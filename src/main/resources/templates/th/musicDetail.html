@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/musicDetail.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<div class="musicDetail-content-music">
+				<div class="musicDetail-items1">
+					<div class="musicDetail-title">
+						<div class="musicDetail-title-img"></div>
+						<div>
+							<div class="musicDetail-title-title"></div>
+							<div class="musicDetail-title-composer"></div>
+						</div>
+					</div>
+					<div class="musicDetail-playSpace">
+						<!-- 여기에 오디오 플레이어가 들어갈 것입니다. -->
+					</div>
+					<div class="musicDetail-option">
+						<div class="musicDetail-option-inner"></div>
+					</div>
+				</div>
+				<div class="musicDetail-content-items2">
+					<div>
+						<div>
+							<div>장르</div>
+							<div class="genre-area"></div>
+						</div>
+						<div>
+							<div>분위기</div>
+							<div class="mood-area"></div>
+						</div>
+						<div>
+							<div>악기</div>
+							<div class="instrument-area"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form action="RegMusicComment" method="post">
+				<input type="hidden" name="song_id" th:value="${param.song_id}" />
+				<div class="musicDetail-content-comment">
+					<div class="musicDetail-content-comment-title">댓글</div>
+
+					<div class="musicDetail-content-comment-input">
+						<div class="musicDetail-content-comment-inputinner">
+							<div class="musicDetail-content-comment-nickname">닉네임</div>
+							<div class="musicDetail-content-comment-textInput">
+								<input name="inputComment" />
+							</div>
+							<div class="musicDetail-content-comment-btn">
+								<button>등록</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			
+			<div class="musicDetail-content-comment-comment" th:each="comment : ${comments}">
+				<div class="musicDetail-content-comment-user">
+					<div class="musicDetail-content-comment-username"
+						th:text="${comment.fullphonenumber}">)</div>
+					<div class="musicDetail-content-comment-star"></div>
+					<div class="musicDetail-content-comment-score"></div>
+				</div>
+				<div class="musicDetail-content-comments">
+					<div class="musicDetail-content-comment-textbox">
+						<div class="musicDetail-content-comment-text"
+							th:text="${comment.comment_text}"></div>
+						<div class="musicDetail-content-comment=like">    
+<!-- 						<button th:onclick="'DelMusicCommentC?song_id=' + ${comment.comment_song_id}">삭제</button>  -->
+						</div>
+					</div>
+					<div class="musicDetail-content-comment-date"
+						th:text="${#dates.format(comment.comment_date, 'yyyy-MM-dd HH:mm')}"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/musicDetail.js"></script>
+</html>

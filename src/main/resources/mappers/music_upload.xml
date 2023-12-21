@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.th.music_upload.MusicUploadMapper">
+  <insert id="regSongs">
+	  insert into songs values(
+	  songs_seq.nextval,
+	   #{song_name},
+	    #{genre_id},
+	     #{instrument_id},
+	      #{mood_id},
+	       #{composer_name}, 
+	       #{song_img}, 
+	       #{song_audio},
+	       #{song_like})
+  </insert>
+</mapper>
