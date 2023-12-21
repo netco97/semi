@@ -43,6 +43,14 @@ out/
 ### VS Code ###
 .vscode/
 
-### properites ###
-application.properites
+# misc
+.DS_Store
+.DSStore
+..DS_Store
+/.DS_Store
+/._.DS_Store
+
+
+### properties ###
+application.properties
 src/main/resources/application.properties

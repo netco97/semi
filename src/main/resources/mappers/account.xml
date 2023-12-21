@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.wk.AccountMapper">
+<!--   
+   <select id="getAccountAll" resultType="com.example.demo.wk.AccountDTO">
+        SELECT * FROM account_test
+   </select>
+   
+    <select id="getUserByUsername" resultType="com.example.demo.wk.AccountDTO">
+        SELECT * FROM account_test WHERE a_name = #{a_name}
+    </select>
+    -->
+<!--    <select id="getAccountById" parameterType="String" resultType="com.example.demo.wk.AccountDTO">
+        SELECT * FROM account_test WHERE a_id = #{aId}
+   </select>
+   
+   <insert id="insertAccount" parameterType="AccountDTO">
+        INSERT INTO account_test (a_name, a_id, a_pw, a_gender, a_addr, a_interest, a_introduce, a_img)
+        VALUES (#{aName}, #{aId}, #{aPw}, #{aGender}, #{aAddr}, #{aInterest}, #{aIntroduce}, #{aImg})
+   </insert> -->
+  
+</mapper>

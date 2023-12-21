@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>세미 홈페이지</title>
+<link rel="stylesheet" href="/css/common.css">
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+	<!-- 헤더 -->
+    <div th:replace="~{wk/fragments/header :: header}"></div>
+    
+    <!-- 중간 페이지 내용 -->
+    <div th:insert="~{${content}}"></div>
+    
+    <!-- 푸터 -->
+    <div th:replace="~{wk/fragments/footer :: footer}"></div>
+
+</body>
+</html>

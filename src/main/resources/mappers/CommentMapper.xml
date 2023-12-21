@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.wk.CommentMapper">
+
+     <resultMap id="CommentResultMap" type="CommentDTO">
+        <id property="commentId" column="comment_id"/>
+        <result property="composerId" column="composer_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="createdAt" column="created_at" javaType="java.time.LocalDateTime"/>
+    </resultMap>
+    
+    <select id="getAllCommentsByComposerId" resultMap="CommentResultMap">
+        SELECT * FROM comments WHERE composer_id = #{composerId}
+    </select>
+    
+    <select id="getCommentsByComposerIdWithPaging" resultMap="CommentResultMap">
+                <![CDATA[
+        SELECT * FROM (
+            SELECT c.*, ROWNUM AS rnum
+            FROM (
+                SELECT * FROM comments
+                WHERE composer_id = #{composerId}
+                ORDER BY created_at DESC
+            ) c
+            WHERE ROWNUM <= #{offset} + #{limit}
+        ) 
+        WHERE rnum > #{offset}
+        ]]>
+    </select>
+    
+    <select id="countCommentsByComposerId" resultType="java.lang.Integer" parameterType="java.lang.Long">
+    SELECT COUNT(*) FROM comments WHERE composer_id = #{composerId}
+	</select>
+
+    <insert id="insertComment" parameterType="CommentDTO">
+        INSERT INTO comments (COMPOSER_ID, USER_NAME, COMMENT_CONTENT, CREATED_AT) 
+        VALUES (#{composerId} , #{userName} , #{commentContent}, SYSDATE)
+    </insert>
+    
+    <delete id="deleteComment">
+    	DELETE FROM comments WHERE comment_id = #{commentId}
+    </delete>
+    
+</mapper>
