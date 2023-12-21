@@ -1,4 +1,4 @@
-package com.example.wk;
+package com.example.demo;
 
 
 
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.wk")
+@ComponentScan(basePackages = "com.example.demo")
 public class SemiApplication {
 
 	public static void main(String[] args) {

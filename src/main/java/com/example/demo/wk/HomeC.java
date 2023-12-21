@@ -1,4 +1,4 @@
-package com.example.wk;
+package com.example.demo.wk;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
