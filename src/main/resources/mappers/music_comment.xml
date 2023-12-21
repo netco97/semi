@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.demo.th.music_comment.MusicCommentMapper">
+
+
+
+	<select id="getComments" resultType="MusicCommentDTO">
+		select * from song_comment
+		where song_id = #{song_id}
+	</select>
+
+
+	<insert id="regComment">
+		INSERT INTO song_comment (comment_id, song_id,
+		fullphonenumber, comment_text)
+		VALUES (comment_id_seq.NEXTVAL, #{song_id}, #{fullphonenumber},
+		#{comment_text})
+	</insert>
+</mapper>

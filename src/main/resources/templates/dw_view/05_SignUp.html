@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입 페이지</title>
+	<link rel="stylesheet" th:href="@{/css/05_SignUp.css}">
+	<script src="js/05_SignUp.js"></script>
+</head>
+
+<body>
+
+	<div id="container">
+	<div id="section-container">
+		<div id="section">
+			<form id="signupForm" action="/signup" method="post">
+				<div id="signup-text">회원가입</div>
+
+				<div class="article_name">
+					이름 : <input class="user-info" name="userNickname" id="user_nickname" th:value="${session.userNickname}" readonly>
+				</div>
+				<div class="article_email">
+					이메일 : <input class="user-info" name="userEmail" id="user_email" th:value="${session.userEmail}" readonly>
+				</div>
+				<div class="article_phone">
+					휴대전화 :
+					<input type="text" class="phone-input" maxlength="3" pattern="\d*" style="background: #4b4949" id="phoneNumberPart1" name="phoneNumberPart1">
+					-
+					<input type="text" class="phone-input" maxlength="4" pattern="\d*" style="background: #4b4949" id="phoneNumberPart2" name="phoneNumberPart2">
+					-
+					<input type="text" class="phone-input" maxlength="4" pattern="\d*" style="background: #4b4949" id="phoneNumberPart3" name="phoneNumberPart3">
+					
+					
+				</div>
+
+				<button type="submit">전송</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+	<script>
+
+		let user_name = `[[${session.userNickname}]]`;
+		let user_email = `[[${session.userEmail}]]`;
+		
+		console.log(user_name)
+		console.log(user_email)
+
+		/*document.getElementById("user_nickname").innerText = user_name;
+		document.getElementById("user_email").innerText = user_email;*/
+
+		const phoneInputs = document.querySelectorAll(".phone-input");
+
+		phoneInputs.forEach(function (inputElement) {
+			inputElement.addEventListener("input", function () {
+				// 숫자만 허용하도록 입력값 제한
+				this.value = this.value.replace(/[^\d]/g, "");
+				
+				
+			});
+		});
+
+
+	</script>
+	
+</body>
+
+</html>
