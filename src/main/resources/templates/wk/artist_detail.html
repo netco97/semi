@@ -5,18 +5,19 @@
 <title>타이틀 | 아티스트 상세</title>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <link rel="stylesheet" href="/css/artist_detail.css">
-<script type="text/javascript" src="/js/artist_detail.js"></script>
+	<script th:inline="javascript">
+	    var currentPage = [[${currentPage}]];
+	    var totalPages = [[${totalPages}]];
+	    var startPage = [[${startPage}]];
+	    var endPage = [[${endPage}]];
+	</script>
 </head>
 <body>
 	<main>
-	
-		<input type="hidden" id="composerId" value="${composer.id}">
-		<input type="hidden" id="pageNumber" value="${currentPage}">
-	
 		<section class="artist-section">
 	        <div class="artist-profile">
 	            <!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
-	            <img th:src="${composer.getImgOrDefault}" alt="아티스트 프로필 사진">
+	            <!-- <img th:src="${composer.getImgOrDefault}" alt="아티스트 프로필 사진"> -->
 	            <div class="rating-container">
 	                <div class="rating-stars">
 	                    <span class="star" data-value="1">&#9733;</span>
@@ -71,39 +72,24 @@
 			    <div class="progress-bar">
 			        <div class="progress"></div>
 			    </div>
-			
 	        </div>
 	        </section>
 
 			<!-- 코멘트  -->
-		    <section class="comment-container">
-			    <div class="comment-container-inner">
+		    <section id="commentTitle" class="comment-container">
+			    <div class="comment-container-inner" id="commentContainer">
 			    	<div style="width: 100%;">
 			    		<h2>코멘트</h2>
 			    	</div>
 			    	
+			    	<!-- 코멘트 입력란 -->
 				    <div class="commentInputBox">
 					    	<div th:text="${session.name}" style="align-self: center;">닉네임</div>
 					        <textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					        <button id="commentBtn" th:attr="data-composer-id=${composer.id}, data-user-name=${session.name}">코멘트 작성</button>
+					        <button id="commentBtn"
+					        th:attr="data-composer-id=${composer.id},
+					        data-user-name=${session.name}">코멘트 작성</button>
 				    </div>
-				    
-				    <!-- 페이지 번호 출력 -->
-				    <input type="hidden" id="composerId" th:attr="data-composer-id=${composer.id}">
-					<input type="hidden" id="pageNumber" th:attr="data-page-number=${pageNumber}">
-				        
-					<!--
-					<div class="pagination">
-				            <ul>
-				                <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-				                    <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${pageNumber}}"
-				                       th:classappend="${pageNumber == currentPage} ? 'active'">
-				                        <span th:text="${pageNumber}"></span>
-				                    </a>
-				                </li>
-				            </ul>
-				        </div> 
-				        -->
 				        
 					    <div id="commentList">
 					    	<div class="comment"></div>
@@ -115,35 +101,41 @@
 						    </div>
 						</div>
 				        
-				        <div class="pagination">
-						    <ul>
-						        <!-- 이전 버튼 -->
-						        <li th:if="${currentPage > 1}">
-						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${currentPage - 1}}" class="pagination-link">
-						                <span>이전</span>
-						            </a>
-						        </li>
+<!-- 				        <div class="pagination">
+									<div th:attr="data-start-page=${startPage}, data-end-page=${endPage}" id="pagination-container">
+									</div>
+							</div> -->
 						
-						        <!-- 페이지 번호 -->
-						        <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${pageNumber}}" 
-						               th:classappend="${pageNumber == currentPage} ? 'active' : 'pagination-link'">
+						<div th:id="startPage" style="display:none" th:text="${startPage}"></div>
+						<div th:id="endPage" style="display:none" th:text="${endPage}"></div>
+						
+						<div class="pagination" th:fragment="pagination">
+						    <ul>
+						        <li th:if="${currentPage > 1}">
+						            <a href="javascript:void(0);" th:onclick="updateCommentList(1)">처음</a>
+						        </li>
+						        <li th:if="${currentPage > 1}">
+						            <a href="javascript:void(0);" th:onclick="previousPage()">이전</a>
+						        </li>
+						        <li th:each="pageNumber : ${#numbers.sequence(startPage, endPage)}">
+						            <a href="javascript:void(0);"
+						               th:onclick="updateCommentList(${pageNumber})"
+						               th:data-pageNumber="${pageNumber}"
+						               th:classappend="${pageNumber == currentPage} ? 'pagination-link active' : 'pagination-link'">
 						                <span th:text="${pageNumber}"></span>
 						            </a>
 						        </li>
-						
-						        <!-- 다음 버튼 -->
 						        <li th:if="${currentPage < totalPages}">
-						            <a th:href="@{'/artist_detail/' + ${composer.id} + '?page=' + ${currentPage + 1}}" class="pagination-link">
-						                <span>다음</span>
-						            </a>
+						            <a href="javascript:void(0);" th:onclick="nextPage()">다음</a>
+						        </li>
+						        <li th:if="${currentPage < totalPages}">
+						            <a href="javascript:void(0);" th:onclick="updateCommentList(${totalPages})">마지막</a>
 						        </li>
 						    </ul>
 						</div>
-				    
 				</div>
 			</section>
 	</main>
+	<script type="text/javascript" src="/js/artist_detail.js"></script>
 </body>
-
 </html>

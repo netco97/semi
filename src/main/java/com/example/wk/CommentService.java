@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class CommentService {
 	
-	@Autowired
-	private CommentMapper commentMapper;
+	private final CommentMapper commentMapper;
 	
     public List<CommentDTO> getCommentsByComposerIdWithPaging(Long composerId, int page, int size) {
         int offset = (page - 1) * size;

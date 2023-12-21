@@ -44,7 +44,6 @@ public class CommentC {
         System.out.println(totalComments);
         System.out.println(comments);
         
-
         return comments;
     }
     	
