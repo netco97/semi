@@ -36,6 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
-## properties
+
+### properties ###
 application.properties
 src/main/resources/application.properties
