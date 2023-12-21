@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8; /* 흰색 */
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#section-container {
+    background-color: #424242; /* 회색 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#section {
+    text-align: center;
+    color: #fff; /* 흰색 */
+}
+
+#signup-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.article_name,
+.article_email,
+.article_phone {
+    margin-bottom: 15px;
+    background-color: #424242; /* 회색 */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    background: #4b4949; /* 회색 */
+    color: #fff; /* 흰색 */
+    border: none;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box; /* Padding과 Border를 포함한 전체 너비로 설정 */
+}
+
+.phone-input {
+    background: #4b4949; /* 회색 */
+    color: #fff; /* 흰색 */
+    border: none;
+    padding: 5px;
+    width: 60px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+#submitButton {
+    background-color: #007aff; /* 애플의 파란색 */
+    color: #fff; /* 흰색 */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#submitButton:hover {
+    background-color: #0056b3; /* 애플의 진한 파란색 */
+}
