@@ -12,7 +12,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.th.SongsDTO;
+import com.example.demo.th.musicsearch.SongsDTO;
 
 @Service
 public class MusicUploadService {

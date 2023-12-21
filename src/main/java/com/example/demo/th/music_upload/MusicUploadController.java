@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.th.SongsDTO;
+import com.example.demo.th.musicsearch.SongsDTO;
 
 @Controller
 public class MusicUploadController {
