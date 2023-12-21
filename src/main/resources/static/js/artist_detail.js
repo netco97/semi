@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	        updateCommentList(pageNumber); // updateCommentList 호출
 	        
 	        // 스크롤 위치를 부드럽게 이동
-        	document.getElementById('commentTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        	//document.getElementById('commentTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
 	        
 	        // 모든 링크에서 'active' 클래스 제거
 	        document.querySelectorAll('.pagination-link').forEach(otherLink => {
@@ -180,7 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		const composerId = $("#commentBtn").data('composer-id');
         $.ajax({
             type: "GET",
-            url: "/artist_detail/" + composerId + "?page=" + pageNumber,
+            url: "/artist_detail/" + composerId,
+            data: {
+				page: pageNumber
+			},
             success: function (data) {
 				console.log('연결 성공');
 				console.log("Current Page: " + currentPage);
@@ -189,10 +192,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const newComments = $(data).find("#commentList").html(); // 새로운 댓글 목록 가져오기
 	            $("#commentList").html(newComments); // 댓글 목록 업데이트
 	            
-	            currentPage = pageNumber; // 현재 페이지 업데이트
+	            //currentPage = pageNumber; // 현재 페이지 업데이트
 	            console.log("Current Page2: " + currentPage);
 				console.log("Total Pages2: " + totalPages);
-				
 				
 				// 응답에서 startPage 및 endPage를 가져오기
 	            const newStartPage = parseInt($(data).find("#startPage").text());
