@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.th.MusicMapper">
+
+<select id="getGenre" resultType="java.lang.String">
+
+	SELECT DISTINCT genre_name FROM genres
+</select >
+<select id="getMood" resultType="java.lang.String">
+	SELECT DISTINCT mood_name FROM mood
+</select>
+<select id="getInstrument" resultType="java.lang.String">
+SELECT DISTINCT instrument_name FROM instruments
+</select>
+
+</mapper>

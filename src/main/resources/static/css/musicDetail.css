@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+}
+
+.container {
+  margin-top: 5%; /* 여기서 조절 가능 */
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 75%;
+  padding: 0 15%;
+  box-sizing: border-box;
+}
+
+.musicDetail-content-music {
+  display: flex;
+  flex-direction: row;
+}
+
+.musicDetail-items1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬 추가 */
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
+}
+
+.musicDetail-title {
+  display: flex;
+  align-items: center;
+}
+
+.musicDetail-title-img img {
+  height: 100%; /* 이미지 높이 100%로 설정 */
+  width: auto; /* 이미지 너비 자동 조정 */
+}
+
+.musicDetail-title-img {
+  flex: 0 0 auto; /* 이미지 크기 유지 */
+  margin-right: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+}
+
+.musicDetail-title > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.musicDetail-title-title,
+.musicDetail-title-composer {
+  margin: 0; /* 기본 마진 제거 */
+}
+
+.musicDetail-playSpace {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.musicDetail-option {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.musicDetail-option-inner {
+  display: flex;
+  flex-direction: row; /* 가로로 정렬 */
+}
+
+.musicDetail-option-inner > div {
+  margin-right: 10px; /* 각 아이템 사이 간격 조절 */
+}
+
+.musicDetail-content-items2 {
+  width: 20%;
+}
+
+/* items2의 내용에 대한 스타일 */
+.musicDetail-content-items2 > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.musicDetail-content-comment {
+  padding: 10px; /* 시각적 구분을 위한 여백 추가 */
+}
+
+.musicDetail-content-comment-title {
+  margin-bottom: 10px; /* 여백 추가 */
+}
+
+.musicDetail-content-comment-input,
+.musicDetail-content-comment-comment {
+  padding-top: 10px; /* 시각적 구분을 위한 여백 추가 */
+}
+
+.musicDetail-content-comments {
+  padding: 10px; /* 시각적 구분을 위한 여백 추가 */
+  margin-bottom: 10px; /* 댓글 사이의 여백 추가 */
+}
+
+.musicDetail-content-comment-user {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽으로 정렬 */
+  align-items: center; /* 세로 가운데 정렬 (필요에 따라 조절) */
+}
+
+.musicDetail-content-comment-inputinner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.musicDetail-content-comment-nickname {
+  flex: 1;
+  margin-left: 8%; /* 각 아이템 사이의 간격 조절 */
+}
+
+.musicDetail-content-comment-textInput {
+  flex: 8;
+  margin: 0 10px; /* 간격을 좌우로 조절 */
+}
+
+.musicDetail-content-comment-btn {
+  flex: 1;
+  margin-right: 8%;
+}
+
+.musicDetail-content-comment-textInput input {
+  width: 100%; /* input이 부모 요소의 100%를 차지하도록 함 */
+  box-sizing: border-box; /* 테두리와 여백을 포함한 크기로 지정 */
+}
+
+.musicDetail-content-comment-username {
+  margin-right: 2%; /* 간격을 오른쪽으로 조절 */
+}
+
+.musicDetail-content-comment-star,
+.musicDetail-content-comment-score {
+  margin-right: 2%; /* 간격을 오른쪽으로 조절 */
+}
+.musicDetail-content-comment-textbox {
+  display: flex;
+  justify-content: space-between; /* 양 옆 끝으로 정렬 */
+  align-items: center; /* 세로 가운데 정렬 (필요에 따라 조절) */
+}
+.musicDetail-content-comment-date {
+  font-size: 0.8em; /* 폰트 크기를 조절 (조절 가능) */
+  color: rgba(0, 0, 0, 0.6); /* 글씨를 약간 흐려지게 설정 */
+}
+
+.musicDetail-content-comment,
+.musicDetail-content-comment-title,
+.musicDetail-content-comment-input,
+.musicDetail-content-comment-comment,
+.musicDetail-content-comment-user,
+.musicDetail-content-comments,
+.musicDetail-content-comment-textbox {
+  background-color: black;
+  color: white;
+}
+
+.musicDetail-content-comment-input input,
+.musicDetail-content-comment-btn button {
+  background-color: white; /* 가시성을 위해 버튼과 입력란 배경 색을 흰색으로 지정 */
+  color: black; /* 가시성을 위해 버튼과 입력란 텍스트 색을 검정으로 지정 */
+}
+.musicDetail-title-img{
+	max-width: 50px;
+}

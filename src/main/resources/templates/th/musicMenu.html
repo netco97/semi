@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/css/musicMenu.css" />
+<title>음악 검색</title>
+<script th:inline="javascript">
+	const genre = /*[[${tags.genre}]]*/[];
+	const mood = /*[[${tags.mood}]]*/[];
+	const instrument = /*[[${tags.instrument}]]*/[];
+</script>
+</head>
+<body>
+	<div class="musicMenu-container">
+		<div class="musicMenu-inner">
+			<div class="musicMenu-title">음악 검색</div>
+			<div class="musicMenu-search">
+				<div class="musicMenu-searchInput">
+					<input id="searchInput" placeholder="곡명, 아티스트명, 해시태그 키워드로 검색해 보세요!" />
+					<button>검색</button>
+				</div>
+				<div class="musicMenu-searchOption">
+					<ul>
+						<li onclick="clickOption('genre')">장르▽</li>
+						<li onclick="clickOption('mood')">분위기▽</li>
+						<li onclick="clickOption('instrument')">악기▽</li>
+						<li>아티스트▽</li>
+					</ul>
+				</div>
+				<div class="musicMenu-searchTag"></div>
+				<div class="musicMenu-searchTagInput">
+
+					<!-- 	위에 재즈 힙합 누르면 여기에도 동일한게 추가되도록 나중에 기능 추가 -->
+				</div>
+			</div>
+			<div class="musicList">
+				<div class="musicList-inner">
+					<div class="musicList-menu">
+						<div class="musicList-title">
+							<div></div>
+							<div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+						<div class="musicList-PlaySpace"></div>
+						<div class="musicList-info">
+							<div></div>
+							<div></div>
+						</div>
+						<div class="musicList-option"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script th:inline="javascript" src="/js/musicMenu.js"></script>
+</body>
+</html>
