@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class SignupController {
 	
@@ -20,13 +22,15 @@ public class SignupController {
 	    }
 
 	    @PostMapping("/signup")
-	    public String processSignup(@ModelAttribute SignupUserDTO user, RedirectAttributes redirectAttributes) {
-	        signupService.savePhoneNumber(user);
-
+	    public String processSignup(@ModelAttribute SignupUserDTO user, RedirectAttributes redirectAttributes,HttpSession httpsession) {
+	        signupService.savePhoneNumber(user,httpsession);
+	        
+	        
+	        
 	        redirectAttributes.addFlashAttribute("signupSuccess", true);
 	        
 
-	        return "dw_view/home";  // 회원가입 성공 후 이동할 페이지
+	        return "dw_view/home";  
 	    }
 	
 
