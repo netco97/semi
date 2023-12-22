@@ -42,13 +42,13 @@ public class GoogleLoginService {
         
         
         
-        // 중복처리
+       
         List<GoogleUserDTO> existingUsers = googleMapper.SelUser(nickname);
 
         if (!existingUsers.isEmpty()) {
             GoogleUserDTO existingUser = existingUsers.get(0);
             System.out.println("이미 있는 아이디입니다.");
-            // 이미 존재하는 사용자에 대한 추가 작업 수행
+            
             
             
             
@@ -62,6 +62,9 @@ public class GoogleLoginService {
                 System.out.println("Google 테이블 등록 실패");
             }
         }
+        
+        
+        // 서비스에서 인증을 마친순간 세션값이 생성됨 --> 이거의 의미는 회원가입 페이지로 넘어가도 현재세션이 존재함
         
         
         session.setAttribute("userId", id);

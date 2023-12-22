@@ -21,8 +21,13 @@ public class GoogleController {
         System.out.println("registrationId 확인 : "+registrationId);
         System.out.println("code 확인 : " + code);
         
-        googleLoginService.socialLogin(code, registrationId, httpsession);
         
+        
+         googleLoginService.socialLogin(code, registrationId, httpsession);
+        
+         
+         
+         
         return "dw_view/05_SignUp";
     }
 	
