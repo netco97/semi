@@ -11,7 +11,7 @@ public class MusicCommentDTO {
 
 	private int comment_id;
 	private int song_id;
-	private String fullphonenumber;
+	private String userFullPhoneNumber;
 	private String comment_text;
 	private Date comment_date;
 }
