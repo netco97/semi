@@ -3,12 +3,12 @@
 <mapper namespace="com.example.demo.th.music_like.MusicLikeMapper">
 
     <select id="checkLike" resultType="MusicLikeDTO">
-        SELECT * FROM song_like WHERE song_id = #{song_id} AND fullPhoneNumber = #{fullPhoneNumber}
+        SELECT * FROM song_like WHERE song_id = #{song_id} AND userFullPhoneNumber = #{userFullPhoneNumber}
     </select>
 
     <insert id="insertLike">
-        INSERT INTO song_like (song_like_id, song_id, fullPhoneNumber, isLike)
-        VALUES (song_like_id_seq.nextval, #{song_id}, #{fullPhoneNumber}, 1)
+        INSERT INTO song_like (song_like_id, song_id, userFullPhoneNumber, isLike)
+        VALUES (song_like_id_seq.nextval, #{song_id}, #{userFullPhoneNumber}, 1)
     </insert>
     
    <update id="updateLike">

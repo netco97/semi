@@ -11,8 +11,7 @@ public interface MusicCommentMapper {
 
 	List<MusicCommentDTO> getComments(int song_id);
 
-//	int regComment(int song_id,String fullphonenumber,String comment_text);
-	int regComment(@Param("song_id") int song_id,@Param("fullphonenumber") String fullphonenumber,
+	int regComment(@Param("song_id") int song_id,@Param("userFullPhoneNumber") String userFullPhoneNumber,
 			@Param("comment_text") String comment_text);
 	
 

@@ -27,11 +27,11 @@ public class MusicCommentService {
 	public void regMusicComment(int song_id, String comment_text) {
 		
 		// 여기서 세션값으로 유저ID 를 빼와서 넣어놓을 예정
-		String fullphonenumber= "01066705590";
+		String userFullPhoneNumber= "01066705590";
 		System.out.println("서비스 : "+ song_id);
 		
 		
-			musicCommentMapper.regComment(song_id,fullphonenumber,comment_text);
+			musicCommentMapper.regComment(song_id,userFullPhoneNumber,comment_text);
 			
 		
 		
