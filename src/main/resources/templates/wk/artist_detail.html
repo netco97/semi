@@ -5,131 +5,108 @@
 <title>타이틀 | 아티스트 상세</title>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <link rel="stylesheet" href="/css/artist_detail.css">
-	<script th:inline="javascript">
-	    var currentPage = [[${currentPage}]];
-	    var totalPages = [[${totalPages}]];
-	    var startPage = [[${startPage}]];
-	    var endPage = [[${endPage}]];
-	</script>
+<!-- <script th:inline="javascript">
+	var currentPage = `[[${currentPage}]]`;
+	var totalPages = `[[${totalPages}]]`;
+	var startPage = `[[${startPage}]]`;
+	var endPage = `[[${endPage}]]`;
+</script> -->
 </head>
 <body>
 	<main>
 		<section class="artist-section">
-	        <div class="artist-profile">
-	            <!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
-	            <!-- <img th:src="${composer.getImgOrDefault}" alt="아티스트 프로필 사진"> -->
-	            <div class="rating-container">
-	                <div class="rating-stars">
-	                    <span class="star" data-value="1">&#9733;</span>
-	                    <span class="star" data-value="2">&#9733;</span>
-	                    <span class="star" data-value="3">&#9733;</span>
-	                    <span class="star" data-value="4">&#9733;</span>
-	                    <span class="star" data-value="5">&#9733;</span>
-	                </div>
-	                <p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
-	            </div>
-				<div class="artist-profile-funtion">
-		            <!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
-					<!-- HTML 요소에 직접 th:if를 사용합니다. -->
-					<a th:if="${session.id == composer.id}" th:href="@{/artist_update}">내 프로필 수정</a>
-					<a th:if="${session.id == composer.id}" th:href="@{/follower_list}">내 팔로워 보기</a>
-					
-					<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
-					<button id="followBtn" th:unless="${session.artistId == composer.id}">팔로우</button>
-					<button id="messageBtn" th:unless="${session.artistId == composer.id}">쪽지 보내기</button>
-		        </div>
-	        </div>
-	        
-	        <div class="artist-profile-text">
-	            <h2>이름</h2>
-	            <div th:text="${composer.name}">이름</div>
-	            <h2>주 장르</h2>
-	            <div th:text="${composer.genre}">주 장르</div>
-	            <h2>자기소개</h2>
-	            <div th:text="${composer.text}">자기 소개</div>
-	        </div>
-	        
-	        <div class="music-list">
-			    <div class="music-player">
-			        <div class="music-info">
-			            <div class="album-art">
-			                <img src="https://post-phinf.pstatic.net/MjAxOTA4MDJfMjM1/MDAxNTY0NzE0ODEyMDk4.5nXLk7-27EPK8Q0NyLFVaeE_umpkqwfV73UWtu0ZD5Ug.j9RXuTc1EAgw66FZB0wl32sLBNaY4R9HZYvzOkei38Ag.JPEG/%EB%94%94%EB%85%B8%EB%A7%88%EB%93%9C%ED%95%99%EA%B5%90_%EC%95%84%ED%8A%B8%EB%94%94%EB%A0%89%ED%84%B0_NSH_%EC%95%A8%EB%B2%94_%EC%BB%A4%EB%B2%84_%EB%94%94%EC%9E%90%EC%9D%B8_8.jpg?type=w800_q75" alt="Album Art">
-			            </div>
-			            <div class="music-details">
-			                <div class="music-title">Song Title</div>
-			                <div class="artist-name">Artist Name</div>
-			            </div>
-			        </div>
-			        <div class="music-controls">
-			           <!--  <button class="play-button">Play</button> -->
-			           <!-- <img style="width: 20px" src="https://w7.pngwing.com/pngs/800/189/png-transparent-multimedia-music-play-player-song-video-multimedia-controls-solid-icon.png"> -->
-			           <button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
-			            
-			            <div class="time">0:00 / 3:30</div>
-			            <!-- <button class="comment-button">Comment</button> -->
-			        </div>
-			    </div>
-			    <div class="progress-bar">
-			        <div class="progress"></div>
-			    </div>
-	        </div>
-	        </section>
-
-			<!-- 코멘트  -->
-		    <section id="commentTitle" class="comment-container">
-			    <div class="comment-container-inner" id="commentContainer">
-			    	<div style="width: 100%;">
-			    		<h2>코멘트</h2>
-			    	</div>
-			    	
-			    	<!-- 코멘트 입력란 -->
-				    <div class="commentInputBox">
-					    	<div th:text="${session.name}" style="align-self: center;">닉네임</div>
-					        <textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					        <button id="commentBtn"
-					        th:attr="data-composer-id=${composer.id},
-					        data-user-name=${session.name}">코멘트 작성</button>
-				    </div>
-				        
-					    <div id="commentList">
-					    	<div class="comment"></div>
-						    <div th:each="comment : ${comments}" class="comment">
-		                		<span th:text="${comment.userName}"></span>
-		                		<div th:text="${comment.commentContent}"></div>
-		                		<div style="font-size: 10pt;" th:text="${comment.formattedCreatedAt}"></div>
-		                		<button id="delete-btn" th:attr="data-comment-id=${comment.commentId}" th:utext="${'삭제'}">Delete</button>
-						    </div>
-						</div>
-				        
-						<div th:id="startPage" style="display:none" th:text="${startPage}"></div>
-						<div th:id="endPage" style="display:none" th:text="${endPage}"></div>
-						
-						<div class="pagination" th:fragment="pagination">
-						    <ul>
-						        <li th:if="${currentPage > 1}">
-						            <a href="javascript:void(0);" th:onclick="updateCommentList(1)">처음</a>
-						        </li>
-						        <li th:if="${currentPage > 1}">
-						            <a href="javascript:void(0);" th:onclick="previousPage()">이전</a>
-						        </li>
-						        <li th:each="pageNumber : ${#numbers.sequence(startPage, endPage)}">
-						            <a href="javascript:void(0);"
-						               th:onclick="updateCommentList(${pageNumber})"
-						               th:data-pageNumber="${pageNumber}"
-						               th:classappend="${pageNumber == currentPage} ? 'pagination-link active' : 'pagination-link'">
-						                <span th:text="${pageNumber}"></span>
-						            </a>
-						        </li>
-						        <li th:if="${currentPage < totalPages}">
-						            <a href="javascript:void(0);" th:onclick="nextPage()">다음</a>
-						        </li>
-						        <li th:if="${currentPage < totalPages}">
-						            <a href="javascript:void(0);" th:onclick="updateCommentList(${totalPages})">마지막</a>
-						        </li>
-						    </ul>
-						</div>
+			<div class="artist-profile">
+				<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
+				<img th:src="@{'/images/' + ${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진">
+				<div class="rating-container">
+					<div class="rating-stars">
+						<span class="star" data-value="1">&#9733;</span> <span
+							class="star" data-value="2">&#9733;</span> <span class="star"
+							data-value="3">&#9733;</span> <span class="star" data-value="4">&#9733;</span>
+						<span class="star" data-value="5">&#9733;</span>
+					</div>
+					<p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
 				</div>
-			</section>
+				<div class="artist-profile-funtion">
+					<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
+					<!-- HTML 요소에 직접 th:if를 사용합니다. -->
+					<a th:if="${session.id == composer.id}" th:href="@{/artist_update}">내
+						프로필 수정</a> <a th:if="${session.id == composer.id}"
+						th:href="@{/follower_list}">내 팔로워 보기</a>
+
+					<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
+					<button id="followBtn"
+						th:unless="${session.artistId == composer.id}">팔로우</button>
+					<button id="messageBtn"
+						th:unless="${session.artistId == composer.id}">쪽지 보내기</button>
+				</div>
+			</div>
+
+			<div class="artist-profile-text">
+				<h2>이름</h2>
+				<div th:text="${composer.name}">이름</div>
+				<h2>주 장르</h2>
+				<div th:text="${composer.genre}">주 장르</div>
+				<h2>자기소개</h2>
+				<div th:text="${composer.text}">자기 소개</div>
+			</div>
+
+			<div class="music-list">
+				<div class="music-player">
+					<div class="music-info">
+						<div class="album-art">
+							<img
+								src="https://post-phinf.pstatic.net/MjAxOTA4MDJfMjM1/MDAxNTY0NzE0ODEyMDk4.5nXLk7-27EPK8Q0NyLFVaeE_umpkqwfV73UWtu0ZD5Ug.j9RXuTc1EAgw66FZB0wl32sLBNaY4R9HZYvzOkei38Ag.JPEG/%EB%94%94%EB%85%B8%EB%A7%88%EB%93%9C%ED%95%99%EA%B5%90_%EC%95%84%ED%8A%B8%EB%94%94%EB%A0%89%ED%84%B0_NSH_%EC%95%A8%EB%B2%94_%EC%BB%A4%EB%B2%84_%EB%94%94%EC%9E%90%EC%9D%B8_8.jpg?type=w800_q75"
+								alt="Album Art">
+						</div>
+						<div class="music-details">
+							<div class="music-title">Song Title</div>
+							<div class="artist-name">Artist Name</div>
+						</div>
+					</div>
+					<div class="music-controls">
+						<!--  <button class="play-button">Play</button> -->
+						<!-- <img style="width: 20px" src="https://w7.pngwing.com/pngs/800/189/png-transparent-multimedia-music-play-player-song-video-multimedia-controls-solid-icon.png"> -->
+						<button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
+						<div class="time">0:00 / 3:30</div>
+						<!-- <button class="comment-button">Comment</button> -->
+					</div>
+				</div>
+				<div class="progress-bar">
+					<div class="progress"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 코멘트  -->
+		<section id="commentTitle" class="comment-container">
+			<div class="comment-container-inner" id="commentContainer">
+				<div style="width: 100%;">
+					<h2>코멘트</h2>
+				</div>
+
+				<!-- 코멘트 입력란 -->
+				<div class="commentInputBox">
+					<div th:text="${session.userNickname}" style="align-self: center;">닉네임</div>
+					<textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
+					<button id="commentBtn"
+						th:attr="data-composer-id=${composer.id},
+					        data-user-name=${session.userNickname}">코멘트
+						작성</button>
+				</div>
+
+				<!-- 댓글 목록을 표시할 영역 -->
+				<div id="comments-container"></div>
+					<!-- 댓글이 여기에 추가될 것입니다. -->
+					
+				<!-- 페이지네이션을 표시할 영역 -->
+				<div class="pagination" id="pagination">
+					<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
+				</div>
+
+				</div>
+			</div>
+		</section>
 	</main>
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
 </body>

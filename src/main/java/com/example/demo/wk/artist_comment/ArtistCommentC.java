@@ -1,4 +1,4 @@
-package com.example.demo.wk;
+package com.example.demo.wk.artist_comment;
 
 
 import java.util.List;
@@ -15,54 +15,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.wk.ComposerService;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController // JSON 형태로 객체 데이터를 반환
 @RequestMapping("/comments")
 @RequiredArgsConstructor
-public class CommentC {
+public class ArtistCommentC {
 	
-	private final CommentService commentService;
-	//private final ComposerService composerService;
+	private final ArtistCommentService commentService;
 	
-//	@GetMapping("{composerId}")
-//	public List<CommentDTO> getAllCommentsByComposerId(@PathVariable Long composerId) {
-//		System.out.println(composerId);
-//		return commentService.getAllCommentsByComposerId(composerId);
-//	}
-	
-    @GetMapping("{composerId}")
-    public List<CommentDTO> getAllCommentsByComposerIdWithPaging(
+	// 아티스트 코멘트 페이징
+    @GetMapping("/{composerId}")
+    public ArtistCommentResponseDTO getAllCommentsByComposerIdWithPaging(
             @PathVariable Long composerId,
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size) {
 
+    	List<ArtistCommentDTO> comments = commentService.getCommentsByComposerIdWithPaging(composerId, page, size);
         int totalComments = commentService.countCommentsByComposerId(composerId);
-        List<CommentDTO> comments = commentService.getCommentsByComposerIdWithPaging(composerId, page, size);
 
-        // 페이징 정보를 클라이언트에 전달하려면 필요에 따라 처리
-        System.out.println(totalComments);
-        System.out.println(comments);
         
-        return comments;
+        ArtistCommentResponseDTO responseDTO = new ArtistCommentResponseDTO();
+        responseDTO.setComments(comments);
+        responseDTO.setTotalComments(totalComments);
+        responseDTO.setPage(page);
+        responseDTO.setTotalPages((int) Math.ceil((double) totalComments / size));
+        
+        System.out.println(comments);
+        System.out.println(totalComments);
+        
+        return responseDTO;
     }
-    	
+	
+    
+    // 아티스트 코멘트 작성
     @PostMapping
-    public void insertComment(@RequestBody CommentDTO comment, Model model) {
+    public List<ArtistCommentDTO> insertComment(@RequestBody ArtistCommentDTO comment, Model model) {
+    	commentService.insertComment(comment);
+    	List<ArtistCommentDTO> comments = commentService.getAllCommentsByComposerId(comment.getComposerId());
+    	
     	System.out.println("CommentId: " + comment.getCommentId());
     	System.out.println("ComposerId: " + comment.getComposerId());
-    	System.out.println("UserName: " + comment.getUserName());
+    	System.out.println("UserNickName: " + comment.getUserNickname());
     	System.out.println("CommentContent: " + comment.getCommentContent());
     	System.out.println("CreatedAt: " + comment.getCreatedAt());
     	
-        commentService.insertComment(comment);
-        
-        List<CommentDTO> comments = commentService.getAllCommentsByComposerId(comment.getComposerId());
-        model.addAttribute("comments", comments);
-        System.out.println(comments);
+        return comments;
     }
     
-    // 코멘트 삭제
+    // 아티스트 코멘트 삭제
     @DeleteMapping("/{commentId}")
     public ResponseEntity<String> deleteCommentById(@PathVariable Long commentId) {
         try {

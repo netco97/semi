@@ -1,4 +1,4 @@
-package com.example.demo.wk;
+package com.example.demo.wk.artist_rating;
 
 import lombok.Data;
 import lombok.ToString;

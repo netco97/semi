@@ -8,8 +8,9 @@
     <header>
         <a th:href="@{/}" id="title">Home</a>
 
+ 
         <!-- 로그인 폼 -->
-        <form th:action="@{/login}" method="post" th:if="${session.id == null}">
+        <!-- <form th:action="@{/login}" method="post" th:if="${session.id == null}">
         	<div class="login-input">
 	            <label for="id">ID:</label>
 	            <input type="text" id="id" name="id" required>
@@ -21,7 +22,8 @@
 	            <a href="">회원가입</a>
 	            <a th:href="@{/getAccountAll}">회원목록</a>
             </div>
-        </form>
+        </form> -->
+
 
         <!-- 로그아웃 버튼 -->
         <div th:if="${session.id != null}">
