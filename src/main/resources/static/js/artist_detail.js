@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	// 페이지를 변경하기 전에 현재 스크롤 위치 저장
 	function storeScrollPosition() {
 		sessionStorage.setItem("scrollPosition", window.scrollY);
-		
 	}
 
 	// 새 콘텐츠가 로드된 후에 스크롤 위치 복원
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	window.addEventListener('load', () => {
 		restoreScrollPosition();
 	});
-
+//////////////////////////////////////////////////////
 	// 별점 기능
 	const stars = document.querySelectorAll('.star');
 	const ratingValue = document.getElementById('rating-value');
@@ -38,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			ratingValue.innerText = `평가: ${value}점`;
 			removeActiveStars();
 			setActiveStars(value);
+			
+			// 서버로 별점 전송
+            submitRatingToServer(value);
 		});
 
 		star.addEventListener('mouseover', () => {
@@ -62,15 +64,45 @@ document.addEventListener("DOMContentLoaded", function() {
 			stars[i].classList.add('active');
 		}
 	}
+	
+	function submitRatingToServer(rating) {
+    const composerId = 1/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
+    const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
 
+    const ratingData = {
+		ratingId: 1,
+        userFullNumber: userFullNumber,
+        composerId: composerId,
+        rating: rating
+    };
+
+    // AJAX를 사용하여 서버에 평가 전송
+    $.ajax({
+        type: "POST",
+        url: "/ratings/rate",
+        contentType: "application/json;charset=UTF-8",
+        data: JSON.stringify(ratingData),
+        success: function(result) {
+			const createdRatingID = result.ratingID;
+            console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
+        },
+        error: function(error) {
+            console.error("평가 제출 중 오류", error);
+        }
+    });
+}
+//////////////////////////////////////////////////////////	
+	// 팔로우
 	followBtn.addEventListener('click', () => {
 		alert('팔로우 되었습니다!');
 	});
 
+	// 쪽지
 	messageBtn.addEventListener('click', () => {
 		alert('쪽지를 보냈습니다!');
 	});
 
+//////////////////////////////////////////////////////
 	// 코멘트 기능
 	$(document).ready(function() {
 		// 초기 코멘트 로드
@@ -109,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			commentsContainer.empty();
 
 			$.each(comments, function(index, comment) {
+				
 				commentsContainer.append(
 					'<div class="comment-item">' +
 					'<div class="user-nickname">' + comment.userNickname + '</div>' +
@@ -121,13 +154,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			});
 		}
 		
-		
+		// 한국 시간으로 변경
 		function convertToKoreanTime(dateTimeString) {
 		    // 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
 		    var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
 		    var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
 		    return koreanDateTime;
-		}
+		}		
 
 		function displayPagination(currentPage, totalPages) {
 			var paginationContainer = $("#pagination");

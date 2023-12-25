@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.wk.artist_rating.ArtistRatingMapper">
+
+    <!-- 아티스트 평가 삽입 -->
+    <insert id="insertRating" parameterType="ArtistRatingDTO">
+        INSERT INTO ratings (Rating_id, userfullphonenumber, composer_id, rating)
+        VALUES (#{ratingId}, #{userFullNumber}, #{composerId}, #{rating})
+    </insert>
+
+    <!-- 아티스트 평균 평점 조회 -->
+    <select id="getAverageRating" parameterType="Long" resultType="double">
+        SELECT NVL(AVG(rating), 0) FROM ratings WHERE composer_id = #{composerId}
+    </select>
+    
+        <!-- 아티스트 평가 수정 -->
+    <update id="updateRating" parameterType="ArtistRatingDTO">
+        UPDATE ratings
+        SET rating = #{rating}
+        WHERE userfullphonenumber = #{userFullNumber} AND composer_id = #{composerId}
+    </update>
+
+    <!-- 아티스트 평가 삭제 -->
+    <delete id="deleteRating" parameterType="ArtistRatingDTO">
+        DELETE FROM ratings
+        WHERE userfullphonenumber = #{userFullNumber} AND composer_id = #{composerId}
+    </delete>
+
+</mapper>

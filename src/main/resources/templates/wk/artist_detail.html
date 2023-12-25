@@ -18,15 +18,18 @@
 			<div class="artist-profile">
 				<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
 				<img th:src="@{'/images/' + ${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진">
+				
 				<div class="rating-container">
 					<div class="rating-stars">
-						<span class="star" data-value="1">&#9733;</span> <span
-							class="star" data-value="2">&#9733;</span> <span class="star"
-							data-value="3">&#9733;</span> <span class="star" data-value="4">&#9733;</span>
+						<span class="star" data-value="1">&#9733;</span>
+						<span class="star" data-value="2">&#9733;</span>
+						<span class="star" data-value="3">&#9733;</span>
+						<span class="star" data-value="4">&#9733;</span>
 						<span class="star" data-value="5">&#9733;</span>
 					</div>
 					<p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
 				</div>
+				
 				<div class="artist-profile-funtion">
 					<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
 					<!-- HTML 요소에 직접 th:if를 사용합니다. -->
