@@ -1,7 +1,6 @@
 package com.example.demo.wk.artist_comment;
 
 import java.time.LocalDateTime;
-
 import lombok.Data;
 import lombok.ToString;
 
@@ -21,8 +20,6 @@ public class ArtistCommentDTO {
     	this.composerId = composerId;
     	this.userNickname = userNickname;
     	this.commentContent = commentContent;
+    	this.createdAt = LocalDateTime.now();
     }
-    
 }
-
-

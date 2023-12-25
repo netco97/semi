@@ -113,12 +113,20 @@ document.addEventListener("DOMContentLoaded", function() {
 					'<div class="comment-item">' +
 					'<div class="user-nickname">' + comment.userNickname + '</div>' +
 					'<div class="comment-content">' + comment.commentContent + '</div>' +
-					'<div class="created-at">' + comment.createdAt + '</div>' +
+					'<div class="created-at">' + convertToKoreanTime(comment.createdAt) + '</div>' +
 					'<div class="delete-btn" data-comment-id="' + comment.commentId + '">삭제</div>' +
 					'</div>'
 
 				);
 			});
+		}
+		
+		
+		function convertToKoreanTime(dateTimeString) {
+		    // 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
+		    var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
+		    var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
+		    return koreanDateTime;
 		}
 
 		function displayPagination(currentPage, totalPages) {

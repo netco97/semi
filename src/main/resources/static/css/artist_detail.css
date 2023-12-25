@@ -242,7 +242,7 @@ button:hover {
 /* 사용자 닉네임 스타일링 */
 .comment-item .user-nickname {
     font-weight: bold; /* 굵은 글꼴 */
-    color: #3366cc; /* 파란색 */
+    color: white; /* 파란색 */
 }
 
 /* 코멘트 내용 스타일링 */
@@ -262,7 +262,7 @@ button:hover {
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: #ff0000;
+  color: white;
 }
 
 #pagination {
