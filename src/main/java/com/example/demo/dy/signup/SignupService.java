@@ -31,4 +31,9 @@ public class SignupService {
     	
     	
     }
+
+	public Integer checkPhoneNumberDuplicate(String phoneNumber) {
+		return signupMapper.findByPhoneNumber(phoneNumber);
+		
+	}
 }

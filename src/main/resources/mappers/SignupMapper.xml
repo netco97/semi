@@ -4,4 +4,10 @@
     <insert id= "saveUser" parameterType="com.example.demo.dy.signup.SignupUserDTO">
         INSERT INTO UserTable VALUES(#{userFullPhoneNumber}, #{userNickname}, #{userEmail},#{userSongs},#{userStars},#{userPr},#{iscomposer})
     </insert>
+    
+    <select id="findByPhoneNumber" resultType="Integer">
+        SELECT 1
+        FROM UserTable
+        WHERE USERFULLPHONENUMBER = #{userFullPhoneNumber}
+    </select>
 </mapper>
