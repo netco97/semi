@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+
 public class GoogleLoginService {
 	private final GoogleMapper googleMapper; 
 	private final Environment env;
@@ -55,7 +56,7 @@ public class GoogleLoginService {
             System.out.println("이미 존재하는 아이디입니다.");
 
             // 여기서 UserTableFromGoogle에서 정보를 가져오는 작업 수행
-            UserTableFromGoogleDTO userTableInfo = getUserTableInfo(email);
+            UserTableFromGoogleDTO userTableInfo = userTableFromGoogleMapper.selectUserTableInfo(email);
 
             // 가져온 정보를 세션에 추가
             session.setAttribute("userTableInfo", userTableInfo);
