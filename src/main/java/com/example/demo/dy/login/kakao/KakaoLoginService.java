@@ -13,20 +13,20 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.dy.login.google.UserTableFromGoogleDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 @Service
+@RequiredArgsConstructor
 public class KakaoLoginService {
 	private final KakaoMapper kakaoMapper;
 	private final Environment env;
     private final RestTemplate restTemplate = new RestTemplate();
- 
-    public KakaoLoginService(Environment env, KakaoMapper kakaoMapper) {
-    	this.kakaoMapper = kakaoMapper;
-        this.env = env;
-    }
-    public void socialLogin(String code, String registrationId, HttpSession session) {
+    private final UserTableFromKakaoMapper userTableFromkakaoMapper;
+    
+    public String socialLogin(String code, String registrationId, HttpSession session) {
         String accessToken = getAccessToken(code, registrationId);
         System.out.println("112213123213213213123123");
         System.out.println("accessToken = " + accessToken);
@@ -53,6 +53,16 @@ public class KakaoLoginService {
             // 이미 존재하는 사용자에 대한 추가 작업 수행
             
             
+            UserTableFromKakaoDTO userTableInfo = userTableFromkakaoMapper.selectUserTableInfo(email);
+            
+            session.setAttribute("userFullPhoneNumber",userTableInfo.getUserFullPhoneNumber());
+            session.setAttribute("userEmail", userTableInfo.getUserEmail());
+            session.setAttribute("userNickname", userTableInfo.getUserNickname());
+
+            
+            // 홈페이지로 보내고싶어양
+             return "success";
+            
             
             
             
@@ -61,14 +71,22 @@ public class KakaoLoginService {
 
             if (kakaoMapper.RegUser(newUser) == 1) {
                 System.out.println("Kakao 테이블 등록 성공");
-            } else {
-                System.out.println("Kakao 테이블 등록 실패");
             }
+                session.setAttribute("userId", id);
+                session.setAttribute("userEmail", email);
+                session.setAttribute("userNickname", nickname);
+
+               
+               
+                return "signup"; 
+                
+                
+                
+            
+            
         }
 
-        session.setAttribute("userId", id);
-        session.setAttribute("userEmail", email);
-        session.setAttribute("userNickname", nickname);
+       
     }
     
 	private String getAccessToken(String authorizationCode, String registrationId) {

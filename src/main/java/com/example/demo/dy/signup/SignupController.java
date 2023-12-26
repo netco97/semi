@@ -26,7 +26,6 @@ public class SignupController {
 	        signupService.savePhoneNumber(user,httpsession);
 	        
 	        
-	        
 	        redirectAttributes.addFlashAttribute("signupSuccess", true);
 	        
 
