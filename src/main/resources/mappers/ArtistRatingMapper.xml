@@ -5,7 +5,7 @@
     <!-- 아티스트 평가 삽입 -->
     <insert id="insertRating" parameterType="ArtistRatingDTO">
         INSERT INTO ratings (Rating_id, userfullphonenumber, composer_id, rating)
-        VALUES (#{ratingId}, #{userFullNumber}, #{composerId}, #{rating})
+        VALUES (ratings_seq.NEXTVAL, #{userFullNumber}, #{composerId}, #{rating})
     </insert>
 
     <!-- 아티스트 평균 평점 조회 -->

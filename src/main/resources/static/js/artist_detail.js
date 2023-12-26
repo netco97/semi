@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
 
     const ratingData = {
-		ratingId: 1,
         userFullNumber: userFullNumber,
         composerId: composerId,
         rating: rating
