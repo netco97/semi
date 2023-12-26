@@ -60,11 +60,16 @@ public class ComposerC {
 
 		// 아티스트 등록 로직 수행
 		composerService.regComposer(composer);
+		
+		// 아티스트 등록 로직 수행
+        composerService.regComposer(composer);
 
-		// 세션에서 유저 아이디 가져오기
-		String userId = (String) session.getAttribute("userId");
-
+        // 세션의 userId를 이용해서 iscomposer를 업데이트
+        String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
+        composerService.updateIsComposer(userFullPhoneNumber);
+		
 		model.addAttribute("content", "wk/home");
+		System.out.println("아티스트 등록 성공!");
 		System.out.println(composer);
 		return "wk/index";
 	}

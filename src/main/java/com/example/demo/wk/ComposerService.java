@@ -17,10 +17,9 @@ public class ComposerService {
 	
 	public void regComposer(ComposerDTO composer) {
         composerMapper.regComposer(composer);
-        updateIsComposer(ComposerDTO.getUserId()); // ComposerDTO에 getUserId() 메서드가 있다고 가정합니다.
     }
 	
-    private void updateIsComposer(String userId) {
-        composerMapper.updateUserIsComposer(userId);
+    public void updateIsComposer(String userFullPhoneNumber) {
+        composerMapper.updateUserIsComposer(userFullPhoneNumber);
     }
 }
