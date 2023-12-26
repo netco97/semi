@@ -2,26 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/04_Login.css">
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간편 로그인</title>
+    <link rel="stylesheet" href="css/04_Login.css">
+
 </head>
 
 <body>
-	<div id="container">
-		<div id="section">
-		
-			<div id="article" style="background: #e16060" onclick="google();"></div>
-			<div id="article" style="background: white" onclick="kakao();"></div>
-			<div id="article" style="background: #4b4949"></div>
-		</div>
-	</div>
+    <div id="container">
+        <div id="section">
+            <h2>간편 로그인</h2>
+            <p>다양한 방법으로 간편하게 로그인하세요.</p>
 
+            <div id="article" onclick="google();">
+                <img src="loginbutton/web_light_sq_ctn@2x.png" alt="Google 아이콘">
+               
+            </div>
 
+            <div id="article" onclick="kakao();">
+                <img src="loginbutton/kakao_login_large_narrow.png" alt="Kakao 아이콘">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/04_Login.js"></script>
 </body>
-<script src="js/04_Login.js"></script>
-
 
 </html>
