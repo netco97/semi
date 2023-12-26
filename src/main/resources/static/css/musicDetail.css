@@ -3,31 +3,34 @@ body {
 }
 
 .container {
-  margin-top: 5%; /* 여기서 조절 가능 */
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+     margin-top: 5%;
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: black;
 }
 
 .content {
-  width: 75%;
-  padding: 0 15%;
+  width: 100%;
+  
   box-sizing: border-box;
 }
 
 .musicDetail-content-music {
-  display: flex;
-  flex-direction: row;
+     display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 20%;
 }
 
 .musicDetail-items1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 왼쪽 정렬 추가 */
-  width: 80%;
-  padding: 10px;
-  box-sizing: border-box;
-  justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
+display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 13px;
+    box-sizing: border-box;
 }
 
 .musicDetail-title {
@@ -37,7 +40,7 @@ body {
 
 .musicDetail-title-img img {
   height: 100%; /* 이미지 높이 100%로 설정 */
-  width: auto; /* 이미지 너비 자동 조정 */
+  width: 100px; /* 이미지 너비 자동 조정 */
 }
 
 .musicDetail-title-img {
@@ -89,11 +92,23 @@ body {
 }
 
 .musicDetail-content-comment {
-  padding: 10px; /* 시각적 구분을 위한 여백 추가 */
+  width: 70%;
+  margin: 0 auto; /* 수평 가운데 정렬 */
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+}
+.musicDetail-content-comment-inner{
+	
 }
 
 .musicDetail-content-comment-title {
   margin-bottom: 10px; /* 여백 추가 */
+}
+.heart-filled{
+	font-size: x-large;
+	color: red;
 }
 
 .musicDetail-content-comment-input,
@@ -121,10 +136,25 @@ body {
   flex: 1;
   margin-left: 8%; /* 각 아이템 사이의 간격 조절 */
 }
-
-.musicDetail-content-comment-textInput {
-  flex: 8;
-  margin: 0 10px; /* 간격을 좌우로 조절 */
+.commentInputBox {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+#commentInput {
+    width: 60%;
+    margin: 30px;
+    resize: none;
+}
+#commentBtn {
+    background-color: #fff;
+    border-radius: 4px;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    height: 35px;
 }
 
 .musicDetail-content-comment-btn {

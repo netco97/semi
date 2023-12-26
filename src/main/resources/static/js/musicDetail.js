@@ -99,20 +99,20 @@ function songLike(song_id) {
 				console.log(response);
 
 				// 기존에 추가된 하트 모두 제거
-				$('.musicDetail-option-inner').empty();
+				$('.musicDetail-option').empty();
 
 				// 가져온 음악 정보를 사용하여 페이지를 업데이트
 				if (response == 1) {
 					// 이미 좋아요한 경우
-					$('.musicDetail-option-inner').append(`
+					$('.musicDetail-option').append(`
                         <div class="heart-filled" onclick="songLike(${song_id})">♥</div>
                         <div>평점</div>
                         <div>즐겨찾기</div>
                         <div>공유하기</div>`);
 				} else {
 					// 좋아요하지 않은 경우
-					$('.musicDetail-option-inner').append(`
-                        <div class="heart" onclick="songLike(${song_id})">♡</div>
+					$('.musicDetail-option').append(`
+                        <div class="heart-filled" onclick="songLike(${song_id})">♡</div>
                         <div>평점</div>
                         <div>즐겨찾기</div>
                         <div>공유하기</div>`);
@@ -125,4 +125,6 @@ function songLike(song_id) {
 
 	}
 }
+
+
 

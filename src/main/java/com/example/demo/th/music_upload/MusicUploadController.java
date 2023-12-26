@@ -49,7 +49,7 @@ public class MusicUploadController {
 	    instrument_result = String.join("#", musicInstrument);
 	    
 	    // Test composer_name 변수
-	    String composer_name = "sm";
+	    String composer_name = "th";
 	    int song_like = 0;
 	    
 	    // 테스트 syso
