@@ -7,18 +7,30 @@ body {
 .musicMenu-container {
 	position: relative;
 	width: 100vw;
+	height: 100vw;
+	background-color: black;
 }
 
 .musicMenu-inner {
-	width: 70%;
+	width: 100%;
 	margin: 0 auto;
 	padding: 20px;
+	background-color: black;
+}
+.musicList-menu-title{
+	font-size: x-large;
+    text-align: center;
+    width: 100%;
+	
 }
 
 .musicMenu-title {
+	color: white;
 	font-size: 24px;
 	margin-bottom: 20px;
 }
+
+
 
 .musicMenu-search {
 	background-color: black;
@@ -55,7 +67,7 @@ body {
 .musicMenu-searchOption {
   display: flex;
   justify-content: center; /* 가운데 정렬을 추가 */
-  width: 100%;
+  width: 70%;
 }
 
 .musicMenu-searchOption div {
@@ -96,6 +108,7 @@ body {
 	margin-top: 15px;
 	color: white;
 	display: none; /* 초기에 searchTag를 숨김 */
+	width: 80%
 }
 
 .musicMenu-searchTag.active {
@@ -125,7 +138,7 @@ body {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap; /* 초기에 searchTagInput을 숨김 */
-	width: 80%;
+	width: 70%;
 }
 
 .musicMenu-searchTagInput div {
@@ -148,6 +161,11 @@ body {
 	display: block; /* hidden 클래스가 없을 때 요소를 표시 */
 }
 
+.heart-filled{
+	font-size: x-large;
+	color: red;
+}
+
 
 
 
@@ -155,6 +173,8 @@ body {
 
 .musicList{
 	position: relative;	
+	background-color: black;
+	color: white;
 	
 }
 .musicList-inner {
@@ -171,7 +191,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: white;
+    color: black;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -207,15 +228,21 @@ body {
 }
 
 .audio-player {
-    width: 100%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
+    width: 70%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
 }
 
-.progress-bar {
-    height: 5px;
-    background-color: #ddd;
+audio{
+	width:100%;
+	
 }
+
 
 .musicList-title div,
 .musicList-option div {
     margin: 5px 0; /* 각 섹션의 요소들 사이의 간격 설정 */
+}
+
+.musicList-option-inner{
+	max-width: 3%;
+	
 }

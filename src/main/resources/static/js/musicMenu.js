@@ -60,7 +60,7 @@ function updateSearchTag(tags) {
 	console.log(tags);
 	tags.forEach(tag => {
 		console.log(tag);
-		$searchTag.append(`<div name='searchTag' id='${tag}' onclick="clickTag('${tag}')">${tag}</div>`);
+		$searchTag.append(`<div name='searchTag' id='${tag}' onclick="clickTag('${tag}')"><span>＋</span>${tag}</div>`);
 	});
 }
 
@@ -76,7 +76,7 @@ function clickTag(tag) {
 		selectedTags = selectedTags.filter(selectedTag => selectedTag !== tag);
 	} else {
 		// 존재하지 않는 태그인 경우 추가
-		$searchTagInput.append(`<div onclick="deleteTag('${tag}')" name='searchTagInput' id='${tag}'>${tag}</div>`);
+		$searchTagInput.append(`<div onclick="deleteTag('${tag}')" name='searchTagInput' id='${tag}'><span></span>${tag}</div>`);
 		// 배열에 추가
 		selectedTags.push(tag);
 	}
@@ -198,13 +198,17 @@ function outPutSearch(data) {
 		$musicListInfo.append(`
             <div>${song.mood_id}</div>
             <div>${song.genre_id}</div>
+            <div>${song.instrument_id}</div>
         `);
 
 		let $musicListOption = $('<div class="musicList-option"></div>');
+		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+		let heartIcon = song.isLike ? '♥' : '♡';
+
+		console.log("헡브레이커 : " + heartIcon)
+
 		$musicListOption.append(`
-            <div>♥</div>
-            <div>☆</div>
-            <div style="font-size: 10px">좋댓구</div>
+            <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">${heartIcon}</div>
         `);
 
 		// 각 섹션을 노래 컨테이너에 추가
@@ -223,23 +227,91 @@ function createAudioPlayer(audioSrc) {
 	let $audio = $('<audio controls></audio>');
 	let $source = $('<source src="' + audioSrc + '" type="audio/mp3">');
 
-	// 플레이어 UI 생성
-	let $progressBar = $('<div class="progress-bar"></div>');
 
 	// 오디오 태그와 플레이어 UI를 조합하여 플레이어 생성
 	$audio.append($source);
-	$audioPlayer.append($audio, $progressBar);
+	$audioPlayer.append($audio);
 
 
 
-	$audio.on('timeupdate', function() {
-		// 재생 시간이 업데이트될 때마다 호출되는 이벤트
-		let percentage = ($audio[0].currentTime / $audio[0].duration) * 200;
-		$progressBar.css('width', percentage + '%');
-	});
 
 	return $audioPlayer;
 }
+
+function songLike(song_id, heartElement) {
+	console.log(heartElement);
+
+	let user_id = 1;
+	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
+	if (!(user_id == "")) {
+		$.ajax({
+			type: 'GET',
+			url: 'MusicLikeC',
+			data: {
+				song_id: song_id
+			},
+			success: function(response) {
+				console.log('좋아요 정보 갱신 성공.');
+				console.log(response);
+				
+
+				// 가져온 음악 정보를 사용하여 페이지를 업데이트
+				if (response == 1) {
+					// 이미 좋아요한 경우
+					$(heartElement).html('♥');
+				} else {
+					// 좋아요하지 않은 경우
+					$(heartElement).html('♡');
+				}
+			},
+			error: function(error) {
+				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+			}
+		});
+	}
+}
+
+//function songLike(song_id) {
+//	console.log('송라이크');
+//
+//	let user_id = 1;
+//	//session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐
+//	if (!(user_id == "")) {
+//
+//
+//		$.ajax({
+//			type: 'GET',
+//			url: 'MusicLikeC', // 실제 서버 엔드포인트 주소로 변경
+//			data: {
+//				song_id: song_id
+//			},
+//			success: function(response) {
+//				console.log('좋아요 정보 갱신 성공.');
+//				console.log(response);
+//
+//				// 기존에 추가된 하트 모두 제거
+//				$('.heart-filled').filter(`[id="${song_id}"]`).empty();
+//
+//				// 가져온 음악 정보를 사용하여 페이지를 업데이트
+//				if (response == 1) {
+//					// 이미 좋아요한 경우
+//					$('.heart-filled').filter(`[id="${song_id}"]`).append(`
+//                        <div class="heart-filled" id="${song_id}" onclick="songLike(${song_id})">♥</div>
+//                       `);
+//				} else {
+//					// 좋아요하지 않은 경우
+//					$('.heart-filled').append(`
+//                        <div class="heart-filled"  id="${song_id}" onclick="songLike(${song_id})">♡</div>
+//                       `);
+//				}
+//			},
+//			error: function(error) {
+//				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+//			}
+//		});
+//
+//	}
+//}
 
 
 
