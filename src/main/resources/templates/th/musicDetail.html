@@ -41,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-			<form action="RegMusicComment" method="post">
+			<form action="RegMusicComment()" method="post">
 				<input type="hidden" name="song_id" th:value="${param.song_id}" />
 				<div class="musicDetail-content-comment">
 					<div class="musicDetail-content-comment-title">댓글</div>
@@ -64,7 +64,7 @@
 			<div class="musicDetail-content-comment-comment" th:each="comment : ${comments}">
 				<div class="musicDetail-content-comment-user">
 					<div class="musicDetail-content-comment-username"
-						th:text="${comment.fullphonenumber}">)</div>
+						th:text="${comment.userFullPhoneNumber}">)</div>
 					<div class="musicDetail-content-comment-star"></div>
 					<div class="musicDetail-content-comment-score"></div>
 				</div>

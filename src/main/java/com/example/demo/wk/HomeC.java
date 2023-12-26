@@ -11,13 +11,6 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeC {
 
-	private final AccountMapper accountMapper;
-	
-	
-	public HomeC(AccountMapper accountMapper) {
-		this.accountMapper = accountMapper;
-	}
-
     @GetMapping("/")
     public String home(Model model) {
         // 중간 페이지 내용을 설정

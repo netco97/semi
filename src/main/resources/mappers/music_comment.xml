@@ -13,8 +13,8 @@
 
 	<insert id="regComment">
 		INSERT INTO song_comment (comment_id, song_id,
-		fullphonenumber, comment_text)
-		VALUES (comment_id_seq.NEXTVAL, #{song_id}, #{fullphonenumber},
+		userFullPhoneNumber, comment_text)
+		VALUES (comment_id_seq.NEXTVAL, #{song_id}, #{userFullPhoneNumber},
 		#{comment_text})
 	</insert>
 </mapper>

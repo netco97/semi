@@ -8,7 +8,7 @@ import lombok.ToString;
 public class MusicLikeDTO {
 	private int song_like_id;
 	private int song_id;
-	private String fullPhoneNumber;
+	private String userFullPhoneNumber;
 	private int isLike;
 	
 }
