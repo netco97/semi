@@ -68,8 +68,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	function submitRatingToServer(rating) {
     const composerId = 1/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
     const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
-
     const ratingData = {
+		
+		
         userFullNumber: userFullNumber,
         composerId: composerId,
         rating: rating

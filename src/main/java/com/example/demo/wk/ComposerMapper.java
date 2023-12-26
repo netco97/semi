@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ComposerMapper {
 	
 	ComposerDTO findById(Long id);
-
+	void insertComposer(ComposerDTO composer);
 }
