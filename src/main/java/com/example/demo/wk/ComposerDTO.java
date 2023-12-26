@@ -15,6 +15,7 @@ public class ComposerDTO {
 	private String img;
 	private MultipartFile profilePicture;
 	
+	
 	// 이미지가 없을 때 기본 이미지 파일 경로 반환
 	public String getImgOrDefault() {
 		if (img != null && !img.isEmpty()) {

@@ -66,10 +66,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	
 	function submitRatingToServer(rating) {
-    const composerId = 1/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
+    //const composerId = composerId/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
     const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
     const ratingData = {
-		
 		
         userFullNumber: userFullNumber,
         composerId: composerId,
@@ -84,6 +83,10 @@ document.addEventListener("DOMContentLoaded", function() {
         data: JSON.stringify(ratingData),
         success: function(result) {
 			const createdRatingID = result.ratingID;
+			console.log(userFullNumber);
+			console.log(composerId);
+			console.log(rating);
+			
             console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
         },
         error: function(error) {

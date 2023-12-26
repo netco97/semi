@@ -60,9 +60,6 @@ public class ComposerC {
 
 		// 아티스트 등록 로직 수행
 		composerService.regComposer(composer);
-		
-		// 아티스트 등록 로직 수행
-        composerService.regComposer(composer);
 
         // 세션의 userId를 이용해서 iscomposer를 업데이트
         String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
