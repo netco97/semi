@@ -24,6 +24,9 @@ public class GoogleLoginService {
 	private final GoogleMapper googleMapper; 
 	private final Environment env;
     private final RestTemplate restTemplate = new RestTemplate();
+    private final UserTableFromGoogleMapper userTableFromGoogleMapper;
+    
+    
     
     public void socialLogin(String code, String registrationId, HttpSession session) {
         String accessToken = getAccessToken(code, registrationId);
@@ -45,36 +48,38 @@ public class GoogleLoginService {
        
         List<GoogleUserDTO> existingUsers = googleMapper.SelUser(nickname);
 
+        
+
         if (!existingUsers.isEmpty()) {
             GoogleUserDTO existingUser = existingUsers.get(0);
-            System.out.println("이미 있는 아이디입니다.");
+            System.out.println("이미 존재하는 아이디입니다.");
+
+            // 여기서 UserTableFromGoogle에서 정보를 가져오는 작업 수행
+            UserTableFromGoogleDTO userTableInfo = getUserTableInfo(email);
+
+            // 가져온 정보를 세션에 추가
+            session.setAttribute("userTableInfo", userTableInfo);
+
             
-            
-            
-            
-            
+            // 홈페이지로 보내고싶어양
+             "dw_view/home";
         } else {
+            
+        	
             GoogleUserDTO newUser = new GoogleUserDTO(id, email, nickname);
 
             if (googleMapper.RegUser(newUser) == 1) {
                 System.out.println("Google 테이블 등록 성공");
-            } else {
-                System.out.println("Google 테이블 등록 실패");
             }
+
+           
+            session.setAttribute("userId", id);
+            session.setAttribute("userEmail", email);
+            session.setAttribute("userNickname", nickname);
+
+           
+            return "signup";
         }
-        
-        
-        // 서비스에서 인증을 마친순간 세션값이 생성됨 --> 이거의 의미는 회원가입 페이지로 넘어가도 현재세션이 존재함
-        
-        
-        session.setAttribute("userId", id);
-        session.setAttribute("userEmail", email);
-        session.setAttribute("userNickname", nickname);
-        
-       
-        
-        
-    }
     
     
     
@@ -124,4 +129,5 @@ public class GoogleLoginService {
     
     
 }
+
 
