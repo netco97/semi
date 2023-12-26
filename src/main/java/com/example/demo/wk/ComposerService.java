@@ -15,17 +15,12 @@ public class ComposerService {
 		return composerMapper.findById(id);
 	}
 	
-	public void insertComposer(ComposerDTO composer) {
+	public void regComposer(ComposerDTO composer) {
         composerMapper.regComposer(composer);
-        
-//        // 유저를 아티스트로 업데이트
-//        updateUserToArtist(composer.getUserFullPhoneNumber());
-        
-        System.out.println("ComposerService" + composer);
+        updateIsComposer(ComposerDTO.getUserId()); // ComposerDTO에 getUserId() 메서드가 있다고 가정합니다.
     }
 	
-//	private void updateUserToArtist(String userFullPhoneNumber) {
-//        composerMapper.updateUserToArtist(userFullPhoneNumber);
-//    }
-
+    private void updateIsComposer(String userId) {
+        composerMapper.updateUserIsComposer(userId);
+    }
 }

@@ -59,12 +59,12 @@ public class ComposerC {
 		composer.setImg(fileName);
 
 		// 아티스트 등록 로직 수행
-		composerService.insertComposer(composer);
+		composerService.regComposer(composer);
 
 		// 세션에서 유저 아이디 가져오기
 		String userId = (String) session.getAttribute("userId");
 
-		model.addAttribute("content", "wk/artist_reg");
+		model.addAttribute("content", "wk/home");
 		System.out.println(composer);
 		return "wk/index";
 	}
