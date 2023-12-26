@@ -12,7 +12,7 @@
 				<div class="musicDetail-items1">
 					<div class="musicDetail-title">
 						<div class="musicDetail-title-img"></div>
-						<div>
+						<div style="margin-left: 70%">
 							<div class="musicDetail-title-title"></div>
 							<div class="musicDetail-title-composer"></div>
 						</div>
@@ -44,6 +44,7 @@
 			<div class="musicDetail-content-comment">
 				<div class="musicDetail-content-comment-inner">
 					<form action="RegMusicComment" method="post">
+						<input type="hidden" name="song_id" th:value="${param.song_id}" />
 
 						<div style="width: 100%;">
 							<h2>코멘트</h2>
@@ -51,11 +52,12 @@
 
 						<!-- 코멘트 입력란 -->
 						<div class="commentInputBox">
-							<div> 
-<!-- 							style="align-self: center;" -->
-<!-- 							th:text="${session.userNickname}" -->
-								닉네임</div>
-							<textarea id="commentInput"
+							<div>
+								<!-- 							style="align-self: center;" -->
+								<!-- 							th:text="${session.userNickname}" -->
+								닉네임
+							</div>
+							<textarea name="inputComment" id="commentInput"
 								placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
 							<button id="commentBtn">코멘트 작성</button>
 						</div>
