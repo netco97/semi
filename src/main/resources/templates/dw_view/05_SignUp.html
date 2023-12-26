@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 페이지</title>
     <link rel="stylesheet" th:href="@{/css/05_SignUp.css}">
-    <script src="js/05_SignUp.js"></script>
+   
 
 </head>
 
@@ -38,39 +38,43 @@
                             style="background: #4b4949" id="phoneNumberPart3" name="phoneNumberPart3">
                     </div>
 
-                    <button type="button" onclick="checkDuplicatePhoneNumber()">전송</button>
+                    <button type="button" onclick="checkDuplicatePhoneNumber();">전송</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-        function checkDuplicatePhoneNumber() {
-            const phoneNumberPart1 = document.getElementById("phoneNumberPart1").value;
-            const phoneNumberPart2 = document.getElementById("phoneNumberPart2").value;
-            const phoneNumberPart3 = document.getElementById("phoneNumberPart3").value;
-            const phoneNumber = phoneNumberPart1 + phoneNumberPart2 + phoneNumberPart3;
+    function checkDuplicatePhoneNumber() {
+        const phoneNumberPart1 = document.getElementById("phoneNumberPart1").value;
+        const phoneNumberPart2 = document.getElementById("phoneNumberPart2").value;
+        const phoneNumberPart3 = document.getElementById("phoneNumberPart3").value;
+        const phoneNumber = phoneNumberPart1 + phoneNumberPart2 + phoneNumberPart3;
+		
+        // Ajax 통신
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `/checkDuplicatePhoneNumber?phoneNumber=${phoneNumber}`, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const isDuplicate = JSON.parse(xhr.responseText);
+                    const submitButton = document.getElementById("submitButton");
 
-            // Ajax 통신
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", `/checkDuplicatePhoneNumber?phoneNumber=${phoneNumber}`, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        const isDuplicate = JSON.parse(xhr.responseText);
-                        if (isDuplicate===1) {
-                            alert("이미 등록된 전화번호입니다.");
-                        } else {
-                            // 중복이 아니면 폼을 제출
-                            document.getElementById("signupForm").submit();
-                        }
+                    if (isDuplicate === 1) {
+                        alert("이미 등록된 전화번호입니다.");
+                        submitButton.onclick = null; // onclick 비활성화
                     } else {
-                        console.error("Error:", xhr.status);
+                        // 중복이 아니면 폼을 제출
+                        document.getElementById("signupForm").submit();
                     }
+                } else {
+                    console.error("Error:", xhr.status);
                 }
-            };
-            xhr.send();
-        }
+            }
+        };
+        xhr.send();
+    }
+
 
         const phoneInputs = document.querySelectorAll(".phone-input");
         phoneInputs.forEach(function (inputElement) {
