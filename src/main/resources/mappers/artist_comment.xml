@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.wk.CommentMapper">
+<mapper namespace="com.example.demo.wk.artist_comment.ArtistCommentMapper">
 
-     <resultMap id="CommentResultMap" type="CommentDTO">
+     <resultMap id="CommentResultMap" type="ArtistCommentDTO">
         <id property="commentId" column="comment_id"/>
         <result property="composerId" column="composer_id"/>
-        <result property="userName" column="user_name"/>
+        <result property="userNickname" column="userNickname"/>
         <result property="commentContent" column="comment_content"/>
         <result property="createdAt" column="created_at" javaType="java.time.LocalDateTime"/>
     </resultMap>
@@ -33,9 +33,9 @@
     SELECT COUNT(*) FROM comments WHERE composer_id = #{composerId}
 	</select>
 
-    <insert id="insertComment" parameterType="CommentDTO">
-        INSERT INTO comments (COMPOSER_ID, USER_NAME, COMMENT_CONTENT, CREATED_AT) 
-        VALUES (#{composerId} , #{userName} , #{commentContent}, SYSDATE)
+    <insert id="insertComment" parameterType="ArtistCommentDTO">
+        INSERT INTO comments (COMPOSER_ID, USERNICKNAME, COMMENT_CONTENT, CREATED_AT) 
+        VALUES (#{composerId} , #{userNickname} , #{commentContent}, SYSDATE)
     </insert>
     
     <delete id="deleteComment">

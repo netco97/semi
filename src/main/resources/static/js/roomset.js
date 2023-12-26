@@ -1,10 +1,11 @@
 var stompClient = null;
-let sessionId;
+
 let followerId;
 let roomId;
 
 function createChatroom() {
-    sessionId = document.getElementById("session_id").value;
+    //테스트용 sessionId = document.getElementById("session_id").value;
+    console.log(sessionId)
     followerId = document.getElementById("follower_id").value;
 
     var data = {
