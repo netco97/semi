@@ -29,7 +29,7 @@ public class GoogleLoginService {
     
     
     
-    public void socialLogin(String code, String registrationId, HttpSession session) {
+    public String socialLogin(String code, String registrationId, HttpSession session) {
         String accessToken = getAccessToken(code, registrationId);
         System.out.println("accessToken = " + accessToken);
         JsonNode userResourceNode = getUserResource(accessToken, registrationId);
@@ -55,15 +55,16 @@ public class GoogleLoginService {
             GoogleUserDTO existingUser = existingUsers.get(0);
             System.out.println("이미 존재하는 아이디입니다.");
 
-            // 여기서 UserTableFromGoogle에서 정보를 가져오는 작업 수행
+           
             UserTableFromGoogleDTO userTableInfo = userTableFromGoogleMapper.selectUserTableInfo(email);
 
-            // 가져온 정보를 세션에 추가
-            session.setAttribute("userTableInfo", userTableInfo);
+            session.setAttribute("userFullPhoneNumber",userTableInfo.getUserFullPhoneNumber());
+            session.setAttribute("userEmail", userTableInfo.getUserEmail());
+            session.setAttribute("userNickname", userTableInfo.getUserNickname());
 
             
             // 홈페이지로 보내고싶어양
-             "dw_view/home";
+             return "success";
         } else {
             
         	
@@ -79,7 +80,11 @@ public class GoogleLoginService {
             session.setAttribute("userNickname", nickname);
 
            
+           
             return "signup";
+            
+            }
+        
         }
     
     
