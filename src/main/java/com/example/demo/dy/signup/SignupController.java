@@ -2,6 +2,7 @@ package com.example.demo.dy.signup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +23,13 @@ public class SignupController {
 	    }
 
 	    @PostMapping("/signup")
-	    public String processSignup(@ModelAttribute SignupUserDTO user, RedirectAttributes redirectAttributes,HttpSession httpsession) {
+	    public String processSignup(@ModelAttribute SignupUserDTO user, RedirectAttributes redirectAttributes,HttpSession httpsession,Model model) {
 	        signupService.savePhoneNumber(user,httpsession);
 	        
-	        
+	        model.addAttribute("iscomposer",0);
 	        redirectAttributes.addFlashAttribute("signupSuccess", true);
 	        
-
+	        
 	        return "dw_view/home";  
 	    }
 	
