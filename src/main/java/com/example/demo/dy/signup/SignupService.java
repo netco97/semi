@@ -21,7 +21,7 @@ public class SignupService {
     }
 
     public void savePhoneNumber(SignupUserDTO user, HttpSession httpSession) {
-    	SignupUserDTO result = new SignupUserDTO(user.getFullPhoneNumber(),user.getUserNickname(),user.getUserEmail(),"0","0");
+    	SignupUserDTO result = new SignupUserDTO(user.getFullPhoneNumber(),user.getUserNickname(),user.getUserEmail(),"0","0",0);
     	
     	saveUser(result, httpSession);
     	

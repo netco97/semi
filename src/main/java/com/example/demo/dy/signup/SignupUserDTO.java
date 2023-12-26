@@ -14,6 +14,7 @@ public class SignupUserDTO {
     private String userSongs;
     private double userStars;
     private String userPr;
+    private int iscomposer;
 
     // 전화번호를 합쳐서 반환하는 메서드 추가
     public String getFullPhoneNumber() {
@@ -26,11 +27,13 @@ public class SignupUserDTO {
     }
 
     // 생성자 추가
-    public SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail, String userSongs, String userPr) {
+    public SignupUserDTO(String userFullPhoneNumber, String userNickname, String userEmail, String userSongs, String userPr,int iscomposer) {
         this.userFullPhoneNumber = userFullPhoneNumber;
         this.userNickname = userNickname;
         this.userEmail = userEmail;
         this.userSongs = userSongs;
         this.userPr = userPr;
+        this.iscomposer = iscomposer;
+        
     }
 }

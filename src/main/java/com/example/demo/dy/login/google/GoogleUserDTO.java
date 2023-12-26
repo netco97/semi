@@ -18,6 +18,7 @@ public class GoogleUserDTO {
 	private String user_email;
 	private String user_nickname;
 	
+	
 	public GoogleUserDTO(String user_id, String user_email, String user_nickname) {
 		this.user_id = user_id;
 		this.user_email = user_email;
