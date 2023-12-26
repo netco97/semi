@@ -29,6 +29,21 @@ public class MusicLikeC {
 		return result;
 	}
 	
+	@GetMapping("/MusicLikeCheckC")
+	public int MusicLikeCheck(@RequestParam("song_id")int song_id) {
+		
+		int result = musicLikeService.loadingCheckLike(song_id);
+		
+	
+		
+		return result;
+		
+		
+	}
+		
+		
+	
+	
 	
 	
 	
