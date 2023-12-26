@@ -17,7 +17,15 @@ public class ComposerService {
 	
 	public void insertComposer(ComposerDTO composer) {
         composerMapper.insertComposer(composer);
-        System.out.println(composer);
+        
+//        // 유저를 아티스트로 업데이트
+//        updateUserToArtist(composer.getUserFullPhoneNumber());
+        
+        System.out.println("ComposerService" + composer);
     }
+	
+//	private void updateUserToArtist(String userFullPhoneNumber) {
+//        composerMapper.updateUserToArtist(userFullPhoneNumber);
+//    }
 
 }

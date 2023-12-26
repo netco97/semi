@@ -10,12 +10,6 @@ function showProfilePicture(input) {
 	}
 }
 
-// 파일명 업데이트 함수
-function updateFileName(input) {
-	var fileName = input.files[0].name;
-	document.getElementById('fileName').innerText = '파일명: ' + fileName;
-}
-
 function submitForm() {
 	var form = document.getElementById('artistForm');
 	var formData = new FormData(form);
@@ -24,11 +18,6 @@ function submitForm() {
 	var introduceValue = document.querySelector('.introduce').value;
 	formData.append('introduce', introduceValue);
 
-
-	// 파일 자체를 FormData에 추가
-    var profilePicture = document.getElementById('file').files[0];
-    formData.append('profilePicture', profilePicture);
-    
 	// 파일명을 FormData에 추가
 	var fileName = document.getElementById('file').files[0].name;
 	formData.append('fileName', fileName);

@@ -1,9 +1,13 @@
 package com.example.demo.wk;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,9 +54,49 @@ public class ComposerC {
 
 	@PostMapping("artist_reg/upload")
 	public String uploadArtist(@ModelAttribute ComposerDTO composer, Model model, HttpSession session) {
-	    composerService.insertComposer(composer);
-	    model.addAttribute("content", "wk/artist_reg");
-	    System.out.println(composer);
-	    return "wk/index";
+		// 프로필 사진 저장 및 파일명 설정
+		String fileName = saveProfilePicture(composer.getProfilePicture());
+		composer.setImg(fileName);
+
+		// 아티스트 등록 로직 수행
+		composerService.insertComposer(composer);
+
+		// 세션에서 유저 아이디 가져오기
+		String userId = (String) session.getAttribute("userId");
+
+		model.addAttribute("content", "wk/artist_reg");
+		System.out.println(composer);
+		return "wk/index";
+	}
+
+	// 프로필 사진 저장 로직
+	private String saveProfilePicture(MultipartFile file) {
+		// TODO: 프로필 사진을 저장하고 파일명을 반환하는 로직 추가
+		try {
+	        // 파일이 비어있는 경우 기본 이미지 파일명 반환
+	        if (file == null || file.isEmpty()) {
+	            return "default_profile.png";
+	        }
+			// 프로필 사진을 저장할 디렉토리 경로
+			String directoryPath = "src/main/resources/static/images/profile/";
+
+			// UUID를 사용한 파일명 생성
+			String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+			// 디렉토리가 존재하지 않으면 생성
+			File directory = new File(directoryPath);
+			if (!directory.exists()) {
+				directory.mkdirs();
+			}
+
+			// 파일을 지정된 경로에 복사
+			FileCopyUtils.copy(file.getBytes(), new File(directoryPath + fileName));
+
+			return fileName; // 저장된 파일의 상대 경로를 반환
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

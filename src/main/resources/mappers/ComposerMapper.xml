@@ -17,9 +17,12 @@
     
     <insert id="insertComposer" parameterType="ComposerDTO">
 	    INSERT INTO composers (composer_id, composer_name, composer_genre, composer_text, composer_img)
-	   <!--  VALUES (composers_seq.nextval, #{name}, #{genre}, #{text}, #{img}) -->
-	    VALUES (composers_seq.nextval, #{name}, #{genre}, #{text}, 'default_profile.png')
+	    VALUES (composers_seq.nextval, #{name}, #{genre}, #{text}, #{img})
 	</insert>
+	
+<!-- 	<update id="updateUserToArtist">
+    UPDATE usertable SET iscomposer = 1 WHERE userFullPhoneNumber = #{userFullPhoneNumber}
+	</update> -->
 
     <!-- 다른 쿼리들을 추가할 수 있습니다. -->
 
