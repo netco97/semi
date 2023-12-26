@@ -15,7 +15,7 @@
         SELECT * FROM composers WHERE composer_id = #{id}
     </select>
     
-    <insert id="insertComposer" parameterType="ComposerDTO">
+    <insert id="regComposer" parameterType="ComposerDTO">
 	    INSERT INTO composers (composer_id, composer_name, composer_genre, composer_text, composer_img)
 	    VALUES (composers_seq.nextval, #{name}, #{genre}, #{text}, #{img})
 	</insert>
