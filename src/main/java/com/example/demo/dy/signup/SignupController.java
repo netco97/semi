@@ -19,11 +19,6 @@ public class SignupController {
 	
 	    @Autowired
 	    private SignupService signupService;
-
-	    @GetMapping("/signup")
-	    public String signup() {
-	        return "dw_view/05_SignUp";
-	    }
 	    
 	    @GetMapping("/checkDuplicatePhoneNumber")
 	    @ResponseBody

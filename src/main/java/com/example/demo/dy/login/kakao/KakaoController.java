@@ -35,7 +35,7 @@ public class KakaoController {
 	        } else {
 	        	
 	            // 없으면 전화번호 받으러 보내버리기~~~~
-	            return "dw_view/05_SignUp";
+	        	return "redirect:/signup";
 	        }
 	}
 

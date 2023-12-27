@@ -18,6 +18,20 @@ public class HomeC {
         return "wk/index";
     }
     
+	@GetMapping("/login")
+	public String login(Model model) {
+		
+		model.addAttribute("content", "dw_view/04_Login");
+		return "wk/index";
+	}
+	
+	@GetMapping("/signup")
+    public String signup(Model model) {
+		
+		model.addAttribute("content", "dw_view/05_SignUp");
+		
+        return "wk/index";
+    }
 //    @GetMapping("/about")
 //    public String about(Model model) {
 //        // 중간 페이지 내용을 설정
