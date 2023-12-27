@@ -3,22 +3,46 @@ package com.example.demo.th.music_like;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class MusicLikeService {
+	
+	private final HttpSession httpSession;
 
     private final MusicLikeMapper musicLikeMapper;
+    String userFullPhoneNumber = "";  
 
-    public MusicLikeService(MusicLikeMapper musicLikeMapper) {
-        this.musicLikeMapper = musicLikeMapper;
-    }
+//    public MusicLikeService(MusicLikeMapper musicLikeMapper) {
+//        this.musicLikeMapper = musicLikeMapper;
+//    }
+    
+   public int loadingCheckLike(int song_id) {
+	   userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
+	   
+	   MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);
+	   
+	   int checkLike = isLike.getIsLike();
+	   
+	   System.out.println(song_id+ "::::" + isLike.getIsLike());
+	   
+	   return checkLike;
+	   
+	   
+	   
+	   
+   }
 
-    private String userFullPhoneNumber = "2";  // 변수명을 소문자로 변경
 
     public void checkLike(int song_id) {
 
         // 좋아요를 눌렀는지 안눌렀는지 확인하기 위해 데이터를 불러옴
+    	userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
         MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);
-
+        
+        
         if (isLike != null) {
         	if(updateLike(isLike)>=1) {
         		System.out.println("LikeTable update 성공");
@@ -52,6 +76,7 @@ public class MusicLikeService {
     }
 
 	public int selLike(int song_id) {
+		userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
 		MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);
 		
 		return isLike.getIsLike();

@@ -20,7 +20,6 @@ public class ArtistRatingC {
     @PostMapping("/rate")
     public void addRating(@RequestBody ArtistRatingDTO ratingDTO) {
         artistRatingService.insertRating(ratingDTO);
-        System.out.println(ratingDTO);
     }
 
     @GetMapping("/average-rating/{composerId}")

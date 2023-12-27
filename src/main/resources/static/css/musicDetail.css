@@ -7,6 +7,8 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
+  background-color: black;
+  
 }
 
 .content {
@@ -18,6 +20,8 @@ body {
 .musicDetail-content-music {
   display: flex;
   flex-direction: row;
+  background-color: white;
+  margin-top: 5%;
 }
 
 .musicDetail-items1 {
@@ -57,9 +61,18 @@ body {
 }
 
 .musicDetail-playSpace {
+	
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
+	width: 100%;
+}
+.audio-player {
+    width: 100%; 
+}
+audio{
+	width:80%;
+	
 }
 
 .musicDetail-option {
@@ -95,6 +108,10 @@ body {
 .musicDetail-content-comment-title {
   margin-bottom: 10px; /* 여백 추가 */
 }
+.heart-filled{
+	font-size: x-large;
+	color: red;
+}
 
 .musicDetail-content-comment-input,
 .musicDetail-content-comment-comment {
@@ -120,6 +137,27 @@ body {
 .musicDetail-content-comment-nickname {
   flex: 1;
   margin-left: 8%; /* 각 아이템 사이의 간격 조절 */
+}
+
+.commentInputBox {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+#commentInput {
+    width: 60%;
+    margin: 30px;
+    resize: none;
+}
+#commentBtn {
+    background-color: #fff;
+    border-radius: 4px;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    height: 35px;
 }
 
 .musicDetail-content-comment-textInput {
