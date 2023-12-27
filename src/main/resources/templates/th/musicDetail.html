@@ -52,10 +52,10 @@
 
 						<!-- 코멘트 입력란 -->
 						<div class="commentInputBox">
-							<div>
+							<div th:text="${session.userNickname}">
 								<!-- 							style="align-self: center;" -->
-								<!-- 							th:text="${session.userNickname}" -->
-								닉네임
+															th:text="${session.userNickname}" 
+							
 							</div>
 							<textarea name="inputComment" id="commentInput"
 								placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
@@ -82,7 +82,7 @@
 						th:each="comment : ${comments}">
 						<div class="musicDetail-content-comment-user">
 							<div class="musicDetail-content-comment-username"
-								th:text="${comment.userFullPhoneNumber}">)</div>
+								th:text="${comment.user_nickName}">)</div>
 							<div class="musicDetail-content-comment-star"></div>
 							<div class="musicDetail-content-comment-score"></div>
 						</div>
