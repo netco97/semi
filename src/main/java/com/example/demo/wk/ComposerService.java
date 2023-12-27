@@ -11,15 +11,19 @@ public class ComposerService {
 	
 	private final ComposerMapper composerMapper;
 	
-	public ComposerDTO getComposerById(Long id) {
-		return composerMapper.findById(id);
+	public ComposerDTO getComposerById(String userFullPhoneNumber) {
+		return composerMapper.findById(userFullPhoneNumber);
 	}
 	
 	public void regComposer(ComposerDTO composer) {
-        composerMapper.regComposer(composer);
+        if(composerMapper.regComposer(composer)==1) {
+        	System.out.println("artist 등록 성공!!");
+        }
     }
 	
     public void updateIsComposer(String userFullPhoneNumber) {
-        composerMapper.updateUserIsComposer(userFullPhoneNumber);
+        if(composerMapper.updateUserIsComposer(userFullPhoneNumber)==1) {
+        	System.out.println("iscomposer update 성공");
+        }
     }
 }

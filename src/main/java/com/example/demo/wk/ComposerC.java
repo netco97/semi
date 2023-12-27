@@ -31,12 +31,13 @@ public class ComposerC {
 
 	private final ComposerService composerService;
 
-	@GetMapping("/artist_detail/{id}")
-	public String getComposerById(@PathVariable Long id, Model model) {
-		ComposerDTO composer = composerService.getComposerById(id);
+	/*@GetMapping("/artist_detail/{id}")
+	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
+		
+		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
 
 		// 이미지 파일의 경로 설정 (기본 이미지 포함)
-		composer.setImg(composer.getImgOrDefault());
+		composer.setComposer_img(composer.getImgOrDefault());
 
 		model.addAttribute("composer", composer);
 		System.out.println(composer);
@@ -44,6 +45,22 @@ public class ComposerC {
 		model.addAttribute("content", "wk/artist_detail");
 
 		return "wk/index";
+	}*/
+	
+	@GetMapping("/artist_detail")
+	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
+			
+			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+	
+			// 이미지 파일의 경로 설정 (기본 이미지 포함)
+			//composer.setComposer_img(composer.getImgOrDefault());
+	
+			model.addAttribute("composer", composer);
+			System.out.println(composer);
+	
+			model.addAttribute("content", "wk/artist_detail");
+	
+			return "wk/index";
 	}
 
 	@GetMapping("artist_reg")
@@ -54,20 +71,32 @@ public class ComposerC {
 
 	@PostMapping("artist_reg/upload")
 	public String uploadArtist(@ModelAttribute ComposerDTO composer, Model model, HttpSession session) {
-		// 프로필 사진 저장 및 파일명 설정
-		String fileName = saveProfilePicture(composer.getProfilePicture());
-		composer.setImg(fileName);
+		
+		
 
+		String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
+		
+		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
+		System.out.println("아티스트명 " + composer.getComposer_name());
+		System.out.println("장르 " + composer.getComposer_genre());
+		System.out.println("자기소개서 " + composer.getComposer_text());
+		System.out.println("음악 사진 " + composer.getComposer_profilePicture());
+		System.out.println("음악 사진 이름 " +composer.getComposer_profilePicture().getOriginalFilename());
+		
+		// 프로필 사진 저장 및 파일명 설정
+		String fileName = saveProfilePicture(composer.getComposer_profilePicture());
+		composer.setComposer_img(fileName);
+		
+		composer.setComposer_id(userFullPhoneNumber);
 		// 아티스트 등록 로직 수행
 		composerService.regComposer(composer);
 
+		
         // 세션의 userId를 이용해서 iscomposer를 업데이트
-        String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
         composerService.updateIsComposer(userFullPhoneNumber);
 		
+		
 		model.addAttribute("content", "wk/home");
-		System.out.println("아티스트 등록 성공!");
-		System.out.println(composer);
 		return "wk/index";
 	}
 
