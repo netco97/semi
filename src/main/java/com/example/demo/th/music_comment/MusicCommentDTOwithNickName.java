@@ -7,14 +7,13 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class MusicCommentDTO {
-
+public class MusicCommentDTOwithNickName {
 	private int comment_id;
 	private int song_id;
 	private String userFullPhoneNumber;
 	private String comment_text;
 	private Date comment_date;
+	private String user_nickName;
+	
 	
 }
-
-	

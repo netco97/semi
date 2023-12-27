@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.th.music_comment.MusicCommentDTO;
+import com.example.demo.th.music_comment.MusicCommentDTOwithNickName;
 import com.example.demo.th.music_comment.MusicCommentService;
 
 import lombok.RequiredArgsConstructor;
@@ -41,9 +42,11 @@ public class MusicC {
 	@GetMapping("/musicDetail")
 	public String musicDetail(@RequestParam("song_id") int song_id,Model model) {
 		
-		List<MusicCommentDTO> getComments = new ArrayList<>();
+		List<MusicCommentDTOwithNickName> getComments = new ArrayList<>();
 		getComments = musicCommentService.getComments(song_id);
-		System.out.println(getComments);
+		
+		
+		System.out.println("겟 커멘츠 ! : " +getComments);
 		model.addAttribute( "comments",getComments);
 		
 		return "th/musicDetail";

@@ -5,16 +5,35 @@
 
 
 
-	<select id="getComments" resultType="MusicCommentDTO">
-		select * from song_comment
-		where song_id = #{song_id}
+	<select id="getComments" resultType="MusicCommentDTOwithNickName">
+		SELECT
+		sc.COMMENT_ID,
+		sc.SONG_ID,
+		sc.USERFULLPHONENUMBER,
+		sc.COMMENT_TEXT,
+		sc.COMMENT_DATE,
+		ut.USERNICKNAME AS USER_NICKNAME
+		FROM
+		song_comment sc
+		JOIN
+		usertable ut ON sc.USERFULLPHONENUMBER = ut.USERFULLPHONENUMBER
 	</select>
 
 
 	<insert id="regComment">
 		INSERT INTO song_comment (comment_id, song_id,
 		userFullPhoneNumber, comment_text)
-		VALUES (comment_id_seq.NEXTVAL, #{song_id}, #{userFullPhoneNumber},
+		VALUES (comment_id_seq.NEXTVAL,
+		#{song_id}, #{userFullPhoneNumber},
 		#{comment_text})
 	</insert>
+
+
+	<select id="getUserNickName">
+		SELECT USER_NICKNAME
+		FROM USERTABLE
+		WHERE
+		userFullPhoneNumber = '#{userFullPhoneNumber}';
+
+	</select>
 </mapper>
