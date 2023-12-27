@@ -19,9 +19,9 @@ public class MusicCommentService {
 
 	private final MusicCommentMapper musicCommentMapper;
 
-	public List<MusicCommentDTO> getComments(int song_id) {
+	public List<MusicCommentDTOwithNickName> getComments(int song_id) {
 
-		List<MusicCommentDTO> result = musicCommentMapper.getComments(song_id);
+		List<MusicCommentDTOwithNickName> result = musicCommentMapper.getComments(song_id);
 
 		return result;
 	}
@@ -36,6 +36,17 @@ public class MusicCommentService {
 
 		musicCommentMapper.regComment(song_id, userFullPhoneNumber, comment_text);
 
+	}
+	
+	public String getUserNickName(String userFullPhoneNumber) {
+		
+		
+		String userNickName = musicCommentMapper.getUserNickName(userFullPhoneNumber);
+		
+		
+		return userFullPhoneNumber;
+		
+		
 	}
 
 //	public  regMusicComment(int song_id, String inputComment) {
