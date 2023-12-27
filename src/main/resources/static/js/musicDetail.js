@@ -106,16 +106,12 @@ function songLike(song_id) {
 					// 이미 좋아요한 경우
 					$('.musicDetail-option').append(`
                         <div class="heart-filled" onclick="songLike(${song_id})">♥</div>
-                        <div>평점</div>
-                        <div>즐겨찾기</div>
-                        <div>공유하기</div>`);
+                        `);
 				} else {
 					// 좋아요하지 않은 경우
 					$('.musicDetail-option').append(`
                         <div class="heart-filled" onclick="songLike(${song_id})">♡</div>
-                        <div>평점</div>
-                        <div>즐겨찾기</div>
-                        <div>공유하기</div>`);
+                        `);
 				}
 			},
 			error: function(error) {
