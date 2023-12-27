@@ -20,6 +20,15 @@ public class SignupController {
 	    @Autowired
 	    private SignupService signupService;
 	    
+	    @GetMapping("/signup")
+	    public String signup(Model model) {
+			
+			model.addAttribute("content", "dw_view/05_SignUp");
+			
+	        return "wk/index";
+	    }
+
+	    
 	    @GetMapping("/checkDuplicatePhoneNumber")
 	    @ResponseBody
 	    public int check(@RequestParam("phoneNumber") String phoneNumber) {

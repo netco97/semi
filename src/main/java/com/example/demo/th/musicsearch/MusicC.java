@@ -7,7 +7,9 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.th.music_comment.MusicCommentDTO;
 import com.example.demo.th.music_comment.MusicCommentService;
@@ -20,23 +22,19 @@ public class MusicC {
 
 	private final MusicService musicService;
 	private final MusicCommentService musicCommentService;
-
+	
+	
 	@GetMapping("/musicMenu")
-	  public String musicMenu(Model model) {
-        
-        // TagsDTO 는 이미 각각의 배열임;
-        // mybatis에서 매핑하면 그값을 dto의 배열에 저장함
-        // 그러면 TagsDTO가 사실 끝임
-        // 이걸 List로 만드는 필요가 없음
-        
-        
-        TagsDTO tags = new TagsDTO();
-        tags = (TagsDTO) musicService.getTags();
-        System.out.println("c test" + tags);
-        model.addAttribute("tags", tags);
-        
-        return "th/musicMenu";
-    }
+	public ModelAndView musicMenu() {
+	    TagsDTO tags = (TagsDTO) musicService.getTags();
+	    System.out.println("c test" + tags);
+
+	    ModelAndView modelAndView = new ModelAndView("wk/index");
+	    modelAndView.addObject("tags", tags);
+	    modelAndView.addObject("content", "th/musicMenu");
+
+	    return modelAndView;
+	}
 
 	@GetMapping("/musicDetail")
 	public String musicDetail(@RequestParam("song_id") int song_id,Model model) {
