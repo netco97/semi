@@ -9,6 +9,10 @@
     <div id="title">Title</div>
     <div id="music-icon"><i class="fas fa-music"></i></div>
     <div id="user-icon"><i class="far fa-smile"></i></div>
+    
+    <p th:text="${iscomposer}" style="color:white;"></p>
+    
+    
     <div th:if="${session.userFullPhoneNumber == null}" id="profile-icon">
 		<a id="simple-login" href="/login">간편 로그인</a>
 		<i class="fas fa-user"></i>
@@ -16,23 +20,20 @@
             <a href="/login">간편 로그인</a>
         </div>
     </div>
-    <div th:if="${session.userFullPhoneNumber !=null}" id="profile-icon"><i class="fas fa-user"></i>
+    
+    <div th:if="${session.userFullPhoneNumber != null}" id="profile-icon">
+        <i class="fas fa-user"></i>
         <div class="dropdown-content" id="myDropdown">
             <a href="/">마이 페이지</a>
+    		<div th:if="${session.iscomposer == 1}" id="profile-icon">
+            	<a href="/">내 프로필</a>
+    		</div>
             <a href="/">팔로우 아티스트</a>
             <a href="/">음악 보관함</a>
             <a href="/">로그아웃</a>
         </div>
     </div>
-    <div th:if="${iscomposer == 1}" id="profile-icon"><i class="fas fa-user"></i>
-		<div class="dropdown-content" id="myDropdown">
-            <a href="/">마이 페이지</a>
-            <a href="/">내 프로필</a>
-            <a href="/">팔로우 아티스트</a>
-            <a href="/">음악 보관함</a>
-            <a href="/">로그아웃</a>
-        </div>
-	</div>
+    
 </div>
 </header>
 </body>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
 public class SignupController {
@@ -38,11 +39,12 @@ public class SignupController {
 	    public String processSignup(@ModelAttribute SignupUserDTO user, RedirectAttributes redirectAttributes,HttpSession httpsession,Model model) {
 	        signupService.savePhoneNumber(user,httpsession);
 	        
-	        model.addAttribute("iscomposer",0);
+	        httpsession.setAttribute("iscomposer", 0);
+	        
 	        redirectAttributes.addFlashAttribute("signupSuccess", true);
 	        
 	        
-	        return "dw_view/home";  
+	        return "redirect:/";
 	    }
 	
 
