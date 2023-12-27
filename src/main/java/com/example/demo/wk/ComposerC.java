@@ -30,11 +30,21 @@ import lombok.RequiredArgsConstructor;
 public class ComposerC {
 
 	private final ComposerService composerService;
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+	    // 세션을 무효화하여 로그아웃 처리
+	    session.invalidate();
+	    
+	    // 로그아웃 후 리다이렉트할 경로를 지정하거나 필요에 따라 다른 처리를 수행할 수 있습니다.
+	    return "redirect:/"; // 홈 페이지로 리다이렉트하는 예시
+	}
 
-	/*@GetMapping("/artist_detail/{id}")
+	@GetMapping("/artist_detail/{userFullPhoneNumber}")
 	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
 		
 		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
 
 		// 이미지 파일의 경로 설정 (기본 이미지 포함)
 		composer.setComposer_img(composer.getImgOrDefault());
@@ -45,23 +55,23 @@ public class ComposerC {
 		model.addAttribute("content", "wk/artist_detail");
 
 		return "wk/index";
-	}*/
-	
-	@GetMapping("/artist_detail")
-	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
-			
-			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
-	
-			// 이미지 파일의 경로 설정 (기본 이미지 포함)
-			//composer.setComposer_img(composer.getImgOrDefault());
-	
-			model.addAttribute("composer", composer);
-			System.out.println(composer);
-	
-			model.addAttribute("content", "wk/artist_detail");
-	
-			return "wk/index";
 	}
+	
+//	@GetMapping("/artist_detail")
+//	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
+//			
+//			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+//	
+//			// 이미지 파일의 경로 설정 (기본 이미지 포함)
+//			//composer.setComposer_img(composer.getImgOrDefault());
+//	
+//			model.addAttribute("composer", composer);
+//			System.out.println(composer);
+//	
+//			model.addAttribute("content", "wk/artist_detail");
+//	
+//			return "wk/index";
+//	}
 
 	@GetMapping("artist_reg")
 	public String artist_reg(Model model) {
@@ -71,9 +81,6 @@ public class ComposerC {
 
 	@PostMapping("artist_reg/upload")
 	public String uploadArtist(@ModelAttribute ComposerDTO composer, Model model, HttpSession session) {
-		
-		
-
 		String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
 		
 		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);

@@ -17,7 +17,7 @@ public class ComposerService {
 	
 	public void regComposer(ComposerDTO composer) {
         if(composerMapper.regComposer(composer)==1) {
-        	System.out.println("artist 등록 성공!!");
+        	System.out.println("artist 등록 성공!");
         }
     }
 	

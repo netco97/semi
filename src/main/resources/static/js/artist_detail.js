@@ -96,20 +96,21 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 //////////////////////////////////////////////////////////	
 	// 팔로우
-	followBtn.addEventListener('click', () => {
-		alert('팔로우 되었습니다!');
-	});
+//	followBtn.addEventListener('click', () => {
+//		alert('팔로우 되었습니다!');
+//	});
 
 	// 쪽지
-	messageBtn.addEventListener('click', () => {
-		alert('쪽지를 보냈습니다!');
-	});
+//	messageBtn.addEventListener('click', () => {
+//		alert('쪽지를 보냈습니다!');
+//	});
 
 //////////////////////////////////////////////////////
 	// 코멘트 기능
 	$(document).ready(function() {
 		// 초기 코멘트 로드
 		loadComments(1);
+		
 
 		// 페이지 링크 클릭 이벤트
 		$(document).on("click", ".pagination-link", function() {
@@ -125,7 +126,8 @@ document.addEventListener("DOMContentLoaded", function() {
 				url: '/comments/' + composerId + '?page=' + page + '&size=' + size,
 				type: 'GET',
 				success: function(responseDTO) {
-					console.log('코멘트 불러오기 성공');
+					console.log('loadComments 성공');
+					console.log('composerId : ' + composerId);
 					var comments = responseDTO.comments;
 					var totalComments = responseDTO.totalComments;
 
@@ -148,9 +150,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				commentsContainer.append(
 					'<div class="comment-item">' +
 					'<div class="user-nickname">' + comment.userNickname + '</div>' +
-					'<div class="comment-content">' + comment.commentContent + '</div>' +
-					'<div class="created-at">' + convertToKoreanTime(comment.createdAt) + '</div>' +
-					'<div class="delete-btn" data-comment-id="' + comment.commentId + '">삭제</div>' +
+					'<div class="comment-content">' + comment.comment_content + '</div>' +
+					'<div class="created-at">' + convertToKoreanTime(comment.created_at) + '</div>' +
+					'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
 					'</div>'
 
 				);
@@ -204,14 +206,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		// 코멘트 작성 버튼 클릭 시 이벤트
 		$("#commentBtn").on("click", function() {
 			const composerId = $("#commentBtn").data('composer-id');
-			const userName = $("#commentBtn").data('user-name');
+			const userName = userNickname;
 			const commentContent = $("#commentInput").val();
 
 			const comment = {
-				composerId: composerId,
+				composer_id: composerId,
 				userNickname: userName,
-				commentContent: commentContent
+				comment_content: commentContent
 			};
+				console.log(composerId);
+				console.log(userName);
+				console.log(commentContent);
 
 			$.ajax({
 				type: "POST",
@@ -236,16 +241,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
 
 			if (isConfirmed) {
-				const commentId = $(this).data("comment-id");
-
+				// 클릭된 버튼의 부모 요소에서 comment_id를 가져옴
+				const commentId = $(this).data('comment-id');
 				$.ajax({
 					type: "DELETE",
 					url: "/comments/" + commentId,
 					success: function() {
+						console.log(commentId);
 						console.log("코멘트 삭제 성공");
 						loadComments(1);
 					},
 					error: function(error) {
+						console.log(commentId);
 						console.error("코멘트 삭제 실패", error);
 					}
 				})
