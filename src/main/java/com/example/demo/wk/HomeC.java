@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.th.musicsearch.TagsDTO;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -25,13 +27,8 @@ public class HomeC {
 		return "wk/index";
 	}
 	
-	@GetMapping("/signup")
-    public String signup(Model model) {
 		
-		model.addAttribute("content", "dw_view/05_SignUp");
-		
-        return "wk/index";
-    }
+	
 //    @GetMapping("/about")
 //    public String about(Model model) {
 //        // 중간 페이지 내용을 설정

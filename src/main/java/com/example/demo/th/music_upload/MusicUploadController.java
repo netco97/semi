@@ -6,6 +6,7 @@ import java.util.StringJoiner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +24,12 @@ public class MusicUploadController {
 	}
 	
 	@GetMapping("/musicUpload")
-	public String music_reg() {
+	public String music_reg(Model model) {
 		
-		return "th/musicUpload";
+		model.addAttribute("content", "th/musicUpload");
+		
+		return "wk/index";
 	}
-	
 	
 	// form 값 받는컨트롤러
 	@PostMapping("/upload")
@@ -79,7 +81,7 @@ public class MusicUploadController {
 	    musicUploadService.saveSongs(songsDTO);
 	    
 	    
-	    return "th/musicUpload";
+	    return "redirect:/musicUpload";
 	}
 	
 }
