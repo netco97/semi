@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/artist_reg.css">
 </head>
 <body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form id="artistForm" action="artist_reg/upload" method="post" enctype="multipart/form-data">
 		<main>
         <h2 class="title">아티스트 프로필 등록</h2>
         
@@ -17,14 +17,15 @@
         	<label for="file">
         	  <div class="btn-upload">사진 등록</div>
 			</label>
-        	<input type="file" id="file" name="profilePicture" accept="image/*" onchange="showProfilePicture(this)">
+        	<input type="file" id="file" name="profilePicture" accept="image/*" onchange="showProfilePicture(this); updateFileName(this);">
 			</div>
+			<p id="fileName"></p>
        	</section>
         <section>
 	       <div class="profileTitle">아티스트 명</div>
-	        <input type="text" id="musicFile" name="musicFile">
+	        <input type="text" name="name">
 	        <div class="profileTitle">주 장르</div>
-	        <select id="musicGenre" name="musicGenre" multiple>
+	        <select id="musicGenre" name="genre" multiple>
 	            <option value="pop">팝</option>
 	            <option value="dance">댄스</option>
 	            <option value="hiphop">일렉트로닉</option>
@@ -44,7 +45,7 @@
 			    <option value="etc">기타</option>
 	        </select>
 	        	<div class="profileTitle">자기 소개</div>
-	        	<textarea class="introduce"></textarea>
+	        	<textarea class="introduce" name="text"></textarea>
         	</section>
         	
 			<div class="button-box">
@@ -55,6 +56,6 @@
     </form>
     
 
-</body>
 <script type="text/javascript" src="js/artist_reg.js"></script>
+</body>
 </html>
