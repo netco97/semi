@@ -76,7 +76,7 @@ public class KakaoLoginService {
                 session.setAttribute("userEmail", userTableInfo.getUserEmail());
                 session.setAttribute("userNickname", userTableInfo.getUserNickname());
                 session.setAttribute("platform", registrationId);
-                model.addAttribute("iscomposer",userTableInfo.getIscomposer());
+                session.setAttribute("iscomposer", userTableInfo.getIscomposer());
 
                 
                 // 홈페이지로 보내고싶어양

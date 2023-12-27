@@ -31,7 +31,7 @@ public class KakaoController {
 	      if ("success".equals(kakaoResult)) {
 	            
 	        	// 존재 시에는 홈페이지로 보내기~
-	            return "dw_view/home";
+	    	  	return "redirect:/";
 	        } else {
 	        	
 	            // 없으면 전화번호 받으러 보내버리기~~~~
