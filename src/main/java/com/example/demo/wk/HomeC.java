@@ -5,8 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @Controller
 public class HomeC {
@@ -32,6 +35,39 @@ public class HomeC {
 		
         return "wk/index";
     }
+	
+	
+	
+	
+	/*@GetMapping("/logout")
+	public String logout(@SessionAttribute(name = "platform", required = false) String platform, Model model,HttpServletRequest request) {
+	    if (platform != null) {
+	        System.out.println(platform);
+	    }
+
+	    if (platform.equals("kakao")) {
+	    	
+	    	request.getSession().invalidate();
+	    	
+	    	
+
+	    	return "https://kauth.kakao.com/oauth/logout?client_id=1b89531bb1e1fe47a72f3bf99f4fd2c8&logout_redirect_uri=http://localhost:8080" ;
+	    	
+	    }
+	    
+	    model.addAttribute("content", "wk/home");
+	    return "wk/index";
+	}
+		
+		*/
+		
+		
+		
+		
+		
+		
+		
+	
 //    @GetMapping("/about")
 //    public String about(Model model) {
 //        // 중간 페이지 내용을 설정

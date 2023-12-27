@@ -27,9 +27,9 @@ public class KakaoController {
 		System.out.println("카카오컨트롤러");
 	        
 	      String kakaoResult =  kakaoLoginService.socialLogin(code,"kakao", httpsession,model);
-	        
+	        System.out.println("다스케테");
 	      if ("success".equals(kakaoResult)) {
-	            
+	            System.out.println("111111");
 	        	// 존재 시에는 홈페이지로 보내기~
 	    	  	return "redirect:/";
 	        } else {
