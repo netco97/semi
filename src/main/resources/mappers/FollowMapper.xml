@@ -2,25 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dy.follow.FollowMapper">
 
-    <!-- 팔로우 추가 -->
+    
     <insert id="insertFollow" parameterType="FollowDTO">
-        INSERT INTO follow (id, follower_composer_id, target_composer_id, created_at)
+        INSERT INTO follow (followTableId, follower_composer_id, target_composer_id, created_at)
         VALUES (follow_sequence.NEXTVAL, #{followerComposerId}, #{targetComposerId}, CURRENT_TIMESTAMP)
     </insert>
 
-    <!-- 언팔로우 -->
+    
     <delete id="deleteFollow" parameterType="FollowDTO">
         DELETE FROM follow
         WHERE id = #{id}
     </delete>
 
-    <!-- 팔로우 여부 확인 -->
+    
     <select id="existsFollow" resultType="boolean">
-        SELECT EXISTS (
-            SELECT 1
-            FROM follow
-            WHERE follower_composer_id = #{followerComposerId} AND target_composer_id = #{targetComposerId}
-        )
+       SELECT CASE
+           WHEN EXISTS (
+                  SELECT *
+                  FROM follow
+                  WHERE follower_composer_id = #{followerComposerId} AND target_composer_id = #{targetComposerId}
+              )
+           THEN 1
+           ELSE 0
+       END AS existsFollow
+FROM DUAL;
     </select>
 
 </mapper>
