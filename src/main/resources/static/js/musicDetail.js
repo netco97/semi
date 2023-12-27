@@ -33,7 +33,7 @@ function loadMusicDetailPage(songId) {
 }
 
 // 페이지 업데이트 함수
-function updateMusicDetailPage(song) {
+async function updateMusicDetailPage(song) {
 	console.log('업데이트뮤직디테일페이지')
 
 	// 음악 타이틀 및 작곡가 정보 업데이트
@@ -42,7 +42,19 @@ function updateMusicDetailPage(song) {
 	// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 	$('.musicDetail-title-composer').append(`<div onclick="location.href=''" class="musicDetail-title-composer">${song[0].composer_name}</div>`);
 	// 여기에서 좋아요 여부를 확인하고 하트 표시를 결정
-	songLike(song[0].song_id);
+		const likeCheck = await songLikeCheck(song[0].song_id);
+		
+	if (likeCheck == 1) {
+					// 이미 좋아요한 경우
+					$('.musicDetail-option').append(`
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♥</div>
+                        `);
+				} else {
+					// 좋아요하지 않은 경우
+					$('.musicDetail-option').append(`
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♡</div>
+                        `);
+                        }
 
 	// 장르, 분위기, 악기 정보 업데이트
 	$('.genre-area').text(song[0].genre_id);
@@ -78,49 +90,70 @@ function createAudioPlayer(audioSrc) {
 	});
 
 	return $audioPlayer;
+
 }
 
-function songLike(song_id) {
-	console.log('송라이크');
+async function songLike(song_id) {
+    console.log(song_id);
 
-	let user_id = 1;
-	//session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
-	if (!(user_id == "")) {
+    let user_id = 1;
+    // session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야됨
+    if (!(user_id == "")) {
+        try {
+            const response = await $.ajax({
+                type: 'GET',
+                url: 'MusicLikeC',
+                data: {
+                    song_id: song_id
+                }
+            });
 
+            console.log('좋아요 정보 갱신 성공.');
+            console.log(response);
 
-		$.ajax({
-			type: 'GET',
-			url: 'MusicLikeC', // 실제 서버 엔드포인트 주소로 변경
-			data: {
-				song_id: song_id
-			},
-			success: function(response) {
-				console.log('좋아요 정보 갱신 성공.');
-				console.log(response);
+            // 기존에 추가된 하트 모두 제거
+            $('.musicDetail-option').empty();
 
-				// 기존에 추가된 하트 모두 제거
-				$('.musicDetail-option').empty();
-
-				// 가져온 음악 정보를 사용하여 페이지를 업데이트
-				if (response == 1) {
-					// 이미 좋아요한 경우
-					$('.musicDetail-option').append(`
-                        <div class="heart-filled" onclick="songLike(${song_id})">♥</div>
-                        `);
-				} else {
-					// 좋아요하지 않은 경우
-					$('.musicDetail-option').append(`
-                        <div class="heart-filled" onclick="songLike(${song_id})">♡</div>
-                        `);
-				}
-			},
-			error: function(error) {
-				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
-			}
-		});
-
-	}
+            // 가져온 음악 정보를 사용하여 페이지를 업데이트
+            if (response == 1) {
+                // 이미 좋아요한 경우
+                $('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♥</div>`);
+            } else {
+                // 좋아요하지 않은 경우
+                $('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♡</div>`);
+            }
+        } catch (error) {
+            console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+        }
+    }
 }
 
+async function songLikeCheck(song_id) {
+    console.log(song_id);
 
+    try {
+        const response = await $.ajax({
+            type: 'GET',
+            url: 'MusicLikeCheckC',
+            data: {
+                song_id: song_id
+            }
+        });
 
+        console.log('좋아요 정보 불러오기 성공.');
+        console.log("라이크 체크 :" +response);
+
+        if (response == 1) {
+            console.log("리스폰 확인 : " + response);
+            // 이미 좋아요한 경우
+            return 1;
+        } else {
+            // 좋아요하지 않은 경우
+            return 0;
+        }
+    } catch (error) {
+        console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+        return 0; // 에러 발생 시 기본적으로 좋아요하지 않은 것으로 처리
+    }
+}
+	
