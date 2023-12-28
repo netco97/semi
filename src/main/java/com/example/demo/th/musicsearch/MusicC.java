@@ -45,8 +45,9 @@ public class MusicC {
 		
 		
 		System.out.println("겟 커멘츠 ! : " +getComments);
-		model.addAttribute( "comments",getComments);
+		model.addAttribute("comments",getComments);
+		model.addAttribute("content", "th/musicDetail");
 		
-		return "th/musicDetail";
+		return "wk/index";
 	}
 }
