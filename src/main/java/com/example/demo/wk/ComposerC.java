@@ -31,15 +31,45 @@ public class ComposerC {
 
 	private final ComposerService composerService;
 	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-	    // 세션을 무효화하여 로그아웃 처리
-	    session.invalidate();
+	@GetMapping("/artist_main")
+	public String getArtistMainPage(Model model) {
+	    // 아티스트 목록을 가져옴
+	    List<ComposerDTO> artistList = composerService.getAllArtists();
 	    
-	    // 로그아웃 후 리다이렉트할 경로를 지정하거나 필요에 따라 다른 처리를 수행할 수 있습니다.
-	    return "redirect:/"; // 홈 페이지로 리다이렉트하는 예시
+	    // 아티스트 목록을 모델에 추가
+	    model.addAttribute("artistList", artistList);
+	    
+	    // content에 artist_main을 추가
+	    model.addAttribute("content", "wk/artist_main");
+	    
+	    return "wk/index";
 	}
+	
+//	@GetMapping("/artist_main")
+//	public String getArtistMainPage(@RequestParam(name = "page", defaultValue = "1") int page,
+//	                                @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
+//	                                Model model) {
+//	    // 아티스트 목록을 가져옴 (페이징 적용)
+//	    List<ComposerDTO> artistList = composerService.getArtistsWithPagination(page, pageSize);
+//
+//	    // 전체 아티스트 수를 가져옴 (페이징 계산을 위해)
+//	    int totalArtists = composerService.getTotalArtistsCount();
+//
+//	    // 전체 페이지 수를 계산
+//	    int totalPages = (int) Math.ceil((double) totalArtists / pageSize);
+//
+//	    // 현재 페이지, 전체 페이지 수, 아티스트 목록을 모델에 추가
+//	    model.addAttribute("currentPage", page);
+//	    model.addAttribute("totalPages", totalPages);
+//	    model.addAttribute("artistList", artistList);
+//
+//	    // content에 artist_main을 추가
+//	    model.addAttribute("content", "wk/artist_main");
+//
+//	    return "wk/index";
+//	}
 
+	
 	@GetMapping("/artist_detail/{userFullPhoneNumber}")
 	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
 		
