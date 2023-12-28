@@ -54,5 +54,12 @@
 		SELECT * FROM songs
 		WHERE song_id = #{song_id}
 	</select>
+	
+	<select id="getComposerMusic" resultType="SongsDTO">
+        SELECT *
+        FROM songs
+        WHERE composer_name = (SELECT composer_name FROM composers WHERE composer_id
+        = #{composer_id})
+    </select>
 
 </mapper>

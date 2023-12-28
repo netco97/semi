@@ -108,9 +108,10 @@ document.addEventListener("DOMContentLoaded", function() {
 //////////////////////////////////////////////////////
 	// 코멘트 기능
 	$(document).ready(function() {
+		var composerId = $("#commentBtn").data('composer-id');
 		// 초기 코멘트 로드
 		loadComments(1);
-		
+		loadSongs(composerId);
 
 		// 페이지 링크 클릭 이벤트
 		$(document).on("click", ".pagination-link", function() {
@@ -120,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 
 		function loadComments(page) {
-			var composerId = $("#commentBtn").data('composer-id');
 			var size = 10;
 			$.ajax({
 				url: '/comments/' + composerId + '?page=' + page + '&size=' + size,
@@ -140,6 +140,33 @@ document.addEventListener("DOMContentLoaded", function() {
 				}
 			});
 		}
+		
+		
+		function loadSongs(composerId){
+			console.log("loadSongs");
+			
+			$.ajax({
+			type: 'GET',
+			url: '/getComposerMusic',
+			data: {
+				composer_id: composerId
+			},
+			success: function(response) {
+				outPutSearch(response)
+			songLikeCheck(response.song_id)
+				console.log(response);
+				console.log("음악정보 불러오기 성공");
+				
+				
+
+				// 가져온 음악 정보를 사용하여 페이지를 업데이트
+			},
+			error: function(error) {
+				console.error('음악정보 불러오기 중 오류가 발생했습니다.');
+			}
+		});
+		}
+	
 
 		function displayComments(comments) {
 			var commentsContainer = $("#comments-container");
@@ -279,3 +306,151 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	});
 });
+
+
+/* 아티스트 뮤직 리스트 */
+
+async function songLikeCheck(song_id) {
+    try {
+        const response = await $.ajax({
+            type: 'GET',
+            url: 'MusicLikeCheckC',
+            data: {
+                song_id: song_id
+            }
+        });
+
+        console.log('좋아요 정보 불러오기 성공.');
+        console.log(response);
+
+        // 가져온 음악 정보를 사용하여 페이지를 업데이트
+        if (response == 1) {
+            console.log("리스폰 확인 : " + response)
+            // 이미 좋아요한 경우
+            return 1;
+        } else {
+            // 좋아요하지 않은 경우
+            return 0;
+        }
+    } catch (error) {
+        console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+        throw error; // 에러를 호출자에게 전파
+    }
+}
+
+async function outPutSearch(data) {
+	let $musicList = $('.musicList-inner');
+
+	// musicList 내용 초기화
+	$musicList.empty();
+
+	// 데이터의 각 노래에 대해 반복
+	 for (const song of data) {
+		// 각 노래를 표시할 HTML 엘리먼트 생성
+		let $songContainer = $('<div class="musicList-menu"></div>');
+
+		let $musicListTitle = $('<div class="musicList-title"></div>');
+		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+		$musicListTitle.append(`
+            <div>
+                <img src=img/${song.song_img} />
+            </div>
+            <div>
+                <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+              
+                <div onclick="location.href=''">${song.composer_name}</div>
+            </div>
+        `);
+
+		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
+		// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
+
+		let $musicListInfo = $('<div class="musicList-info"></div>');
+		$musicListInfo.append(`
+            <div>${song.mood_id}</div>
+            <div>${song.genre_id}</div>
+            <div>${song.instrument_id}</div>
+        `);
+
+		let $musicListOption = $('<div class="musicList-option"></div>');
+		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+		console.log("체크체크! : " +song.song_id);
+		const likeCheck = await songLikeCheck(song.song_id);
+
+        console.log("이프문 위 첵라잌" + likeCheck);
+
+        if (likeCheck === 1) {
+            console.log("이프문 트루 안 : " + likeCheck);
+
+            $musicListOption.append(`
+                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
+            `);
+        } else {
+            console.log("이프문 엘즈안 : " + likeCheck);
+            $musicListOption.append(`
+                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
+            `);
+        }
+
+
+		// 각 섹션을 노래 컨테이너에 추가
+		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
+
+		// 노래 컨테이너를 musicList에 추가
+		$musicList.append($songContainer);
+	};
+}
+
+// createAudioPlayer 함수를 사용하여 오디오 플레이어를 생성하는 부분
+function createAudioPlayer(audioSrc) {
+	let $audioPlayer = $('<div class="audio-player"></div>');
+
+	// 오디오 태그 생성
+	let $audio = $('<audio controls></audio>');
+	let $source = $('<source src="' + audioSrc + '" type="audio/mp3">');
+
+
+	// 오디오 태그와 플레이어 UI를 조합하여 플레이어 생성
+	$audio.append($source);
+	$audioPlayer.append($audio);
+
+
+
+
+	return $audioPlayer;
+}
+
+function songLike(song_id, heartElement) {
+	console.log(heartElement);
+
+	let user_id = 1;
+	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
+	if (!(user_id == "")) {
+		$.ajax({
+			type: 'GET',
+			url: 'MusicLikeC',
+			data: {
+				song_id: song_id
+			},
+			success: function(response) {
+				console.log('좋아요 정보 갱신 성공.');
+				console.log(response);
+				
+
+				// 가져온 음악 정보를 사용하여 페이지를 업데이트
+				if (response == 1) {
+					// 이미 좋아요한 경우
+					$(heartElement).html('♥');
+				} else {
+					// 좋아요하지 않은 경우
+					$(heartElement).html('♡');
+				}
+			},
+			error: function(error) {
+				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+			}
+		});
+	}
+}
+
+
