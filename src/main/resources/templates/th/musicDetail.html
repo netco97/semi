@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/musicDetail.css" />
+<script th:inline="javascript">
+	const userNickname = `[(${session.userNickname})]`;
+	
+</script>
 </head>
 <body>
 	<div class="container">
@@ -43,61 +47,89 @@
 			</div>
 			<div class="musicDetail-content-comment">
 				<div class="musicDetail-content-comment-inner">
-					<form action="RegMusicComment" method="post">
-						<input type="hidden" name="song_id" th:value="${param.song_id}" />
+					<!-- 					<form action="RegMusicComment" method="post"> -->
+					<!-- 						<input type="hidden" name="song_id" th:value="${param.song_id}" /> -->
 
-						<div style="width: 100%;">
-							<h2>코멘트</h2>
-						</div>
+					<!-- 						<div style="width: 100%;"> -->
+					<!-- 							<h2>코멘트</h2> -->
+					<!-- 						</div> -->
 
-						<!-- 코멘트 입력란 -->
-						<div class="commentInputBox">
-							<div th:text="${session.userNickname}">
-								<!-- 							style="align-self: center;" -->
-															th:text="${session.userNickname}" 
-							
+					<!-- 						코멘트 입력란 -->
+					<!-- 						<div class="commentInputBox"> -->
+					<!-- 							<div th:text="${session.userNickname}"> -->
+					<!-- 															style="align-self: center;" -->
+					<!-- 								th:text="${session.userNickname}" -->
+
+					<!-- 							</div> -->
+					<!-- 							<textarea name="inputComment" id="commentInput" -->
+					<!-- 								placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea> -->
+					<!-- 							<button id="commentBtn">코멘트 작성</button> -->
+					<!-- 						</div> -->
+					<!-- 												<input type="hidden" name="song_id" th:value="${param.song_id}" /> -->
+					<!-- 												<div class="musicDetail-content-comment-title">코멘트</div> -->
+
+					<!-- 												<div class="musicDetail-content-comment-input"> -->
+					<!-- 													<div class="musicDetail-content-comment-inputinner"> -->
+					<!-- 														<div class="musicDetail-content-comment-nickname">닉네임</div> -->
+					<!-- 														<div class="musicDetail-content-comment-textInput"> -->
+					<!-- 															<input name="inputComment" /> -->
+					<!-- 														</div> -->
+					<!-- 														<div class="musicDetail-content-comment-btn"> -->
+					<!-- 															<button>등록</button> -->
+					<!-- 														</div> -->
+					<!-- 													</div> -->
+					<!-- 												</div> -->
+					<!-- 					</form> -->
+
+					<!-- 코멘트  -->
+					<section id="commentTitle" class="comment-container">
+						<div class="comment-container-inner" id="commentContainer">
+							<div style="width: 100%;">
+								<h2>코멘트</h2>
 							</div>
-							<textarea name="inputComment" id="commentInput"
-								placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-							<button id="commentBtn">코멘트 작성</button>
-						</div>
-						<!-- 						<input type="hidden" name="song_id" th:value="${param.song_id}" /> -->
-						<!-- 						<div class="musicDetail-content-comment-title">코멘트</div> -->
 
-						<!-- 						<div class="musicDetail-content-comment-input"> -->
-						<!-- 							<div class="musicDetail-content-comment-inputinner"> -->
-						<!-- 								<div class="musicDetail-content-comment-nickname">닉네임</div> -->
-						<!-- 								<div class="musicDetail-content-comment-textInput"> -->
-						<!-- 									<input name="inputComment" /> -->
-						<!-- 								</div> -->
-						<!-- 								<div class="musicDetail-content-comment-btn"> -->
-						<!-- 									<button>등록</button> -->
-						<!-- 								</div> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-					</form>
-
-
-					<div class="musicDetail-content-comment-comment"
-						th:each="comment : ${comments}">
-						<div class="musicDetail-content-comment-user">
-							<div class="musicDetail-content-comment-username"
-								th:text="${comment.user_nickName}">)</div>
-							<div class="musicDetail-content-comment-star"></div>
-							<div class="musicDetail-content-comment-score"></div>
-						</div>
-						<div class="musicDetail-content-comments">
-							<div class="musicDetail-content-comment-textbox">
-								<div class="musicDetail-content-comment-text"
-									th:text="${comment.comment_text}"></div>
-								<div class="musicDetail-content-comment=like">
-									<!-- <button th:onclick="'DelMusicCommentC?song_id=' + ${comment.comment_song_id}">삭제</button>  -->
-								</div>
+							<!-- 코멘트 입력란 -->
+							<div class="commentInputBox">
+								<div th:text="${session.userNickname}"
+									style="align-self: center;">닉네임</div>
+								<textarea id="commentInput"
+									placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
+								<button id="commentBtn">코멘트 작성</button>
 							</div>
-							<div class="musicDetail-content-comment-date"
-								th:text="${#dates.format(comment.comment_date, 'yyyy-MM-dd HH:mm')}"></div>
+
+							<!-- 댓글 목록을 표시할 영역 -->
+							<div id="comments-container"></div>
+							<!-- 댓글이 여기에 추가될 것입니다. -->
+
+							<!-- 페이지네이션을 표시할 영역 -->
+							<div class="pagination" id="pagination">
+								<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
+							</div>
+
 						</div>
-					</div>
+
+					</section>
+
+					<!-- 					<div class="musicDetail-content-comment-comment" -->
+					<!-- 						th:each="comment : ${comments}"> -->
+					<!-- 						<div class="musicDetail-content-comment-user"> -->
+					<!-- 							<div class="musicDetail-content-comment-username" -->
+					<!-- 								th:text="${comment.user_nickName}">)</div> -->
+					<!-- 							<div class="musicDetail-content-comment-star"></div> -->
+					<!-- 							<div class="musicDetail-content-comment-score"></div> -->
+					<!-- 						</div> -->
+					<!-- 						<div class="musicDetail-content-comments"> -->
+					<!-- 							<div class="musicDetail-content-comment-textbox"> -->
+					<!-- 								<div class="musicDetail-content-comment-text" -->
+					<!-- 									th:text="${comment.comment_text}"></div> -->
+					<!-- 								<div class="musicDetail-content-comment=like"> -->
+					<!-- 									<button th:onclick="'DelMusicCommentC?song_id=' + ${comment.comment_song_id}">삭제</button>  -->
+					<!-- 								</div> -->
+					<!-- 							</div> -->
+					<!-- 							<div class="musicDetail-content-comment-date" -->
+					<!-- 								th:text="${#dates.format(comment.comment_date, 'yyyy-MM-dd HH:mm')}"></div> -->
+					<!-- 						</div> -->
+					<!-- 					</div> -->
 				</div>
 			</div>
 		</div>

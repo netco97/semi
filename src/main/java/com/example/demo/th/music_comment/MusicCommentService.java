@@ -7,6 +7,8 @@ import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.SessionScope;
 
+import com.example.demo.wk.artist_comment.ArtistCommentDTO;
+
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -49,6 +51,18 @@ public class MusicCommentService {
 		
 	}
 
+	public List<MusicCommentDTOwithNickName> getCommentsBySongIdWithPaging(int song_id, int page, int size) {
+		 int offset = (page - 1) * size;
+	        return musicCommentMapper.getCommentsBySongIdWithPaging(song_id, offset, size);
+	}
+
+	public int countCommentsBySongId(int song_id) {
+		
+		
+		  return musicCommentMapper.countCommentsBySongId(song_id);
+	}
+
+	
 //	public  regMusicComment(int song_id, String inputComment) {
 //		
 //	}
