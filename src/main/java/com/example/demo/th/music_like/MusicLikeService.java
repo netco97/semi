@@ -25,8 +25,8 @@ public class MusicLikeService {
 	   userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
 	   
 	   if (userFullPhoneNumber == null) {
-	        
 	       
+		   return 0;
 	    }
 	   
 	   MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);

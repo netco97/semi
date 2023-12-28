@@ -35,6 +35,8 @@ public class MusicLikeC {
 		int result = musicLikeService.loadingCheckLike(song_id);
 		
 	
+		System.out.println("뮤직 라이크 체크 : " + song_id);
+		System.out.println("뮤직 라이크 체크 : " + result);
 		
 		return result;
 		
