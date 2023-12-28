@@ -16,7 +16,7 @@
 		<section class="artist-section">
 			<div class="artist-profile">
 				<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
-				<img th:src="@{'/images/profile/' + ${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진">
+				<img th:src="@{'/images/profile/' + ${composer.composer_img}}" alt="아티스트 프로필 사진">
 				
 				<div class="rating-container">
 					<div class="rating-stars">

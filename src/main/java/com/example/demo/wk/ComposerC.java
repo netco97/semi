@@ -95,7 +95,7 @@ public class ComposerC {
 		
 		
 		model.addAttribute("content", "wk/home");
-		return "wk/index";
+		return "redirect:/";
 	}
 
 	// 프로필 사진 저장 로직
