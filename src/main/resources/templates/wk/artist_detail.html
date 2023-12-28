@@ -4,14 +4,28 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 상세</title>
 <link rel="stylesheet" href="/css/artist_detail.css">
+<link rel="stylesheet" href="css/roomset.css">
+<script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
 
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
 	const composerId = `[[${composer.composer_id}]]`;
-	
+	const followerId = `[[${composer.composer_name}]]`;
 </script>
 </head>
 <body>
+	<!--채팅방 모달 세팅-->
+	<div id="myModal" class="modal">
+        <div id="modalContent" class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="websocketResult"></div>
+            <div id="messageArea" class="message-area"></div>
+            <input type="text" id="chatInput" placeholder="Type your message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    
 	<main>
 		<section class="artist-section">
 			<div class="artist-profile">
@@ -40,13 +54,13 @@
 					<button id="followBtn"
 						th:unless="${session.userFullPhoneNumber == composer.composer_id}">팔로우</button>
 					<button id="messageBtn"
-						th:unless="${session.userFullPhoneNumber == composer.composer_id}">쪽지 보내기</button>
+						th:unless="${session.userFullPhoneNumber == composer.composer_id}" onclick="createChatroom()">1:1채팅</button>
 				</div>
 			</div>
 			
 			<div class="artist-profile-text">
 				<h2>이름</h2>
-				<div th:text="${composer.composer_name}">이름</div>
+				<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
 				<h2>주 장르</h2>
 				<div th:text="${composer.composer_genre}">주 장르</div>
 				<h2>자기소개</h2>
@@ -103,6 +117,7 @@
 		</section>
 	</main>
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
+	<script type="text/javascript" src="/js/roomset.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>

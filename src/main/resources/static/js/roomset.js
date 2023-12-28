@@ -1,15 +1,12 @@
 var stompClient = null;
 
-let followerId;
-let roomId;
-
 function createChatroom() {
     //테스트용 sessionId = document.getElementById("session_id").value;
-    console.log(sessionId)
-    followerId = document.getElementById("follower_id").value;
+    console.log(userNickname)
+    console.log(followerId)
 
     var data = {
-        session_id: sessionId,
+        session_id: userNickname,
         follower_id: followerId
     };
 
@@ -138,7 +135,7 @@ function sendMessage() {
     var message = chatInput.value.trim();
 
     if (message !== "") {
-        stompClient.send("/pub/chat", {}, JSON.stringify({'sender': sessionId, 'message': message, 'roomId': roomId}));
+        stompClient.send("/pub/chat", {}, JSON.stringify({'sender': userNickname, 'message': message, 'roomId': roomId}));
         chatInput.value = "";
     }
 }
