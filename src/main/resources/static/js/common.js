@@ -1,10 +1,15 @@
 // JavaScript로 드롭다운 메뉴를 토글하는 함수
-document.getElementById("profile-icon").addEventListener("click", function () {
+document.getElementById("profile-icon").addEventListener("click", function (event) {
     var dropdown = document.getElementById("myDropdown");
-    if (window.getComputedStyle(dropdown).display === "none") {
-        dropdown.style.display = "block";
-    } else {
-        dropdown.style.display = "none";
+    var target = event.target;
+
+    // 만약 클릭한 요소가 profile-icon-link이라는 id를 가진 링크가 아니라면 실행
+    if (!target.closest('#profile-icon-link')) {
+        if (window.getComputedStyle(dropdown).display === "none") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
     }
 });
 
