@@ -51,7 +51,9 @@ public class MusicUploadController {
 	    instrument_result = String.join("#", musicInstrument);
 	    
 	    // Test composer_name 변수
-	    String composer_name = "wk";
+
+	    String composer_name = "wk2";
+
 	    int song_like = 0;
 	    
 	    // 테스트 syso

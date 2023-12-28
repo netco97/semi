@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/artist_main.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <!-- Left Side -->
+            <div class="left-side">
+                <!-- Artist Registration Box -->
+                <div class="artist-box">
+                    <h2>아티스트 등록</h2>
+                    <!-- Add your artist registration form here -->
+                </div>
+
+                <!-- Production Box -->
+                <div class="production-box">
+                    <h2>프로덕션 관련 아티스트</h2>
+                    <!-- Add your production-related content here -->
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="right-side">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <h2>아티스트 검색</h2>
+                    <input type="text" id="searchInput" placeholder="Search...">
+                </div>
+
+                <!-- Artist List Container -->
+                <div>
+                    <!-- <h2>아티스트 목록</h2> -->
+                    <ul>
+                        <!-- Iterate over the artistList and display artist information -->
+                        <li th:each="artist : ${artistList}">
+                            <a th:href="@{/artist_detail/{userFullPhoneNumber}(userFullPhoneNumber=${artist.composer_id})}">
+                                <img th:src="@{'/images/profile/' + ${artist.getImgOrDefault()}}" alt="Artist Profile">
+                                <span th:text="${artist.composer_name}"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/artist_main.js"></script>
+</body>
+</html>

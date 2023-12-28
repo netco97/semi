@@ -46,14 +46,19 @@ public class MusicSearchC {
     	return result;
     }
     
+
     @GetMapping("/getComposerMusic")
     public List<SongsDTO> getComposerMusic(@RequestParam("composer_id") String composer_id){
 
+    		System.out.println("작곡가 이름 :::::"+ composer_id);
+    	
         List<SongsDTO> result = musicSearch_Model.getComposerMusic(composer_id);
+        
 
         return result;
 
     }
+
     
     
 }
