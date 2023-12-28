@@ -31,11 +31,13 @@ public class ArtistCommentC {
     @GetMapping("/{composer_id}")
     public ArtistCommentResponseDTO getAllCommentsByComposerIdWithPaging(
             @PathVariable String composer_id,
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "1") int page, // 페이지 번호
+            @RequestParam(defaultValue = "10") int size) { // 페이지당 코멘트 수
 
     	List<ArtistCommentDTO> comments = commentService.getCommentsByComposerIdWithPaging(composer_id, page, size);
         int totalComments = commentService.countCommentsByComposerId(composer_id);
+        
+        // 총 코멘트수
         
         ArtistCommentResponseDTO responseDTO = new ArtistCommentResponseDTO();
         responseDTO.setComments(comments);
