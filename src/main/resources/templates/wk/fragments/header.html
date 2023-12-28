@@ -28,14 +28,14 @@
             
     		<div th:if="${session.iscomposer == 1}" id="profile-icon">
             	<a href="/">내 프로필</a>
-            	<a href="/">아티스트 마이 페이지</a>
+            	<a href="/artistmypage">아티스트 마이 페이지</a>
     		</div>
     		
     		<!--여기 마이페이지 분기점 -->
     		
     		<div th:if="${session.iscomposer == 0}" id="profile-icon">
             	<a href="/artist_reg">아티스트 등록</a>
-            	<a href="/">마이 페이지</a>
+            	<a href="/mypage">마이 페이지</a>
     		</div>
     		
             <a href="/">팔로우 아티스트</a>
