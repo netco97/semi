@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 상세</title>
 <link rel="stylesheet" href="/css/artist_detail.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
 	const composerId = `[[${composer.composer_id}]]`;
@@ -103,6 +103,6 @@
 		</section>
 	</main>
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
-	<script th:inline="javascript" src="/js/artist_detail_musicMenu.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>

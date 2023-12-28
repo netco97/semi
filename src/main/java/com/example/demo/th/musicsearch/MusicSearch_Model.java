@@ -69,5 +69,15 @@ public class MusicSearch_Model {
 		
 		return result;
 	}
+
+	public List<SongsDTO> getComposerMusic(String composer_id) {
+        List<SongsDTO> result = new ArrayList<>();
+        System.out.println("composer_id : " + composer_id);
+
+        result = musicSearchMapper.getComposerMusic(composer_id);
+        System.out.println("result : " + result);
+
+        return result;
+    }
 	
 }
