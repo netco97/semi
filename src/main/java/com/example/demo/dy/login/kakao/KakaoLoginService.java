@@ -62,8 +62,9 @@ public class KakaoLoginService {
                  session.setAttribute("userEmail", email);
                  session.setAttribute("userNickname", nickname);
                  session.setAttribute("platform", registrationId);
-
+                 session.setAttribute("accessToken",accessToken );
                 
+                 
                 
                  return "signup"; 
             	
@@ -77,6 +78,7 @@ public class KakaoLoginService {
                 session.setAttribute("userNickname", userTableInfo.getUserNickname());
                 session.setAttribute("platform", registrationId);
                 session.setAttribute("iscomposer", userTableInfo.getIscomposer());
+                session.setAttribute("accessToken",accessToken );
 
                 
                 // 홈페이지로 보내고싶어양
@@ -96,7 +98,7 @@ public class KakaoLoginService {
                 session.setAttribute("userEmail", email);
                 session.setAttribute("userNickname", nickname);
                 session.setAttribute("platform", registrationId);
-
+                session.setAttribute("accessToken",accessToken );
                
                
                 return "signup"; 

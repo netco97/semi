@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 public class ComposerC {
 
 	private final ComposerService composerService;
-
+  
 	@GetMapping("/artist_detail/{userFullPhoneNumber}")
 	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
 		
