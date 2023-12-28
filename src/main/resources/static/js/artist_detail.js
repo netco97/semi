@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			},
 			success: function(response) {
 				outPutSearch(response)
-			songLikeCheck(response.song_id)
 				console.log(response);
 				console.log("음악정보 불러오기 성공");
 				
@@ -310,35 +309,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* 아티스트 뮤직 리스트 */
 
-async function songLikeCheck(song_id) {
-    try {
-        const response = await $.ajax({
-            type: 'GET',
-            url: 'MusicLikeCheckC',
-            data: {
-                song_id: song_id
-            }
-        });
-
-        console.log('좋아요 정보 불러오기 성공.');
-        console.log(response);
-
-        // 가져온 음악 정보를 사용하여 페이지를 업데이트
-        if (response == 1) {
-            console.log("리스폰 확인 : " + response)
-            // 이미 좋아요한 경우
-            return 1;
-        } else {
-            // 좋아요하지 않은 경우
-            return 0;
-        }
-    } catch (error) {
-        console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
-        throw error; // 에러를 호출자에게 전파
-    }
-}
+//async function songLikeCheck(song_id) {
+//	
+//	console.log("송라이크쳌 들어오나 화인~ 송아이디 :::" + song_id)
+//    try {
+//        const response = await $.ajax({
+//            type: 'GET',
+//            url: 'MusicLikeCheckC',
+//            data: {
+//                song_id: song_id
+//            }
+//        });
+//
+//        console.log('좋아요 정보 불러오기 성공.');
+//        console.log(response);
+//
+//        // 가져온 음악 정보를 사용하여 페이지를 업데이트
+//        if (response == 1) {
+//            console.log("리스폰 확인 : " + response)
+//            // 이미 좋아요한 경우
+//            return 1;
+//        } else {
+//            // 좋아요하지 않은 경우
+//            return 0;
+//        }
+//    } catch (error) {
+//        console.error('좋아요 정보 가져 못해');
+//        throw error; // 에러를 호출자에게 전파
+//    }
+//}
 
 async function outPutSearch(data) {
+	
+	console.log(data);
 	let $musicList = $('.musicList-inner');
 
 	// musicList 내용 초기화
@@ -372,29 +375,29 @@ async function outPutSearch(data) {
             <div>${song.instrument_id}</div>
         `);
 
-		let $musicListOption = $('<div class="musicList-option"></div>');
-		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
-		console.log("체크체크! : " +song.song_id);
-		const likeCheck = await songLikeCheck(song.song_id);
-
-        console.log("이프문 위 첵라잌" + likeCheck);
-
-        if (likeCheck === 1) {
-            console.log("이프문 트루 안 : " + likeCheck);
-
-            $musicListOption.append(`
-                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
-            `);
-        } else {
-            console.log("이프문 엘즈안 : " + likeCheck);
-            $musicListOption.append(`
-                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
-            `);
-        }
+//		let $musicListOption = $('<div class="musicList-option"></div>');
+//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+//		console.log("체크체크! : " +song.song_id);
+//		const likeCheck = await songLikeCheck(song.song_id);
+//
+//        console.log("이프문 위 첵라잌" + likeCheck);
+//
+//        if (likeCheck === 1) {
+//            console.log("이프문 트루 안 : " + likeCheck);
+//
+//            $musicListOption.append(`
+//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
+//            `);
+//        } else {
+//            console.log("이프문 엘즈안 : " + likeCheck);
+//            $musicListOption.append(`
+//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
+//            `);
+//        }
 
 
 		// 각 섹션을 노래 컨테이너에 추가
-		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
+		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
 
 		// 노래 컨테이너를 musicList에 추가
 		$musicList.append($songContainer);
@@ -420,37 +423,37 @@ function createAudioPlayer(audioSrc) {
 	return $audioPlayer;
 }
 
-function songLike(song_id, heartElement) {
-	console.log(heartElement);
-
-	let user_id = 1;
-	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
-	if (!(user_id == "")) {
-		$.ajax({
-			type: 'GET',
-			url: 'MusicLikeC',
-			data: {
-				song_id: song_id
-			},
-			success: function(response) {
-				console.log('좋아요 정보 갱신 성공.');
-				console.log(response);
-				
-
-				// 가져온 음악 정보를 사용하여 페이지를 업데이트
-				if (response == 1) {
-					// 이미 좋아요한 경우
-					$(heartElement).html('♥');
-				} else {
-					// 좋아요하지 않은 경우
-					$(heartElement).html('♡');
-				}
-			},
-			error: function(error) {
-				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
-			}
-		});
-	}
-}
+//function songLike(song_id, heartElement) {
+//	console.log(heartElement);
+//
+//	let user_id = 1;
+//	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
+//	if (!(user_id == "")) {
+//		$.ajax({
+//			type: 'GET',
+//			url: 'MusicLikeC',
+//			data: {
+//				song_id: song_id
+//			},
+//			success: function(response) {
+//				console.log('좋아요 정보 갱신 성공.');
+//				console.log(response);
+//				
+//
+//				// 가져온 음악 정보를 사용하여 페이지를 업데이트
+//				if (response == 1) {
+//					// 이미 좋아요한 경우
+//					$(heartElement).html('♥');
+//				} else {
+//					// 좋아요하지 않은 경우
+//					$(heartElement).html('♡');
+//				}
+//			},
+//			error: function(error) {
+//				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+//			}
+//		});
+//	}
+//}
 
 
