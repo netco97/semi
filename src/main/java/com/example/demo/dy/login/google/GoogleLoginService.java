@@ -68,6 +68,7 @@ public class GoogleLoginService {
 				session.setAttribute("userNickname", userTableInfo.getUserNickname());
 				session.setAttribute("platform", registrationId);
 				session.setAttribute("iscomposer", userTableInfo.getIscomposer());
+				System.out.println(userTableInfo.getUserFullPhoneNumber());
 
 				// 홈페이지로 보내고싶어양
 				return "success";
