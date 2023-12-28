@@ -1,5 +1,6 @@
 package com.example.demo.th.music_comment;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.Data;
@@ -13,7 +14,7 @@ public class MusicCommentDTO {
 	private int song_id;
 	private String userFullPhoneNumber;
 	private String comment_text;
-	private Date comment_date;
+	private LocalDateTime comment_date;
 	
 }
 

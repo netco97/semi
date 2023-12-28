@@ -31,6 +31,24 @@ public class ComposerC {
 
 	private final ComposerService composerService;
 
+  
+//	@GetMapping("/artist_detail/{userFullPhoneNumber}")
+//	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
+//		
+//		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+//		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
+//
+//		// 이미지 파일의 경로 설정 (기본 이미지 포함)
+//		composer.setComposer_img(composer.getImgOrDefault());
+//
+//		model.addAttribute("composer", composer);
+//		System.out.println(composer);
+//
+//		model.addAttribute("content", "wk/artist_detail");
+//
+//		return "wk/index";
+
+
 	
 	@GetMapping("/artist_main")
 	public String getArtistMainPage(Model model) {
@@ -69,41 +87,22 @@ public class ComposerC {
 //
 //	    return "wk/index";
 //	}
-
 	
-
-	@GetMapping("/artist_detail/{userFullPhoneNumber}")
-	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
-		
-		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
-		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
-
-		// 이미지 파일의 경로 설정 (기본 이미지 포함)
-		composer.setComposer_img(composer.getImgOrDefault());
-
-		model.addAttribute("composer", composer);
-		System.out.println(composer);
-
-		model.addAttribute("content", "wk/artist_detail");
-
-		return "wk/index";
+	@GetMapping("/artist_detail")
+	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
+			
+			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+	
+			// 이미지 파일의 경로 설정 (기본 이미지 포함)
+			//composer.setComposer_img(composer.getImgOrDefault());
+	
+			model.addAttribute("composer", composer);
+			System.out.println(composer);
+	
+			model.addAttribute("content", "wk/artist_detail");
+	
+			return "wk/index";
 	}
-	
-//	@GetMapping("/artist_detail")
-//	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
-//			
-//			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
-//	
-//			// 이미지 파일의 경로 설정 (기본 이미지 포함)
-//			//composer.setComposer_img(composer.getImgOrDefault());
-//	
-//			model.addAttribute("composer", composer);
-//			System.out.println(composer);
-//	
-//			model.addAttribute("content", "wk/artist_detail");
-//	
-//			return "wk/index";
-//	}
 
 	@GetMapping("artist_reg")
 	public String artist_reg(Model model) {
@@ -136,7 +135,7 @@ public class ComposerC {
 		
 		
 		model.addAttribute("content", "wk/home");
-		return "wk/index";
+		return "redirect:/";
 	}
 
 	// 프로필 사진 저장 로직

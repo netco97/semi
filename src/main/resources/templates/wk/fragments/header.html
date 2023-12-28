@@ -8,7 +8,7 @@
     <header>
     <a href="/" style="text-decoration: none;"><div id="title">Title</div></a>
     <a href="musicMenu"><div id="music-icon"><i class="fas fa-music"></i></div></a>
-    <div id="user-icon"><i class="far fa-smile"></i></div>
+    <a href="/artist_main"><div id="user-icon"><i class="far fa-smile"></i></div></a>
     
     <p th:text="${iscomposer}" style="color:white;"></p>
     
@@ -25,13 +25,19 @@
 		<a id="profile-icon-link" href="/musicUpload" style="text-decoration: none; color: white;"><i class="fas fa-solid fa-cloud-arrow-up"></i>&nbsp;</a>
         <i class="fas fa-user"></i>
         <div class="dropdown-content" id="myDropdown">
-            <a href="/">마이 페이지</a>
+            
     		<div th:if="${session.iscomposer == 1}" id="profile-icon">
             	<a href="/">내 프로필</a>
+            	<a href="/artistmypage">아티스트 마이 페이지</a>
     		</div>
+    		
+    		<!--여기 마이페이지 분기점 -->
+    		
     		<div th:if="${session.iscomposer == 0}" id="profile-icon">
             	<a href="/artist_reg">아티스트 등록</a>
+            	<a href="/mypage">마이 페이지</a>
     		</div>
+    		
             <a href="/">팔로우 아티스트</a>
             <a href="/">음악 보관함</a>
             <a href="/logout">로그아웃</a>
