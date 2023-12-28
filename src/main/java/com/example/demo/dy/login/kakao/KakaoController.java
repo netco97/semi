@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dy.login.google.GoogleLoginService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -22,7 +23,7 @@ public class KakaoController {
 	
 	
 	@GetMapping("/kakao")
-	   public String kakaoLogin(@RequestParam String code, HttpSession httpsession,Model model) {
+	   public String kakaoLogin(HttpServletRequest req, @RequestParam String code, HttpSession httpsession,Model model) {
 	        System.out.println("code 확인 : " + code);
 		System.out.println("카카오컨트롤러");
 	        
@@ -30,7 +31,10 @@ public class KakaoController {
 	        System.out.println("다스케테");
 	        
 	        
+	        
 	      if ("success".equals(kakaoResult)) {
+	    	  	System.out.println(req.getRequestURI());
+	    	  	System.out.println(req.getRequestURL());
 	            System.out.println(kakaoResult);
 	        	// 존재 시에는 홈페이지로 보내기~
 	    	  	return "redirect:/";
