@@ -30,13 +30,24 @@ import lombok.RequiredArgsConstructor;
 public class ComposerC {
 
 	private final ComposerService composerService;
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+	    // 세션을 무효화하여 로그아웃 처리
+	    session.invalidate();
+	    
+	    // 로그아웃 후 리다이렉트할 경로를 지정하거나 필요에 따라 다른 처리를 수행할 수 있습니다.
+	    return "redirect:/"; // 홈 페이지로 리다이렉트하는 예시
+	}
 
-	@GetMapping("/artist_detail/{id}")
-	public String getComposerById(@PathVariable Long id, Model model) {
-		ComposerDTO composer = composerService.getComposerById(id);
+	@GetMapping("/artist_detail/{userFullPhoneNumber}")
+	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
+		
+		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
 
 		// 이미지 파일의 경로 설정 (기본 이미지 포함)
-		composer.setImg(composer.getImgOrDefault());
+		composer.setComposer_img(composer.getImgOrDefault());
 
 		model.addAttribute("composer", composer);
 		System.out.println(composer);
@@ -45,6 +56,22 @@ public class ComposerC {
 
 		return "wk/index";
 	}
+	
+//	@GetMapping("/artist_detail")
+//	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
+//			
+//			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+//	
+//			// 이미지 파일의 경로 설정 (기본 이미지 포함)
+//			//composer.setComposer_img(composer.getImgOrDefault());
+//	
+//			model.addAttribute("composer", composer);
+//			System.out.println(composer);
+//	
+//			model.addAttribute("content", "wk/artist_detail");
+//	
+//			return "wk/index";
+//	}
 
 	@GetMapping("artist_reg")
 	public String artist_reg(Model model) {
@@ -54,20 +81,29 @@ public class ComposerC {
 
 	@PostMapping("artist_reg/upload")
 	public String uploadArtist(@ModelAttribute ComposerDTO composer, Model model, HttpSession session) {
+		String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
+		
+		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
+		System.out.println("아티스트명 " + composer.getComposer_name());
+		System.out.println("장르 " + composer.getComposer_genre());
+		System.out.println("자기소개서 " + composer.getComposer_text());
+		System.out.println("음악 사진 " + composer.getComposer_profilePicture());
+		System.out.println("음악 사진 이름 " +composer.getComposer_profilePicture().getOriginalFilename());
+		
 		// 프로필 사진 저장 및 파일명 설정
-		String fileName = saveProfilePicture(composer.getProfilePicture());
-		composer.setImg(fileName);
-
+		String fileName = saveProfilePicture(composer.getComposer_profilePicture());
+		composer.setComposer_img(fileName);
+		
+		composer.setComposer_id(userFullPhoneNumber);
 		// 아티스트 등록 로직 수행
 		composerService.regComposer(composer);
 
+		
         // 세션의 userId를 이용해서 iscomposer를 업데이트
-        String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
         composerService.updateIsComposer(userFullPhoneNumber);
 		
+		
 		model.addAttribute("content", "wk/home");
-		System.out.println("아티스트 등록 성공!");
-		System.out.println(composer);
 		return "wk/index";
 	}
 

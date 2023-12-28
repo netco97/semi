@@ -9,7 +9,7 @@ function showProfilePicture(input) {
 		reader.readAsDataURL(file);
 	}
 }
-
+/*
 function submitForm() {
 	var form = document.getElementById('artistForm');
 	var formData = new FormData(form);
@@ -23,10 +23,10 @@ function submitForm() {
 	formData.append('fileName', fileName);
 	
 	// 입력된 값들을 확인하기 위한 예제
-	console.log('아티스트 명:', formData.get('name'));
-	console.log('주 장르:', formData.get('genre'));
-	console.log('자기 소개:', formData.get('introduce'));
-	console.log('프로필 이미지:', formData.get('profilePicture'));
+	console.log('아티스트 명:', formData.get('composer_name'));
+	console.log('주 장르:', formData.get('composer_genre'));
+	console.log('자기 소개:', formData.get('composer_introduce'));
+	console.log('프로필 이미지:', formData.get('composer_profilePicture'));
 
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', form.action, true);
@@ -43,6 +43,8 @@ function submitForm() {
 	};
 
 	// 폼 데이터를 서버로 전송
+	
 	xhr.send(formData);
 
 }
+*/

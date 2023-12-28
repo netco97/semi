@@ -8,18 +8,18 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface ArtistCommentMapper {
 	
-	List<ArtistCommentDTO> getAllCommentsByComposerId(Long composerId);
+	List<ArtistCommentDTO> getAllCommentsByComposerId(String composer_id);
 	
     List<ArtistCommentDTO> getCommentsByComposerIdWithPaging(
-            @Param("composerId") Long composerId,
+            @Param("composer_id") String composer_id,
             @Param("offset") int offset,
             @Param("limit") int limit);
 
-    int countCommentsByComposerId(@Param("composerId") Long composerId);
+    int countCommentsByComposerId(@Param("composer_id") String composer_id);
 	
 	void insertComment(ArtistCommentDTO comment);
 	
-	void deleteComment(Long commentId);
+	void deleteComment(Long comment_id);
 	
 
 }

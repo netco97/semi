@@ -1,6 +1,8 @@
 package com.example.demo.th.music_like;
 
 
+import javax.print.attribute.SetOfIntegerSyntax;
+
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -22,9 +24,30 @@ public class MusicLikeService {
    public int loadingCheckLike(int song_id) {
 	   userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
 	   
-	   MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);
+	   if (userFullPhoneNumber == null) {
+	        
+	       
+	    }
 	   
+	   MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);
+	   if(isLike == null) {
+		   
+		   
+		   return 0;
+	   }
 	   int checkLike = isLike.getIsLike();
+	   
+		   
+	   
+	   System.out.println("쳇라이크 : "+ isLike.getIsLike());
+	   
+	   
+	   
+	   
+	   
+	   System.out.println("첵라이크 확인 : "+  checkLike);
+	   
+	   
 	   
 	   System.out.println(song_id+ "::::" + isLike.getIsLike());
 	   

@@ -6,20 +6,19 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class ComposerDTO {
-	private Long id;
-	private String name;
-	private String genre;
-	private String text;
-	private String img;
-	private MultipartFile profilePicture;
+	private String composer_id;
+	private String composer_name;
+	private String composer_genre;
+	private String composer_text;
+	private String composer_img;
+	private MultipartFile composer_profilePicture;
 	
 	
 	// 이미지가 없을 때 기본 이미지 파일 경로 반환
 	public String getImgOrDefault() {
-		if (img != null && !img.isEmpty()) {
-			return img;
+		if (composer_img != null && !composer_img.isEmpty()) {
+			return composer_img;
 		} else {
 			return "default_profile.png";
 		}
