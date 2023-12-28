@@ -16,6 +16,8 @@ public interface MusicSearchMapper {
 
 	List<SongsDTO> getMusicDetail(int song_id);
 
+	List<SongsDTO> getComposerMusic(String composer_id);
+
 
 
 }

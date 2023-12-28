@@ -26,7 +26,7 @@ public class MusicLikeService {
 	   
 	   if (userFullPhoneNumber == null) {
 	        
-	       
+		   return 0;
 	    }
 	   
 	   MusicLikeDTO isLike = musicLikeMapper.checkLike(song_id, userFullPhoneNumber);

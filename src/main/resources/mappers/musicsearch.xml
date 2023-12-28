@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.th.musicsearch.MusicSearchMapper">
+<mapper
+	namespace="com.example.demo.th.musicsearch.MusicSearchMapper">
 
 
 	<select id="searchTag" resultType="SongsDTO">
@@ -39,20 +40,29 @@
 		</if>
 	</select>
 
-	<select id="searchText"
-		resultType="SongsDTO">
+	<select id="searchText" resultType="SongsDTO">
 		SELECT * FROM songs
 		WHERE
-		song_name LIKE '%' || #{text} || '%' 
+		song_name LIKE '%' || #{text} || '%'
 		OR genre_id LIKE '%' || #{text} || '%'
-		OR instrument_id LIKE '%' || #{text} || '%'
+		OR instrument_id LIKE '%' ||
+		#{text} || '%'
 		OR mood_id LIKE '%' || #{text} || '%'
-		OR composer_name LIKE '%' || #{text} || '%'
+		OR composer_name
+		LIKE '%' || #{text} || '%'
 	</select>
-	
+
 	<select id="getMusicDetail" resultType="SongsDTO">
 		SELECT * FROM songs
-		WHERE song_id = #{song_id}
+		WHERE
+		song_id = #{song_id}
+	</select>
+
+	<select id="getComposerMusic" resultType="SongsDTO">
+		SELECT *
+		FROM songs
+		WHERE composer_name = (SELECT composer_name FROM composers WHERE composer_id
+		= #{composer_id})
 	</select>
 
 </mapper>
