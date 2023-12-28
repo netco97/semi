@@ -157,6 +157,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 				);
 			});
+/*			    $.each(comments, function(index, comment) {
+        // 각 코멘트를 표시하는 HTML을 생성
+        var commentHtml = '<div class="comment-item">' +
+            '<div class="user-nickname">' + comment.userNickname + '</div>' +
+            '<div class="comment-content">' + comment.comment_content + '</div>' +
+            '<div class="created-at">' + convertToKoreanTime(comment.created_at) + '</div>';
+
+        // 현재 로그인한 사용자와 코멘트를 작성한 사용자의 전화번호 비교
+        if (comment.userFullNumber === userFullNumber) {
+            // 같다면 삭제 버튼을 추가
+            commentHtml += '<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>';
+        }
+
+        // HTML을 컨테이너에 추가
+        commentHtml += '</div>';
+        commentsContainer.append(commentHtml);
+    });
+	*/		
+			
 		}
 		
 		// 한국 시간으로 변경
