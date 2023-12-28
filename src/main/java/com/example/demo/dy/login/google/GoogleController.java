@@ -26,7 +26,7 @@ public class GoogleController {
          
         if ("success".equals(googleResult)) {
             
-        	
+        	System.out.println("존재합니다 success까지 왔어");
         	// 존재 시에는 홈페이지로 보내기~
         	
         	
