@@ -1,11 +1,12 @@
 package com.example.demo.wk;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ComposerMapper {
 	
-	ComposerDTO findById(Long id);
-	void regComposer(ComposerDTO composer);
-	void updateUserIsComposer(String userId);
+	ComposerDTO findById(@Param("composer_id") String composer_id);
+	int regComposer(ComposerDTO composer);
+	int updateUserIsComposer(@Param("userFullPhoneNumber") String userFullPhoneNumber);
 }

@@ -14,20 +14,20 @@ public class ArtistCommentService {
 	private final ArtistCommentMapper commentMapper;
 	
 	// 코멘트 페이징
-    public List<ArtistCommentDTO> getCommentsByComposerIdWithPaging(Long composerId, int page, int size) {
+    public List<ArtistCommentDTO> getCommentsByComposerIdWithPaging(String composer_id, int page, int size) {
         int offset = (page - 1) * size;
-        return commentMapper.getCommentsByComposerIdWithPaging(composerId, offset, size);
+        return commentMapper.getCommentsByComposerIdWithPaging(composer_id, offset, size);
     }
 
     // 코멘트 카운트
-    public int countCommentsByComposerId(Long composerId) {
-        return commentMapper.countCommentsByComposerId(composerId);
+    public int countCommentsByComposerId(String composer_id) {
+        return commentMapper.countCommentsByComposerId(composer_id);
     }
 	
     // 코멘트 조회
-	public List<ArtistCommentDTO> getAllCommentsByComposerId(Long composerId) {
-		System.out.println(composerId);
-		return commentMapper.getAllCommentsByComposerId(composerId);
+	public List<ArtistCommentDTO> getAllCommentsByComposerId(String composer_id) {
+		System.out.println(composer_id);
+		return commentMapper.getAllCommentsByComposerId(composer_id);
 	}
 	
 	// 코멘트 입력
@@ -37,9 +37,8 @@ public class ArtistCommentService {
 	}
 	
 	// 코멘트 삭제
-	public void deleteCommentById(Long commentId) {
-		System.out.println("CommentService : " + commentId);
-		commentMapper.deleteComment(commentId);
+	public void deleteCommentById(Long comment_id) {
+		commentMapper.deleteComment(comment_id);
 	}
 
 }

@@ -17,15 +17,16 @@
         	<label for="file">
         	  <div class="btn-upload">사진 등록</div>
 			</label>
-        	<input type="file" id="file" name="profilePicture" accept="image/*" onchange="showProfilePicture(this); updateFileName(this);">
+        	<!-- <input type="file" id="file" name="composer_profilePicture" accept="image/*" onchange="showProfilePicture(this); updateFileName(this);"> -->
+        	<input type="file" id="file" name="composer_profilePicture" accept="image/*" onchange="showProfilePicture(this);">
 			</div>
 			<p id="fileName"></p>
        	</section>
         <section>
 	       <div class="profileTitle">아티스트 명</div>
-	        <input type="text" name="name">
+	        <input type="text" name="composer_name">
 	        <div class="profileTitle">주 장르</div>
-	        <select id="musicGenre" name="genre" multiple>
+	        <select id="musicGenre" name="composer_genre" multiple>
 	            <option value="pop">팝</option>
 	            <option value="dance">댄스</option>
 	            <option value="hiphop">일렉트로닉</option>
@@ -45,7 +46,7 @@
 			    <option value="etc">기타</option>
 	        </select>
 	        	<div class="profileTitle">자기 소개</div>
-	        	<textarea class="introduce" name="text"></textarea>
+	        	<textarea class="introduce" name="composer_text"></textarea>
         	</section>
         	
 			<div class="button-box">

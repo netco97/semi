@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.wk.artist_comment.ArtistCommentMapper">
 
-     <resultMap id="CommentResultMap" type="ArtistCommentDTO">
+<!--      <resultMap id="CommentResultMap" type="ArtistCommentDTO">
         <id property="commentId" column="comment_id"/>
         <result property="composerId" column="composer_id"/>
         <result property="userNickname" column="userNickname"/>
         <result property="commentContent" column="comment_content"/>
         <result property="createdAt" column="created_at" javaType="java.time.LocalDateTime"/>
-    </resultMap>
+    </resultMap> -->
     
-    <select id="getAllCommentsByComposerId" resultMap="CommentResultMap">
-        SELECT * FROM comments WHERE composer_id = #{composerId}
+    <select id="getAllCommentsByComposerId" resultType="ArtistCommentDTO">
+        SELECT * FROM comments WHERE composer_id = #{composer_id}
     </select>
     
-    <select id="getCommentsByComposerIdWithPaging" resultMap="CommentResultMap">
+    <select id="getCommentsByComposerIdWithPaging" resultType="ArtistCommentDTO">
                 <![CDATA[
         SELECT * FROM (
             SELECT c.*, ROWNUM AS rnum
             FROM (
                 SELECT * FROM comments
-                WHERE composer_id = #{composerId}
+                WHERE composer_id = #{composer_id}
                 ORDER BY created_at DESC
             ) c
             WHERE ROWNUM <= #{offset} + #{limit}
@@ -29,17 +29,17 @@
         ]]>
     </select>
     
-    <select id="countCommentsByComposerId" resultType="java.lang.Integer" parameterType="java.lang.Long">
-    SELECT COUNT(*) FROM comments WHERE composer_id = #{composerId}
+    <select id="countCommentsByComposerId" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM comments WHERE composer_id = #{composer_id}
 	</select>
 
     <insert id="insertComment" parameterType="ArtistCommentDTO">
-        INSERT INTO comments (COMPOSER_ID, USERNICKNAME, COMMENT_CONTENT, CREATED_AT) 
-        VALUES (#{composerId} , #{userNickname} , #{commentContent}, SYSDATE)
+        INSERT INTO comments (composer_id, userNickname, comment_content, CREATED_AT) 
+        VALUES (#{composer_id} , #{userNickname} , #{comment_content}, SYSDATE)
     </insert>
     
     <delete id="deleteComment">
-    	DELETE FROM comments WHERE comment_id = #{commentId}
+    	DELETE FROM comments WHERE comment_id = #{comment_id}
     </delete>
     
 </mapper>

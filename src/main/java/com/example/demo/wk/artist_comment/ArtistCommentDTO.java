@@ -5,21 +5,20 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class ArtistCommentDTO {
-    private Long commentId;
-    private Long composerId;
+    private Long comment_id;
+    private String composer_id;
     private String userNickname;
-    private String commentContent;
-    private LocalDateTime createdAt;
+    private String comment_content;
+    private LocalDateTime created_at;
     
     public ArtistCommentDTO() {
     }
     
-    public ArtistCommentDTO(Long composerId, String userNickname, String commentContent) {
-    	this.composerId = composerId;
+    public ArtistCommentDTO(String composer_id, String userNickname, String comment_content) {
+    	this.composer_id = composer_id;
     	this.userNickname = userNickname;
-    	this.commentContent = commentContent;
-    	this.createdAt = LocalDateTime.now();
+    	this.comment_content = comment_content;
+    	this.created_at = LocalDateTime.now();
     }
 }
