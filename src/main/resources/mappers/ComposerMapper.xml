@@ -10,9 +10,30 @@
         <result property="img" column="composer_img"/>
         다른 필드에 대한 매핑 추가
     </resultMap> -->
+    
+    
 
     <select id="findById" resultType="ComposerDTO">
         SELECT * FROM composers WHERE composer_id = #{composer_id}
+    </select>
+    
+    <select id="getAllArtists" resultType="ComposerDTO">
+        SELECT * FROM composers
+    </select>
+    
+    <select id="getArtistsWithPagination" resultType="ComposerDTO">
+	        <![CDATA[
+        SELECT *
+        FROM (
+            SELECT rownum AS rnum, c.*
+            FROM composers c
+        )
+        WHERE rnum BETWEEN #{offset} AND #{offset + limit}
+    ]]>
+	</select>
+	
+	<select id="getTotalArtistsCount" resultType="int">
+        SELECT COUNT(*) FROM composers
     </select>
 	
     <insert id="regComposer" parameterType="ComposerDTO">

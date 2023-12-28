@@ -4,14 +4,14 @@
 
     
     <insert id="insertFollow" parameterType="FollowDTO">
-        INSERT INTO follow (followTableId, follower_composer_id, target_composer_id, created_at)
+        INSERT INTO FOLLOWTABLE (FOLLOWID, FOLLOWUSERID, TARGETUSERID, created_at)
         VALUES (follow_sequence.NEXTVAL, #{followerComposerId}, #{targetComposerId}, CURRENT_TIMESTAMP)
     </insert>
 
     
     <delete id="deleteFollow" parameterType="FollowDTO">
         DELETE FROM follow
-        WHERE id = #{id}
+        WHERE followId = #{followId}
     </delete>
 
     

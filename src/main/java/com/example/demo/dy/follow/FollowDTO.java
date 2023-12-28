@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class FollowDTO {
-    private Long id;
+    private Long followId;
     private Long followerComposerId;
     private Long targetComposerId;
 
@@ -12,8 +12,8 @@ public class FollowDTO {
     public FollowDTO() {
     }
 
-    public FollowDTO(Long id, Long followerComposerId, Long targetComposerId) {
-        this.id = id;
+    public FollowDTO(Long followId, Long followerComposerId, Long targetComposerId) {
+        this.followId = followId;
         this.followerComposerId = followerComposerId;
         this.targetComposerId = targetComposerId;
     }
