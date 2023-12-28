@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 상세</title>
 <link rel="stylesheet" href="/css/artist_detail.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
 	const composerId = `[[${composer.composer_id}]]`;
@@ -43,7 +43,7 @@
 						th:unless="${session.userFullPhoneNumber == composer.composer_id}">쪽지 보내기</button>
 				</div>
 			</div>
-
+			
 			<div class="artist-profile-text">
 				<h2>이름</h2>
 				<div th:text="${composer.composer_name}">이름</div>
@@ -53,32 +53,6 @@
 				<div th:text="${composer.composer_text}">자기 소개</div>
 			</div>
 
-			<!-- <div class="music-list">
-				<div class="music-player">
-					<div class="music-info">
-						<div class="album-art">
-							<img
-								src="https://post-phinf.pstatic.net/MjAxOTA4MDJfMjM1/MDAxNTY0NzE0ODEyMDk4.5nXLk7-27EPK8Q0NyLFVaeE_umpkqwfV73UWtu0ZD5Ug.j9RXuTc1EAgw66FZB0wl32sLBNaY4R9HZYvzOkei38Ag.JPEG/%EB%94%94%EB%85%B8%EB%A7%88%EB%93%9C%ED%95%99%EA%B5%90_%EC%95%84%ED%8A%B8%EB%94%94%EB%A0%89%ED%84%B0_NSH_%EC%95%A8%EB%B2%94_%EC%BB%A4%EB%B2%84_%EB%94%94%EC%9E%90%EC%9D%B8_8.jpg?type=w800_q75"
-								alt="Album Art">
-						</div>
-						<div class="music-details">
-							<div class="music-title">Song Title</div>
-							<div class="artist-name">Artist Name</div>
-						</div>
-					</div>
-					<div class="music-controls">
-						 <button class="play-button">Play</button>
-						<img style="width: 20px" src="https://w7.pngwing.com/pngs/800/189/png-transparent-multimedia-music-play-player-song-video-multimedia-controls-solid-icon.png">
-						<button id="playPauseBtn" onclick="togglePlayPause()">Play</button>
-						<div class="time">0:00 / 3:30</div>
-						<button class="comment-button">Comment</button>
-					</div>
-				</div>
-				<div class="progress-bar">
-					<div class="progress"></div>
-				</div>
-			</div> -->
-			
 			<div class="musicList">
 				<div class="musicList-inner">
 					<div class="musicList-menu">
@@ -129,5 +103,6 @@
 		</section>
 	</main>
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>

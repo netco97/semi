@@ -30,16 +30,7 @@ import lombok.RequiredArgsConstructor;
 public class ComposerC {
 
 	private final ComposerService composerService;
-	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-	    // 세션을 무효화하여 로그아웃 처리
-	    session.invalidate();
-	    
-	    // 로그아웃 후 리다이렉트할 경로를 지정하거나 필요에 따라 다른 처리를 수행할 수 있습니다.
-	    return "redirect:/"; // 홈 페이지로 리다이렉트하는 예시
-	}
-
+  
 	@GetMapping("/artist_detail/{userFullPhoneNumber}")
 	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
 		
