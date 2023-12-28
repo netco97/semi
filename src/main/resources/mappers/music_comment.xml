@@ -36,4 +36,37 @@
 		userFullPhoneNumber = '#{userFullPhoneNumber}';
 
 	</select>
+	 
+	 <select id="getCommentsBySongIdWithPaging" resultType="MusicCommentDTO">
+                <![CDATA[
+        SELECT * FROM (
+            SELECT c.*, ROWNUM AS rnum
+            FROM (
+                SELECT * FROM 
+                (	SELECT
+		sc.COMMENT_ID,
+		sc.SONG_ID,
+		sc.USERFULLPHONENUMBER,
+		sc.COMMENT_TEXT,
+		sc.COMMENT_DATE,
+		ut.USERNICKNAME AS USER_NICKNAME
+		FROM
+		song_comment sc
+		JOIN
+		usertable ut ON sc.USERFULLPHONENUMBER = ut.USERFULLPHONENUMBER)
+                WHERE song_id = #{song_id}
+                ORDER BY comment_date DESC
+            ) c
+            WHERE ROWNUM <= #{offset} + #{limit}
+        ) 
+        WHERE rnum > #{offset}
+        ]]>
+    </select>
+    
+    <select id="countCommentsBySongId" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM song_comment WHERE song_id = #{song_id}
+	</select>
+	
+	
+	
 </mapper>
