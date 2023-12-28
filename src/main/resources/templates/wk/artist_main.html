@@ -37,7 +37,7 @@
                     <ul>
                         <!-- Iterate over the artistList and display artist information -->
                         <li th:each="artist : ${artistList}">
-                            <a th:href="@{/artist_detail/{userFullPhoneNumber}(userFullPhoneNumber=${artist.composer_id})}">
+                            <a th:href="@{/artist_detail?userFullPhoneNumber={userFullPhoneNumber}(userFullPhoneNumber=${artist.composer_id})}">
                                 <img th:src="@{'/images/profile/' + ${artist.getImgOrDefault()}}" alt="Artist Profile">
                                 <span th:text="${artist.composer_name}"></span>
                             </a>
