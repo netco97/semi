@@ -110,7 +110,7 @@ function sendTagsToServer() {
 	let selectedGenre = [];
 	let selectedMood = []; // 선택된 분위기 값을 저장할 배열
 	let selectedInstrument = []; // 선택된 악기 값을 저장할 배열
-
+``
 
 	$('.musicMenu-searchTagInput div').each(function() {
 		const tag = $(this).text();
