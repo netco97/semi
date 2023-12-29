@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	window.addEventListener('load', () => {
 		restoreScrollPosition();
 	});
-//////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////
 	// 별점 기능
 	const stars = document.querySelectorAll('.star');
 	const ratingValue = document.getElementById('rating-value');
@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
 			ratingValue.innerText = `평가: ${value}점`;
 			removeActiveStars();
 			setActiveStars(value);
-			
+
 			// 서버로 별점 전송
-            submitRatingToServer(value);
+			submitRatingToServer(value);
 		});
 
 		star.addEventListener('mouseover', () => {
@@ -64,48 +64,48 @@ document.addEventListener("DOMContentLoaded", function() {
 			stars[i].classList.add('active');
 		}
 	}
-	
-	function submitRatingToServer(rating) {
-    //const composerId = composerId/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
-    const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
-    const ratingData = {
-		
-        userFullNumber: userFullNumber,
-        composerId: composerId,
-        rating: rating
-    };
 
-    // AJAX를 사용하여 서버에 평가 전송
-    $.ajax({
-        type: "POST",
-        url: "/ratings/rate",
-        contentType: "application/json;charset=UTF-8",
-        data: JSON.stringify(ratingData),
-        success: function(result) {
-			const createdRatingID = result.ratingID;
-			console.log(userFullNumber);
-			console.log(composerId);
-			console.log(rating);
-			
-            console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
-        },
-        error: function(error) {
-            console.error("평가 제출 중 오류", error);
-        }
-    });
-}
-//////////////////////////////////////////////////////////	
+	function submitRatingToServer(rating) {
+		//const composerId = composerId/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
+		const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
+		const ratingData = {
+
+			userFullNumber: userFullNumber,
+			composerId: composerId,
+			rating: rating
+		};
+
+		// AJAX를 사용하여 서버에 평가 전송
+		$.ajax({
+			type: "POST",
+			url: "/ratings/rate",
+			contentType: "application/json;charset=UTF-8",
+			data: JSON.stringify(ratingData),
+			success: function(result) {
+				const createdRatingID = result.ratingID;
+				console.log(userFullNumber);
+				console.log(composerId);
+				console.log(rating);
+
+				console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
+			},
+			error: function(error) {
+				console.error("평가 제출 중 오류", error);
+			}
+		});
+	}
+	//////////////////////////////////////////////////////////	
 	// 팔로우
-//	followBtn.addEventListener('click', () => {
-//		alert('팔로우 되었습니다!');
-//	});
+	//	followBtn.addEventListener('click', () => {
+	//		alert('팔로우 되었습니다!');
+	//	});
 
 	// 쪽지
-//	messageBtn.addEventListener('click', () => {
-//		alert('쪽지를 보냈습니다!');
-//	});
+	//	messageBtn.addEventListener('click', () => {
+	//		alert('쪽지를 보냈습니다!');
+	//	});
 
-//////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////
 	// 코멘트 기능
 	$(document).ready(function() {
 		var composerId = $("#commentBtn").data('composer-id');
@@ -140,39 +140,34 @@ document.addEventListener("DOMContentLoaded", function() {
 				}
 			});
 		}
-		
-		
-		function loadSongs(composerId){
-			console.log("loadSongs");
-			
-			$.ajax({
-			type: 'GET',
-			url: '/getComposerMusic',
-			data: {
-				composer_id: composerId
-			},
-			success: function(response) {
-				outPutSearch(response)
-				console.log(response);
-				console.log("음악정보 불러오기 성공");
-				
-				
 
-				// 가져온 음악 정보를 사용하여 페이지를 업데이트
-			},
-			error: function(error) {
-				console.error('음악정보 불러오기 중 오류가 발생했습니다.');
-			}
-		});
+		function loadSongs(composerId) {
+			console.log("loadSongs");
+
+			$.ajax({
+				type: 'GET',
+				url: '/getComposerMusic',
+				data: {
+					composer_id: composerId
+				},
+				success: function(response) {
+					outPutSearch(response)
+					console.log(response);
+					console.log("음악정보 불러오기 성공");
+					// 가져온 음악 정보를 사용하여 페이지를 업데이트
+				},
+				error: function(error) {
+					console.error('음악정보 불러오기 중 오류가 발생했습니다.');
+				}
+			});
 		}
-	
 
 		function displayComments(comments) {
 			var commentsContainer = $("#comments-container");
 			commentsContainer.empty();
 
 			$.each(comments, function(index, comment) {
-				
+
 				commentsContainer.append(
 					'<div class="comment-item">' +
 					'<div class="user-nickname">' + comment.userNickname + '</div>' +
@@ -180,37 +175,17 @@ document.addEventListener("DOMContentLoaded", function() {
 					'<div class="created-at">' + convertToKoreanTime(comment.created_at) + '</div>' +
 					'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
 					'</div>'
-
 				);
 			});
-/*			    $.each(comments, function(index, comment) {
-        // 각 코멘트를 표시하는 HTML을 생성
-        var commentHtml = '<div class="comment-item">' +
-            '<div class="user-nickname">' + comment.userNickname + '</div>' +
-            '<div class="comment-content">' + comment.comment_content + '</div>' +
-            '<div class="created-at">' + convertToKoreanTime(comment.created_at) + '</div>';
-
-        // 현재 로그인한 사용자와 코멘트를 작성한 사용자의 전화번호 비교
-        if (comment.userFullNumber === userFullNumber) {
-            // 같다면 삭제 버튼을 추가
-            commentHtml += '<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>';
-        }
-
-        // HTML을 컨테이너에 추가
-        commentHtml += '</div>';
-        commentsContainer.append(commentHtml);
-    });
-	*/		
-			
 		}
-		
+
 		// 한국 시간으로 변경
 		function convertToKoreanTime(dateTimeString) {
-		    // 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
-		    var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
-		    var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
-		    return koreanDateTime;
-		}		
+			// 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
+			var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
+			var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
+			return koreanDateTime;
+		}
 
 		function displayPagination(currentPage, totalPages) {
 			var paginationContainer = $("#pagination");
@@ -259,9 +234,9 @@ document.addEventListener("DOMContentLoaded", function() {
 				userNickname: userName,
 				comment_content: commentContent
 			};
-				console.log(composerId);
-				console.log(userName);
-				console.log(commentContent);
+			console.log(composerId);
+			console.log(userName);
+			console.log(commentContent);
 
 			$.ajax({
 				type: "POST",
@@ -340,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //}
 
 async function outPutSearch(data) {
-	
+
 	console.log(data);
 	let $musicList = $('.musicList-inner');
 
@@ -348,7 +323,7 @@ async function outPutSearch(data) {
 	$musicList.empty();
 
 	// 데이터의 각 노래에 대해 반복
-	 for (const song of data) {
+	for (const song of data) {
 		// 각 노래를 표시할 HTML 엘리먼트 생성
 		let $songContainer = $('<div class="musicList-menu"></div>');
 
@@ -361,7 +336,6 @@ async function outPutSearch(data) {
             <div>
                 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
-                <div onclick="location.href=''">${song.composer_name}</div>
             </div>
         `);
 
@@ -375,25 +349,25 @@ async function outPutSearch(data) {
             <div>${song.instrument_id}</div>
         `);
 
-//		let $musicListOption = $('<div class="musicList-option"></div>');
-//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
-//		console.log("체크체크! : " +song.song_id);
-//		const likeCheck = await songLikeCheck(song.song_id);
-//
-//        console.log("이프문 위 첵라잌" + likeCheck);
-//
-//        if (likeCheck === 1) {
-//            console.log("이프문 트루 안 : " + likeCheck);
-//
-//            $musicListOption.append(`
-//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
-//            `);
-//        } else {
-//            console.log("이프문 엘즈안 : " + likeCheck);
-//            $musicListOption.append(`
-//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
-//            `);
-//        }
+		//		let $musicListOption = $('<div class="musicList-option"></div>');
+		//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+		//		console.log("체크체크! : " +song.song_id);
+		//		const likeCheck = await songLikeCheck(song.song_id);
+		//
+		//        console.log("이프문 위 첵라잌" + likeCheck);
+		//
+		//        if (likeCheck === 1) {
+		//            console.log("이프문 트루 안 : " + likeCheck);
+		//
+		//            $musicListOption.append(`
+		//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
+		//            `);
+		//        } else {
+		//            console.log("이프문 엘즈안 : " + likeCheck);
+		//            $musicListOption.append(`
+		//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
+		//            `);
+		//        }
 
 
 		// 각 섹션을 노래 컨테이너에 추가

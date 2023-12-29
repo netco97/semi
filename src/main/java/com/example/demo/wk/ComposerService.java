@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -24,12 +25,17 @@ public class ComposerService {
     }
     
     public List<ComposerDTO> getArtistsWithPagination(int offset, int limit) {
-        int startRow = offset;
-        int endRow = startRow + limit;
+        System.out.println("offset: " + offset);
+    	System.out.println("limit: " + limit);
+    	int startRow = offset;
+        int endRow = offset + limit - 1;
+        System.out.println("startRow: " + startRow);
+        System.out.println("endRow: " + endRow);
 
         Map<String, Object> params = new HashMap<>();
         params.put("startRow", startRow);
         params.put("endRow", endRow);
+        
 
         System.out.println("params: " + params);
         return composerMapper.getArtistsWithPagination(params);

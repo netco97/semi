@@ -3,7 +3,14 @@
 
 .artist-section {
 	display: flex;
-	padding: 30px;
+	height: 600px;
+	padding: 20px;
+	justify-content: center;
+}
+
+.artist-container{
+	display: flex;
+	width: 1200px;
 }
 
 .artist-profile {
@@ -21,6 +28,11 @@
 .artist-profile-text {
 	width: 30%;
 	
+}
+.artist-profile-text div {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #555;
 }
 
 .rating-container {
@@ -42,6 +54,17 @@
 .rating-stars .star:hover,
 .rating-stars .star.active {
     color: #f8d71c;
+}
+
+
+.artist-profile-funtion button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 80%;
+    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
 }
 
 /* button {
@@ -83,98 +106,8 @@ button:hover {
 	background-color: #555;
 } */
 
-/* 음악 목록 */
-.music-list {
-    flex: 1;
-    margin-left: 20px;
-}
 
-/*  음악 플레이어 */
 
-.music-player {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.music-info {
-    display: flex;
-    align-items: center;
-}
-
-.album-art {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 10px;
-}
-
-.album-art img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.music-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.music-title {
-    font-weight: bold;
-}
-
-.artist-name {
-    font-style: italic;
-}
-
-#playPauseBtn {
-  	background-color: black;
-    color: #fff;
-    border: none;
-    padding: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.music-controls {
-    display: flex;
-    align-items: center;
-}
-
-.time {
-    margin-left: 10px;
-}
-
-.comment-button {
-    background-color: black;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-/* Progress Bar */
-.progress-bar {
-    width: 100%;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    /* margin-top: 10px; */
-    position: relative;
-}
-
-.progress {
-    height: 5px;
-    border-radius: 4px;
-    background-color: black;
-    width: 50%; /* Set initial progress width */
-}
 
 /* 하단 코멘트 섹션 */
 .comment-container {
@@ -300,32 +233,31 @@ button:hover {
 
 /* hover 효과 */
 .pagination a:hover {
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
-    border: 1px solid #007bff;
+    border: 1px solid black;
 }
 
 /* 활성화된 페이지 번호의 스타일 */
 .pagination-link.active {
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
-    border: 1px solid #007bff;
+    border: 1px solid black;
 }
-
-/* */
 
 /* musicList */
 
 .musicList{
+	width: 600px;
+	height: 100%;
 	position: relative;	
 	background-color: black;
 	color: white;
 	
 }
 .musicList-inner {
-    width: 70%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center; /* 내부 컨테이너를 세로로 가운데 정렬 */
@@ -338,7 +270,6 @@ button:hover {
     align-items: center;
     background-color: white;
     color: black;
-    padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     width: 100%; /* 노래 컨테이너를 100%로 설정 */
@@ -351,9 +282,10 @@ button:hover {
 }
 
 .musicList-title img {
-    max-width: 50px; /* 이미지의 최대 너비를 조절합니다. 원하는 크기로 조절하세요. */
-    margin-right: 10px;
-    border-radius: 5px; /* 이미지 테두리 둥글게 설정 */
+	width: 50px;
+	height: 50px;
+	margin: 10px;
+    border-radius: 50%;
 }
 
 .musicList-title,
@@ -373,14 +305,13 @@ button:hover {
 }
 
 .audio-player {
-    width: 70%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
+    width: 100%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
 }
 
 audio{
 	width:100%;
 	
 }
-
 
 .musicList-title div,
 .musicList-option div {
@@ -391,3 +322,90 @@ audio{
 	max-width: 3%;
 	
 }
+
+/*  음악 플레이어 */
+
+/* .music-player {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+}
+
+.album-art {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-title {
+    font-weight: bold;
+}
+
+.artist-name {
+    font-style: italic;
+}
+
+#playPauseBtn {
+  	background-color: black;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    margin-left: 10px;
+}
+
+.comment-button {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+Progress Bar
+.progress-bar {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.progress {
+    height: 5px;
+    border-radius: 4px;
+    background-color: black;
+    width: 50%; Set initial progress width
+} */

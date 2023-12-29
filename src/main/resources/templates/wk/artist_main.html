@@ -6,49 +6,54 @@
 <link rel="stylesheet" href="/css/artist_main.css">
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
-    var currentPage = `[[${currentPage}]]`;
-    var totalPages = `[[${totalPages}]]`;
-    var artistList = `[[${artistList}]]`;
+	var currentPage = `[[${currentPage}]]`;
+	var totalPages = `[[${totalPages}]]`;
+	var artistList = `[[${artistList}]]`;
 </script>
 </head>
 <body>
-    <div class="main-container">
-        <div class="container">
-            <!-- Left Side -->
-            <div class="left-side">
-                <!-- Artist Registration Box -->
-                <div class="artist-box">
-                    <h2>아티스트 등록</h2>
-                    <!-- Add your artist registration form here -->
-                </div>
+	<main>
+			<!-- Left Side -->
+			<div class="left-side">
 
-                <!-- Production Box -->
-                <div class="production-box">
-                    <h2>프로덕션 관련 아티스트</h2>
-                    <!-- Add your production-related content here -->
-                </div>
-            </div>
+				<!-- Artist Registration Box -->
+				<div class="left-box" id="artist-box">
+					<h2>아티스트 등록</h2>
+					<!-- Add your artist registration form here -->
+				</div>
+				
+				<div class="left-box" id="artist-box">
+					<h2>음악 업로드</h2>
+					<!-- Add your artist registration form here -->
+				</div>
 
-            <!-- Right Side -->
-            <div class="right-side">
-                <!-- Search Box -->
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="아티스트 검색">
-                    <button id="searchButton">검색</button>
-                </div>
-		    
-		    	<!-- 아티스트 목록을 표시할 영역 -->
+				<!-- Production Box -->
+				<div class="left-box" id="production-box">
+					<h2>프로덕션 관련 아티스트</h2>
+					<!-- Add your production-related content here -->
+				</div>
+			</div>
+
+			<!-- Right Side -->
+			<div class="right-side">
+
+				<!-- Search Box -->
+				<div class="search-box">
+					<input type="text" id="searchInput" placeholder="아티스트 검색">
+					<button id="searchButton">검색</button>
+				</div>
+
+				<!-- 아티스트 목록을 표시할 영역 -->
 				<div id="artists-container"></div>
-					<!-- 댓글이 여기에 추가될 것입니다. -->
-					
+				<!-- 댓글이 여기에 추가될 것입니다. -->
+
 				<!-- 페이지네이션을 표시할 영역 -->
 				<div class="pagination" id="pagination">
 					<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
 				</div>
-                
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="/js/artist_main.js"></script>
+
+			</div>
+	</main>
+	<script type="text/javascript" src="/js/artist_main.js"></script>
 </body>
 </html>
