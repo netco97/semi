@@ -2,7 +2,9 @@ package com.example.demo.wk;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpSession;
@@ -48,7 +51,6 @@ public class ComposerC {
 //
 //		return "wk/index";
 
-
 	
 	@GetMapping("/artist_main")
 	public String getArtistMainPage(Model model) {
@@ -63,30 +65,6 @@ public class ComposerC {
 	    
 	    return "wk/index";
 	}
-	
-//	@GetMapping("/artist_main")
-//	public String getArtistMainPage(@RequestParam(name = "page", defaultValue = "1") int page,
-//	                                @RequestParam(name = "pageSize", defaultValue = "10") int pageSize,
-//	                                Model model) {
-//	    // 아티스트 목록을 가져옴 (페이징 적용)
-//	    List<ComposerDTO> artistList = composerService.getArtistsWithPagination(page, pageSize);
-//
-//	    // 전체 아티스트 수를 가져옴 (페이징 계산을 위해)
-//	    int totalArtists = composerService.getTotalArtistsCount();
-//
-//	    // 전체 페이지 수를 계산
-//	    int totalPages = (int) Math.ceil((double) totalArtists / pageSize);
-//
-//	    // 현재 페이지, 전체 페이지 수, 아티스트 목록을 모델에 추가
-//	    model.addAttribute("currentPage", page);
-//	    model.addAttribute("totalPages", totalPages);
-//	    model.addAttribute("artistList", artistList);
-//
-//	    // content에 artist_main을 추가
-//	    model.addAttribute("content", "wk/artist_main");
-//
-//	    return "wk/index";
-//	}
 	
 	@GetMapping("/artist_detail")
 	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
