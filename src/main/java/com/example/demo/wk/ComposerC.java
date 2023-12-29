@@ -110,8 +110,14 @@ public class ComposerC {
 		
         // 세션의 userId를 이용해서 iscomposer를 업데이트
         composerService.updateIsComposer(userFullPhoneNumber);
+        
+        // userTable의 nickName을 artist등록시 artistnickname으로 변경
+        composerService.updateUserNickName(composer.getComposer_name(), userFullPhoneNumber);
 		
-		
+        // 세션 지우고 다시 iscomposer를1로 만들어야함
+        session.removeAttribute("iscomposer");
+        session.setAttribute("iscomposer", 1);
+        
 		model.addAttribute("content", "wk/home");
 		return "redirect:/";
 	}

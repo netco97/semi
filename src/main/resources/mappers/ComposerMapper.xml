@@ -35,4 +35,7 @@
     UPDATE usertable SET iscomposer = 1 WHERE userFullPhoneNumber = #{userFullPhoneNumber}
 	</update>
 	
+	<update id="updateUserNickName" parameterType="String">
+	UPDATE usertable SET usernickname = #{composer_name} WHERE userFullPhoneNumber = #{userFullPhoneNumber}
+	</update>
 </mapper>

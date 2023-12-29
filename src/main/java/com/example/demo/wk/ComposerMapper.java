@@ -20,4 +20,6 @@ public interface ComposerMapper {
 	int regComposer(ComposerDTO composer);
 	
 	int updateUserIsComposer(@Param("userFullPhoneNumber") String userFullPhoneNumber);
+
+	int updateUserNickName(@Param("composer_name") String composer_name, @Param("userFullPhoneNumber") String userFullPhoneNumber);
 }
