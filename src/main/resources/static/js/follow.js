@@ -27,7 +27,7 @@ function toggleFollow() {
 
 function updateFollowButton() {
     // 팔로우 상태에 따라 버튼 텍스트나 스타일 업데이트 가능
-    let isFollowing = /* 응답이나 다른 소스에서 팔로우 상태를 가져오세요 */;
+    let isFollowing = 1/* 응답이나 다른 소스에서 팔로우 상태를 가져오세요 */;
     
     if (isFollowing) {
         $('#followBtn').text('언팔로우');
