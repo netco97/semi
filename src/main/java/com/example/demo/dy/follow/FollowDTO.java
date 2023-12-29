@@ -1,21 +1,27 @@
 package com.example.demo.dy.follow;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
 public class FollowDTO {
-    private Long followId;
-    private Long followerComposerId;
-    private Long targetComposerId;
+    private String followId;
+    private String followerUserId;
+    private String targetUserId;
+    private LocalDateTime created_at;
+    private String isfollow;
+   
 
    
     public FollowDTO() {
     }
 
-    public FollowDTO(Long followId, Long followerComposerId, Long targetComposerId) {
+    public FollowDTO(String followId, String followerUserId, String targetUserId) {
         this.followId = followId;
-        this.followerComposerId = followerComposerId;
-        this.targetComposerId = targetComposerId;
+        this.followerUserId = followerUserId;
+        this.targetUserId = targetUserId;
+       
     }
 
    
