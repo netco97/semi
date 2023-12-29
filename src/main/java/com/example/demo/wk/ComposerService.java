@@ -50,4 +50,11 @@ public class ComposerService {
         	System.out.println("iscomposer update 성공");
         }
     }
+
+	public void updateUserNickName(String composer_name, String userFullPhoneNumber) {
+		if(composerMapper.updateUserNickName(composer_name, userFullPhoneNumber)==1) {
+			System.out.println("userNickname update 성공");
+		}
+		
+	}
 }
