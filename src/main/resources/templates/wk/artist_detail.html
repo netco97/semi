@@ -10,9 +10,15 @@
 
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
-	const composerId = `[[${composer.composer_id}]]`;
-	const followerId = `[[${composer.composer_name}]]`;
+	const composerId = `[(${composer.composer_id})]`;
+	const followerId = `[(${composer.composer_name})]`;
+    const followerUserId1 = `[(${session.userFullPhoneNumber})]`;
+    const targetUserId1 = `[(${composer.composer_id})]`;
+    
+    console.log(targetUserId1);
+    console.log(followerUserId1);
 </script>
+
 </head>
 <body>
 	<!--채팅방 모달 세팅-->
@@ -51,8 +57,8 @@
 						th:href="@{/follower_list}">내 팔로워 보기</a>
 
 					<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
-					<button id="followBtn"
-						th:unless="${session.userFullPhoneNumber == composer.composer_id}">팔로우</button>
+					<button id="followBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}" onclick="toggleFollow()">
+						팔로우</button>
 					<button id="messageBtn"
 						th:unless="${session.userFullPhoneNumber == composer.composer_id}" onclick="createChatroom()">1:1채팅</button>
 				</div>
@@ -119,5 +125,6 @@
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
 	<script type="text/javascript" src="/js/roomset.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript" src="/js/follow.js"></script>
 </body>
 </html>
