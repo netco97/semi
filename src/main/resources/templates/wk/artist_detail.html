@@ -10,9 +10,15 @@
 
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
-	const composerId = `[[${composer.composer_id}]]`;
-	const followerId = `[[${composer.composer_name}]]`;
+	const composerId = `[(${composer.composer_id})]`;
+	const followerId = `[(${composer.composer_name})]`;
+    const followerUserId1 = `[(${session.userFullPhoneNumber})]`;
+    const targetUserId1 = `[(${composer.composer_id})]`;
+    
+    console.log(targetUserId1);
+    console.log(followerUserId1);
 </script>
+
 </head>
 <body>
 	<!--채팅방 모달 세팅-->
@@ -34,6 +40,7 @@
 						<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
 						<img th:src="@{'/images/profile/' + ${composer.composer_img}}"
 							alt="아티스트 프로필 사진">
+
 
 						<div class="rating-container">
 							<div class="rating-stars">
@@ -125,5 +132,6 @@
 	<script type="text/javascript" src="/js/artist_detail.js"></script>
 	<script type="text/javascript" src="/js/roomset.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript" src="/js/follow.js"></script>
 </body>
 </html>

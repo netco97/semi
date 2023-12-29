@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채팅방 목록</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 33%;
+    margin-left : 5%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.chat-room {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.chat-room:hover {
+    transform: scale(1.05);
+}
+
+.room-info {
+    padding: 15px;
+}
+
+.room-info .user-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.room-info .last-message {
+    color: #666;
+}
+
+.room-info .timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+
+    </style>
+</head>
+<body>
+
+<div class="chat-list">
+    <!-- 채팅방 목록 예시 -->
+    <div class="chat-room">
+        <div class="room-info">
+            <div class="user-name">유저1</div>
+            <div class="last-message">안녕하세요!</div>
+            <div class="timestamp">2023-01-01 10:30 AM</div>
+        </div>
+    </div>
+
+    <div class="chat-room">
+        <div class="room-info">
+            <div class="user-name">유저2</div>
+            <div class="last-message">반갑습니다!</div>
+            <div class="timestamp">2023-01-02 12:45 PM</div>
+        </div>
+    </div>
+    
+    <div class="chat-room">
+        <div class="room-info">
+            <div class="user-name">유저3</div>
+            <div class="last-message">뭐하노</div>
+            <div class="timestamp">2023-01-03 14:45 PM</div>
+        </div>
+    </div>
+    
+    <div class="chat-room">
+        <div class="room-info">
+            <div class="user-name">유저4</div>
+            <div class="last-message">배고프다!</div>
+            <div class="timestamp">2023-01-04 12:15 PM</div>
+        </div>
+    </div>
+
+    <!-- 추가 채팅방 목록은 동일한 형식으로 계속해서 추가 가능합니다. -->
+</div>
+
+</body>
+</html>
