@@ -1,80 +1,68 @@
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
 }
 
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-}
-
-.container {
+main {
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    min-height: 600px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: 20px; /* 추가: 왼쪽과 오른쪽에 여백 추가 */
 }
+
 
 .left-side {
     background-color: black;
     color: #fff;
-    flex: 0.7; /* 또는 다른 적절한 비율 */
+    flex: 0.4; /* 또는 다른 적절한 비율 */
 }
 
 .right-side {
+	display: flex;
+	flex-flow: column;
     padding: 20px;
     flex: 1;
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
+    align-items: center;
+    justify-content: center;
 }
 
-.left-side {
-    background-color: black;
-    color: #fff;
-}
-
-.right-side {
-    padding: 20px;
-    flex: 1;
+.artist-container {
+	margin: 20px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.artist-list {
-    list-style: none;
-    padding: 0;
-    width: 100%;
+.artist-article {
+	width: 50%;
+}
+
+.music-article {
+	width: 50%;
+}
+
+.artist-details {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* 3x3 정렬을 위해 추가 */
+    flex-direction: row;
+    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함하도록 설정 */
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.artist-item {
-    width: calc(33.33% - 20px); /* 3x3 정렬을 위해 수정 */
-    box-sizing: border-box; /* 박스 크기에 안쪽 여백과 테두리를 포함하도록 수정 */
-    margin-bottom: 20px; /* 각 항목 사이의 간격을 조절, 필요에 따라 수정 */
-    text-align: center;
-}
-
-.artist-item img {
-    width: 100px; /* 이미지 크기 조절, 필요에 따라 수정 */
+.artist-details img {
+    width: 125px;
     border-radius: 15%;
-    margin-bottom: 5px; /* 이미지 아래 간격 조절, 필요에 따라 수정 */
+    margin-bottom: 10px;
 }
 
-.artist-item span {
-    display: block; /* 텍스트를 블록 레벨 요소로 설정하여 줄 바꿈 처리 */
+#artists-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.artist-box,
-.production-box {
+.left-box {
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -87,7 +75,9 @@ body {
     transition: box-shadow 0.3s ease, background-color 0.3s ease; /* 부드러운 전환 효과 추가 */
 }
 
+/* 아티스트 검색 */
 .search-box {
+	width: 600px;
     display: flex;
     align-items: center;
 }
@@ -98,6 +88,7 @@ body {
 }
 
 #searchInput {
+	
     flex: 1;
     padding: 8px;
     margin-right: 10px;
@@ -138,7 +129,7 @@ img {
 }
 
 #pagination {
-    position: fixed; /* 페이지 번호를 화면 아래에 고정 */
+    position: relative; /* 페이지 번호를 화면 아래에 고정 */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
 	// 페이지네이션을 위한 현재 페이지와 페이지 크기 변수
 	var currentPage = 1;
-	var pageSize = 1; // 페이지 크기를 필요에 맞게 조절
+	var pageSize = 6; // 페이지 크기를 필요에 맞게 조절
 	// 전체 페이지 수
 	//var totalPages = 12;/* Thymeleaf로부터 받은 값 또는 직접 설정한 값 */;
-
+	console.log('pageSize:', pageSize);
 	console.log('Current Page:', currentPage);
-	console.log('Total Pages:', totalPages);
 	console.log('Artist List:', artistList);
 
 	// ... (기존 코드)
@@ -16,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function() {
 	function loadArtists(page) {
 		// 페이지네이션을 지원하는 아티스트를 가져오기 위한 API 엔드포인트가 있다고 가정
 		const url = '/artist_list?page=' + page + '&pageSize=' + pageSize;
-
+		console.log('function loadArtists: ' + pageSize);
 		// 아티스트를 가져오기 위한 AJAX 요청
 		$.ajax({
 			type: "GET",
 			url: url,
 			success: function(artistMap) {
 				console.log('loadArtists 성공');
-				console.log(artistMap);
+				console.log('success: '+ artistMap);
 
 				// 맵을 배열로 변환
 				const artistArray = Array.from(artistMap.artistList.values());
@@ -33,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				const totalPages = artistMap.totalPages;
 
 				console.log(artistArray);
-				console.log(totalArtists);
-				console.log(totalPages);
+				console.log('totalArtists: ' + totalArtists);
+				console.log('totalPages: ' + totalPages);
 
 				// 아티스트를 artists-container에 표시
 				displayArtists(artistArray);
 
 				// 페이지네이션 링크 표시
-				displayPagination(currentPage, totalPages);
+				displayPagination(page, totalPages);
 			},
 			error: function(error) {
 				console.error("아티스트를 가져오는 중 오류 발생", error);
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	// artists-container에 아티스트를 표시하는 함수
 	function displayArtists(artists) {
 		console.log('displayArtists 호출 성공');
-		console.log(artists);
+		console.log('function displayArtists: ' + artists);
 		const artistsContainer = $("#artists-container");
 		artistsContainer.empty();
 
@@ -62,9 +61,11 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="artist-container">
                 <div class="artist-details">
                 <img src="/images/profile/${artists.composer_img}" data-composer-id="${artists.composer_id}">
+                	<div class="artist-details-word">
                     <h3>${artists.composer_name}</h3>
-                    <p>장르: ${artists.composer_genre}</p>
-                    <p>자기소개: ${artists.composer_text}</p>
+                    <p>${artists.composer_genre}</p>
+                    <p>${artists.composer_text}</p>
+                    </div>
                 </div>
             </div>
         `;
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	// 페이지네이션 링크를 표시하는 함수
 	function displayPagination(currentPage, totalPages) {
 		console.log('displayPagination 호출 성공');
-		console.log(currentPage);
+		console.log('displayPagination' + currentPage);
 		console.log(totalPages);
 		const paginationContainer = $("#pagination");
 		paginationContainer.empty();
@@ -107,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		var startPage = Math.floor((currentPage - 1) / 10) * 10 + 1;
 		var endPage = Math.min(totalPages, startPage + 9);
+		
+		console.log('currentPage: ' + currentPage);
 
 		//if (currentPage > 10) {
 		paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (startPage - 1) + '">이전</a>');

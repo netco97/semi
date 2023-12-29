@@ -2,37 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.wk.ComposerMapper">
 
-    <select id="findById" resultType="ComposerDTO">
-        SELECT * FROM composers WHERE composer_id = #{composer_id}
-    </select>
-    
-    <select id="getAllArtists" resultType="ComposerDTO">
-        SELECT * FROM composers
-    </select>
-    
-    <select id="getArtistsWithPagination" parameterType="map" resultType="ComposerDTO">
-     <![CDATA[
-    SELECT *
-    FROM (
-        SELECT rownum AS rnum, c.*
-        FROM composers c
-    )
-    WHERE rnum BETWEEN #{startRow} AND #{endRow}
-    ]]>
-          <!-- SELECT * FROM composers WHERE rownum BETWEEN #{startRow} AND #{endRow} -->
+	<select id="findById" resultType="ComposerDTO">
+		SELECT * FROM composers WHERE composer_id = #{composer_id}
 	</select>
-	
+
+	<select id="getAllArtists" resultType="ComposerDTO">
+		SELECT * FROM composers
+	</select>
+
+	<select id="getArtistsWithPagination" parameterType="map"
+		resultType="ComposerDTO">
+		SELECT *
+		FROM (
+		SELECT rownum AS rnum, c.*
+		FROM composers c
+		)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+
 	<select id="getTotalArtistsCount" resultType="int">
-        SELECT COUNT(*) FROM composers
-    </select>
-	
-    <insert id="regComposer" parameterType="ComposerDTO">
-	    INSERT INTO composers (composer_id, composer_name, composer_genre, composer_text, composer_img)
-	    VALUES (#{composer_id}, #{composer_name}, #{composer_genre}, #{composer_text}, #{composer_img})
+		SELECT COUNT(*) FROM composers
+	</select>
+
+	<insert id="regComposer" parameterType="ComposerDTO">
+		INSERT INTO composers (composer_id, composer_name, composer_genre,
+		composer_text, composer_img)
+		VALUES (#{composer_id}, #{composer_name}, #{composer_genre},
+		#{composer_text}, #{composer_img})
 	</insert>
-	
+
 	<update id="updateUserIsComposer" parameterType="String">
-    UPDATE usertable SET iscomposer = 1 WHERE userFullPhoneNumber = #{userFullPhoneNumber}
+		UPDATE usertable SET iscomposer = 1 WHERE userFullPhoneNumber =
+		#{userFullPhoneNumber}
 	</update>
 	
 	<update id="updateUserNickName" parameterType="String">
