@@ -15,7 +15,19 @@ public interface MusicCommentMapper {
 			@Param("comment_text") String comment_text);
 
 	String getUserNickName(String userFullPhoneNumber);
+
+	List<MusicCommentDTOwithNickName> getCommentsBySongIdWithPaging(@Param("song_id") int song_id,
+            @Param("offset") int offset,
+            @Param("limit") int limit);
+		
 	
 
 
+	int countCommentsBySongId(@Param("song_id") int song_id);
+	
 }
+		
+
+	
+
+

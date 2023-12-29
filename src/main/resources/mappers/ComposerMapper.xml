@@ -2,17 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.wk.ComposerMapper">
 
-<!--     <resultMap id="composerResultMap" type="ComposerDTO">
-        <id property="id" column="composer_id"/>
-        <result property="name" column="composer_name"/>
-        <result property="genre" column="composer_genre"/>
-        <result property="text" column="composer_text"/>
-        <result property="img" column="composer_img"/>
-        다른 필드에 대한 매핑 추가
-    </resultMap> -->
-    
-    
-
     <select id="findById" resultType="ComposerDTO">
         SELECT * FROM composers WHERE composer_id = #{composer_id}
     </select>
@@ -21,15 +10,16 @@
         SELECT * FROM composers
     </select>
     
-    <select id="getArtistsWithPagination" resultType="ComposerDTO">
-	        <![CDATA[
-        SELECT *
-        FROM (
-            SELECT rownum AS rnum, c.*
-            FROM composers c
-        )
-        WHERE rnum BETWEEN #{offset} AND #{offset + limit}
+    <select id="getArtistsWithPagination" parameterType="map" resultType="ComposerDTO">
+     <![CDATA[
+    SELECT *
+    FROM (
+        SELECT rownum AS rnum, c.*
+        FROM composers c
+    )
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
     ]]>
+          <!-- SELECT * FROM composers WHERE rownum BETWEEN #{startRow} AND #{endRow} -->
 	</select>
 	
 	<select id="getTotalArtistsCount" resultType="int">
@@ -45,4 +35,7 @@
     UPDATE usertable SET iscomposer = 1 WHERE userFullPhoneNumber = #{userFullPhoneNumber}
 	</update>
 	
+	<update id="updateUserNickName" parameterType="String">
+	UPDATE usertable SET usernickname = #{composer_name} WHERE userFullPhoneNumber = #{userFullPhoneNumber}
+	</update>
 </mapper>
