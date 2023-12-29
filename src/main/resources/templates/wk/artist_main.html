@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist_main.css">
+<script th:inline="javascript">
+	const userNickname = `[(${session.userNickname})]`;
+    var currentPage = `[[${currentPage}]]`;
+    var totalPages = `[[${totalPages}]]`;
+    var artistList = `[[${artistList}]]`;
+</script>
 </head>
 <body>
     <div class="main-container">
@@ -27,23 +33,19 @@
             <div class="right-side">
                 <!-- Search Box -->
                 <div class="search-box">
-                    <h2>아티스트 검색</h2>
-                    <input type="text" id="searchInput" placeholder="Search...">
+                    <input type="text" id="searchInput" placeholder="아티스트 검색">
+                    <button id="searchButton">검색</button>
                 </div>
-
-                <!-- Artist List Container -->
-                <div>
-                    <!-- <h2>아티스트 목록</h2> -->
-                    <ul>
-                        <!-- Iterate over the artistList and display artist information -->
-                        <li th:each="artist : ${artistList}">
-                            <a th:href="@{/artist_detail?userFullPhoneNumber={userFullPhoneNumber}(userFullPhoneNumber=${artist.composer_id})}">
-                                <img th:src="@{'/images/profile/' + ${artist.getImgOrDefault()}}" alt="Artist Profile">
-                                <span th:text="${artist.composer_name}"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+		    
+		    	<!-- 아티스트 목록을 표시할 영역 -->
+				<div id="artists-container"></div>
+					<!-- 댓글이 여기에 추가될 것입니다. -->
+					
+				<!-- 페이지네이션을 표시할 영역 -->
+				<div class="pagination" id="pagination">
+					<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
+				</div>
+                
             </div>
         </div>
     </div>

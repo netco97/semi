@@ -24,13 +24,14 @@ public class ComposerService {
     }
     
     public List<ComposerDTO> getArtistsWithPagination(int offset, int limit) {
-        int startRow = offset + 1;
-        int endRow = offset + limit;
+        int startRow = offset;
+        int endRow = startRow + limit;
 
         Map<String, Object> params = new HashMap<>();
         params.put("startRow", startRow);
         params.put("endRow", endRow);
 
+        System.out.println("params: " + params);
         return composerMapper.getArtistsWithPagination(params);
     }
 	
