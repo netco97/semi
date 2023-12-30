@@ -3,6 +3,7 @@ package com.example.demo.th.musicsearch;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class MusicSearchC {
         this.musicSearch_Model = musicSearch_Model;
     }
 
-    @GetMapping("/MusicSearchTag")
+    @PostMapping("/MusicSearchTag")
     public List<SongsDTO> MusicSearchTag(@RequestParam("genre") String genre,
                                          @RequestParam("mood") String mood,
                                          @RequestParam("instrument") String instrument) {
@@ -25,6 +26,17 @@ public class MusicSearchC {
     	System.out.println(result);
     	return result;
     }
+//    @GetMapping("/MusicSearchTag")
+//    public List<SongsDTO> MusicSearchTag(@RequestParam("genre") String genre,
+//    		@RequestParam("mood") String mood,
+//    		@RequestParam("instrument") String instrument) {
+//    	
+//    	
+//    	List<SongsDTO> result = musicSearch_Model.searchMusicByTags(genre, mood, instrument);
+//    	
+//    	System.out.println(result);
+//    	return result;
+//    }
     
     @GetMapping("/MusicSearchText")
     public List<SongsDTO> MusicSearchText(@RequestParam("text") String text){

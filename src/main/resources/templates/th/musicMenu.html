@@ -5,12 +5,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="/css/musicMenu.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <title>음악 검색</title>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
 	const instrument = /*[[${tags.instrument}]]*/[];
 </script>
+
 </head>
 <body>
 	<div class="musicMenu-container">
@@ -35,33 +38,36 @@
 					<!-- 	위에 재즈 힙합 누르면 여기에도 동일한게 추가되도록 나중에 기능 추가 -->
 				</div>
 			</div>
-			<div class="musicList">
-				<div class="musicList-inner">
-					<div class="musicList-menu">
-						<div class="musicList-menu-title">
-							<span> 태그를 추가해 원하는 곡을 검색하세요!</span>
-						</div>
-						<div class="musicList-title">
-							<div></div>
-							<div>
+			<div id="data-container">
+
+				<div class="musicList">
+					<div class="musicList-inner">
+						<div class="musicList-menu">
+							<div class="musicList-menu-title">
+								<span> 태그를 추가해 원하는 곡을 검색하세요!</span>
+							</div>
+							<div class="musicList-title">
+								<div></div>
+								<div>
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+							<div class="musicList-PlaySpace"></div>
+							<div class="musicList-info">
 								<div></div>
 								<div></div>
 							</div>
-						</div>
-						<div class="musicList-PlaySpace"></div>
-						<div class="musicList-info">
-							<div></div>
-							<div></div>
-						</div>
-						<div class="musicList-option">
+							<div class="musicList-option"></div>
 						</div>
 					</div>
 				</div>
+					<div id="pagination"></div>
 			</div>
 		</div>
 	</div>
-
-	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="/js/pagination.min.js"></script>
 	<script th:inline="javascript" src="/js/musicMenu.js"></script>
 </body>
 </html>

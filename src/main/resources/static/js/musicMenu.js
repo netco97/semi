@@ -110,7 +110,7 @@ function sendTagsToServer() {
 	let selectedGenre = [];
 	let selectedMood = []; // 선택된 분위기 값을 저장할 배열
 	let selectedInstrument = []; // 선택된 악기 값을 저장할 배열
-``
+
 
 	$('.musicMenu-searchTagInput div').each(function() {
 		const tag = $(this).text();
@@ -127,9 +127,17 @@ function sendTagsToServer() {
 		}
 	});
 
+
+	//센드투서버 각각 펑션에
+	//
+	//페이징 그거 삽입해주면될듯?
+	//
+	//ㄹㅇ 깨달아버림 
+	//
+	//통신 부분에 페이징 그거 삽입 ㄱㄱㄱㄱㄱ
 	// AJAX 요청을 통해 서버에 데이터 전송
 	$.ajax({
-		type: 'GET',
+		type: 'POST',
 		url: 'MusicSearchTag', // 실제 서버 엔드포인트 주소로 변경
 		data: {
 			genre: selectedGenre.join('#'), // 'tags' 파라미터에 선택된 태그들을 쉼표로 구분된 문자열로 전송
@@ -140,7 +148,9 @@ function sendTagsToServer() {
 		success: function(response) {
 			console.log('태그가 성공적으로 전송되었습니다.');
 			console.log(response);
-			outPutSearch(response);
+//			let jsonArray = JSON.stringify(response);
+
+			pagination(response);
 		},
 		error: function(error) {
 			console.error('태그 전송 중 오류가 발생했습니다.');
@@ -156,10 +166,12 @@ function sendTextToServer(text) {
 		data: {
 			text: text
 		},
+		traditional: true,
 		success: function(response) {
 			console.log('텍스트가 성공적으로 전송되었습니다.');
 			console.log(response);
-			outPutSearch(response);
+//			let jsonArray = JSON.stringify(response);
+			pagination(response);
 		},
 
 		error: function(error) {
@@ -169,49 +181,60 @@ function sendTextToServer(text) {
 }
 
 async function songLikeCheck(song_id) {
-    try {
-        const response = await $.ajax({
-            type: 'GET',
-            url: 'MusicLikeCheckC',
-            data: {
-                song_id: song_id
-            }
-        });
+	try {
+		const response = await $.ajax({
+			type: 'GET',
+			url: 'MusicLikeCheckC',
+			data: {
+				song_id: song_id
+			}
+		});
 
-        console.log('좋아요 정보 불러오기 성공.');
-        console.log(response);
+		console.log('좋아요 정보 불러오기 성공.');
+		console.log(response);
 
-        // 가져온 음악 정보를 사용하여 페이지를 업데이트
-        if (response == 1) {
-            console.log("리스폰 확인 : " + response)
-            // 이미 좋아요한 경우
-            return 1;
-        } else {
-            // 좋아요하지 않은 경우
-            return 0;
-        }
-    } catch (error) {
-        console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
-        throw error; // 에러를 호출자에게 전파
-    }
+		// 가져온 음악 정보를 사용하여 페이지를 업데이트
+		if (response == 1) {
+			console.log("리스폰 확인 : " + response)
+			// 이미 좋아요한 경우
+			return 1;
+		} else {
+			// 좋아요하지 않은 경우
+			return 0;
+		}
+	} catch (error) {
+		console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+		throw error; // 에러를 호출자에게 전파
+	}
 }
 
 
+function pagination(jsonArray) {
 
-async function outPutSearch(data) {
-	let $musicList = $('.musicList-inner');
+	//console.log("test" + jsonArray)
 
-	// musicList 내용 초기화
-	$musicList.empty();
 
-	// 데이터의 각 노래에 대해 반복
-	 for (const song of data) {
-		// 각 노래를 표시할 HTML 엘리먼트 생성
-		let $songContainer = $('<div class="musicList-menu"></div>');
+	let container = $('#pagination');
+	container.pagination({
+		dataSource: jsonArray,
+		pageSize: 3,
+		callback: function(data, pagination) {
+			console.log("데이타아아아 : " + data);
 
-		let $musicListTitle = $('<div class="musicList-title"></div>');
-		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
-		$musicListTitle.append(`
+
+			let $musicList = $('.musicList-inner');
+
+			// musicList 내용 초기화
+			$musicList.empty();
+
+			// 데이터의 각 노래에 대해 반복
+			$.each(data, async function(index, song) {
+				// 각 노래를 표시할 HTML 엘리먼트 생성
+				let $songContainer = $('<div class="musicList-menu"></div>');
+
+				let $musicListTitle = $('<div class="musicList-title"></div>');
+				// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+				$musicListTitle.append(`
             <div>
                 <img src=img/${song.song_img} />
             </div>
@@ -222,44 +245,116 @@ async function outPutSearch(data) {
             </div>
         `);
 
-		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
-		// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
+				let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
+				// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
 
-		let $musicListInfo = $('<div class="musicList-info"></div>');
-		$musicListInfo.append(`
+				let $musicListInfo = $('<div class="musicList-info"></div>');
+				$musicListInfo.append(`
             <div>${song.mood_id}</div>
             <div>${song.genre_id}</div>
             <div>${song.instrument_id}</div>
         `);
 
-		let $musicListOption = $('<div class="musicList-option"></div>');
-		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
-		console.log("체크체크! : " +song.song_id);
-		const likeCheck = await songLikeCheck(song.song_id);
+				let $musicListOption = $('<div class="musicList-option"></div>');
+				// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+				console.log("체크체크! : " + song.song_id);
+				const likeCheck = await songLikeCheck(song.song_id);
 
-        console.log("이프문 위 첵라잌" + likeCheck);
+				console.log("이프문 위 첵라잌" + likeCheck);
 
-        if (likeCheck === 1) {
-            console.log("이프문 트루 안 : " + likeCheck);
+				if (likeCheck === 1) {
+					console.log("이프문 트루 안 : " + likeCheck);
 
-            $musicListOption.append(`
+					$musicListOption.append(`
                 <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
             `);
-        } else {
-            console.log("이프문 엘즈안 : " + likeCheck);
-            $musicListOption.append(`
+				} else {
+					console.log("이프문 엘즈안 : " + likeCheck);
+					$musicListOption.append(`
                 <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
             `);
-        }
+				}
 
 
-		// 각 섹션을 노래 컨테이너에 추가
-		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
+				// 각 섹션을 노래 컨테이너에 추가
+				$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
 
-		// 노래 컨테이너를 musicList에 추가
-		$musicList.append($songContainer);
-	};
+				// 노래 컨테이너를 musicList에 추가
+				$musicList.append($songContainer);
+
+
+
+			}
+
+			)
+		}
+
+	})
+
+
 }
+//async function outPutSearch(data) {
+//	let $musicList = $('.musicList-inner');
+//
+//	// musicList 내용 초기화
+//	$musicList.empty();
+//
+//	// 데이터의 각 노래에 대해 반복
+//	for (const song of data) {
+//		// 각 노래를 표시할 HTML 엘리먼트 생성
+//		let $songContainer = $('<div class="musicList-menu"></div>');
+//
+//		let $musicListTitle = $('<div class="musicList-title"></div>');
+//		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+//		$musicListTitle.append(`
+//            <div>
+//                <img src=img/${song.song_img} />
+//            </div>
+//            <div>
+//                <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+//              
+//                <div onclick="location.href=''">${song.composer_name}</div>
+//            </div>
+//        `);
+//
+//		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
+//		// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
+//
+//		let $musicListInfo = $('<div class="musicList-info"></div>');
+//		$musicListInfo.append(`
+//            <div>${song.mood_id}</div>
+//            <div>${song.genre_id}</div>
+//            <div>${song.instrument_id}</div>
+//        `);
+//
+//		let $musicListOption = $('<div class="musicList-option"></div>');
+//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+//		console.log("체크체크! : " + song.song_id);
+//		const likeCheck = await songLikeCheck(song.song_id);
+//
+//		console.log("이프문 위 첵라잌" + likeCheck);
+//
+//		if (likeCheck === 1) {
+//			console.log("이프문 트루 안 : " + likeCheck);
+//
+//			$musicListOption.append(`
+//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
+//            `);
+//		} else {
+//			console.log("이프문 엘즈안 : " + likeCheck);
+//			$musicListOption.append(`
+//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
+//            `);
+//		}
+//
+//
+//		// 각 섹션을 노래 컨테이너에 추가
+//		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
+//
+//		// 노래 컨테이너를 musicList에 추가
+//		$musicList.append($songContainer);
+//	};
+//}
 
 // createAudioPlayer 함수를 사용하여 오디오 플레이어를 생성하는 부분
 function createAudioPlayer(audioSrc) {
@@ -295,7 +390,7 @@ function songLike(song_id, heartElement) {
 			success: function(response) {
 				console.log('좋아요 정보 갱신 성공.');
 				console.log(response);
-				
+
 
 				// 가져온 음악 정보를 사용하여 페이지를 업데이트
 				if (response == 1) {
@@ -312,9 +407,13 @@ function songLike(song_id, heartElement) {
 		});
 	}
 }
+
+
+
+
 //
 //function songLikeCheck(song_id){
-//	
+//
 //	$.ajax({
 //			type: 'GET',
 //			url: 'MusicLikeCheckC',
@@ -324,7 +423,7 @@ function songLike(song_id, heartElement) {
 //			success: function(response) {
 //				console.log('좋아요 정보 불러오기 성공.');
 //				console.log(response);
-//				
+//
 //
 //				// 가져온 음악 정보를 사용하여 페이지를 업데이트
 //				if (response == 1) {
@@ -340,9 +439,9 @@ function songLike(song_id, heartElement) {
 //				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
 //			}
 //		});
-//	
-//	
-//	
+//
+//
+//
 //}
 
 //function songLike(song_id) {
