@@ -24,4 +24,6 @@ public interface ComposerMapper {
 	int updateUserNickName(@Param("composer_name") String composer_name, @Param("userFullPhoneNumber") String userFullPhoneNumber);
 	
 	void updateComposer(ComposerDTO composerDTO);
+	
+	List<ComposerDTO> searchArtists(String keyword);
 }

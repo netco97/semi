@@ -18,18 +18,18 @@
 
 			<!-- Artist Registration Box -->
 			<div th:if="${session.iscomposer == 0}" class="left-box" id="artist-box">
-				<h2><a href="javascript:void(0);" onclick="openArtistRegPopup()">아티스트 등록</a></h2>
+				<h2><a href="/artist_reg">아티스트 등록</a></h2>
 				<!-- Add your artist registration form here -->
 			</div>
 
 			<div th:if="${session.iscomposer == 1}" class="left-box" id="music-upload-box">
-				<h2><a href="/artist_reg" onclick="openMusicUploadPopup()">음악 업로드</a></h2>
+				<h2><a href="/musicUpload">음악 업로드</a></h2>
 				<!-- Add your artist registration form here -->
 			</div>
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
-				<h2>프로덕션 관련 아티스트</h2>
+				<h2>팔로우 아티스트</h2>
 				<!-- Add your production-related content here -->
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 			<!-- Search Box -->
 			<div class="search-box">
 				<input type="text" id="searchInput" placeholder="아티스트 검색">
-				<button id="searchButton">검색</button>
+				<button id="searchButton" onclick="searchArtists()">검색</button>
 			</div>
 
 			<!-- 아티스트 목록을 표시할 영역 -->
@@ -55,18 +55,5 @@
 		</div>
 	</main>
 	<script type="text/javascript" src="/js/artist_main.js"></script>
-	<script th:inline="javascript">
-    // ... (기존 코드 유지)
-
-    function openMusicUploadPopup() {
-        // 음악 업로드 페이지를 팝업으로 열기
-        var popupWindow = window.open('/musicUpload', 'MusicUploadPopup', 'width=800,height=600');
-    }
-    
-    function openArtistRegPopup() {
-        // 아티스트 등록 페이지를 팝업으로 열기
-        var popupWindow = window.open('/artist_reg', 'ArtistRegPopup', 'width=800,height=600');
-    }
-</script>
 </body>
 </html>
