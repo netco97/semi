@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
@@ -20,11 +21,12 @@ public class ArtistRatingC {
     @PostMapping("/rate")
     public void addRating(@RequestBody ArtistRatingDTO ratingDTO) {
         artistRatingService.insertRating(ratingDTO);
+        System.out.println(ratingDTO);
     }
 
-    @GetMapping("/average-rating/{composerId}")
-    public double getAverageRating(@PathVariable Long composerId) {
-        return artistRatingService.getAverageRating(composerId);
+    @GetMapping("/average-rating/{composer_id}")
+    public double getAverageRating(@PathVariable String composer_id) {
+        return artistRatingService.getAverageRating(composer_id);
     }
 
     @PutMapping("/update-rating")
@@ -38,5 +40,19 @@ public class ArtistRatingC {
         artistRatingService.deleteRating(ratingDTO);
         System.out.println(ratingDTO);
     }
+    
+    @GetMapping("/ratings/getRatingByUserAndComposer")
+    public int getRatingByUserAndComposer(
+        @RequestParam("userfullphonenumber") String userfullphonenumber,
+        @RequestParam("composer_id") String composer_id
+    ) {
+    	System.out.println("userfullphonenumber: " + userfullphonenumber);
+    	System.out.println("composer_id: " + composer_id);
+        return artistRatingService.getRatingByUserAndComposer(userfullphonenumber, composer_id);
+    }
+
+    
+    
+    
 
 }

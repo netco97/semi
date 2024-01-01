@@ -24,19 +24,14 @@ public class ComposerService {
         return composerMapper.getAllArtists();
     }
     
-    public List<ComposerDTO> getArtistsWithPagination(int offset, int limit) {
-        System.out.println("offset: " + offset);
-    	System.out.println("limit: " + limit);
-    	int startRow = offset;
-        int endRow = offset + limit - 1;
-        System.out.println("startRow: " + startRow);
-        System.out.println("endRow: " + endRow);
-
+    public List<ComposerDTO> getArtistsWithPagination(int page, int pageSize) {
+    	int offset = (page - 1) * pageSize;
+    	int limit = offset + pageSize;
+    	
         Map<String, Object> params = new HashMap<>();
-        params.put("startRow", startRow);
-        params.put("endRow", endRow);
+        params.put("offset", offset);
+        params.put("limit", limit);
         
-
         System.out.println("params: " + params);
         return composerMapper.getArtistsWithPagination(params);
     }
@@ -61,6 +56,9 @@ public class ComposerService {
 		if(composerMapper.updateUserNickName(composer_name, userFullPhoneNumber)==1) {
 			System.out.println("userNickname update 성공");
 		}
-		
 	}
+	
+    public void updateComposer(ComposerDTO composerDTO) {
+        composerMapper.updateComposer(composerDTO);
+    }
 }

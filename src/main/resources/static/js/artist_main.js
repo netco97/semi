@@ -1,137 +1,180 @@
 document.addEventListener("DOMContentLoaded", function() {
-	// 페이지네이션을 위한 현재 페이지와 페이지 크기 변수
-	var currentPage = 1;
-	var pageSize = 6; // 페이지 크기를 필요에 맞게 조절
-	// 전체 페이지 수
-	//var totalPages = 12;/* Thymeleaf로부터 받은 값 또는 직접 설정한 값 */;
-	console.log('pageSize:', pageSize);
-	console.log('Current Page:', currentPage);
-	console.log('Artist List:', artistList);
+    var pageSize = 4;
+    var currentPage = 1;
+    var allArtists = []; // 모든 아티스트를 저장하는 변수
 
-	// ... (기존 코드)
-	loadArtists(currentPage);
+    // 초기에 모든 아티스트를 가져오기
+    loadAllArtists();
 
-	// 페이지에 기반하여 아티스트를 가져오고 표시하는 함수
-	function loadArtists(page) {
-		// 페이지네이션을 지원하는 아티스트를 가져오기 위한 API 엔드포인트가 있다고 가정
-		const url = '/artist_list?page=' + page + '&pageSize=' + pageSize;
-		console.log('function loadArtists: ' + pageSize);
-		// 아티스트를 가져오기 위한 AJAX 요청
-		$.ajax({
-			type: "GET",
-			url: url,
-			success: function(artistMap) {
-				console.log('loadArtists 성공');
-				console.log('success: '+ artistMap);
+    function loadAllArtists() {
+        const url = '/artist_list';
 
-				// 맵을 배열로 변환
-				const artistArray = Array.from(artistMap.artistList.values());
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function(artistMap) {
+                allArtists = artistMap.artistList;
+                loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
+            },
+            error: function(error) {
+                console.error("아티스트를 가져오는 중 오류 발생", error);
+            }
+        });
+    }
 
-				// currentPage, totalPages 변수 추출
-				const totalArtists = artistMap.totalArtists;
-				const totalPages = artistMap.totalPages;
+    function loadArtists(page) {
+        const totalPages = Math.ceil(allArtists.length / pageSize);
 
-				console.log(artistArray);
-				console.log('totalArtists: ' + totalArtists);
-				console.log('totalPages: ' + totalPages);
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, allArtists.length);
+        const artistList = allArtists.slice(startIndex, endIndex);
 
-				// 아티스트를 artists-container에 표시
-				displayArtists(artistArray);
+        displayArtists(artistList);
+        displayPagination(currentPage, totalPages);
+    }
 
-				// 페이지네이션 링크 표시
-				displayPagination(page, totalPages);
-			},
-			error: function(error) {
-				console.error("아티스트를 가져오는 중 오류 발생", error);
-			}
-		});
-	}
+    function displayArtists(artists) {
+        const artistsContainer = $("#artists-container");
+        artistsContainer.empty();
 
-	// artists-container에 아티스트를 표시하는 함수
-	function displayArtists(artists) {
-		console.log('displayArtists 호출 성공');
-		console.log('function displayArtists: ' + artists);
-		const artistsContainer = $("#artists-container");
-		artistsContainer.empty();
-
-		// 아티스트를 반복하며 컨테이너에 추가
-		artists.forEach(artists => {
-			// 각 아티스트에 대한 HTML을 생성하고 컨테이너에 추가
-			const artistHtml = `
-            <div class="artist-container">
-                <div class="artist-details">
-                <img src="/images/profile/${artists.composer_img}" data-composer-id="${artists.composer_id}">
-                	<div class="artist-details-word">
-                    <h3>${artists.composer_name}</h3>
-                    <p>${artists.composer_genre}</p>
-                    <p>${artists.composer_text}</p>
+        artists.forEach(artist => {
+            const artistHtml = `
+                <div class="artist-container">
+                    <div class="artist-details">
+                        <img src="/images/profile/${artist.composer_img}" data-composer-id="${artist.composer_id}">
+                        <div class="artist-details-word">
+                            <h3>${artist.composer_name}</h3>
+                            <p>${artist.composer_genre}</p>
+                            <p>${artist.composer_text}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-			artistsContainer.append(artistHtml);
-		});
+            `;
+            artistsContainer.append(artistHtml);
+        });
 
-		// 아티스트 이미지 클릭 이벤트 핸들러
-		artistsContainer.on("click", "img", function(artistArray) {
-			console.log(artistArray);
-			// 클릭된 아티스트의 아이디를 가져옴
+        artistsContainer.on("click", "img", function() {
+            const composerId = $(this).data("composer-id");
+            const detailPageUrl = `/artist_detail?userFullPhoneNumber=${composerId}`;
+            window.location.href = detailPageUrl;
+        });
+    }
 
-			const composerId = $(this).data("composer-id");
-			console.log(composerId);
-
-			// 클릭된 아티스트의 JSON 데이터 찾기
-			const clickedArtist = artists.find(artist => artist.composer_id === composerId);
-
-			// clickedArtist를 활용하여 원하는 작업 수행
-			console.log(clickedArtist);
-
-			// 상세 페이지 URL을 생성
-			const detailPageUrl = `/artist_detail?userFullPhoneNumber=${composerId}`;
-
-			// 상세 페이지로 이동
-			window.location.href = detailPageUrl;
-		});
-	}
-
-	//////////////////////// 페이지네이션 //////////////////////////
-
-	// 페이지네이션 링크를 표시하는 함수
-	function displayPagination(currentPage, totalPages) {
-		console.log('displayPagination 호출 성공');
-		console.log('displayPagination' + currentPage);
-		console.log(totalPages);
-		const paginationContainer = $("#pagination");
+    function displayPagination(currentPage, totalPages) {
+        		const paginationContainer = $("#pagination");
 		paginationContainer.empty();
-
-		// ... (기존 페이지네이션 코드)
 
 		var startPage = Math.floor((currentPage - 1) / 10) * 10 + 1;
 		var endPage = Math.min(totalPages, startPage + 9);
-		
-		console.log('currentPage: ' + currentPage);
 
-		//if (currentPage > 10) {
-		paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (startPage - 1) + '">이전</a>');
-		//}
+		if (currentPage > 1) {
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage - 1) + '">이전</a>');
+		} else {
+			paginationContainer.append('<span class="pagination-link disabled">이전</span>');
+		}
 
 		for (var i = startPage; i <= endPage; i++) {
 			var activeClass = (i === currentPage) ? 'active' : '';
 			paginationContainer.append('<a href="#" class="pagination-link ' + activeClass + '" data-page="' + i + '">' + i + '</a>');
 		}
 
-		//if (endPage < totalPages) {
-		paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (endPage + 1) + '">다음</a>');
-		//}
+		if (currentPage < totalPages) {
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">다음</a>');
+		} else {
+			paginationContainer.append('<span class="pagination-link disabled">다음</span>');
+		}
+	
+    }
 
-		// 이전 클릭 이벤트를 언바인딩
-		paginationContainer.off("click", ".pagination-link");
-
-		// 클릭된 페이지에 대한 아티스트를 로드하도록 이벤트 업데이트
-		paginationContainer.on("click", ".pagination-link", function() {
-			const clickedPage = $(this).data("page");
-			console.log('clickedPage: ' + clickedPage);
-			loadArtists(clickedPage);
-		});
-	}
+    $("#pagination").on("click", ".pagination-link:not(.disabled):not(.active)", function() {
+        const clickedPage = $(this).data("page");
+        currentPage = clickedPage;
+        loadArtists(currentPage);
+    });
 });
+
+//document.addEventListener("DOMContentLoaded", function() {
+//	var pageSize = 1;
+//	var currentPage = 1;
+//
+//	loadArtists(currentPage);
+//
+//
+//
+//	function loadArtists(page) {
+//		const url = '/artist_list?page=' + page + '&pageSize=' + pageSize;
+//
+//		$.ajax({
+//			type: "GET",
+//			url: url,
+//			success: function(artistMap) {
+//				const artistList = artistMap.artistList;
+//				const totalPages = artistMap.totalPages;
+//
+//				displayArtists(artistList);
+//				displayPagination(currentPage, totalPages);
+//			},
+//			error: function(error) {
+//				console.error("아티스트를 가져오는 중 오류 발생", error);
+//			}
+//		});
+//	}
+//
+//	function displayArtists(artists) {
+//		const artistsContainer = $("#artists-container");
+//		artistsContainer.empty();
+//
+//		artists.forEach(artist => {
+//			const artistHtml = `
+//                <div class="artist-container">
+//                    <div class="artist-details">
+//                        <img src="/images/profile/${artist.composer_img}" data-composer-id="${artist.composer_id}">
+//                        <div class="artist-details-word">
+//                            <h3>${artist.composer_name}</h3>
+//                            <p>${artist.composer_genre}</p>
+//                            <p>${artist.composer_text}</p>
+//                        </div>
+//                    </div>
+//                </div>
+//            `;
+//			artistsContainer.append(artistHtml);
+//		});
+//
+//		artistsContainer.on("click", "img", function() {
+//			const composerId = $(this).data("composer-id");
+//			const detailPageUrl = `/artist_detail?userFullPhoneNumber=${composerId}`;
+//			window.location.href = detailPageUrl;
+//		});
+//	}
+//
+//	function displayPagination(currentPage, totalPages) {
+//		const paginationContainer = $("#pagination");
+//		paginationContainer.empty();
+//
+//		var startPage = Math.floor((currentPage - 1) / 10) * 10 + 1;
+//		var endPage = Math.min(totalPages, startPage + 9);
+//
+//		if (currentPage > 1) {
+//			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage - 1) + '">이전</a>');
+//		} else {
+//			paginationContainer.append('<span class="pagination-link disabled">이전</span>');
+//		}
+//
+//		for (var i = startPage; i <= endPage; i++) {
+//			var activeClass = (i === currentPage) ? 'active' : '';
+//			paginationContainer.append('<a href="#" class="pagination-link ' + activeClass + '" data-page="' + i + '">' + i + '</a>');
+//		}
+//
+//		if (currentPage < totalPages) {
+//			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">다음</a>');
+//		} else {
+//			paginationContainer.append('<span class="pagination-link disabled">다음</span>');
+//		}
+//	}
+//
+//	$("#pagination").on("click", ".pagination-link:not(.disabled):not(.active)", function() {
+//		const clickedPage = $(this).data("page");
+//		currentPage = clickedPage;
+//		loadArtists(currentPage);
+//	});
+//});

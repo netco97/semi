@@ -1,4 +1,8 @@
+
 document.addEventListener("DOMContentLoaded", function() {
+	let userFullNumber = followerUserId1;
+	let composerId = targetUserId1; // 초기화;
+	
 	// 페이지를 변경하기 전에 현재 스크롤 위치 저장
 	function storeScrollPosition() {
 		sessionStorage.setItem("scrollPosition", window.scrollY);
@@ -26,10 +30,44 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	//////////////////////////////////////////////////////
 	// 별점 기능
+	
+	// 페이지 로딩 시 별점 조회
+    fetchRatingFromServer();
+
+    // 별점 조회 함수
+    function fetchRatingFromServer() {
+    //const userfullphonenumber = followerUserId1;
+    //const composer_id = targetUserId1;
+        $.ajax({
+            type: "GET",
+            url: "/ratings/getRatingByUserAndComposer",
+            data: {
+                userfullphonenumber: userFullNumber,
+                composer_id: composerId
+            },
+            success: function (result) {
+				console.log(result);
+                const ratingValue = result.rating;
+                displayRating(ratingValue);
+            },
+            error: function (error) {
+                console.error("별점 조회 중 오류", error);
+            }
+        });
+    }
+
+    // 별점 표시 함수
+    function displayRating(rating) {
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('rating-value');
+
+        ratingValue.innerText = `평가: ${rating}점`;
+        removeActiveStars();
+        setActiveStars(rating);
+    }
+
 	const stars = document.querySelectorAll('.star');
 	const ratingValue = document.getElementById('rating-value');
-	const followBtn = document.getElementById('followBtn');
-	const messageBtn = document.getElementById('messageBtn');
 
 	stars.forEach(star => {
 		star.addEventListener('click', () => {
@@ -66,21 +104,18 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function submitRatingToServer(rating) {
-		//const composerId = composerId/* HTML 또는 Thymeleaf에서 composerId 가져오기 */;
-		const userFullNumber = '01044982324'/* 세션 또는 저장된 위치에서 userFullNumber 가져오기 */;
-		const ratingData = {
-
-			userFullNumber: userFullNumber,
-			composerId: composerId,
-			rating: rating
-		};
-
+		//userFullNumber = followerUserId1/* Thymeleaf로부터 가져오는 코드 */;
+		//composerId = targetUserId1/* Thymeleaf로부터 가져오는 코드 */;
 		// AJAX를 사용하여 서버에 평가 전송
 		$.ajax({
 			type: "POST",
 			url: "/ratings/rate",
 			contentType: "application/json;charset=UTF-8",
-			data: JSON.stringify(ratingData),
+			data: JSON.stringify({
+				"userfullphonenumber": userFullNumber,  // 예: 유저의 휴대전화번호
+				"composer_id": composerId,        // 예: 아티스트의 ID
+				"rating": rating
+			}),
 			success: function(result) {
 				const createdRatingID = result.ratingID;
 				console.log(userFullNumber);
@@ -91,9 +126,14 @@ document.addEventListener("DOMContentLoaded", function() {
 			},
 			error: function(error) {
 				console.error("평가 제출 중 오류", error);
+				console.log(userFullNumber);
+				console.log(composerId);
+				console.log(rating);
 			}
 		});
 	}
+	//////////////////////////////////////////////////////////	
+
 	//////////////////////////////////////////////////////////	
 	// 팔로우
 	//	followBtn.addEventListener('click', () => {
@@ -279,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		});
 	});
-});
+}); // DOM
 
 
 /* 아티스트 뮤직 리스트 */

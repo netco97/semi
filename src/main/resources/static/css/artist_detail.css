@@ -150,9 +150,6 @@ button:hover {
     height: 35px;
 }
 
-#commentBtn:hover {
-}
-
 #commentList {
 	padding-left: 150px;
 	padding-right: 150px;
@@ -248,11 +245,12 @@ button:hover {
 /* musicList */
 
 .musicList{
-	width: 600px;
+	width: 500px;
 	height: 100%;
 	position: relative;	
 	background-color: black;
 	color: white;
+	border-radius: 10px;
 	
 }
 .musicList-inner {
