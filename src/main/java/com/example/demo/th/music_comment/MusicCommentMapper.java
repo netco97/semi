@@ -24,6 +24,8 @@ public interface MusicCommentMapper {
 
 
 	int countCommentsBySongId(@Param("song_id") int song_id);
+
+	int deleteMusicComment(@Param("comment_id") int comment_id);
 	
 }
 		
