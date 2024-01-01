@@ -7,6 +7,15 @@
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
 	
+	let isLogin = "";
+	
+	if(userNickname != "" ){
+		
+		isLogin = 1;
+	}else{
+		isLogin = 0;
+	}
+	
 </script>
 </head>
 <body>

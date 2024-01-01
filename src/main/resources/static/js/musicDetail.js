@@ -33,7 +33,7 @@ $(document).ready(function() {
 				console.log('composerId : ' + songId);
 				var comments = responseDTO.comments;
 				var totalComments = responseDTO.totalComments;
-				console.log('asdasd : ' +comments[0].comment_id)
+				console.log('asdasd : ' + comments[0].comment_id)
 				console.log(comments[0].user_nickName)
 
 				displayComments(comments);
@@ -115,31 +115,41 @@ $(document).ready(function() {
 
 	// 코멘트 작성 버튼 클릭 시 이벤트
 	$("#commentBtn").on("click", function() {
-		const userName = userNickname;
-		const comment_text = $("#commentInput").val();
+		
 
-
+		if (isLogin == 1) {
+			const comment_text = $("#commentInput").val();
+			
 		console.log(songId);
-		console.log(userName);
+		console.log(isLogin);
 
-		$.ajax({
-			type: "GET",
-			url: "RegMusicComment",
-			data: {
-				comment_text: comment_text,
-				song_id: songId
-			},
-			success: function(result) {
-				console.log("코멘트 추가 성공");
+			$.ajax({
+				type: "GET",
+				url: "RegMusicComment",
+				data: {
+					comment_text: comment_text,
+					song_id: songId
+				},
+				success: function(result) {
+					console.log("코멘트 추가 성공");
 
-				$("#commentInput").val("");
-				// 코멘트를 업데이트하고 새로운 코멘트를 확인하기 위해 다시 로드합니다.
-				loadComments(1);
-			},
-			error: function(error) {
-				console.error("코멘트 추가 실패", error);
-			}
-		});
+					$("#commentInput").val("");
+					// 코멘트를 업데이트하고 새로운 코멘트를 확인하기 위해 다시 로드합니다.
+					loadComments(1);
+				},
+				error: function(error) {
+					console.error("코멘트 추가 실패", error);
+				}
+			});
+
+
+		} else {
+			alert('로그인 후 이용 가능합니다')
+		}
+
+
+
+
 	});
 
 	//	 코멘트 삭제 버튼 클릭 시 이벤트
@@ -152,11 +162,11 @@ $(document).ready(function() {
 			$.ajax({
 				type: "GET",
 				url: "DeleteMusicComment",
-				data:{
+				data: {
 					comment_id: commentId
 				},
 				success: function() {
-					console.log("여기까지 딜리트 : " +commentId);
+					console.log("여기까지 딜리트 : " + commentId);
 					console.log("코멘트 삭제 성공");
 					loadComments(1);
 				},
@@ -260,9 +270,9 @@ function createAudioPlayer(audioSrc) {
 async function songLike(song_id) {
 	console.log(song_id);
 
-	let user_id = 1;
+	
 	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야됨
-	if (!(user_id == "")) {
+	if (isLogin == 1) {
 		try {
 			const response = await $.ajax({
 				type: 'GET',
@@ -289,6 +299,8 @@ async function songLike(song_id) {
 		} catch (error) {
 			console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
 		}
+	}else{
+		alert('로그인 후 이용가능합니다')
 	}
 }
 

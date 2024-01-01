@@ -1,6 +1,8 @@
 console.log("genre" + genre);
 console.log("mood" + mood);
 console.log("instrument" + instrument);
+console.log(userNickname);
+console.log(isLogin)
 
 let click = {
 	mood: [],
@@ -258,7 +260,10 @@ function pagination(jsonArray) {
 				let $musicListOption = $('<div class="musicList-option"></div>');
 				// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
 				console.log("체크체크! : " + song.song_id);
-				const likeCheck = await songLikeCheck(song.song_id);
+				const likeCheck = 0;
+				if(isLogin == 1){
+				likeCheck = await songLikeCheck(song.song_id);	
+				}
 
 				console.log("이프문 위 첵라잌" + likeCheck);
 
@@ -378,9 +383,9 @@ function createAudioPlayer(audioSrc) {
 function songLike(song_id, heartElement) {
 	console.log(heartElement);
 
-	let user_id = 1;
+	
 	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
-	if (!(user_id == "")) {
+	if (isLogin == 1) {
 		$.ajax({
 			type: 'GET',
 			url: 'MusicLikeC',
@@ -405,6 +410,8 @@ function songLike(song_id, heartElement) {
 				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
 			}
 		});
+	}else{
+		alert('로그인 후 이용 가능합니다')
 	}
 }
 
