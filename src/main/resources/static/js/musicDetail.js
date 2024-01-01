@@ -33,6 +33,8 @@ $(document).ready(function() {
 				console.log('composerId : ' + songId);
 				var comments = responseDTO.comments;
 				var totalComments = responseDTO.totalComments;
+				console.log('asdasd : ' +comments[0].comment_id)
+				console.log(comments[0].user_nickName)
 
 				displayComments(comments);
 				displayPagination(page, Math.ceil(totalComments / size));
@@ -49,14 +51,15 @@ $(document).ready(function() {
 	function displayComments(comments) {
 		var commentsContainer = $("#comments-container");
 		commentsContainer.empty();
+		console.log(comments[0].userNickName);
 
 		$.each(comments, function(index, comment) {
 
 			commentsContainer.append(
 				'<div class="comment-item">' +
-				'<div class="user-nickname">' + comment.userNickname + '</div>' +
+				'<div class="user-nickname">' + comment.user_nickName + '</div>' +
 				'<div class="comment-content">' + comment.comment_text + '</div>' +
-//				'<div class="created-at">' + convertToKoreanTime(comment.comment_date) + '</div>' +
+				'<div class="created-at">' + convertToKoreanTime(comment.comment_date) + '</div>' +
 				'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
 				'</div>'
 
@@ -67,12 +70,12 @@ $(document).ready(function() {
 	}
 
 	// 한국 시간으로 변경
-//	function convertToKoreanTime(dateTimeString) {
-//		// 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
-////		var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
-//		var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
-//		return koreanDateTime;
-//	}
+	function convertToKoreanTime(dateTimeString) {
+		// 서버에서 제공하는 시간 형식에 따라 적절히 수정해야 할 수 있습니다.
+		var serverDateTime = new Date(dateTimeString.replace(' ', 'T') + 'Z'); // ISO 8601 형식으로 변환
+		var koreanDateTime = serverDateTime.toLocaleString("en-US", { timeZone: "Asia/Seoul" });
+		return koreanDateTime;
+	}
 
 	function displayPagination(currentPage, totalPages) {
 		var paginationContainer = $("#pagination");
@@ -113,19 +116,17 @@ $(document).ready(function() {
 	// 코멘트 작성 버튼 클릭 시 이벤트
 	$("#commentBtn").on("click", function() {
 		const userName = userNickname;
-		const commentContent = $("#commentInput").val();
+		const comment_text = $("#commentInput").val();
 
 
 		console.log(songId);
 		console.log(userName);
-		console.log(commentContent);
 
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			url: "RegMusicComment",
-			contentType: "application/json;charset=UTF-8",
 			data: {
-				inputComment: commentContent,
+				comment_text: comment_text,
 				song_id: songId
 			},
 			success: function(result) {
@@ -141,28 +142,31 @@ $(document).ready(function() {
 		});
 	});
 
-	// 코멘트 삭제 버튼 클릭 시 이벤트
-//	$("#comments-container").on("click", ".delete-btn", function() {
-//		const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
-//
-//		if (isConfirmed) {
-//			// 클릭된 버튼의 부모 요소에서 comment_id를 가져옴
-//			const commentId = $(this).data('comment-id');
-//			$.ajax({
-//				type: "DELETE",
-//				url: "/comments/" + commentId,
-//				success: function() {
-//					console.log(commentId);
-//					console.log("코멘트 삭제 성공");
-//					loadComments(1);
-//				},
-//				error: function(error) {
-//					console.log(commentId);
-//					console.error("코멘트 삭제 실패", error);
-//				}
-//			})
-//		}
-//	});
+	//	 코멘트 삭제 버튼 클릭 시 이벤트
+	$("#comments-container").on("click", ".delete-btn", function() {
+		const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
+
+		if (isConfirmed) {
+			// 클릭된 버튼의 부모 요소에서 comment_id를 가져옴
+			const commentId = $(this).data('comment-id');
+			$.ajax({
+				type: "GET",
+				url: "DeleteMusicComment",
+				data:{
+					comment_id: commentId
+				},
+				success: function() {
+					console.log("여기까지 딜리트 : " +commentId);
+					console.log("코멘트 삭제 성공");
+					loadComments(1);
+				},
+				error: function(error) {
+					console.log(commentId);
+					console.error("코멘트 삭제 실패", error);
+				}
+			})
+		}
+	});
 });
 
 
