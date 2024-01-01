@@ -12,6 +12,15 @@
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
 	const instrument = /*[[${tags.instrument}]]*/[];
+	const userNickname = `[(${session.userNickname})]`;
+	
+	let isLogin = "";
+	
+	if (userNickname !== "") {
+		isLogin = 1;
+	} else {
+		isLogin = 0;
+	}
 </script>
 
 </head>
