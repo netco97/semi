@@ -45,6 +45,7 @@ body {
 .musicMenu-searchInput {
 	display: flex;
 	margin-bottom: 15px;
+	width: 40%;
 }
 
 .musicMenu-searchInput input {
