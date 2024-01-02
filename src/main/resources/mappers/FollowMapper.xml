@@ -32,5 +32,4 @@
     SELECT * FROM FOLLOWTABLE WHERE targetUserId = #{userId}
 </select>
 
-
 </mapper>

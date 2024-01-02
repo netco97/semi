@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 @RestController
 @RequestMapping("/follow")
@@ -43,18 +44,15 @@ public class FollowController {
         return response;
     }
 	
-	@GetMapping("/follower_list")
-	public String showFollowerList(Model model, HttpSession session) {
-	    // 세션에서 현재 사용자의 ID를 가져오는 코드
-	    String userId = (String) session.getAttribute("userFullPhoneNumber");
+	// FollowController.java
 
-	    // 팔로워 리스트를 가져와서 모델에 추가
+	@GetMapping("/follower_list")
+	public String showFollowerList(Model model,HttpSession httpSession) {
+	    String userId = (String) httpSession.getAttribute("userFullPhoneNumber"); // 세션에서 현재 사용자 ID를 가져오는 메소드 사용
 	    List<FollowDTO> followerList = followService.getFollowerList(userId);
 	    model.addAttribute("followerList", followerList);
-
 	    return "follower_list_modal"; // 모달창을 띄울 HTML 페이지 이름
 	}
 	
-	
-	
+		
 }
