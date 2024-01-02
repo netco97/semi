@@ -16,4 +16,14 @@ public class ChatListService {
 		return chatListMapper.getRoomIds(cur_userNickname);
 	}
 
+	public ChatListDTO getChatUserInfo(String roomId) {
+		
+		return chatListMapper.getChatUserInfo(roomId);
+	}
+
+	public String getSenderInfo(String cur_userNickname, String roomId) {
+		
+		return chatListMapper.getSenderInfo(cur_userNickname,roomId);
+	}
+
 }

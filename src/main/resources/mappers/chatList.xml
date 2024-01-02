@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.sm.chatlist.ChatListMapper">
-  <select id="getRoomIds" resultType="ChatListDTO">
+
+	<select id="getRoomIds" resultType="ChatListDTO">
   	SELECT roomId
 	FROM createRoom
 	WHERE user1 = #{cur_userNickname} OR user2 = #{cur_userNickname}
-  </select>
+	</select>
+  
+	<select id="getChatUserInfo" resultType="ChatListDTO">
+  	SELECT roomId, sender, message, cur_date
+		FROM (
+    			SELECT roomId, sender, message, cur_date,
+           		ROW_NUMBER() OVER (PARTITION BY roomId ORDER BY cur_date DESC) AS rn FROM chat
+			 )
+	WHERE roomId= #{roomId} AND rn = 1
+	</select>
+	
+	<select id="getSenderInfo" resultType="String">
+		SELECT 
+		    CASE
+		        WHEN user1 = #{cur_userNickname} THEN user2
+		        WHEN user2 = #{cur_userNickname} THEN user1
+		    END AS otherUser
+		FROM createRoom
+		WHERE roomId = #{roomId}
+	</select>
 </mapper>

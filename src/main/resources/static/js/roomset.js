@@ -21,7 +21,7 @@ function createChatroom() {
                 roomId = responseData.roomId;
 
                 // 모달 열기
-                openModal(roomId);
+                openModal();
 
                 // 서버에서 채팅 리스트 받아오기
                 getChatList(roomId);
@@ -71,7 +71,31 @@ function displayChatList(chatList) {
 
     for (var i = 0; i < chatList.length; i++) {
         var messageElement = document.createElement("div");
-        messageElement.innerText = chatList[i].sender + " : " + chatList[i].message + "(" + chatList[i].cur_date + ")";
+
+        // 본인과 상대방에 따라 클래스를 추가
+        if (chatList[i].sender === userNickname) {
+            messageElement.classList.add("own-chat");
+        } else {
+            messageElement.classList.add("other-chat");
+        }
+
+        // sender 부분에 bold 스타일 적용
+        var senderElement = document.createElement("div");
+        senderElement.style.fontWeight = "bold";
+        senderElement.innerText = chatList[i].sender;
+
+        // 나머지 부분은 각각 개별적인 div로 래핑
+        var messageContentElement = document.createElement("div");
+        messageContentElement.innerText = chatList[i].message;
+
+        var dateElement = document.createElement("div");
+        dateElement.innerText = chatList[i].cur_date;
+
+        // 위에서 생성한 요소들을 메시지 영역에 추가
+        messageElement.appendChild(senderElement);
+        messageElement.appendChild(messageContentElement);
+        messageElement.appendChild(dateElement);
+
         messageArea.appendChild(messageElement);
     }
 }
@@ -91,11 +115,13 @@ function connectWebSocket(roomId) {
     });
 }
 
-function openModal(roomId) {
+function openModal() {
     var modal = document.getElementById("myModal");
     var websocketResult = document.getElementById("websocketResult");
 
-    websocketResult.innerText = "WebSocket Result: " + roomId;
+    websocketResult.innerText = "채팅방";
+    websocketResult.style.textAlign = "center";
+    websocketResult.style.fontWeight = 700;
 
     modal.style.display = "block";
 }
@@ -117,9 +143,33 @@ function disconnectWebSocket() {
 function displayMessage(message) {
     var messageArea = document.getElementById("messageArea");
     var messageElement = document.createElement("div");
-    messageElement.innerText = message.sender + " : " + message.message + "(" + message.cur_date + ")";
+
+    // 본인과 상대방에 따라 클래스를 추가
+    if (message.sender === userNickname) {
+        messageElement.classList.add("own-chat");
+    } else {
+        messageElement.classList.add("other-chat");
+    }
+
+    // sender 부분에 bold 스타일 적용
+    var senderElement = document.createElement("div");
+    senderElement.style.fontWeight = "bold";
+    senderElement.innerText = message.sender;
+
+    // 나머지 부분은 각각 개별적인 div로 래핑
+    var messageContentElement = document.createElement("div");
+    messageContentElement.innerText = message.message;
+
+    var dateElement = document.createElement("div");
+    dateElement.innerText = message.cur_date;
+
+    // 위에서 생성한 요소들을 메시지 영역에 추가
+    messageElement.appendChild(senderElement);
+    messageElement.appendChild(messageContentElement);
+    messageElement.appendChild(dateElement);
+
     messageArea.appendChild(messageElement);
-    
+
     // 스크롤을 맨 아래로 이동
     messageArea.scrollTop = messageArea.scrollHeight;
 }

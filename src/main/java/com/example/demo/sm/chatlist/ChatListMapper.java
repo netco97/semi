@@ -10,4 +10,8 @@ public interface ChatListMapper {
 
 	ArrayList<ChatListDTO> getRoomIds(@Param("cur_userNickname") String cur_userNickname);
 
+	ChatListDTO getChatUserInfo(@Param("roomId") String roomId);
+
+	String getSenderInfo(@Param("cur_userNickname") String cur_userNickname, @Param("roomId") String roomId);
+
 }
