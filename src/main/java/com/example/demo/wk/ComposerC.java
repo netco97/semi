@@ -77,7 +77,7 @@ public class ComposerC {
         return "wk/index";
     }
 	
-	@GetMapping("/artist_detail")
+	@PostMapping("/artist_detail")
 	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
 			
 			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);

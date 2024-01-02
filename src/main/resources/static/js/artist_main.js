@@ -54,13 +54,31 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
             artistsContainer.append(artistHtml);
         });
-
+		
+		
+		//폰넘버 감추
         artistsContainer.on("click", "img", function() {
-            const composerId = $(this).data("composer-id");
-            const detailPageUrl = `/artist_detail?userFullPhoneNumber=${composerId}`;
-            window.location.href = detailPageUrl;
-        });
-    }
+	    const composerId = $(this).data("composer-id");
+	    const detailPageUrl = "/artist_detail";
+	    
+	    // 폼 동적 생성
+	    const form = $('<form>', {
+	        'action': detailPageUrl,
+	        'method': 'post',
+	        'style': 'display:none;'
+	    });
+	
+	    // input 추가
+	    $('<input>').attr({
+	        'type': 'hidden',
+	        'name': 'userFullPhoneNumber',
+	        'value': composerId
+	    }).appendTo(form);
+	
+	    // 폼을 body에 추가하고 submit
+	    form.appendTo('body').submit();
+	});
+	    }
 
     function displayPagination(currentPage, totalPages) {
         const paginationContainer = $("#pagination");
