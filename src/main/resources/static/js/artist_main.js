@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         $.ajax({
             type: "GET",
             url: url,
+            
             success: function(artistMap) {
                 allArtists = artistMap.artistList;
                 loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
@@ -96,9 +97,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
             // 검색 기능 추가
     $("#searchInput").on("input", function() {
-        searchArtists($(this).val());
-        console.log($(this).val());
-    });
+        const query = $(this).val();
+	    loadAllArtists(query);
+	    });
 
 	function searchArtists(query) {
 	    // 검색어(query)를 이용하여 아티스트를 찾고, 결과를 화면에 표시

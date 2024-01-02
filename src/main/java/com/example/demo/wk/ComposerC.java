@@ -69,14 +69,6 @@ public class ComposerC {
 	    return "wk/index";
 	}
 	
-    @GetMapping("/artists/search")
-    public String searchArtists(@RequestParam String keyword, Model model) {
-        List<ComposerDTO> artistList = composerService.searchArtists(keyword);
-        model.addAttribute("artistList", artistList);
-        model.addAttribute("content", "wk/artist_main");
-        return "wk/index";
-    }
-	
 	@GetMapping("/artist_detail")
 	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
 			

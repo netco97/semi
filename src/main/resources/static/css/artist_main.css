@@ -26,6 +26,7 @@ main {
     justify-content: center;
 }
 
+/* 개별 아티스트 박스 */
 .artist-container {
 	margin: 20px;
     display: flex;
@@ -42,13 +43,10 @@ main {
 }
 
 #artists-container {
+	height: 600px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.artists-container {
-	width: 100%;
 }
 
 .artist-details {
