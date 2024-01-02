@@ -45,6 +45,7 @@ public class MusicC {
 		
 		
 		System.out.println("겟 커멘츠 ! : " +getComments);
+		System.out.println("유저 닉네임 왜 안나옴 : " +getComments.get(0).getUser_nickName());
 		model.addAttribute("comments",getComments);
 		model.addAttribute("content", "th/musicDetail");
 		

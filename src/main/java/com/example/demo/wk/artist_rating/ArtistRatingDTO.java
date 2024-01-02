@@ -4,11 +4,10 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class ArtistRatingDTO {
-	private Long ratingId;
-	private String userFullNumber;
-    private Long composerId;
+	private Long rating_id;
+	private String userfullphonenumber;
+    private String composer_id;
     private double rating;
 
 }

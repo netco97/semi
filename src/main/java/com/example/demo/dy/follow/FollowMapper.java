@@ -10,6 +10,6 @@ public interface FollowMapper {
 
     void deleteFollow(FollowDTO follow);
 
-    boolean existsFollow(@Param("followerComposerId") Long followerComposerId, 
-                         @Param("targetComposerId") Long targetComposerId);
+    boolean existsFollow(@Param("followerUserId") String followerUserId, 
+                         @Param("targetUserId") String targetUserId);
 }

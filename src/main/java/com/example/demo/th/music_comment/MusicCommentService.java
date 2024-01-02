@@ -34,7 +34,7 @@ public class MusicCommentService {
 
 		String userFullPhoneNumber = httpSession.getAttribute("userFullPhoneNumber").toString();
 
-		System.out.println("서비스 : " + song_id);
+//		System.out.println("서비스 : " + song_id);
 
 		musicCommentMapper.regComment(song_id, userFullPhoneNumber, comment_text);
 
@@ -46,7 +46,7 @@ public class MusicCommentService {
 		String userNickName = musicCommentMapper.getUserNickName(userFullPhoneNumber);
 		
 		
-		return userFullPhoneNumber;
+		return userNickName;
 		
 		
 	}
@@ -62,9 +62,14 @@ public class MusicCommentService {
 		  return musicCommentMapper.countCommentsBySongId(song_id);
 	}
 
+	public void deleteMusicComment(int comment_id) {
+			
+		
+		
+		System.out.println("딜리트가 됫니 ? " + musicCommentMapper.deleteMusicComment(comment_id)); 
+		
+	}
+
 	
-//	public  regMusicComment(int song_id, String inputComment) {
-//		
-//	}
 
 }

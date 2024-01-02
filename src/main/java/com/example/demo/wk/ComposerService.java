@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -23,14 +24,14 @@ public class ComposerService {
         return composerMapper.getAllArtists();
     }
     
-    public List<ComposerDTO> getArtistsWithPagination(int offset, int limit) {
-        int startRow = offset;
-        int endRow = startRow + limit;
-
+    public List<ComposerDTO> getArtistsWithPagination(int page, int pageSize) {
+    	int offset = (page - 1) * pageSize;
+    	int limit = offset + pageSize;
+    	
         Map<String, Object> params = new HashMap<>();
-        params.put("startRow", startRow);
-        params.put("endRow", endRow);
-
+        params.put("offset", offset);
+        params.put("limit", limit);
+        
         System.out.println("params: " + params);
         return composerMapper.getArtistsWithPagination(params);
     }
@@ -55,6 +56,13 @@ public class ComposerService {
 		if(composerMapper.updateUserNickName(composer_name, userFullPhoneNumber)==1) {
 			System.out.println("userNickname update 성공");
 		}
-		
 	}
+	
+    public void updateComposer(ComposerDTO composerDTO) {
+        composerMapper.updateComposer(composerDTO);
+    }
+    
+    public List<ComposerDTO> searchArtists(String keyword) {
+        return composerMapper.searchArtists(keyword);
+    }
 }

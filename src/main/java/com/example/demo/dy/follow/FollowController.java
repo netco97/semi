@@ -16,10 +16,11 @@ public class FollowController {
 
     @PostMapping("/toggle")
     public void toggleFollow(
-            @RequestParam("followerComposerId") Long followerComposerId,
-            @RequestParam("targetComposerId") Long targetComposerId) 
+            @RequestParam("followerUserId") String followerUserId,
+            @RequestParam("targetUserId") String targetUserId) 
     {
-        followService.toggleFollow(followerComposerId, targetComposerId);
+        followService.toggleFollow(followerUserId, targetUserId);
+        
         
         
     }

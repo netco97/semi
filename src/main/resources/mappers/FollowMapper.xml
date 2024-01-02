@@ -4,28 +4,28 @@
 
     
     <insert id="insertFollow" parameterType="FollowDTO">
-        INSERT INTO FOLLOWTABLE (FOLLOWID, FOLLOWUSERID, TARGETUSERID, created_at)
-        VALUES (follow_sequence.NEXTVAL, #{followerComposerId}, #{targetComposerId}, CURRENT_TIMESTAMP)
+        INSERT INTO FOLLOWTABLE (FOLLOWID,FOLLOWERUSERID,TARGETUSERID,created_at)
+        VALUES (follow_sequence.NEXTVAL, #{followerUserId}, #{targetUserId}, CURRENT_TIMESTAMP)
     </insert>
 
     
     <delete id="deleteFollow" parameterType="FollowDTO">
-        DELETE FROM follow
-        WHERE followId = #{followId}
-    </delete>
+    DELETE FROM FOLLOWTABLE
+    WHERE followerUserId = #{followerUserId} AND targetUserId = #{targetUserId}
+</delete>
 
     
-    <select id="existsFollow" resultType="boolean">
-       SELECT CASE
-           WHEN EXISTS (
-                  SELECT *
-                  FROM follow
-                  WHERE follower_composer_id = #{followerComposerId} AND target_composer_id = #{targetComposerId}
-              )
-           THEN 1
-           ELSE 0
-       END AS existsFollow
-FROM DUAL;
-    </select>
+   <select id="existsFollow" resultType="boolean">
+    SELECT CASE
+        WHEN EXISTS (
+            SELECT *
+            FROM FOLLOWTABLE
+            WHERE followerUserId = #{followerUserId} AND targetUserId = #{targetUserId}
+        )
+        THEN 1
+        ELSE 0
+    END AS existsFollow
+    FROM DUAL
+</select>
 
 </mapper>
