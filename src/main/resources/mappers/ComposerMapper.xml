@@ -53,5 +53,6 @@
 	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
         SELECT * FROM composers
         WHERE composer_name LIKE '%' || #{keyword} || '%'
+        OR composer_genre LIKE '%' || #{keyword} || '%'
     </select>
 </mapper>
