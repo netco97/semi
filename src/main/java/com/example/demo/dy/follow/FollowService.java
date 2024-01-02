@@ -1,7 +1,9 @@
 	package com.example.demo.dy.follow;
 	
 	
-	import org.springframework.beans.factory.annotation.Autowired;
+	import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
 	import org.springframework.transaction.annotation.Transactional;
 	
@@ -11,9 +13,13 @@
 	
 	    @Autowired
 	    private FollowMapper followMapper;
+	    
+	    public boolean existsFollow(String followerUserId, String targetUserId) {
+	        return followMapper.existsFollow(followerUserId, targetUserId);
+	    }
 	
 	    
-	    public void toggleFollow(String followerUserId, String targetUserId) {
+	    public boolean toggleFollow(String followerUserId, String targetUserId) {
 	        boolean isFollowing = followMapper.existsFollow(followerUserId, targetUserId);
 	        System.out.println("이거 찎힘 ");
 	        
@@ -31,5 +37,13 @@
 	            System.out.println("DTO 내용 확인" + follow);
 	            followMapper.insertFollow(follow);
 	        }
+
+	        // 팔로우 상태를 토글한 후에 현재 상태 반환
+	        return isFollowing;
 	    }
+	    
+	    public List<FollowDTO> getFollowerList(String userId) {
+	        return followMapper.getFollowerList(userId);
+	    }
+	    
 	}

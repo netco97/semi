@@ -28,4 +28,9 @@
     FROM DUAL
 </select>
 
+<select id="getFollowerList" resultType="com.example.demo.dy.follow.FollowDTO">
+    SELECT * FROM FOLLOWTABLE WHERE targetUserId = #{userId}
+</select>
+
+
 </mapper>
