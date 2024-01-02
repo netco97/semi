@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
 	let userFullNumber = followerUserId1;
 	let composerId = targetUserId1; // 초기화;

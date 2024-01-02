@@ -18,10 +18,10 @@ function createChatroom() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var responseData = JSON.parse(xhr.response);
-                roomId = responseData.room_id;
+                roomId = responseData.roomId;
 
                 // 모달 열기
-                openModal(roomId);
+                openModal();
 
                 // 서버에서 채팅 리스트 받아오기
                 getChatList(roomId);
@@ -71,7 +71,16 @@ function displayChatList(chatList) {
 
     for (var i = 0; i < chatList.length; i++) {
         var messageElement = document.createElement("div");
-        messageElement.innerText = chatList[i].sender + " : " + chatList[i].message + "(" + chatList[i].cur_date + ")";
+        
+        // 본인과 상대방에 따라 클래스를 추가
+	        if (chatList[i].sender === userNickname) {
+	            messageElement.classList.add("own-chat");
+	        } else {
+	            messageElement.classList.add("other-chat");
+	        }
+	        
+	        
+        messageElement.innerText = chatList[i].sender + "\n" + chatList[i].message + "\n" + chatList[i].cur_date;
         messageArea.appendChild(messageElement);
     }
 }
@@ -91,11 +100,13 @@ function connectWebSocket(roomId) {
     });
 }
 
-function openModal(roomId) {
+function openModal() {
     var modal = document.getElementById("myModal");
     var websocketResult = document.getElementById("websocketResult");
 
-    websocketResult.innerText = "WebSocket Result: " + roomId;
+    websocketResult.innerText = "채팅방";
+    websocketResult.style.textAlign = "center";
+    websocketResult.style.fontWeight = 700;
 
     modal.style.display = "block";
 }
@@ -117,7 +128,15 @@ function disconnectWebSocket() {
 function displayMessage(message) {
     var messageArea = document.getElementById("messageArea");
     var messageElement = document.createElement("div");
-    messageElement.innerText = message.sender + " : " + message.message + "(" + message.cur_date + ")";
+    
+    // 본인과 상대방에 따라 클래스를 추가
+	    if (message.sender === userNickname) {
+	        messageElement.classList.add("own-chat");
+	    } else {
+	        messageElement.classList.add("other-chat");
+	    }
+	    
+    messageElement.innerText = message.sender + "\n" + message.message + "\n" + message.cur_date;
     messageArea.appendChild(messageElement);
     
     // 스크롤을 맨 아래로 이동

@@ -128,7 +128,7 @@
 
 /* 하단 코멘트 섹션 */
 .comment-container {
-	height: 700px;
+	height: 750px;
     background-color: black;
     color: white;
     display: flex;
@@ -211,16 +211,15 @@
 	width: 5%;
   	cursor: pointer;
   	color: white;
-  	margin-left: auto;
+  	margin-left: 5px;
 }
 
 #pagination {
     position: absolute;
-    bottom: -450px; /* 조정 가능한 값 */
     left: 50%;
     transform: translateX(-50%);
     background-color: white; /* 페이지 번호가 가려지는 것을 방지하기 위해 배경색을 지정 */
-    padding: 10px;
+    padding: 7px;
     border: 1px solid #ccc;
 }
 
@@ -239,6 +238,7 @@
 }
 
 .pagination a {
+	margin: 4px;
     text-decoration: none;
 	padding: 2px 5px;
     border: 1px solid #ccc;

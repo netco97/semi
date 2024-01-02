@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	// 초기에 모든 아티스트를 가져오기
 	loadAllArtists();
 
-//	function loadAllArtists() {
-//		const url = '/artist_list';
 	function loadAllArtists(query = "") {
 		const url = '/artist_list' + (query ? `?query=${query}` : '');
 		$.ajax({
@@ -55,15 +53,33 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 </div>
             `;
-			artistsContainer.append(artistHtml);
-		});
-
-		artistsContainer.on("click", "img", function() {
-			const composerId = $(this).data("composer-id");
-			const detailPageUrl = `/artist_detail?userFullPhoneNumber=${composerId}`;
-			window.location.href = detailPageUrl;
-		});
-	}
+            artistsContainer.append(artistHtml);
+        });
+		
+		
+		//폰넘버 감추
+        artistsContainer.on("click", "img", function() {
+	    const composerId = $(this).data("composer-id");
+	    const detailPageUrl = "/artist_detail";
+	    
+	    // 폼 동적 생성
+	    const form = $('<form>', {
+	        'action': detailPageUrl,
+	        'method': 'post',
+	        'style': 'display:none;'
+	    });
+	
+	    // input 추가
+	    $('<input>').attr({
+	        'type': 'hidden',
+	        'name': 'userFullPhoneNumber',
+	        'value': composerId
+	    }).appendTo(form);
+	
+	    // 폼을 body에 추가하고 submit
+	    form.appendTo('body').submit();
+	});
+	    }
 
 	function displayPagination(currentPage, totalPages) {
 		const paginationContainer = $("#pagination");

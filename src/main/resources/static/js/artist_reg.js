@@ -4,12 +4,13 @@ function showProfilePicture(input) {
 	if (file) {
 		var reader = new FileReader();
 		reader.onload = function(e) {
+			document.getElementById('ProfilePreview').src = ''; // 이미지 초기화
 			document.getElementById('ProfilePreview').src = e.target.result;
 		};
 		reader.readAsDataURL(file);
 	}
 }
-/*
+
 function submitForm() {
 	var form = document.getElementById('artistForm');
 	var formData = new FormData(form);
@@ -47,4 +48,3 @@ function submitForm() {
 	xhr.send(formData);
 
 }
-*/

@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>타이틀 | 아티스트 상세</title>
-<link rel="stylesheet" href="/css/artist_detail.css">
-<link rel="stylesheet" href="css/roomset.css">
-<script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
-<script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
+	<meta charset="UTF-8">
+	<title>타이틀 | 아티스트 상세</title>
+	<link rel="stylesheet" href="/css/artist_detail.css">
+	<link rel="stylesheet" href="css/roomset.css">
+	<script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
 
-<script th:inline="javascript">
-	const userNickname = `[(${session.userNickname})]`;
-	const composerId = `[(${composer.composer_id})]`;
-	const followerId = `[(${composer.composer_name})]`;
-    const followerUserId1 = `[(${session.userFullPhoneNumber})]`;
-    const targetUserId1 = `[(${composer.composer_id})]`;
-    
-    console.log(targetUserId1);
-    console.log(followerUserId1);
-</script>
+	<script th:inline="javascript">
+		const userNickname = `[(${session.userNickname})]`;
+		const composerId = `[(${composer.composer_id})]`;
+		const followerId = `[(${composer.composer_name})]`;
+		const followerUserId1 = `[(${session.userFullPhoneNumber})]`;
+		const targetUserId1 = `[(${composer.composer_id})]`;
 
+		console.log(targetUserId1);
+		console.log(followerUserId1);
+	</script>
 </head>
 <body>
 	<!--채팅방 모달 세팅-->
@@ -27,9 +26,16 @@
 			<span class="close" onclick="closeModal()">&times;</span>
 			<div id="websocketResult"></div>
 			<div id="messageArea" class="message-area"></div>
-			<input type="text" id="chatInput" placeholder="Type your message">
+			<input type="text" id="chatInput" placeholder="메세지를 입력해주세요."><br>
 			<button onclick="sendMessage()">Send</button>
 		</div>
+	</div>
+	<div id="followerListModal">
+		<div id="followerListModalContent">
+			<!-- 여기에 팔로우 리스트를 표시할 내용을 추가 -->
+			<!-- 예: <ul> <li>Follower 1</li> <li>Follower 2</li> </ul> -->
+		</div>
+		<button onclick="closeFollowerListModal()">Close</button>
 	</div>
 
 	<main>
@@ -38,15 +44,14 @@
 				<article class="artist-article">
 					<div class="artist-profile">
 						<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
-						<img th:src="@{'/images/profile/' + ${composer.composer_img}}"
-							alt="아티스트 프로필 사진">
+						<img th:src="@{'/images/profile/' + ${composer.composer_img}}" alt="아티스트 프로필 사진">
 
 
 						<div class="rating-container">
 							<div class="rating-stars">
-								<span class="star" data-value="1">&#9733;</span> <span
-									class="star" data-value="2">&#9733;</span> <span class="star"
-									data-value="3">&#9733;</span> <span class="star" data-value="4">&#9733;</span>
+								<span class="star" data-value="1">&#9733;</span> <span class="star"
+									data-value="2">&#9733;</span> <span class="star" data-value="3">&#9733;</span> <span
+									class="star" data-value="4">&#9733;</span>
 								<span class="star" data-value="5">&#9733;</span>
 							</div>
 							<p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
@@ -55,33 +60,40 @@
 						<div class="artist-profile-funtion">
 							<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
 							<!-- HTML 요소에 직접 th:if를 사용합니다. -->
-							<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{'/artist_update/' + ${composer.composer_id}}">내 프로필 수정</a>
-    						<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}" class="button-link">내 팔로워 보기</a>
+							<!-- <a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{'/artist_update/' + ${composer.composer_id}}">내 프로필 수정</a>
+    						<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}" class="button-link">내 팔로워 보기</a> -->
+							<!-- <button th:if="${session.userFullPhoneNumber == composer.composer_id}"
+								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
+								>내 프로필 수정</button> -->
+							<form th:action="@{'/artist_update/' + ${composer.composer_id}}" method="Post">
+								<button th:if="${session.userFullPhoneNumber == composer.composer_id}" type="submit">내 프로필 수정</button>
+							</form>
+							<button id="showFollowerListBtn"
+								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
-							<button id="followBtn"
-								th:unless="${session.userFullPhoneNumber == composer.composer_id}">팔로우</button>
-							<button id="messageBtn"
-								th:unless="${session.userFullPhoneNumber == composer.composer_id}"
+							<button id="followBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
+								onclick="toggleFollow()">팔로우</button>
+							<button id="messageBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
 								onclick="createChatroom()">1:1채팅</button>
 						</div>
 					</div>
 				</article>
-					
-					<div class="artist-profile-text">
-						<div class="artist-profile-text-name">
-							<h2>아티스트 명</h2>
-							<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
-						</div>
-						<div class="artist-profile-text-genre">
-							<h2>주 장르</h2>
-							<div th:text="${composer.composer_genre}">주 장르</div>
-						</div>
-						<div class="artist-profile-text-introduce">
-							<h2>자기소개</h2>
-							<div th:text="${composer.composer_text}">자기 소개</div>
-						</div>
+
+				<div class="artist-profile-text">
+					<div class="artist-profile-text-name">
+						<h2>아티스트 명</h2>
+						<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
 					</div>
+					<div class="artist-profile-text-genre">
+						<h2>주 장르</h2>
+						<div th:text="${composer.composer_genre}">주 장르</div>
+					</div>
+					<div class="artist-profile-text-introduce">
+						<h2>자기소개</h2>
+						<div th:text="${composer.composer_text}">자기 소개</div>
+					</div>
+				</div>
 
 				<article class="music-article">
 					<div class="musicList">
@@ -119,8 +131,8 @@
 				<div class="commentInputBox">
 					<div th:text="${session.userNickname}" style="align-self: center;">닉네임</div>
 					<textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					<button style="margin: 0px;" id="commentBtn"
-						th:attr="data-composer-id=${composer.composer_id}">코멘트 작성</button>
+					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">코멘트
+						작성</button>
 				</div>
 
 				<!-- 댓글 목록을 표시할 영역 -->
@@ -140,5 +152,24 @@
 	<script type="text/javascript" src="/js/roomset.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script type="text/javascript" src="/js/follow.js"></script>
+	<script src="/js/follower_list_modal.js"></script>
+	<link rel="stylesheet" href="/css/follower_list_modal.css">
+	<script>
+		// artist_detail.html에서 팔로우 리스트 모달 열기
+		$('#showFollowerListBtn').on('click', function () {
+			// 팔로우 리스트 정보를 가져와서 모달에 표시
+			$.ajax({
+				type: 'GET',
+				url: '/follow/follower_list',
+				success: function (response) {
+					showFollowerListModal(response);
+				},
+				error: function (error) {
+					console.error('팔로워 리스트 가져오기 오류:', error);
+				}
+			});
+		});
+	</script>
 </body>
+
 </html>

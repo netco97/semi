@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 프로필 수정</title>
 <link rel="stylesheet" href="/css/artist_reg.css">
-<script type="text/javascript" src="js/artist_reg.js"></script>
 </head>
 <body>
-    <form id="artistForm" action="artist_update/upload" method="post" enctype="multipart/form-data">
+    <form id="artistForm" method="post" enctype="multipart/form-data">
 		<main>
         <h2 class="title">아티스트 프로필 수정</h2>
         
@@ -15,7 +14,7 @@
         <div class="profileTitle">프로필 사진</div>
             <div id="ProfileContainer">
         	<!-- <img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}"> -->
-        	<img id="ProfilePreview" th:src="@{'/images/profile/default_profile.png'}">
+        	<img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}">
         	<label for="file">
         	  <div class="btn-upload">사진 등록</div>
 			</label>
@@ -53,12 +52,20 @@
         	</section>
         	
 			<div class="button-box">
-		        <button type="submit">수정</button>
-		        <button onclick="history.back(-1)">취소</button>
+		        <button type="submit" onclick="submitForm()">수정</button>
+		        <button onclick="history.back();">취소</button>
 	        </div>
 		</main>        
     </form>
-
+<script type="text/javascript" src="/js/artist_reg.js"></script>
+<script>
+    function submitForm() {
+		const composerId = `[(${composer.composer_id})]`;
+        var actionUrl = composerId + '/upload';
+        $('#artistForm').attr('action', actionUrl);
+        $('#artistForm').submit();
+    }
+</script>
 </body>
 
 </html>
