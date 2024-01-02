@@ -18,7 +18,7 @@ function createChatroom() {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 var responseData = JSON.parse(xhr.response);
-                roomId = responseData.room_id;
+                roomId = responseData.roomId;
 
                 // 모달 열기
                 openModal(roomId);

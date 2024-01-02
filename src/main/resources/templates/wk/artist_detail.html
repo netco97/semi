@@ -10,8 +10,10 @@
 
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
-	const composerId = `[[${composer.composer_id}]]`;
-	const followerId = `[[${composer.composer_name}]]`;
+	const composerId = `[(${composer.composer_id})]`;
+	const followerId = `[(${composer.composer_name})]`;
+	console.log(userNickname);
+	console.log(followerId);
 </script>
 </head>
 <body>

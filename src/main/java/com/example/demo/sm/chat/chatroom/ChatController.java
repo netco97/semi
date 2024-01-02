@@ -27,7 +27,6 @@ public class ChatController {
 	@ResponseBody
 	public CreateRoomDTO creatRoom(@RequestBody RoomSetDTO roomSetDTO) {
 		
-		System.out.println(roomSetDTO.getSession_id() + " " + roomSetDTO.getFollower_id());
 		
 		//변수 세팅
 		String user1 = roomSetDTO.getSession_id();
