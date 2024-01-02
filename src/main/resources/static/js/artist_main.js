@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			success: function(artistMap) {
 				allArtists = artistMap.artistList;
+				currentPage = 1;
 				loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
 			},
 			error: function(error) {

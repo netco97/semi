@@ -81,7 +81,6 @@ public class ComposerC {
 			System.out.println(composer);
 	
 			model.addAttribute("content", "wk/artist_detail");
-	
 			return "wk/index";
 	}
 
@@ -116,13 +115,43 @@ public class ComposerC {
         // userTable의 nickName을 artist등록시 artistnickname으로 변경
         composerService.updateUserNickName(composer.getComposer_name(), userFullPhoneNumber);
 		
-        // 세션 지우고 다시 iscomposer를1로 만들어야함
+        // 세션 지우고 다시 iscomposer를 1로 만들어야함
         session.removeAttribute("iscomposer");
         session.setAttribute("iscomposer", 1);
         
 		model.addAttribute("content", "wk/home");
 		return "redirect:/";
 	}
+
+    @GetMapping("/artist_update/{composerId}")
+    public String getArtistUpdatePage(@PathVariable String composerId, Model model) {
+        // 해당 composerId에 해당하는 정보를 가져와서 모델에 추가
+        ComposerDTO composer = composerService.getComposerById(composerId);
+        model.addAttribute("composer", composer);
+		model.addAttribute("content", "wk/artist_update");
+		return "wk/index";
+    }
+
+    @PostMapping("/artist_update/{composerId}/upload")
+    public String updateArtist(@PathVariable String composerId, @ModelAttribute ComposerDTO composerDTO, Model model) {
+        try {
+            // 업데이트 로직 수행
+            composerService.updateComposer(composerDTO);
+            
+            // 업데이트된 composer 다시 가져오기
+            ComposerDTO updatedComposer = composerService.getComposerById(composerId);
+            model.addAttribute("composer", updatedComposer);
+            
+            //return "redirect:/artist_detail?userFullPhoneNumber=" + composerId;
+            model.addAttribute("content", "wk/artist_detail?userFullPhoneNumber=" + composerId);
+			return "wk/index";
+        } catch (Exception e) {
+            // 업데이트 실패시 에러 메시지 추가
+            model.addAttribute("error", "Error updating composer");
+            model.addAttribute("content", "wk/artist_update");
+    		return "wk/index";
+        }
+    }
 
 	// 프로필 사진 저장 로직
 	private String saveProfilePicture(MultipartFile file) {
@@ -155,14 +184,6 @@ public class ComposerC {
 		}
 	}
 	
-    @PostMapping("/artist_update")
-    public ResponseEntity<String> updateComposer(@RequestBody ComposerDTO composerDTO) {
-        try {
-            composerService.updateComposer(composerDTO);
-            return new ResponseEntity<>("Composer updated successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error updating composer", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+
     
 }

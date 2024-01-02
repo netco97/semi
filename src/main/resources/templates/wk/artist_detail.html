@@ -55,8 +55,8 @@
 						<div class="artist-profile-funtion">
 							<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
 							<!-- HTML 요소에 직접 th:if를 사용합니다. -->
-							<button th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/artist_update}">내 프로필 수정</button>
-    						<button th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}">내 팔로워 보기</button>
+							<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{'/artist_update/' + ${composer.composer_id}}">내 프로필 수정</a>
+    						<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}" class="button-link">내 팔로워 보기</a>
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
 							<button id="followBtn"
@@ -85,6 +85,7 @@
 
 				<article class="music-article">
 					<div class="musicList">
+						<div class="musicList-id-title"th:text="${composer.composer_name + '의 음악 리스트'}"></div>
 						<div class="musicList-inner">
 							<div class="musicList-menu">
 								<div class="musicList-title">

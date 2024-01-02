@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 	let userFullNumber = followerUserId1;
 	let composerId = targetUserId1; // 초기화;
-	
+
 	// 페이지를 변경하기 전에 현재 스크롤 위치 저장
 	function storeScrollPosition() {
 		sessionStorage.setItem("scrollPosition", window.scrollY);
@@ -30,41 +30,41 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	//////////////////////////////////////////////////////
 	// 별점 기능
-	
+
 	// 페이지 로딩 시 별점 조회
-    fetchRatingFromServer();
+	fetchRatingFromServer();
 
-    // 별점 조회 함수
-    function fetchRatingFromServer() {
-    //const userfullphonenumber = followerUserId1;
-    //const composer_id = targetUserId1;
-        $.ajax({
-            type: "GET",
-            url: "/ratings/getRatingByUserAndComposer",
-            data: {
-                userfullphonenumber: userFullNumber,
-                composer_id: composerId
-            },
-            success: function (result) {
+	// 별점 조회 함수
+	function fetchRatingFromServer() {
+		//const userfullphonenumber = followerUserId1;
+		//const composer_id = targetUserId1;
+		$.ajax({
+			type: "GET",
+			url: "/ratings/getRatingByUserAndComposer",
+			data: {
+				userfullphonenumber: userFullNumber,
+				composer_id: composerId
+			},
+			success: function(result) {
 				console.log(result);
-                const ratingValue = result.rating;
-                displayRating(ratingValue);
-            },
-            error: function (error) {
-                console.error("별점 조회 중 오류", error);
-            }
-        });
-    }
+				const ratingValue = result.rating;
+				displayRating(ratingValue);
+			},
+			error: function(error) {
+				console.error("별점 조회 중 오류", error);
+			}
+		});
+	}
 
-    // 별점 표시 함수
-    function displayRating(rating) {
-        const stars = document.querySelectorAll('.star');
-        const ratingValue = document.getElementById('rating-value');
+	// 별점 표시 함수
+	function displayRating(rating) {
+		const stars = document.querySelectorAll('.star');
+		const ratingValue = document.getElementById('rating-value');
 
-        ratingValue.innerText = `평가: ${rating}점`;
-        removeActiveStars();
-        setActiveStars(rating);
-    }
+		ratingValue.innerText = `평가: ${rating}점`;
+		removeActiveStars();
+		setActiveStars(rating);
+	}
 
 	const stars = document.querySelectorAll('.star');
 	const ratingValue = document.getElementById('rating-value');
@@ -207,13 +207,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			commentsContainer.empty();
 
 			$.each(comments, function(index, comment) {
+				var deleteButton = '';
+				if (comment.userNickname === userNickname) {
+					deleteButton = '<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>';
+				}
 
 				commentsContainer.append(
 					'<div class="comment-item">' +
 					'<div class="user-nickname">' + comment.userNickname + '</div>' +
 					'<div class="comment-content">' + comment.comment_content + '</div>' +
 					'<div class="created-at">' + convertToKoreanTime(comment.created_at) + '</div>' +
-					'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
+					//					'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
+					deleteButton +
 					'</div>'
 				);
 			});
@@ -362,14 +367,16 @@ async function outPutSearch(data) {
 	// musicList 내용 초기화
 	$musicList.empty();
 
-	// 데이터의 각 노래에 대해 반복
-	for (const song of data) {
-		// 각 노래를 표시할 HTML 엘리먼트 생성
-		let $songContainer = $('<div class="musicList-menu"></div>');
-
-		let $musicListTitle = $('<div class="musicList-title"></div>');
-		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
-		$musicListTitle.append(`
+	if (data.length === 0) {
+		$musicList.append('<div class="no-music-message">등록된 음악이 없습니다.</div>');
+	} else {
+		// 데이터의 각 노래에 대해 반복
+		for (const song of data) {
+			// 각 노래를 표시할 HTML 엘리먼트 생성
+			let $songContainer = $('<div class="musicList-menu"></div>');
+			let $musicListTitle = $('<div class="musicList-title"></div>');
+			// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+			$musicListTitle.append(`
             <div>
                 <img src=img/${song.song_img} />
             </div>
@@ -379,43 +386,44 @@ async function outPutSearch(data) {
             </div>
         `);
 
-		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
-		// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
+			let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
+			// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
 
-		let $musicListInfo = $('<div class="musicList-info"></div>');
-		$musicListInfo.append(`
+			let $musicListInfo = $('<div class="musicList-info"></div>');
+			$musicListInfo.append(`
             <div>${song.mood_id}</div>
             <div>${song.genre_id}</div>
             <div>${song.instrument_id}</div>
         `);
 
-		//		let $musicListOption = $('<div class="musicList-option"></div>');
-		//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
-		//		console.log("체크체크! : " +song.song_id);
-		//		const likeCheck = await songLikeCheck(song.song_id);
-		//
-		//        console.log("이프문 위 첵라잌" + likeCheck);
-		//
-		//        if (likeCheck === 1) {
-		//            console.log("이프문 트루 안 : " + likeCheck);
-		//
-		//            $musicListOption.append(`
-		//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
-		//            `);
-		//        } else {
-		//            console.log("이프문 엘즈안 : " + likeCheck);
-		//            $musicListOption.append(`
-		//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
-		//            `);
-		//        }
+			//		let $musicListOption = $('<div class="musicList-option"></div>');
+			//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
+			//		console.log("체크체크! : " +song.song_id);
+			//		const likeCheck = await songLikeCheck(song.song_id);
+			//
+			//        console.log("이프문 위 첵라잌" + likeCheck);
+			//
+			//        if (likeCheck === 1) {
+			//            console.log("이프문 트루 안 : " + likeCheck);
+			//
+			//            $musicListOption.append(`
+			//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
+			//            `);
+			//        } else {
+			//            console.log("이프문 엘즈안 : " + likeCheck);
+			//            $musicListOption.append(`
+			//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
+			//            `);
+			//        }
 
 
-		// 각 섹션을 노래 컨테이너에 추가
-		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
+			// 각 섹션을 노래 컨테이너에 추가
+			$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
 
-		// 노래 컨테이너를 musicList에 추가
-		$musicList.append($songContainer);
-	};
+			// 노래 컨테이너를 musicList에 추가
+			$musicList.append($songContainer);
+		};
+	}
 }
 
 // createAudioPlayer 함수를 사용하여 오디오 플레이어를 생성하는 부분
