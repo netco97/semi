@@ -50,8 +50,9 @@
 	        composer_id = #{composer_id}
 	</update>
 	
-	    <select id="searchArtists" parameterType="String" resultType="ComposerDTO">
-        SELECT * FROM artists
-        WHERE artist_name LIKE '%' || #{keyword} || '%'
+	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
+        SELECT * FROM composers
+        WHERE composer_name LIKE '%' || #{keyword} || '%'
+        OR composer_genre LIKE '%' || #{keyword} || '%'
     </select>
 </mapper>

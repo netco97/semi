@@ -19,18 +19,15 @@
 			<!-- Artist Registration Box -->
 			<div th:if="${session.iscomposer == 0}" class="left-box" id="artist-box">
 				<h2><a href="/artist_reg">아티스트 등록</a></h2>
-				<!-- Add your artist registration form here -->
 			</div>
 
 			<div th:if="${session.iscomposer == 1}" class="left-box" id="music-upload-box">
 				<h2><a href="/musicUpload">음악 업로드</a></h2>
-				<!-- Add your artist registration form here -->
 			</div>
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
 				<h2>팔로우 아티스트</h2>
-				<!-- Add your production-related content here -->
 			</div>
 		</div>
 
@@ -39,8 +36,8 @@
 
 			<!-- Search Box -->
 			<div class="search-box">
-				<input type="text" id="searchInput" placeholder="아티스트 검색">
-				<button id="searchButton" onclick="searchArtists()">검색</button>
+				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색">
+				<!-- <button id="searchButton" onclick="searchArtists()">검색</button> -->
 			</div>
 
 			<!-- 아티스트 목록을 표시할 영역 -->

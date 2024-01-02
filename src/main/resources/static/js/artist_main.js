@@ -1,46 +1,47 @@
 document.addEventListener("DOMContentLoaded", function() {
-	
-	
-    var pageSize = 4;
-    var currentPage = 1;
-    var allArtists = []; // 모든 아티스트를 저장하는 변수
 
-    // 초기에 모든 아티스트를 가져오기
-    loadAllArtists();
 
-    function loadAllArtists() {
-        const url = '/artist_list';
+	var pageSize = 4;
+	var currentPage = 1;
+	var allArtists = []; // 모든 아티스트를 저장하는 변수
 
-        $.ajax({
-            type: "GET",
-            url: url,
-            success: function(artistMap) {
-                allArtists = artistMap.artistList;
-                loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
-            },
-            error: function(error) {
-                console.error("아티스트를 가져오는 중 오류 발생", error);
-            }
-        });
-    }
-    
-    function loadArtists(page) {
-        const totalPages = Math.ceil(allArtists.length / pageSize);
+	// 초기에 모든 아티스트를 가져오기
+	loadAllArtists();
 
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = Math.min(startIndex + pageSize, allArtists.length);
-        const artistList = allArtists.slice(startIndex, endIndex);
+	function loadAllArtists(query = "") {
+		const url = '/artist_list' + (query ? `?query=${query}` : '');
+		$.ajax({
+			type: "GET",
+			url: url,
 
-        displayArtists(artistList);
-        displayPagination(currentPage, totalPages);
-    }
+			success: function(artistMap) {
+				allArtists = artistMap.artistList;
+				currentPage = 1;
+				loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
+			},
+			error: function(error) {
+				console.error("아티스트를 가져오는 중 오류 발생", error);
+			}
+		});
+	}
 
-    function displayArtists(artists) {
-        const artistsContainer = $("#artists-container");
-        artistsContainer.empty();
+	function loadArtists(page) {
+		const totalPages = Math.ceil(allArtists.length / pageSize);
 
-        artists.forEach(artist => {
-            const artistHtml = `
+		const startIndex = (page - 1) * pageSize;
+		const endIndex = Math.min(startIndex + pageSize, allArtists.length);
+		const artistList = allArtists.slice(startIndex, endIndex);
+
+		displayArtists(artistList);
+		displayPagination(currentPage, totalPages);
+	}
+
+	function displayArtists(artists) {
+		const artistsContainer = $("#artists-container");
+		artistsContainer.empty();
+
+		artists.forEach(artist => {
+			const artistHtml = `
                 <div class="artist-container">
                     <div class="artist-details">
                         <img src="/images/profile/${artist.composer_img}" data-composer-id="${artist.composer_id}">
@@ -80,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	    }
 
-    function displayPagination(currentPage, totalPages) {
-        const paginationContainer = $("#pagination");
+	function displayPagination(currentPage, totalPages) {
+		const paginationContainer = $("#pagination");
 		paginationContainer.empty();
 
 		var startPage = Math.floor((currentPage - 1) / 10) * 10 + 1;
@@ -103,33 +104,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		} else {
 			paginationContainer.append('<span class="pagination-link disabled">다음</span>');
 		}
-	
-    }
-
-    $("#pagination").on("click", ".pagination-link:not(.disabled):not(.active)", function() {
-        const clickedPage = $(this).data("page");
-        currentPage = clickedPage;
-        loadArtists(currentPage);
-    });
-    
-            // 검색 기능 추가
-    $("#searchInput").on("input", function() {
-        searchArtists($(this).val());
-        console.log($(this).val());
-    });
-
-	function searchArtists(query) {
-	    // 검색어(query)를 이용하여 아티스트를 찾고, 결과를 화면에 표시
-	    const searchResult = allArtists.filter(artist => {
-	        // 여기서는 아티스트의 이름(composer_name)을 기준으로 검색
-	        return artist.composer_name.toLowerCase().includes(query.toLowerCase());
-	    });
-	    
-		loadArtists(currentPage, searchResult);
 	}
 
+	$("#pagination").on("click", ".pagination-link:not(.disabled):not(.active)", function() {
+		const clickedPage = $(this).data("page");
+		currentPage = clickedPage;
+		loadArtists(currentPage);
+	});
 	
-	
+		// 검색 기능 추가
+	$("#searchInput").on("input", function() {
+		const query = $(this).val();
+		loadAllArtists(query);
+	});
 });
-
-

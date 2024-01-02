@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
 	<meta charset="UTF-8">
 	<title>타이틀 | 아티스트 상세</title>
@@ -19,9 +18,7 @@
 		console.log(targetUserId1);
 		console.log(followerUserId1);
 	</script>
-
 </head>
-
 <body>
 	<!--채팅방 모달 세팅-->
 	<div id="myModal" class="modal">
@@ -40,7 +37,6 @@
 		</div>
 		<button onclick="closeFollowerListModal()">Close</button>
 	</div>
-
 
 	<main>
 		<section class="artist-section">
@@ -64,8 +60,14 @@
 						<div class="artist-profile-funtion">
 							<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
 							<!-- HTML 요소에 직접 th:if를 사용합니다. -->
-							<button th:if="${session.userFullPhoneNumber == composer.composer_id}"
-								th:href="@{/artist_update}">내 프로필 수정</button>
+							<!-- <a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{'/artist_update/' + ${composer.composer_id}}">내 프로필 수정</a>
+    						<a th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}" class="button-link">내 팔로워 보기</a> -->
+							<!-- <button th:if="${session.userFullPhoneNumber == composer.composer_id}"
+								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
+								>내 프로필 수정</button> -->
+							<form th:action="@{'/artist_update/' + ${composer.composer_id}}" method="Post">
+								<button th:if="${session.userFullPhoneNumber == composer.composer_id}" type="submit">내 프로필 수정</button>
+							</form>
 							<button id="showFollowerListBtn"
 								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
 
@@ -95,6 +97,7 @@
 
 				<article class="music-article">
 					<div class="musicList">
+						<div class="musicList-id-title"th:text="${composer.composer_name + '의 음악 리스트'}"></div>
 						<div class="musicList-inner">
 							<div class="musicList-menu">
 								<div class="musicList-title">

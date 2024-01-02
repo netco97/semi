@@ -2,13 +2,9 @@ package com.example.demo.wk;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -16,10 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,7 +30,6 @@ public class ComposerC {
 
 	private final ComposerService composerService;
 
-  
 //	@GetMapping("/artist_detail/{userFullPhoneNumber}")
 //	public String getComposerById(@PathVariable String userFullPhoneNumber, Model model) {
 //		
@@ -54,42 +46,40 @@ public class ComposerC {
 //
 //		return "wk/index";
 
-	
 	@GetMapping("/artist_main")
 	public String getArtistMainPage(Model model) {
-	    // 아티스트 목록을 가져옴
-	    List<ComposerDTO> artistList = composerService.getAllArtists();
-	    
-	    // 아티스트 목록을 모델에 추가
-	    model.addAttribute("artistList", artistList);
-	    
-	    // content에 artist_main을 추가
-	    model.addAttribute("content", "wk/artist_main");
-	    
-	    return "wk/index";
+		// 아티스트 목록을 가져옴
+		List<ComposerDTO> artistList = composerService.getAllArtists();
+
+		// 아티스트 목록을 모델에 추가
+		model.addAttribute("artistList", artistList);
+
+		// content에 artist_main을 추가
+		model.addAttribute("content", "wk/artist_main");
+
+		return "wk/index";
 	}
-	
-    @GetMapping("/artists/search")
-    public String searchArtists(@RequestParam String keyword, Model model) {
-        List<ComposerDTO> artistList = composerService.searchArtists(keyword);
-        model.addAttribute("artistList", artistList);
-        model.addAttribute("content", "wk/artist_main");
-        return "wk/index";
-    }
-	
+
+	@GetMapping("/artists/search")
+	public String searchArtists(@RequestParam String keyword, Model model) {
+		List<ComposerDTO> artistList = composerService.searchArtists(keyword);
+		model.addAttribute("artistList", artistList);
+		model.addAttribute("content", "wk/artist_main");
+		return "wk/index";
+	}
+
 	@PostMapping("/artist_detail")
 	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
-			
-			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
-	
-			// 이미지 파일의 경로 설정 (기본 이미지 포함)
-			//composer.setComposer_img(composer.getImgOrDefault());
-	
-			model.addAttribute("composer", composer);
-	
-			model.addAttribute("content", "wk/artist_detail");
-	
-			return "wk/index";
+
+		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
+
+		// 이미지 파일의 경로 설정 (기본 이미지 포함)
+		// composer.setComposer_img(composer.getImgOrDefault());
+
+		model.addAttribute("composer", composer);
+
+		model.addAttribute("content", "wk/artist_detail");
+		return "wk/index";
 	}
 
 	@GetMapping("artist_reg")
@@ -101,44 +91,89 @@ public class ComposerC {
 	@PostMapping("artist_reg/upload")
 	public String uploadArtist(@ModelAttribute ComposerDTO composer, Model model, HttpSession session) {
 		String userFullPhoneNumber = (String) session.getAttribute("userFullPhoneNumber");
-		
+
 		System.out.println("여기까지 찍히는지 확인 " + userFullPhoneNumber);
 		System.out.println("아티스트명 " + composer.getComposer_name());
 		System.out.println("장르 " + composer.getComposer_genre());
 		System.out.println("자기소개서 " + composer.getComposer_text());
 		System.out.println("음악 사진 " + composer.getComposer_profilePicture());
-		System.out.println("음악 사진 이름 " +composer.getComposer_profilePicture().getOriginalFilename());
-		
-		// 프로필 사진 저장 및 파일명 설정
-		String fileName = saveProfilePicture(composer.getComposer_profilePicture());
-		composer.setComposer_img(fileName);
-		
+		System.out.println("음악 사진 이름 " + composer.getComposer_profilePicture().getOriginalFilename());
+
 		composer.setComposer_id(userFullPhoneNumber);
 		// 아티스트 등록 로직 수행
 		composerService.regComposer(composer);
-		
-        // 세션의 userId를 이용해서 iscomposer를 업데이트
-        composerService.updateIsComposer(userFullPhoneNumber);
-        
-        // userTable의 nickName을 artist등록시 artistnickname으로 변경
-        composerService.updateUserNickName(composer.getComposer_name(), userFullPhoneNumber);
-		
-        // 세션 지우고 다시 iscomposer를1로 만들어야함
-        session.removeAttribute("iscomposer");
-        session.setAttribute("iscomposer", 1);
-        
+
+		// 프로필 사진 저장 및 파일명 설정
+		String fileName = saveProfilePicture(composer.getComposer_profilePicture());
+		composer.setComposer_img(fileName);
+
+		// 세션의 userId를 이용해서 iscomposer를 업데이트
+		composerService.updateIsComposer(userFullPhoneNumber);
+
+		// userTable의 nickName을 artist등록시 artistnickname으로 변경
+		composerService.updateUserNickName(composer.getComposer_name(), userFullPhoneNumber);
+
+		// 세션 지우고 다시 iscomposer를 1로 만들어야함
+		session.removeAttribute("iscomposer");
+		session.setAttribute("iscomposer", 1);
+
 		model.addAttribute("content", "wk/home");
 		return "redirect:/";
+	}
+
+	@PostMapping("/artist_update/{composer_id}")
+	public String getArtistUpdatePage(@PathVariable String composer_id, Model model) {
+		// 해당 composerId에 해당하는 정보를 가져와서 모델에 추가
+		ComposerDTO composer = composerService.getComposerById(composer_id);
+
+		model.addAttribute("composer", composer);
+		model.addAttribute("content", "wk/artist_update");
+		return "wk/index";
+	}
+
+	@PostMapping("/artist_update/{composer_id}/upload")
+	public String updateArtist(@PathVariable String composer_id, @ModelAttribute ComposerDTO composer, Model model) {
+		try {
+
+			// 프로필 사진 저장 및 파일명 설정
+			String fileName = saveProfilePicture(composer.getComposer_profilePicture());
+			composer.setComposer_img(fileName);
+
+			// 업데이트 로직 수행
+			composerService.updateComposer(composer);
+
+			// 업데이트된 composer 다시 가져오기
+			ComposerDTO updatedComposer = composerService.getComposerById(composer_id);
+			model.addAttribute("composer", updatedComposer);
+
+			System.out.println(updatedComposer);
+
+			System.out.println("아티스트명: " + updatedComposer.getComposer_name());
+			System.out.println("장르: " + updatedComposer.getComposer_genre());
+			System.out.println("자기소개: " + updatedComposer.getComposer_text());
+			System.out.println("음악 사진: " + updatedComposer.getComposer_profilePicture());
+			System.out.println("음악 사진 이름: " + updatedComposer.getComposer_profilePicture().getOriginalFilename());
+
+			//return "forward:/artist_detail?userFullPhoneNumber=" + updatedComposer.getComposer_id();
+			model.addAttribute("content", "wk/artist_detail");
+			return "wk/index";
+			
+		} catch (Exception e) {
+			// 업데이트 실패시 에러 메시지 추가
+			model.addAttribute("error", "Error updating composer");
+			model.addAttribute("content", "wk/artist_update");
+			return "wk/index";
+		}
 	}
 
 	// 프로필 사진 저장 로직
 	private String saveProfilePicture(MultipartFile file) {
 		// TODO: 프로필 사진을 저장하고 파일명을 반환하는 로직 추가
 		try {
-	        // 파일이 비어있는 경우 기본 이미지 파일명 반환
-	        if (file == null || file.isEmpty()) {
-	            return "default_profile.png";
-	        }
+			// 파일이 비어있는 경우 기본 이미지 파일명 반환
+			if (file == null || file.isEmpty()) {
+				return "default_profile.png";
+			}
 			// 프로필 사진을 저장할 디렉토리 경로
 			String directoryPath = "src/main/resources/static/images/profile/";
 
@@ -155,21 +190,10 @@ public class ComposerC {
 			FileCopyUtils.copy(file.getBytes(), new File(directoryPath + fileName));
 
 			return fileName; // 저장된 파일의 상대 경로를 반환
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-    @PostMapping("/artist_update")
-    public ResponseEntity<String> updateComposer(@RequestBody ComposerDTO composerDTO) {
-        try {
-            composerService.updateComposer(composerDTO);
-            return new ResponseEntity<>("Composer updated successfully", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error updating composer", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-    
 }
