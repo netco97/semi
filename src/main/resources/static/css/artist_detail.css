@@ -22,18 +22,38 @@
 
 .artist-profile img {
     width: 100%;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 .artist-profile-text {
 	width: 30%;
-	
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
 }
+
+.artist-profile-text-name,
+.artist-profile-text-genre,
+.artist-profile-text-introduce {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.artist-profile-text h2 {
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
 .artist-profile-text div {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    color: #555;
+    color: #666;
+    font-size: 30px;
+    margin-bottom: 5px;
 }
+
 
 .rating-container {
     margin-top: 10px;

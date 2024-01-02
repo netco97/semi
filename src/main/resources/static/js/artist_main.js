@@ -23,9 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
+    
     function loadArtists(page) {
-		
         const totalPages = Math.ceil(allArtists.length / pageSize);
 
         const startIndex = (page - 1) * pageSize;
@@ -94,7 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
         currentPage = clickedPage;
         loadArtists(currentPage);
     });
-    // 검색 기능 추가
+    
+            // 검색 기능 추가
     $("#searchInput").on("input", function() {
         searchArtists($(this).val());
         console.log($(this).val());
@@ -107,9 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	        return artist.composer_name.toLowerCase().includes(query.toLowerCase());
 	    });
 	    
-	    currentPage = 1;
 		loadArtists(currentPage, searchResult);
 	}
+
 	
 	
 });
