@@ -69,12 +69,18 @@
 				</article>
 					
 					<div class="artist-profile-text">
-						<h2>이름</h2>
-						<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
-						<h2>주 장르</h2>
-						<div th:text="${composer.composer_genre}">주 장르</div>
-						<h2>자기소개</h2>
-						<div th:text="${composer.composer_text}">자기 소개</div>
+						<div class="artist-profile-text-name">
+							<h2>아티스트 명</h2>
+							<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
+						</div>
+						<div class="artist-profile-text-genre">
+							<h2>주 장르</h2>
+							<div th:text="${composer.composer_genre}">주 장르</div>
+						</div>
+						<div class="artist-profile-text-introduce">
+							<h2>자기소개</h2>
+							<div th:text="${composer.composer_text}">자기 소개</div>
+						</div>
 					</div>
 
 				<article class="music-article">
@@ -112,7 +118,7 @@
 				<div class="commentInputBox">
 					<div th:text="${session.userNickname}" style="align-self: center;">닉네임</div>
 					<textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					<button id="commentBtn"
+					<button style="margin: 0px;" id="commentBtn"
 						th:attr="data-composer-id=${composer.composer_id}">코멘트 작성</button>
 				</div>
 

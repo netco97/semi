@@ -12,12 +12,11 @@
 
 	<select id="getArtistsWithPagination" parameterType="map"
 		resultType="ComposerDTO">
-		SELECT *
-		FROM (
-		SELECT rownum AS rnum, c.*
-		FROM composers c
-		)
-		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		    <![CDATA[
+    SELECT * FROM (
+        SELECT rownum AS rnum, c.* FROM composers c WHERE rownum <= #{limit}
+    ) WHERE rnum > #{offset}
+    ]]>
 	</select>
 
 	<select id="getTotalArtistsCount" resultType="int">
@@ -37,6 +36,22 @@
 	</update>
 	
 	<update id="updateUserNickName" parameterType="String">
-	UPDATE usertable SET usernickname = #{composer_name} WHERE userFullPhoneNumber = #{userFullPhoneNumber}
+		UPDATE usertable SET usernickname = #{composer_name} WHERE userFullPhoneNumber = #{userFullPhoneNumber}
 	</update>
+	
+	<update id="updateComposer" parameterType="ComposerDTO">
+	    UPDATE composers
+	    SET
+	        composer_name = #{composer_name},
+	        composer_genre = #{composer_genre},
+	        composer_text = #{composer_text},
+	        composer_img = #{composer_img}
+	    WHERE
+	        composer_id = #{composer_id}
+	</update>
+	
+	    <select id="searchArtists" parameterType="String" resultType="ComposerDTO">
+        SELECT * FROM artists
+        WHERE artist_name LIKE '%' || #{keyword} || '%'
+    </select>
 </mapper>

@@ -4,26 +4,33 @@
 
     <!-- 아티스트 평가 삽입 -->
     <insert id="insertRating" parameterType="ArtistRatingDTO">
-        INSERT INTO ratings (Rating_id, userfullphonenumber, composer_id, rating)
-        VALUES (ratings_seq.NEXTVAL, #{userFullNumber}, #{composerId}, #{rating})
+        INSERT INTO ratings (rating_id, userfullphonenumber, composer_id, rating)
+        VALUES (ratings_seq.NEXTVAL, #{userfullphonenumber}, #{composer_id}, #{rating})
     </insert>
 
     <!-- 아티스트 평균 평점 조회 -->
     <select id="getAverageRating" parameterType="Long" resultType="double">
-        SELECT NVL(AVG(rating), 0) FROM ratings WHERE composer_id = #{composerId}
+        SELECT NVL(AVG(rating), 0) FROM ratings WHERE composer_id = #{composer_id}
     </select>
     
         <!-- 아티스트 평가 수정 -->
     <update id="updateRating" parameterType="ArtistRatingDTO">
         UPDATE ratings
         SET rating = #{rating}
-        WHERE userfullphonenumber = #{userFullNumber} AND composer_id = #{composerId}
+        WHERE userfullphonenumber = #{userfullphonenumber} AND composer_id = #{composer_id}
     </update>
 
     <!-- 아티스트 평가 삭제 -->
     <delete id="deleteRating" parameterType="ArtistRatingDTO">
         DELETE FROM ratings
-        WHERE userfullphonenumber = #{userFullNumber} AND composer_id = #{composerId}
+        WHERE userfullphonenumber = #{userfullphonenumber} AND composer_id = #{composer_id}
     </delete>
+    
+        <!-- 사용자와 작곡가에 대한 평점 조회 -->
+    <select id="getRatingByUserAndComposer" parameterType="Map" resultType="int">
+        SELECT NVL(rating, 0) 
+		FROM ratings 
+		WHERE userfullphonenumber = #{userfullphonenumber} AND composer_id = #{composer_id}
+    </select>
 
 </mapper>

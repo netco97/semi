@@ -13,46 +13,46 @@
 </head>
 <body>
 	<main>
-			<!-- Left Side -->
-			<div class="left-side">
+		<!-- Left Side -->
+		<div class="left-side">
 
-				<!-- Artist Registration Box -->
-				<div class="left-box" id="artist-box">
-					<h2>아티스트 등록</h2>
-					<!-- Add your artist registration form here -->
-				</div>
-				
-				<div class="left-box" id="artist-box">
-					<h2>음악 업로드</h2>
-					<!-- Add your artist registration form here -->
-				</div>
-
-				<!-- Production Box -->
-				<div class="left-box" id="production-box">
-					<h2>프로덕션 관련 아티스트</h2>
-					<!-- Add your production-related content here -->
-				</div>
+			<!-- Artist Registration Box -->
+			<div th:if="${session.iscomposer == 0}" class="left-box" id="artist-box">
+				<h2><a href="/artist_reg">아티스트 등록</a></h2>
+				<!-- Add your artist registration form here -->
 			</div>
 
-			<!-- Right Side -->
-			<div class="right-side">
-
-				<!-- Search Box -->
-				<div class="search-box">
-					<input type="text" id="searchInput" placeholder="아티스트 검색">
-					<button id="searchButton">검색</button>
-				</div>
-
-				<!-- 아티스트 목록을 표시할 영역 -->
-				<div id="artists-container"></div>
-				<!-- 댓글이 여기에 추가될 것입니다. -->
-
-				<!-- 페이지네이션을 표시할 영역 -->
-				<div class="pagination" id="pagination">
-					<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
-				</div>
-
+			<div th:if="${session.iscomposer == 1}" class="left-box" id="music-upload-box">
+				<h2><a href="/musicUpload">음악 업로드</a></h2>
+				<!-- Add your artist registration form here -->
 			</div>
+
+			<!-- Production Box -->
+			<div class="left-box" id="production-box">
+				<h2>팔로우 아티스트</h2>
+				<!-- Add your production-related content here -->
+			</div>
+		</div>
+
+		<!-- Right Side -->
+		<div class="right-side">
+
+			<!-- Search Box -->
+			<div class="search-box">
+				<input type="text" id="searchInput" placeholder="아티스트 검색">
+				<button id="searchButton" onclick="searchArtists()">검색</button>
+			</div>
+
+			<!-- 아티스트 목록을 표시할 영역 -->
+			<div id="artists-container"></div>
+			<!-- 댓글이 여기에 추가될 것입니다. -->
+
+			<!-- 페이지네이션을 표시할 영역 -->
+			<div class="pagination" id="pagination">
+				<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
+			</div>
+
+		</div>
 	</main>
 	<script type="text/javascript" src="/js/artist_main.js"></script>
 </body>
