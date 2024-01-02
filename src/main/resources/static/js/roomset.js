@@ -24,7 +24,12 @@ function createChatroom() {
                 openModal();
 
                 // 서버에서 채팅 리스트 받아오기
-                getChatList(roomId);
+			    getChatList(roomId, function () {
+			        // 스크롤을 맨 아래로 이동
+			        setTimeout(function () {
+			            scrollChatAreaToBottom();
+			        }, 100);
+			    });
 
                 // WebSocket 연결
                 connectWebSocket(roomId);
@@ -64,6 +69,19 @@ function getChatList(roomId) {
 
     xhr.send();
 }
+
+function scrollChatAreaToBottom() {
+    var messageArea = document.querySelector(".message-area");
+    console.log("Message Area Element:", messageArea);
+
+    if (messageArea) {
+        // 스크롤을 맨 아래로 이동
+        messageArea.scrollTop = messageArea.scrollHeight;
+    } else {
+        console.error("Message Area element not found!");
+    }
+}
+
 
 function displayChatList(chatList) {
     var messageArea = document.getElementById("messageArea");
