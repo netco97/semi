@@ -86,7 +86,6 @@ public class ComposerC {
 			//composer.setComposer_img(composer.getImgOrDefault());
 	
 			model.addAttribute("composer", composer);
-			System.out.println(composer);
 	
 			model.addAttribute("content", "wk/artist_detail");
 	
