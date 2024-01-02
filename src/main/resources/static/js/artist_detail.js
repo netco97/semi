@@ -381,7 +381,7 @@ async function outPutSearch(data) {
                 <img src=img/${song.song_img} />
             </div>
             <div>
-                <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+                <div style="font-size: 9pt"; onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
             </div>
         `);

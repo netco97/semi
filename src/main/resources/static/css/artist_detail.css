@@ -54,7 +54,6 @@
     margin-bottom: 5px;
 }
 
-
 .rating-container {
     margin-top: 10px;
 }
@@ -216,8 +215,8 @@
 }
 
 #pagination {
-    position: fixed;
-    bottom: 20px; /* 조정 가능한 값 */
+    position: absolute;
+    bottom: -450px; /* 조정 가능한 값 */
     left: 50%;
     transform: translateX(-50%);
     background-color: white; /* 페이지 번호가 가려지는 것을 방지하기 위해 배경색을 지정 */
@@ -265,6 +264,8 @@
 /* musicList */
 
 .no-music-message {
+	position: absolute;
+	top: 275px;
 	font-size: 20px;
 }
 
@@ -288,7 +289,7 @@
 
 .musicList-id-title {
 	height: 18px;
-	font-size: 18pt;
+	font-size: 14pt;
 	/* text-align: center; */
 	padding: 10px;
 }
@@ -334,12 +335,12 @@
 }
 
 .audio-player {
-    width: 100%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
+	background-color: white;
 }
 
 audio{
-	width:100%;
-	
+	height: 40px;
+	padding: 10px;
 }
 
 .musicList-title div,
