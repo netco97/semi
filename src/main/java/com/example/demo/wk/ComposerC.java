@@ -77,7 +77,7 @@ public class ComposerC {
         return "wk/index";
     }
 	
-	@GetMapping("/artist_detail")
+	@PostMapping("/artist_detail")
 	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
 			
 			ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
@@ -86,7 +86,6 @@ public class ComposerC {
 			//composer.setComposer_img(composer.getImgOrDefault());
 	
 			model.addAttribute("composer", composer);
-			System.out.println(composer);
 	
 			model.addAttribute("content", "wk/artist_detail");
 	

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.sm.chat.chatroom.CreateRoomMapper">
   <insert id="regChatRooms">
-	  insert into CreateRoom values(#{room_id}, #{user1}, #{user2})
+	  insert into CreateRoom values(#{roomId}, #{user1}, #{user2})
   </insert>
   <select id="dupliCheck" resultType="Integer">
     SELECT COUNT(*)
