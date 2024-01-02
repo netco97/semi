@@ -37,6 +37,7 @@ body {
 .musicDetail-title {
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
 
 .musicDetail-title-img img {
@@ -214,14 +215,13 @@ audio {
 	max-width: 50px;
 }
 
-
 /* 하단 코멘트 섹션 */
 .comment-container {
 	height: 1150px;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
 }
 
 .comment-container-inner {
@@ -231,12 +231,13 @@ audio {
 
 .comment {
 	width: 100%;
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
+
 #commentInput {
-    width: 60%;
-    margin: 30px;
-    resize: none;
+	width: 60%;
+	margin: 30px;
+	resize: none;
 }
 
 .commentInputBox {
@@ -246,107 +247,108 @@ audio {
 }
 
 #commentBtn {
-    background-color: #fff;
-    border-radius: 4px;
-    color: black;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    align-self: center;
-    height: 35px;
+	background-color: #fff;
+	border-radius: 4px;
+	color: black;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	align-self: center;
+	height: 35px;
 }
 
 #commentBtn:hover {
+	
 }
 
 #commentList {
 	padding-left: 150px;
 	padding-right: 150px;
-	
 }
 
 /* 코멘트 컨테이너 스타일링 */
 #comments-container {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 /* 각 코멘트 아이템 스타일링 */
 .comment-item {
-    /* border: 1px solid #ddd; */ /* 테두리 추가 */
-    /* padding: 10px; */ /* 안쪽 여백 추가 */
-    margin-bottom: 10px; /* 아래쪽 여백 추가 */
-    position: relative; /* 상대적인 위치 설정 */
+	/* border: 1px solid #ddd; */ /* 테두리 추가 */
+	/* padding: 10px; */ /* 안쪽 여백 추가 */
+	margin-bottom: 10px; /* 아래쪽 여백 추가 */
+	position: relative; /* 상대적인 위치 설정 */
 }
 
 /* 사용자 닉네임 스타일링 */
 .comment-item .user-nickname {
-    font-weight: bold; /* 굵은 글꼴 */
-    color: white; /* 파란색 */
+	font-weight: bold; /* 굵은 글꼴 */
+	color: white; /* 파란색 */
 }
 
 /* 코멘트 내용 스타일링 */
 .comment-item .comment-content {
-    margin-top: 5px; /* 위쪽 여백 추가 */
+	margin-top: 5px; /* 위쪽 여백 추가 */
 }
 
 /* 작성 시간 스타일링 */
 .comment-item .created-at {
-    font-size: 12px; /* 작은 글꼴 크기 */
-    color: #888; /* 회색 */
+	font-size: 12px; /* 작은 글꼴 크기 */
+	color: #888; /* 회색 */
 }
 
 /* 삭제 버튼 스타일링 */
 .delete-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  cursor: pointer;
-  color: white;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+	color: white;
 }
 
 #pagination {
-    position: fixed;
-    bottom: 20px; /* 조정 가능한 값 */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white; /* 페이지 번호가 가려지는 것을 방지하기 위해 배경색을 지정 */
-    padding: 10px;
-    border: 1px solid #ccc;
+	position: fixed;
+	bottom: 20px; /* 조정 가능한 값 */
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: white; /* 페이지 번호가 가려지는 것을 방지하기 위해 배경색을 지정 */
+	padding: 10px;
+	border: 1px solid #ccc;
 }
 
 /* 페이지 번호를 감싸는 영역 스타일 */
 .pagination ul {
-    list-style: none;
-    padding: 0;
-    margin: 30px;
-    text-align: center;
+	list-style: none;
+	padding: 0;
+	margin: 30px;
+	text-align: center;
 }
 
 /* 각 페이지 번호의 스타일 */
 .pagination li {
-    display: inline-block;
-    margin-right: 5px; /* 각 페이지 번호 사이의 간격 조절 */
+	display: inline-block;
+	margin-right: 5px; /* 각 페이지 번호 사이의 간격 조절 */
 }
 
 .pagination a {
-    text-decoration: none;
+	text-decoration: none;
 	padding: 2px 5px;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s; /* hover 효과를 부드럽게 만들기 위한 트랜지션 설정 */
+	border: 1px solid #ccc;
+	background-color: #f5f5f5;
+	color: #333;
+	transition: background-color 0.3s, color 0.3s;
+	/* hover 효과를 부드럽게 만들기 위한 트랜지션 설정 */
 }
 
 /* hover 효과 */
 .pagination a:hover {
-    background-color: #007bff;
-    color: #fff;
-    border: 1px solid #007bff;
+	background-color: #007bff;
+	color: #fff;
+	border: 1px solid #007bff;
 }
 
 /* 활성화된 페이지 번호의 스타일 */
 .pagination-link.active {
-    background-color: #007bff;
-    color: #fff;
-    border: 1px solid #007bff;
+	background-color: #007bff;
+	color: #fff;
+	border: 1px solid #007bff;
 }

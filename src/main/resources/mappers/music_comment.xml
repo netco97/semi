@@ -5,27 +5,30 @@
 
 
 
-	<select id="getComments" resultType="MusicCommentDTOwithNickName">
+	<select id="getComments"
+		resultType="MusicCommentDTOwithNickName">
 		SELECT
 		sc.COMMENT_ID,
 		sc.SONG_ID,
 		sc.USERFULLPHONENUMBER,
 		sc.COMMENT_TEXT,
 		sc.COMMENT_DATE,
-		ut.USERNICKNAME AS USER_NICKNAME
+		ut.USERNICKNAME AS USERNICKNAME
 		FROM
 		song_comment sc
 		JOIN
-		usertable ut ON sc.USERFULLPHONENUMBER = ut.USERFULLPHONENUMBER
+		usertable ut ON sc.USERFULLPHONENUMBER =
+		ut.USERFULLPHONENUMBER
 	</select>
 
 
 	<insert id="regComment">
 		INSERT INTO song_comment (comment_id, song_id,
-		userFullPhoneNumber, comment_text)
-		VALUES (comment_id_seq.NEXTVAL,
+		userFullPhoneNumber, comment_text, comment_date)
+		VALUES
+		(comment_id_seq.NEXTVAL,
 		#{song_id}, #{userFullPhoneNumber},
-		#{comment_text})
+		#{comment_text},SYSDATE)
 	</insert>
 
 
@@ -36,8 +39,9 @@
 		userFullPhoneNumber = '#{userFullPhoneNumber}';
 
 	</select>
-	 
-	 <select id="getCommentsBySongIdWithPaging" resultType="MusicCommentDTO">
+
+	<select id="getCommentsBySongIdWithPaging"
+		resultType="MusicCommentDTOwithNickName">
                 <![CDATA[
         SELECT * FROM (
             SELECT c.*, ROWNUM AS rnum
@@ -61,12 +65,17 @@
         ) 
         WHERE rnum > #{offset}
         ]]>
-    </select>
-    
-    <select id="countCommentsBySongId" resultType="java.lang.Integer">
-    SELECT COUNT(*) FROM song_comment WHERE song_id = #{song_id}
 	</select>
-	
-	
-	
+
+	<select id="countCommentsBySongId"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM song_comment WHERE song_id = #{song_id}
+	</select>
+
+	<delete id="deleteMusicComment">
+		delete from song_comment where comment_id = #{comment_id}
+	</delete>
+
+
+
 </mapper>

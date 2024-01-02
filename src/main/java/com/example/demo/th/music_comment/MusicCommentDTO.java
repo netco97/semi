@@ -15,7 +15,5 @@ public class MusicCommentDTO {
 	private String userFullPhoneNumber;
 	private String comment_text;
 	private LocalDateTime comment_date;
-	
-}
 
-	
+}
