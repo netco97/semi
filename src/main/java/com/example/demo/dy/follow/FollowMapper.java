@@ -1,5 +1,7 @@
 package com.example.demo.dy.follow;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,4 +14,7 @@ public interface FollowMapper {
 
     boolean existsFollow(@Param("followerUserId") String followerUserId, 
                          @Param("targetUserId") String targetUserId);
+    
+    List<FollowDTO> getFollowerList(@Param("userId") String userId);
+    
 }

@@ -14,7 +14,7 @@
 	const followerId = `[(${composer.composer_name})]`;
     const followerUserId1 = `[(${session.userFullPhoneNumber})]`;
     const targetUserId1 = `[(${composer.composer_id})]`;
-    
+   
     console.log(targetUserId1);
     console.log(followerUserId1);
 </script>
@@ -56,16 +56,16 @@
 							<!-- 세션에 있는 artistId와 composerDTO.id가 Thymeleaf 컨텍스트에 있다고 가정합니다. -->
 							<!-- HTML 요소에 직접 th:if를 사용합니다. -->
 							<button th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/artist_update}">내 프로필 수정</button>
-    						<button th:if="${session.userFullPhoneNumber == composer.composer_id}" th:href="@{/follower_list}">내 팔로워 보기</button>
+    						<button id="followerListBtn" th:if="${session.userFullPhoneNumber == composer.composer_id}" onclick="openFollowerListModal()">내 팔로워 보기</button>
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
 							<button id="followBtn"
-								th:unless="${session.userFullPhoneNumber == composer.composer_id}">팔로우</button>
+								th:unless="${session.userFullPhoneNumber == composer.composer_id}" onclick="toggleFollow()">팔로우</button>
 							<button id="messageBtn"
 								th:unless="${session.userFullPhoneNumber == composer.composer_id}"
 								onclick="createChatroom()">1:1채팅</button>
 						</div>
-					</div>
+					</div> 
 				</article>
 					
 					<div class="artist-profile-text">

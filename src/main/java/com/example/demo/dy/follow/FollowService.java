@@ -1,7 +1,9 @@
 	package com.example.demo.dy.follow;
 	
 	
-	import org.springframework.beans.factory.annotation.Autowired;
+	import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
 	import org.springframework.transaction.annotation.Transactional;
 	
@@ -39,4 +41,9 @@
 	        // 팔로우 상태를 토글한 후에 현재 상태 반환
 	        return isFollowing;
 	    }
+	    
+	    public List<FollowDTO> getFollowerList(String userId) {
+	        return followMapper.getFollowerList(userId);
+	    }
+	    
 	}
