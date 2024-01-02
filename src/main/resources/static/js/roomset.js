@@ -70,19 +70,6 @@ function getChatList(roomId) {
     xhr.send();
 }
 
-function scrollChatAreaToBottom() {
-    var messageArea = document.querySelector(".message-area");
-    console.log("Message Area Element:", messageArea);
-
-    if (messageArea) {
-        // 스크롤을 맨 아래로 이동
-        messageArea.scrollTop = messageArea.scrollHeight;
-    } else {
-        console.error("Message Area element not found!");
-    }
-}
-
-
 function displayChatList(chatList) {
     var messageArea = document.getElementById("messageArea");
     messageArea.innerHTML = "";
