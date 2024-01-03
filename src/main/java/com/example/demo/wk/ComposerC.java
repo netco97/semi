@@ -136,8 +136,6 @@ public class ComposerC {
 	@PostMapping("/artist_upload")
 	public String updateArtist(@RequestParam("userFullPhoneNumber") String composer_id, @ModelAttribute ComposerDTO composer, Model model,HttpSession session) {
 		try {
-			
-			
 			System.out.println("composer_id test" + composer_id);
 			System.out.println("composer test" + composer);
 			composer.setComposer_id(composer_id);
@@ -157,9 +155,6 @@ public class ComposerC {
 			// 업데이트 로직 수행
 			composerService.updateComposer(composer);
 			
-			
-			
-
 			// 업데이트된 composer 다시 가져오기
 			ComposerDTO updatedComposer = composerService.getComposerById(composer_id);
 			model.addAttribute("composer", updatedComposer);
