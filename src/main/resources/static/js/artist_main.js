@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 		
 		
-		//폰넘버 감추
+		//폰넘버 감추기
         artistsContainer.on("click", "img", function() {
 	    const composerId = $(this).data("composer-id");
 	    const detailPageUrl = "/artist_detail";

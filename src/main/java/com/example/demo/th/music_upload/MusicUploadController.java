@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.th.musicsearch.SongsDTO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MusicUploadController {
 	private final MusicUploadService musicUploadService;
@@ -33,7 +35,7 @@ public class MusicUploadController {
 	
 	// form 값 받는컨트롤러
 	@PostMapping("/upload")
-	public String createMusicUpload(@ModelAttribute MusicUploadDTO musicUploadDTO) {
+	public String createMusicUpload(@ModelAttribute MusicUploadDTO musicUploadDTO,HttpSession session) {
 		
 		//img , audio File 저장 & DB에 저장할 String List로 반환
 		List<String> FileNames = musicUploadService.saveFile(musicUploadDTO);
@@ -50,9 +52,8 @@ public class MusicUploadController {
 	    String instrument_result = "";
 	    instrument_result = String.join("#", musicInstrument);
 	    
-	    // Test composer_name 변수
-
-	    String composer_name = "wk2";
+	    // composer_name 변수
+	    String composer_name = session.getAttribute("userNickname").toString();
 
 	    int song_like = 0;
 	    

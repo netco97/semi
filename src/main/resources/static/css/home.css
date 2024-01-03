@@ -1,0 +1,325 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.homeContainer {
+	width: 100vw;
+}
+
+.homeContainer, .homeContainer-inner, .homeContent-inputSearch,
+	.homeContent-inputSearch-text, .homeInputSearch,
+	.homeContent-inputSearch-inner {
+	border: 1px solid black;
+}
+
+.homeContainer-inner {
+	width: 100%;
+	display: flex;
+	flex-direction: column; /* 세로로 정렬 */
+	justify-content: center; /* 가로 기준으로 가운데 정렬 */
+	align-items: center; /* 세로 기준으로 가운데 정렬 */
+	height: auto;
+}
+
+.homeContent-inputSearch {
+	width: 100%;
+	height: 50vh;
+	text-align: center;
+	background-color: black;
+	border-top: 1px solid white;
+}
+
+.homeContent-inputSearch-inner {
+	width: 60%;
+	margin: auto;
+	padding-top: 5%
+}
+
+.homeInputSearch input {
+	width: 80%;
+	flex: 1;
+	padding: 10px;
+	border: none;
+	border-radius: 5px 0 0 5px;
+}
+
+.homeInputSearch button {
+	padding: 10px;
+	border: none;
+	border-radius: 0 5px 5px 0;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+}
+
+.inputSearch-text1 {
+	font-weight: 300;
+	line-height: 1.5;
+	color: white;
+}
+
+.inputSearch-text2 {
+	display: block;
+	color: white;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	margin-block-start: 1em;
+}
+
+/*  keyboard */
+.homeKeyBoard {
+	width: 100%;
+	align-items: center;
+}
+
+.homeKeyBoard-inner {
+	width: 60%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 좌우 가운데 정렬 */
+	align-items: center; /* 세로 가운데 정렬 */
+}
+
+#keyBoard {
+	display: grid;
+	grid-template-columns: 80px 80px 40px 80px 80px 80px 80px 35px 80px 35px
+		80px 80px;
+	height: 150px;
+	font-size: 1px;
+	padding-bottom: 2rem;
+	white-space: nowrap;
+	align-self: flex-end;
+
+}
+
+.key-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	height: 100%; /* 버튼의 높이를 기준으로 정렬 */
+}
+
+#cKey {
+	padding: 0;
+	border: none;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	background: none;
+	outline: none
+}
+
+#cRHLKey {
+	display: grid;
+	border-bottom: 1px solid black;
+}
+
+#cHKey {
+	background-color: black;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	outline: none;
+	border: none;
+}
+
+#cRKey {
+	padding: 0;
+	border: none;
+	border-right: 1px solid black;
+	background: none;
+	outline: none;
+}
+
+#dLKey {
+	padding: 0;
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#dKey {
+	padding: 0;
+	border: none;
+	border-bottom: 1px solid black;
+	background: none;
+	outline: none;
+}
+
+#dRHLKey {
+	display: grid;
+	border-bottom: 1px solid black;
+}
+
+#dHKey {
+	background-color: black;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	border: none;
+	outline: none;
+}
+
+#dRKey {
+	background: none;
+	border: none;
+	border-right: 1px solid black;
+	outline: none;
+}
+
+#eKey {
+	background: none;
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+}
+
+#eLKey {
+	background: none;
+	border: none;
+	outline: none;
+}
+
+#fKey {
+	background: none;
+	border: none;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	outline: none;
+}
+
+#fRHLKey {
+	display: grid;
+	border-bottom: 1px solid black;
+}
+
+#fHKey {
+	border: none;
+	outline: none;
+	background-color: black;
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+#fRKey {
+	border: none;
+	border-right: 1px solid black;
+	outline: none;
+	background: none;
+}
+
+#gKey {
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+	background: none;
+}
+
+#gRHLKey {
+	display: grid;
+	border-bottom: 1px solid black;
+}
+
+#gRKey {
+	border: none;
+	outline: none;
+	border-right: 1px solid black;
+	background: none;
+}
+
+#gLKey {
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#gHKey {
+	border: none;
+	outline: none;
+	background-color: black;
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+#aKey {
+	border: none;
+	outline: none;
+	border-bottom: 1px solid black;
+	background: none;
+}
+
+#aRHLKey {
+	display: grid;
+}
+
+#aHKey {
+	border: none;
+	outline: none;
+	background-color: black;
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+#aLKey {
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#aRKey {
+	border: none;
+	outline: none;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	background: none;
+}
+
+#bLKey {
+	border: none;
+	outline: none;
+	border-bottom: 1px solid black;
+	background: none;
+}
+
+#bKey {
+	border: none;
+	outline: none;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	background: none;
+}
+
+#note {
+	width: 800;
+	height: 400;
+	overflow: scroll;
+}
+
+/* tag */
+.musicMenu-searchTag {
+	margin-top: 15px;
+	color: black;
+	display: none; /* 초기에 searchTag를 숨김 */
+	width: 80%
+}
+
+.musicMenu-searchTag.active {
+	display: block;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap; /* 추가: 넘치면 다음 줄로 개행 */
+}
+
+.musicMenu-searchTag div {
+	margin: 0 5px;
+	font-weight: bold; /* 텍스트만 볼드로 설정 */
+	cursor: pointer;
+	white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+	color: black;
+	text-align: center;
+}
+
+.musicMenu-searchTag div:hover {
+	background-color: #ddd;
+}

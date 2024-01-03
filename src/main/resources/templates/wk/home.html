@@ -1,15 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/home.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+<title>Home</title>
+<script th:inline="javascript">
+	const genre = /*[[${tags.genre}]]*/[];
+	const mood = /*[[${tags.mood}]]*/[];
+	const instrument = /*[[${tags.instrument}]]*/[];
+	const userNickname = `[(${session.userNickname})]`;
+
+	let isLogin = "";
+
+	if (userNickname !== "") {
+		isLogin = 1;
+	} else {
+		isLogin = 0;
+	}
+</script>
 </head>
 <body>
-    <section th:fragment="content">
-        <h1>Welcome to My Website</h1>
-        <p>This is the home page content.</p>
-         <p th:text="${session.userFullPhoneNumber}"></p>
-        <p th:text="${session.iscomposer}"> </p>
-    </section>
+	<!-- 	<section th:fragment="content"> -->
+	<!-- 		<h1>Welcome to My Website</h1> -->
+	<!-- 		<p>This is the home page content.</p> -->
+	<!-- 		<p th:text="${session.userFullPhoneNumber}"></p> -->
+	<!-- 		<p th:text="${session.iscomposer}"></p> -->
+	<!-- 	</section> -->
+
+	<!--     keyBoard -->
+	<!---출처 http://theremin.music.uiowa.edu/MISpiano.html-->
+	<div class="homeContainer">
+		<div class="homeContainer-inner">
+			<div class="homeContent-inputSearch">
+				<div class="homeContent-inputSearch-inner">
+
+					<div class="homeContent-inputSearch-text">
+						<h1 class="inputSearch-text1">원하는 노래 찾아보기 레쓰고~</h1>
+						<p class="inputSearch-text2">우리들은 열심히 하고 있어요 ㅜㅜ</p>
+					</div>
+					<div class="homeInputSearch">
+						<div>
+							<input id="searchInput"
+								placeholder="곡명, 아티스트명, 해시태그 키워드로 검색해 보세요!" />
+							<button>검색</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="homeKeyBoard">
+				<div class="homeKeyBoard-inner">
+					<div id="keyBoard">
+						<!-- 					audio -->
+						<audio id="cSound">
+							<source src="c.wav" type="audio/x-wav">
+						</audio>
+						<audio id="cHSound">
+							<source src="cH.wav" type="audio/x-wav">
+						</audio>
+						<audio id="dSound">
+							<source src="d.wav" type="audio/x-wav">
+						</audio>
+						<audio id="dHSound">
+							<source src="dH.wav" type="audio/x-wav">
+						</audio>
+						<audio id="eSound">
+							<source src="e.wav" type="audio/x-wav">
+						</audio>
+						<audio id="fSound">
+							<source src="f.wav" type="audio/x-wav">
+						</audio>
+						<audio id="fHSound">
+							<source src="fH.wav" type="audio/x-wav">
+						</audio>
+						<audio id="gSound">
+							<source src="g.wav" type="audio/x-wav">
+						</audio>
+						<audio id="gHSound">
+							<source src="gH.wav" type="audio/x-wav">
+						</audio>
+						<audio id="aSound">
+							<source src="a.wav" type="audio/x-wav">
+						</audio>
+						<audio id="aHSound">
+							<source src="aH.wav" type="audio/x-wav">
+						</audio>
+						<audio id="bSound">
+							<source src="b.wav" type="audio/x-wav">
+						</audio>
+
+						<!-- 						keyboard -->
+						<!-- cKey -->
+						<button onclick="cPlay()" id="cKey">
+							<div class="key-container">
+								<span>장르</span>
+							</div>
+
+						</button>
+						<!--div c오른쪽 c샵 d왼쪽-->
+						<div id="cRHLKey">
+							<button onclick="cHPlay()" id="cHKey"></button>
+							<button onclick="cPlay()" id="cRKey"></button>
+							<button onclick="dPlay()" id="dLKey"></button>
+						</div>
+						<!-- dKey -->
+						<button onclick="dPlay()" id="dKey">
+							<div class="key-container">
+								<span>분위기</span>
+							</div>
+						</button>
+						<!--div d오른쪽 d샵 f왼쪽-->
+						<div id="dRHLKey">
+							<button onclick="dHPlay()" id="dHKey"></button>
+							<button onclick="dPlay()" id="dRKey"></button>
+							<button onclick="ePlay()" id="eLKey"></button>
+						</div>
+						<!-- eKey -->
+						<button onclick="ePlay()" id="eKey">
+							<div class="key-container">
+								<span>악기</span>
+							</div>
+						</button>
+						<!-- fKey -->
+						<button onclick="fPlay()" id="fKey">
+							<div class="key-container">
+								<span>아티스트</span>
+							</div>
+						</button>
+						<!--div f오른쪽 f샵 g왼쪽-->
+						<div id="fRHLKey">
+							<button onclick="fHPlay()" id="fHKey"></button>
+							<button onclick="fPlay()" id="fRKey"></button>
+
+							<button onclick="gPlay()" id="gLKey"></button>
+						</div>
+						<!-- gKey -->
+						<button onclick="gPlay()" id="gKey">
+							<div class="key-container">
+								<span>인기순</span>
+							</div>
+						</button>
+						<!--div g오른쪽 g샵 a왼쪽-->
+						<div id="gRHLKey">
+							<button onclick="gHPlay()" id="gHKey"></button>
+							<button onclick="gPlay()" id="gRKey"></button>
+
+							<button onclick="aPlay()" id="aLKey"></button>
+						</div>
+						<!-- aKey -->
+						<button onclick="aPlay()" id="aKey">
+							<div class="key-container">
+								<span>최신순</span>
+							</div>
+						</button>
+						<!--div a오른쪽 a샵 b왼쪽-->
+						<div id="aRHLKey">
+							<button onclick="aHPlay()" id="aHKey"></button>
+							<button onclick="aPlay()" id="aRKey"></button>
+
+							<button onclick="bPlay()" id="bLKey"></button>
+						</div>
+						<!-- bKey -->
+						<button onclick="bPlay()" id="bKey"></button>
+
+					</div>
+					<div class="musicMenu-searchTag"></div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="/js/pagination.min.js"></script>
+	<script src="/js/home.js"></script>
+	<script th:inline="javascript" src="/js/musicMenu.js"></script>
 </body>
 </html>
+

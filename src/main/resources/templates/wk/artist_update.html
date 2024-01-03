@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>타이틀 | 아티스트 프로필 수정</title>
 <link rel="stylesheet" href="/css/artist_reg.css">
+<script>
+	const composerId = `[(${composer.composer_id})]`;
+</script>
 </head>
 <body>
     <form id="artistForm" method="post" enctype="multipart/form-data">
@@ -50,9 +53,9 @@
 	        	<div class="profileTitle">자기 소개</div>
 	        	<textarea class="introduce" name="composer_text" th:text="${composer.composer_text}"></textarea>
         	</section>
-        	
+        		<input type="hidden" name="userFullPhoneNumber" th:value="${composer.composer_id}">
 			<div class="button-box">
-		        <button type="submit" onclick="submitForm()">수정</button>
+		        <button type="submit" onclick="submitForm();">수정</button>
 		        <button onclick="history.back();">취소</button>
 	        </div>
 		</main>        
@@ -60,8 +63,7 @@
 <script type="text/javascript" src="/js/artist_reg.js"></script>
 <script>
     function submitForm() {
-		const composerId = `[(${composer.composer_id})]`;
-        var actionUrl = composerId + '/upload';
+        var actionUrl = '/artist_upload';
         $('#artistForm').attr('action', actionUrl);
         $('#artistForm').submit();
     }
