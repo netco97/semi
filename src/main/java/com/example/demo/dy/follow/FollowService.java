@@ -46,4 +46,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 	        return followMapper.getFollowerList(userId);
 	    }
 	    
+	    public List<FollowDTO> getFollowerListWithInfo(String userId, int start, int end) {
+	        return followMapper.getFollowerListWithInfo(userId, start, end);
+	    }
+	    
 	}

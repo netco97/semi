@@ -43,6 +43,6 @@ function openFollowerListModal() {
         }
     };
 
-    xhr.open('GET', '/follow/follower_list?userId=' + followerUserId1, true);
+    xhr.open('GET', '/follow/follower_list', true);
     xhr.send();
 }

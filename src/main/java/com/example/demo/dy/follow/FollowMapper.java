@@ -16,5 +16,7 @@ public interface FollowMapper {
                          @Param("targetUserId") String targetUserId);
     
     List<FollowDTO> getFollowerList(@Param("userId") String userId);
+
+	List<FollowDTO> getFollowerListWithInfo(@Param("userId") String userId,@Param("start") int start, @Param("end")int end);
     
 }

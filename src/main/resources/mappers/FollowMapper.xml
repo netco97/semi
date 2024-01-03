@@ -29,7 +29,19 @@
 </select>
 
 <select id="getFollowerList" resultType="com.example.demo.dy.follow.FollowDTO">
-    SELECT * FROM FOLLOWTABLE WHERE targetUserId = #{userId}
+    SELECT * FROM FOLLOWTABLE WHERE followerUserId = #{userId}
+</select>
+
+<select id="getFollowerListWithInfo" resultType="com.example.demo.dy.follow.FollowDTO">
+    SELECT f.*, c.COMPOSER_NAME, c.COMPOSER_IMG, ROWNUM AS rnum
+    FROM (
+        SELECT *
+        FROM FOLLOWTABLE f
+        WHERE f.followerUserId = #{userId}
+        ORDER BY f.created_at DESC
+    ) f
+    JOIN COMPOSERS c ON f.targetUserId = c.COMPOSER_ID
+    WHERE ROWNUM &lt;= #{end}
 </select>
 
 </mapper>
