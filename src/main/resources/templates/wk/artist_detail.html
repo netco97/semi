@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<title>타이틀 | 아티스트 상세</title>
@@ -19,6 +20,7 @@
 		console.log(followerUserId1);
 	</script>
 </head>
+
 <body>
 	<!--채팅방 모달 세팅-->
 	<div id="myModal" class="modal">
@@ -32,10 +34,11 @@
 	</div>
 	<div id="followerListModal">
 		<div id="followerListModalContent">
-			<!-- 여기에 팔로우 리스트를 표시할 내용을 추가 -->
-			<!-- 예: <ul> <li>Follower 1</li> <li>Follower 2</li> </ul> -->
+			<ul id="followerList">
+				<!-- 여기에 동적으로 팔로워 목록이 추가될 예정 -->
+			</ul>
 		</div>
-		<button onclick="closeFollowerListModal()">Close</button>
+		<button class="closeModalBtn" onclick="closeFollowerListModal()">닫기</button>
 	</div>
 
 	<main>
@@ -65,7 +68,8 @@
 							<!-- <button th:if="${session.userFullPhoneNumber == composer.composer_id}"
 								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
 								>내 프로필 수정</button> -->
-							<button th:if="${session.userFullPhoneNumber == composer.composer_id}" onclick="updateProfile()">내 프로필 수정</button>
+							<button th:if="${session.userFullPhoneNumber == composer.composer_id}"
+								onclick="updateProfile()">내 프로필 수정</button>
 							<button id="showFollowerListBtn"
 								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
 
@@ -95,7 +99,7 @@
 
 				<article class="music-article">
 					<div class="musicList">
-						<div class="musicList-id-title"th:text="${composer.composer_name + '의 음악 리스트'}"></div>
+						<div class="musicList-id-title" th:text="${composer.composer_name + '의 음악 리스트'}"></div>
 						<div class="musicList-inner">
 							<div class="musicList-menu">
 								<div class="musicList-title">
