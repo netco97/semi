@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 
-	var pageSize = 4;
+	var pageSize = 5;
 	var currentPage = 1;
 	var allArtists = []; // 모든 아티스트를 저장하는 변수
 

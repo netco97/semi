@@ -3,11 +3,11 @@
     width: 100%;
     z-index: 1000;
     필요한 경우 추가 스타일을 넣어주세요
-}
-
-.artist-main-page #musicMenuA .highlight-bar {
-    display: block;
 } */
+
+#musicMenuB .highlight-bar {
+    display: block;
+}
 
 
 body {
@@ -26,7 +26,6 @@ a {
 	color: white;
 	text-decoration: none;
 }
-
 
 .left-side {
 	display: flex;
@@ -65,7 +64,6 @@ a {
     justify-content: center;
 }
 
-
 .artist-article {
 	width: 50%;
 }
@@ -75,7 +73,8 @@ a {
 }
 
 #artists-container {
-	height: 500px;
+	min-height: 600px;
+	min-width: 600px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -152,22 +151,20 @@ a {
 #searchInput {
     flex: 1;
     padding: 8px;
-    margin-right: 10px;
 }
 
 #searchButton {
-    padding: 8px 12px;
-    background-color: black;
-    color: #fff;
-    border: none;
+    padding: 9px 9px;
     cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #767676;
 }
 
-#searchButton:hover {
+/* #searchButton:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    background-color: #333; /* 변경하고자 하는 배경 색상 */
-    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* 부드러운 전환 효과 추가 */
-}
+    background-color: #333; 변경하고자 하는 배경 색상
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; 부드러운 전환 효과 추가
+} */
 
 /* 아티스트 페이징 */
 #pagination {

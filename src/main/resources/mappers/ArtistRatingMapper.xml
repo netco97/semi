@@ -27,7 +27,7 @@
     </delete>
     
         <!-- 사용자와 작곡가에 대한 평점 조회 -->
-    <select id="getRatingByUserAndComposer" parameterType="Map" resultType="int">
+    <select id="getRatingByUserAndComposer" resultType="String">
         SELECT NVL(rating, 0) 
 		FROM ratings 
 		WHERE userfullphonenumber = #{userfullphonenumber} AND composer_id = #{composer_id}
