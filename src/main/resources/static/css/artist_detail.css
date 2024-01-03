@@ -21,7 +21,7 @@
 
 .artist-profile img {
     width: 100%;
-    border-radius: 50px;
+    border-radius: 5%;
 }
 
 .artist-profile-text {
@@ -311,6 +311,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
     width: 100%; /* 노래 컨테이너를 100%로 설정 */
+    height: 65px;
     box-sizing: border-box; /* padding을 포함한 크기로 설정 */
 }
 
@@ -320,8 +321,8 @@
 }
 
 .musicList-title img {
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	margin: 10px;
     border-radius: 50%;
 }

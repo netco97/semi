@@ -43,6 +43,17 @@
 				    <option value="기타">기타</option>
 		        </select>
 		        
+		        <label for="musicInstrument">악기</label>
+		        <select id="musicInstrument" name="musicInstrument" multiple>
+		            <option value="기타">기타</option>
+		            <option value="피아노">피아노</option>
+		            <option value="베이스">베이스</option>
+		            <option value="바이올린">바이올린</option>
+		            <option value="드럼">드럼</option>
+		            <option value="첼로">첼로</option>
+		            <option value="그외">그외</option>
+		        </select>
+		        
 		        <div id="selectedGenresContainer">
     			<!-- 선택된 장르가 표시될 공간 -->
 				</div>
@@ -51,6 +62,7 @@
 			<section class="sectionRight">
 
 				<article class="musicMood-text">
+				
 				<div id="musicMoodTitle" >
 				<label for="musicMood">분위기</label>
 				</div>
@@ -158,23 +170,20 @@
 						</div>
 					</div>
 					</article>
-					<label for="musicInstrument">악기</label>
-		        <select id="musicInstrument" name="musicInstrument" multiple>
-		            <option value="기타">기타</option>
-		            <option value="피아노">피아노</option>
-		            <option value="베이스">베이스</option>
-		            <option value="바이올린">바이올린</option>
-		            <option value="드럼">드럼</option>
-		            <option value="첼로">첼로</option>
-		            <option value="그외">그외</option>
-		        </select>
+
 			</section>
 					<div class="button-box">
 						<button type="submit">등록</button>
-						<button>취소</button>
+						<button type="button" onclick="cancelRegistration()">취소</button>
 				    </div>
 		</main>
     </form>
 <script type="text/javascript" src="js/musicUpload.js"></script>
+    <script type="text/javascript">
+        function cancelRegistration() {
+            // 브라우저의 히스토리에서 뒤로가기
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
