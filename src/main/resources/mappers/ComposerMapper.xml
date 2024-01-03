@@ -50,6 +50,13 @@
 	        composer_id = #{composer_id}
 	</update>
 	
+	<update id="updateSongs" parameterType="String">
+		UPDATE songs SET composer_name = #{composer_name} where composer_name IN
+		(
+		    select composer_name from composers where composer_id = #{composer_id}
+		)
+	</update>
+	
 	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
         SELECT * FROM composers
         WHERE composer_name LIKE '%' || #{keyword} || '%'

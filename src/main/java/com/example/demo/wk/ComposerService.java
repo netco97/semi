@@ -65,4 +65,9 @@ public class ComposerService {
     public List<ComposerDTO> searchArtists(String keyword) {
         return composerMapper.searchArtists(keyword);
     }
+
+	public int updateSongs(String composer_name, String composer_id) {
+		return composerMapper.updateSongs(composer_name, composer_id);
+		
+	}
 }
