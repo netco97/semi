@@ -1,3 +1,15 @@
+/* .artist-main-page header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    필요한 경우 추가 스타일을 넣어주세요
+}
+
+.artist-main-page #musicMenuA .highlight-bar {
+    display: block;
+} */
+
+
 body {
     margin: 0;
     padding: 0;
@@ -82,7 +94,7 @@ a {
     height: 150px;
     flex-direction: row;
     padding: 3px;
-    border-radius: 10px;
+    border-radius: 15px;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -95,7 +107,7 @@ a {
 	width: 100px;
 	height: auto;
 	padding: 10px;
-	border-radius: 10%;
+	border-radius: 20px;
 }
 
 .artist-details:hover img {

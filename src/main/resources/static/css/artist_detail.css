@@ -34,11 +34,15 @@
 }
 
 .artist-profile-text-name,
-.artist-profile-text-genre,
-.artist-profile-text-introduce {
+.artist-profile-text-genre {
     display: flex;
     flex-direction: column;
+    height: 20%;
     margin-bottom: 15px;
+}
+
+.artist-profile-text-introduce {
+	height: 60%;
 }
 
 .artist-profile-text h2 {
