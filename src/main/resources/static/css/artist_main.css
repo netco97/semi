@@ -1,3 +1,15 @@
+/* .artist-main-page header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    필요한 경우 추가 스타일을 넣어주세요
+}
+
+.artist-main-page #musicMenuA .highlight-bar {
+    display: block;
+} */
+
+
 body {
     margin: 0;
     padding: 0;
@@ -10,11 +22,38 @@ main {
     overflow: hidden;
 }
 
+a {
+	color: white;
+	text-decoration: none;
+}
+
 
 .left-side {
-    background-color: black;
-    color: #fff;
-    flex: 0.4; /* 또는 다른 적절한 비율 */
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+    flex: 1; /* 또는 다른 적절한 비율 */
+}
+
+.left-side h2 {
+	color: white;
+	font-size: 20pt;
+	margin: 10px;
+}
+
+.left-box {
+	background-color: black;
+	text-align: center;
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 50%; /* 부모 요소의 100%를 차지하도록 설정 */
+    height: 100px;
+    border-radius: 10px;
+}
+
+.left-box div {
+	color: white;
 }
 
 .right-side {
@@ -26,13 +65,6 @@ main {
     justify-content: center;
 }
 
-/* 개별 아티스트 박스 */
-.artist-container {
-	margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 
 .artist-article {
 	width: 50%;
@@ -43,20 +75,27 @@ main {
 }
 
 #artists-container {
-	height: 600px;
+	height: 500px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+}
+
+/* 개별 아티스트 박스 */
+.artist-container {
+	margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .artist-details {
     display: flex;
     width: 250px;
-    height: 200px;
+    height: 150px;
     flex-direction: row;
-    box-sizing: border-box; /* 패딩과 테두리를 너비에 포함하도록 설정 */
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 3px;
+    border-radius: 15px;
+    border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,23 +104,26 @@ main {
 }
 
 .artist-details img {
-    width: 100%; /* 부모 요소인 .artist-details에 대해 100%로 설정합니다. */
-    height: auto; /* 비율을 유지하면서 이미지의 높이를 자동으로 조절합니다. */
-    border-radius: 15%;
-    margin-bottom: 10px;
-}
-
-.artist-details img {
-    width: 80%; /* 부모 요소인 .artist-details에 대해 100%로 설정합니다. */
-    height: auto; /* 비율을 유지하면서 이미지의 높이를 자동으로 조절합니다. */
-    border-radius: 15%;
-    margin-bottom: 10px;
+	width: 100px;
+	height: auto;
+	padding: 10px;
+	border-radius: 20px;
 }
 
 .artist-details:hover img {
-    transform: scale(1.1); /* 이미지를 1.1배로 확대합니다. */
+    /* transform: scale(1.1); */ /* 이미지를 1.1배로 확대합니다. */
     transition: transform 0.3s ease; /* 부드러운 전환 효과를 추가합니다. */
 }
+
+/* 아티스트 개별 박스 */
+.artist-details-word h3{
+	font-size: 12pt;
+}
+
+.artist-details-word p{
+	font-size: 10pt;
+}
+
 
 .left-box {
     padding: 15px;
@@ -97,7 +139,7 @@ main {
 
 /* 아티스트 검색 */
 .search-box {
-	width: 600px;
+	width: 30%;
     display: flex;
     align-items: center;
 }
@@ -108,7 +150,6 @@ main {
 }
 
 #searchInput {
-	
     flex: 1;
     padding: 8px;
     margin-right: 10px;
@@ -128,26 +169,7 @@ main {
     transition: box-shadow 0.3s ease, background-color 0.3s ease; /* 부드러운 전환 효과 추가 */
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-img {
-    width: 100px;
-    border-radius: 15%;
-    margin-right: 10px;
-}
-
+/* 아티스트 페이징 */
 #pagination {
     position: relative; /* 페이지 번호를 화면 아래에 고정 */
     display: flex;
