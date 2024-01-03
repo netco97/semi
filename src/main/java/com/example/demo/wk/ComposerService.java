@@ -75,4 +75,8 @@ public class ComposerService {
 		
 		return composerMapper.updateUserTable(composer_name, composer_id);
 	}
+
+	public int updateCommentTable(String composer_name, String composer_id) {
+		return composerMapper.updateCommentTable(composer_name,composer_id);
+	}
 }
