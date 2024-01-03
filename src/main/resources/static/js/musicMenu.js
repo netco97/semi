@@ -260,7 +260,7 @@ function pagination(jsonArray) {
 				let $musicListOption = $('<div class="musicList-option"></div>');
 				// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
 				console.log("체크체크! : " + song.song_id);
-				const likeCheck = 0;
+				let likeCheck = 0;
 				if(isLogin == 1){
 				likeCheck = await songLikeCheck(song.song_id);	
 				}
