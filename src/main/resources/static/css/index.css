@@ -17,6 +17,7 @@ header {
     background-color: black;
     color: white;
     padding: 20px;
+    position: static;
 }
 
 /* 로그인 폼 스타일링 */
