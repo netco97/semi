@@ -30,4 +30,6 @@ public interface ComposerMapper {
 	int updateSongs(@Param("composer_name") String composer_name , @Param("composer_id") String composer_id);
 	
 	int updateUserTable(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
+
+	int updateCommentTable(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
 }

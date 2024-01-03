@@ -148,8 +148,13 @@ public class ComposerC {
 				System.out.println("songs table update success");
 			}
 			
+			// user table update 로직
 			if(composerService.updateUserTable(composer.getComposer_name(),composer_id)>=1) {
 				System.out.println("user table update success");
+			}
+			
+			if(composerService.updateCommentTable(composer.getComposer_name(),composer_id)>=1) {
+				System.out.println("comment table update success");
 			}
 
 			// 업데이트 로직 수행

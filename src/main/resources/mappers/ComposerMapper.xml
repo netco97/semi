@@ -61,6 +61,13 @@
 		UPDATE usertable set usernickname = #{composer_name} where userfullphonenumber = #{composer_id}
 	</update>
 	
+	<update id="updateCommentTable" parameterType="String">
+		UPDATE comments SET usernickname = #{composer_name} where usernickname IN
+		(
+			select composer_name from composers where composer_id = #{composer_id}
+		)
+	</update>
+	
 	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
         SELECT * FROM composers
         WHERE composer_name LIKE '%' || #{keyword} || '%'
