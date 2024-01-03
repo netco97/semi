@@ -65,9 +65,7 @@
 							<!-- <button th:if="${session.userFullPhoneNumber == composer.composer_id}"
 								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
 								>내 프로필 수정</button> -->
-							<form th:action="@{'/artist_update?userFullPhoneNumber=' + ${composer.composer_id}}" method="Post">
-								<button th:if="${session.userFullPhoneNumber == composer.composer_id}" type="submit">내 프로필 수정</button>
-							</form>
+							<button th:if="${session.userFullPhoneNumber == composer.composer_id}" onclick="updateProfile()">내 프로필 수정</button>
 							<button id="showFollowerListBtn"
 								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
 

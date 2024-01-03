@@ -57,6 +57,10 @@
 		)
 	</update>
 	
+	<update id="updateUserTable" parameterType="String">
+		UPDATE usertable set usernickname = #{composer_name} where userfullphonenumber = #{composer_id}
+	</update>
+	
 	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
         SELECT * FROM composers
         WHERE composer_name LIKE '%' || #{keyword} || '%'

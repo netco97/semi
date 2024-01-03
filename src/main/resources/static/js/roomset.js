@@ -109,6 +109,21 @@ function openModal() {
     websocketResult.style.fontWeight = 700;
 
     modal.style.display = "block";
+    
+    setTimeout(function () {
+       		scrollChatAreaToBottom();
+    	}, 500);
+}
+
+function scrollChatAreaToBottom() {
+    var messageArea = document.getElementById("messageArea");
+
+    if (messageArea) {
+        // 스크롤을 맨 아래로 이동
+        messageArea.scrollTop = messageArea.scrollHeight;
+    } else {
+        console.error("Message Area element not found!");
+    }
 }
 
 function closeModal() {
