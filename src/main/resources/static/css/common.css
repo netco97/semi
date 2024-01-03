@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 body {
     margin: 0;
     padding: 0;
@@ -16,9 +17,9 @@ header {
     height: 2em; /* 헤더 높이를 2배로 조절 */
 }
 
-#simple-login{
-	text-decoration: none;
-	font-size: 16px;
+#simple-login {
+    text-decoration: none;
+    font-size: 16px;
     color: white;
     margin-right: 10px;
 }
@@ -30,13 +31,37 @@ header {
     font-size: 1.5em; /* 크기를 좀만 키워줌 */
 }
 
-#music-icon, #user-icon {
+#musicMenuA{
+	text-decoration: none;
+}
+
+#music-icon-container, #user-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#music-search-container {
     font-size: 24px;
     color: white;
     cursor: pointer;
     margin-left: 10px;
-    margin-right: 5px; /* 간격 조절을 위해 margin 추가 */
+    margin-right: 5px;
 }
+
+#music-search-container {
+    display: flex;
+    align-items: center;
+}
+
+#music-search-container span {
+    text-decoration: none; /* 하이퍼링크 밑줄 제거 */
+    font-size: 12px; /* 텍스트 크기를 작게 조절 */
+    color: white;
+    margin-left: 5px; /* 간격을 조절하기 위해 좌측 여백 추가 */
+}
+
 
 #profile-icon {
     font-size: 24px;
@@ -55,7 +80,6 @@ header {
     z-index: 1;
     right: 0;
     top: 40px; /* 아래로 이동시키기 */
-   	
 }
 
 .dropdown-content a {
@@ -65,9 +89,12 @@ header {
     display: block;
     text-decoration: none;
 }
+
+
+
 footer {
-	height: 200px;
-	background-color: black;
+    height: 200px;
+    background-color: black;
     color: white;
     padding: 20px;
 }

@@ -477,4 +477,27 @@ function createAudioPlayer(audioSrc) {
 //	}
 //}
 
+// 내프로필 수정 post로 감추기
+function updateProfile() {
+        // Create a hidden form dynamically
+        var form = document.createElement('form');
+        form.action = "/artist_update";
+        form.method = "POST";
+
+        // Create an input element for composer_id
+        var input = document.createElement('input');
+        input.type = "hidden";
+        input.name = "userFullPhoneNumber";
+        input.value = composerId;
+
+        // Append the input to the form
+        form.appendChild(input);
+
+        // Append the form to the document body
+        document.body.appendChild(form);
+
+        // Submit the form
+        form.submit();
+    }
+
 
