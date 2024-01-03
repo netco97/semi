@@ -11,13 +11,16 @@ public class FollowDTO {
     private String targetUserId;
     private LocalDateTime created_at;
     private String isfollow;
+    private String composer_name;
+    private String composer_img;
+    
    
 
    
     public FollowDTO() {
     }
 
-    public FollowDTO(String followId, String followerUserId, String targetUserId) {
+    public FollowDTO(String followId, String followerUserId, String targetUserId,String composer_name,String composer_img) {
         this.followId = followId;
         this.followerUserId = followerUserId;
         this.targetUserId = targetUserId;

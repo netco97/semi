@@ -1,6 +1,7 @@
 package com.example.demo.dy.follow;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -44,14 +45,18 @@ public class FollowController {
         return response;
     }
 	
-	// FollowController.java
-
+	
 	@GetMapping("/follower_list")
-	public String showFollowerList(Model model,HttpSession httpSession) {
-	    String userId = (String) httpSession.getAttribute("userFullPhoneNumber"); // 세션에서 현재 사용자 ID를 가져오는 메소드 사용
-	    List<FollowDTO> followerList = followService.getFollowerList(userId);
-	    model.addAttribute("followerList", followerList);
-	    return "follower_list_modal"; // 모달창을 띄울 HTML 페이지 이름
+	public List<FollowDTO> showFollowerList(HttpSession httpSession) {
+	    String userId = (String) httpSession.getAttribute("userFullPhoneNumber");
+	    int start = 1; // 시작 페이지
+	    System.out.println("여기임");
+	    System.out.println(userId);
+	    int end = 10;  // 한 페이지에 표시할 개수
+	    List<FollowDTO> followerList = followService.getFollowerListWithInfo(userId, start, end);
+	    
+	    
+	    return followerList;
 	}
 	
 		
