@@ -121,8 +121,8 @@ public class ComposerC {
 		return "redirect:/";
 	}
 
-	@PostMapping("/artist_update/{composer_id}")
-	public String getArtistUpdatePage(@PathVariable String composer_id, Model model) {
+	@PostMapping("/artist_update")
+	public String getArtistUpdatePage(@RequestParam("userFullPhoneNumber") String composer_id, Model model) {
 		// 해당 composerId에 해당하는 정보를 가져와서 모델에 추가
 		ComposerDTO composer = composerService.getComposerById(composer_id);
 
@@ -138,9 +138,16 @@ public class ComposerC {
 			// 프로필 사진 저장 및 파일명 설정
 			String fileName = saveProfilePicture(composer.getComposer_profilePicture());
 			composer.setComposer_img(fileName);
+			
+			// songs table update 로직
+			if(composerService.updateSongs(composer.getComposer_name(), composer_id)>=1) {
+				System.out.println("songs table update success");
+			}
 
 			// 업데이트 로직 수행
 			composerService.updateComposer(composer);
+			
+			
 
 			// 업데이트된 composer 다시 가져오기
 			ComposerDTO updatedComposer = composerService.getComposerById(composer_id);
@@ -155,8 +162,8 @@ public class ComposerC {
 			System.out.println("음악 사진 이름: " + updatedComposer.getComposer_profilePicture().getOriginalFilename());
 
 			//return "forward:/artist_detail?userFullPhoneNumber=" + updatedComposer.getComposer_id();
-			model.addAttribute("content", "wk/artist_detail");
-			return "wk/index";
+			//model.addAttribute("content", "wk/artist_detail");
+			return "redirect:/artist_main"; 
 			
 		} catch (Exception e) {
 			// 업데이트 실패시 에러 메시지 추가
