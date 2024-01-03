@@ -41,14 +41,17 @@ public class ArtistRatingC {
         System.out.println(ratingDTO);
     }
     
-    @GetMapping("/ratings/getRatingByUserAndComposer")
-    public int getRatingByUserAndComposer(
+    @GetMapping("/getRatingByUserAndComposer")
+    public String getRatingByUserAndComposer(
         @RequestParam("userfullphonenumber") String userfullphonenumber,
         @RequestParam("composer_id") String composer_id
     ) {
-    	System.out.println("userfullphonenumber: " + userfullphonenumber);
-    	System.out.println("composer_id: " + composer_id);
-        return artistRatingService.getRatingByUserAndComposer(userfullphonenumber, composer_id);
+    	ArtistRatingDTO artistRatingDTO = new ArtistRatingDTO();
+    	artistRatingDTO.setUserfullphonenumber(userfullphonenumber);
+    	artistRatingDTO.setComposer_id(composer_id);
+    	System.out.println("컨트롤러 userfullphonenumber: " + userfullphonenumber);
+    	System.out.println("컨트롤러 composer_id: " + composer_id);
+        return artistRatingService.getRatingByUserAndComposer(artistRatingDTO);
     }
 
     

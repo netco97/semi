@@ -35,8 +35,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// 별점 조회 함수
 	function fetchRatingFromServer() {
-		//const userfullphonenumber = followerUserId1;
-		//const composer_id = targetUserId1;
+		const userFullNumber = followerUserId1;
+		const composerId = targetUserId1;
+		console.log("나: " + userFullNumber);
+		console.log("상대: " + composerId);
 		$.ajax({
 			type: "GET",
 			url: "/ratings/getRatingByUserAndComposer",
@@ -46,7 +48,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			},
 			success: function(result) {
 				console.log(result);
-				const ratingValue = result.rating;
+				const ratingValue = result;
+				console.log(result);
 				displayRating(ratingValue);
 			},
 			error: function(error) {
@@ -71,12 +74,17 @@ document.addEventListener("DOMContentLoaded", function() {
 	stars.forEach(star => {
 		star.addEventListener('click', () => {
 			const value = parseInt(star.getAttribute('data-value'));
-			ratingValue.innerText = `평가: ${value}점`;
-			removeActiveStars();
-			setActiveStars(value);
-
+			console.log(value);
+			
+			if (value === 4) {
+				deleteRatingOnServer();
+			} else {
+				ratingValue.innerText = `평가: ${value}점`;
+				removeActiveStars();
+				setActiveStars(value);
 			// 서버로 별점 전송
 			submitRatingToServer(value);
+			}
 		});
 
 		star.addEventListener('mouseover', () => {
@@ -101,10 +109,11 @@ document.addEventListener("DOMContentLoaded", function() {
 			stars[i].classList.add('active');
 		}
 	}
-
+	
+	// 별점 삽입
 	function submitRatingToServer(rating) {
-		//userFullNumber = followerUserId1/* Thymeleaf로부터 가져오는 코드 */;
-		//composerId = targetUserId1/* Thymeleaf로부터 가져오는 코드 */;
+		userFullNumber = followerUserId1/* Thymeleaf로부터 가져오는 코드 */;
+		composerId = targetUserId1/* Thymeleaf로부터 가져오는 코드 */;
 		// AJAX를 사용하여 서버에 평가 전송
 		$.ajax({
 			type: "POST",
@@ -116,12 +125,14 @@ document.addEventListener("DOMContentLoaded", function() {
 				"rating": rating
 			}),
 			success: function(result) {
-				const createdRatingID = result.ratingID;
+				console.log(result);
+				const createdRatingID = result.rating;
 				console.log(userFullNumber);
 				console.log(composerId);
 				console.log(rating);
 
 				console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
+				displayRating(rating);
 			},
 			error: function(error) {
 				console.error("평가 제출 중 오류", error);
@@ -131,6 +142,30 @@ document.addEventListener("DOMContentLoaded", function() {
 			}
 		});
 	}
+	
+	// 별점 삭제 함수 추가
+function deleteRatingOnServer() {
+    const userFullNumber = followerUserId1;
+    const composerId = targetUserId1;
+    $.ajax({
+        type: "DELETE",
+        url: "/ratings/delete-rating",
+        contentType: "application/json;charset=UTF-8",
+        data: JSON.stringify({
+            "userfullphonenumber": userFullNumber,
+            "composer_id": composerId
+        }),
+        success: function(result) {
+            console.log("별점이 성공적으로 삭제되었습니다.");
+            displayRating(undefined); // 또는 원하는 초기 상태로 설정
+        },
+        error: function(error) {
+            console.error("별점 삭제 중 오류", error);
+        }
+    });
+}
+	
+	
 	//////////////////////////////////////////////////////////	
 
 	//////////////////////////////////////////////////////////	

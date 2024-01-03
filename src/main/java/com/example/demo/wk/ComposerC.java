@@ -190,8 +190,8 @@ public class ComposerC {
 			session.removeAttribute("userNickname");
 			session.setAttribute("userNickname", updatedComposer.getComposer_name());
 
-			return "forward:/artist_detail"; 
-			// 이것도 됩니다.return getComposerById(composer_id, model);
+			return "forward:/artist_detail";
+			//return getComposerById(composer_id, model);
 			
 		} catch (Exception e) {
 			// 업데이트 실패시 에러 메시지 추가

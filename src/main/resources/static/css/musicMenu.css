@@ -1,3 +1,7 @@
+#musicMenuA .highlight-bar {
+    display: block;
+}
+
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
