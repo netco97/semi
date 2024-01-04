@@ -72,27 +72,28 @@ body {
 /*  keyboard */
 .homeKeyBoard {
 	width: 100%;
+	display: flex;
 	align-items: center;
 }
 
 .homeKeyBoard-inner {
-	width: 60%;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center; /* 좌우 가운데 정렬 */
-	align-items: center; /* 세로 가운데 정렬 */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
 }
 
 #keyBoard {
-	display: grid;
-	grid-template-columns: 80px 80px 40px 80px 80px 80px 80px 35px 80px 35px
-		80px 80px;
-	height: 150px;
-	font-size: 1px;
-	padding-bottom: 2rem;
-	white-space: nowrap;
-	align-self: flex-end;
+    display: grid;
+    grid-template-columns: 80px 80px 40px 80px 80px 80px 80px 35px 80px 35px 80px 80px;
+    height: 150px;
+    font-size: 1px;
+    padding-bottom: 2rem;
+    white-space: nowrap;
+    /* align-self: flex-end; 이 부분 제거 */
+    justify-content: center; /* 이 부분 추가하여 수평으로 가운데 정렬 */
 }
 
 .key-container {
@@ -297,7 +298,7 @@ body {
 
 /* tag */
 #data-container {
-	width: 100%;
+	width: 80%;
 }
 
 .musicMenu-searchTag {
@@ -308,7 +309,6 @@ body {
 }
 
 .musicMenu-searchTag.active {
-	display: block;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap; /* 추가: 넘치면 다음 줄로 개행 */
@@ -342,7 +342,6 @@ body {
 /* playList */
 .musicList {
 	position: relative;
-
 	color: white;
 }
 
@@ -366,6 +365,11 @@ body {
 	border-radius: 28px;
 	width: 100%;
 	box-sizing: border-box;
+}
+
+.musicList-menu-title {
+	text-align: center;
+	width: 100%;
 }
 
 .musicList-title {
@@ -425,4 +429,37 @@ audio {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+/* slider */
+.artist-slider {
+	display: flex;
+	text-align: center;
+	width: 100%;
+	justify-content: center;
+	background-color: black;
+}
+
+.artist-slider-inner {
+	width: 70%
+}
+
+.bx-wrapper {
+	width: 100%;
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	border: none;
+	background: black;
+	max-width: none !important;
+}
+
+.artist-slider-title {
+	color: white;
+}
+
+.bx-viewport {
+	width: 100%;
+	background-color: black;
+	border-color: black;
 }
