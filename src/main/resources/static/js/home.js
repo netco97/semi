@@ -1,5 +1,5 @@
 
-// 피아노 키보드 클릭 이벤트
+
 let click = {
 	mood: [],
 	instrument: [],
@@ -7,59 +7,86 @@ let click = {
 };
 
 
-function clickOption(option) {
-	let $searchTag = $('.musicMenu-searchTag');
+// 아이팟 click event
+$(".ipod-item").on("click", function(e) {
+	// 한번 초기화
+	$(".ipod-item").removeClass("active")
+	// 클래스를 부여함으로써 스타일 활성화
 
-	if ($searchTag.hasClass('active')) {
-		if (option == 'genre' && !($searchTag.hasClass('genre'))) {
-			click.genre = genre;
-			updateSearchTag(click.genre);
-			$searchTag.removeClass('mood');
-			$searchTag.removeClass('instrument');
-			$searchTag.addClass('genre');
-		} else if (option == 'mood' && !($searchTag.hasClass('mood'))) {
-			click.mood = mood;
+	// 클릭 한 요소에 따라 분기 나누기
 
-			updateSearchTag(click.mood);
-			$searchTag.removeClass('genre');
-			$searchTag.removeClass('instrument');
-			$searchTag.addClass('mood');
-		} else if (option == 'instrument' && !($searchTag.hasClass('instrument'))) {
-			click.instrument = instrument;
-			updateSearchTag(click.instrument);
-			$searchTag.removeClass('genre');
-			$searchTag.removeClass('mood');
-			$searchTag.addClass('instrument');
-		} else {
-			$searchTag.removeClass('active');
-		}
-	} else {
-		if (option == 'genre') {
-			click.genre = genre;
-			updateSearchTag(click.genre);
-			$searchTag.addClass('genre');
-		} else if (option == 'mood') {
-			click.mood = mood;
-			updateSearchTag(click.mood);
-			$searchTag.addClass('mood');
-		} else if (option == 'instrument') {
-			click.instrument = instrument;
-			updateSearchTag(click.instrument);
-			$searchTag.addClass('instrument');
-		}
-		$searchTag.addClass('active');
+	if ($(this).hasClass('hot')) {
+
+
+	} else if ($(this).hasClass('genre')) {
+		updateSearchTag(genre);
+
+
+	} else if ($(this).hasClass('newMusic')) {
+
+	} else if ($(this).hasClass('mood')) {
+
+
 	}
+
+
+})
+
+// 아이팟 뮤직 출력
+
+function ipodMusic(data) {
+
+	$(".screen-inner-ul").empty();
+
+
+	for (const song of data) {
+		// 각 노래를 표시할 HTML 엘리먼트 생성
+
+		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+		$(".screen-inner-ul").append(`
+			
+			<div class="musicList">
+					<div class="musicList-inner">
+						<div class="musicList-menu">
+							<div class="musicList-title">
+            	<div>
+               	 <img src=img/${song.song_img} />
+            	</div>
+            	<div>
+               	 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+              
+               	 <div onclick="location.href=''">${song.composer_name}</div>
+            	</div>
+            	<div>
+            	<button>▶</button>
+            	</div>
+            	</div>
+            	</div>
+            	</div>
+            	</div>
+  
+        `);
+
+	};
 }
 
+
+
+
+
+
+
+
+
+
 function updateSearchTag(tags) {
-	let $searchTag = $('.musicMenu-searchTag');
 	// 기존 태그들을 비우고 선택한 태그들을 추가
-	$searchTag.empty();
+	$(".screen-inner-ul").empty();
 	console.log(tags);
 	tags.forEach(tag => {
 		console.log(tag);
-		$searchTag.append(`<div name='searchTag' id='${tag}' onclick="clickTag('${tag}')">${tag}</div>`);
-	});
+		$(".screen-inner-ul").append(`<li class="ipod-item" name='searchTag' id='${tag}' onclick="sendTagsToServer('${tag}')"><span>＋</span>${tag}</li>`);
+	})
 }
 
 $(document).ready(function() {
@@ -123,8 +150,8 @@ function sendTagsToServer() {
 			console.log('태그가 성공적으로 전송되었습니다.');
 			console.log(response);
 			//			let jsonArray = JSON.stringify(response);
+			ipodMusic(response);
 
-			pagination(response);
 		},
 		error: function(error) {
 			console.error('태그 전송 중 오류가 발생했습니다.');
@@ -154,93 +181,6 @@ function sendTextToServer(text) {
 	});
 }
 
-function pagination(jsonArray) {
-
-	//console.log("test" + jsonArray)
-
-
-	let container = $('#pagination');
-	container.pagination({
-		dataSource: jsonArray,
-		pageSize: 5,
-		callback: function(data, pagination) {
-			console.log("데이타아아아 : " + data);
-
-
-			let $musicList = $('.musicList-inner');
-
-			// musicList 내용 초기화
-			$musicList.empty();
-
-			// 데이터의 각 노래에 대해 반복
-			$.each(data, async function(index, song) {
-				// 각 노래를 표시할 HTML 엘리먼트 생성
-				let $songContainer = $('<div class="musicList-menu"></div>');
-
-				let $musicListTitle = $('<div class="musicList-title"></div>');
-				// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
-				$musicListTitle.append(`
-            <div>
-                <img src=img/${song.song_img} />
-            </div>
-            <div>
-                <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
-              
-                <div onclick="location.href=''">${song.composer_name}</div>
-            </div>
-        `);
-
-				let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
-				// 위에서 생성한 오디오 플레이어를 $musicListPlaySpace에 추가
-
-				let $musicListInfo = $('<div class="musicList-info"></div>');
-				$musicListInfo.append(`
-            <div>${song.mood_id}</div>
-            <div>${song.genre_id}</div>
-            <div>${song.instrument_id}</div>
-        `);
-
-				let $musicListOption = $('<div class="musicList-option"></div>');
-				// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정
-				console.log("체크체크! : " + song.song_id);
-				let likeCheck = 0;
-				if (isLogin == 1) {
-					likeCheck = await songLikeCheck(song.song_id);
-				}
-
-				console.log("이프문 위 첵라잌" + likeCheck);
-
-				if (likeCheck === 1) {
-					console.log("이프문 트루 안 : " + likeCheck);
-
-					$musicListOption.append(`
-                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♥</div>
-            `);
-				} else {
-					console.log("이프문 엘즈안 : " + likeCheck);
-					$musicListOption.append(`
-                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
-            `);
-				}
-
-
-				// 각 섹션을 노래 컨테이너에 추가
-				$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo, $musicListOption);
-
-				// 노래 컨테이너를 musicList에 추가
-				$musicList.append($songContainer);
-
-
-
-			}
-
-			)
-		}
-
-	})
-
-
-}
 
 function createAudioPlayer(audioSrc) {
 	let $audioPlayer = $('<div class="audio-player"></div>');
@@ -299,87 +239,6 @@ function songLike(song_id, heartElement) {
 
 
 
-var c = document.getElementById("cSound");
-cSound.playbackRate = 4;
-
-function cPlay() {
-	c.play();
-	clickOption('genre')
-}
-
-var cH = document.getElementById("cHSound");
-cHSound.playbackRate = 4;
-
-function cHPlay() {
-	cH.play();
-}
-var d = document.getElementById("dSound");
-dSound.playbackRate = 4;
-
-function dPlay() {
-	d.play();
-	clickOption('mood')
-}
-var dH = document.getElementById("dHSound");
-dHSound.playbackRate = 4;
-
-function dHPlay() {
-	dH.play();
-}
-var e = document.getElementById("eSound");
-eSound.playbackRate = 4;
-
-function ePlay() {
-	e.play();
-	clickOption('instrument')
-}
-var f = document.getElementById("fSound");
-fSound.playbackRate = 4;
-
-function fPlay() {
-	f.play();
-	//	아티스트
-}
-var fH = document.getElementById("fHSound");
-fHSound.playbackRate = 4;
-
-function fHPlay() {
-	fH.play();
-}
-var g = document.getElementById("gSound");
-gSound.playbackRate = 4;
-
-function gPlay() {
-	g.play();
-	//	인기순
-}
-var gH = document.getElementById("gHSound");
-gHSound.playbackRate = 4;
-
-function gHPlay() {
-	gH.play();
-}
-var a = document.getElementById("aSound");
-aSound.playbackRate = 4;
-
-function aPlay() {
-	a.play();
-	//	최신순
-}
-var aH = document.getElementById("aHSound");
-aHSound.playbackRate = 4;
-
-function aHPlay() {
-	aH.play();
-}
-var b = document.getElementById("bSound");
-bSound.playbackRate = 4;
-
-function bPlay() {
-	b.play();
-}
-
-// keboard click action
 
 
 
@@ -388,13 +247,13 @@ function bPlay() {
 
 $(document).ready(function() {
 	$('.bxslider').bxSlider({
-  minSlides: 12,
-  maxSlides: 12,
-  slideWidth: 200,
-  slideMargin: 20,
-  ticker: true,
-  speed: 20000
-});
+		minSlides: 12,
+		maxSlides: 12,
+		slideWidth: 200,
+		slideMargin: 1,
+		ticker: true,
+		speed: 20000
+	});
 });
 
 
