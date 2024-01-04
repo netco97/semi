@@ -22,6 +22,8 @@
 		isLogin = 0;
 	}
 </script>
+
+
 </head>
 <body>
 	<!-- 	<section th:fragment="content"> -->
@@ -52,155 +54,47 @@
 
 				</div>
 			</div>
-			<div class="homeKeyBoard">
-				<div class="homeKeyBoard-inner">
-					<div id="keyBoard">
-						<!-- 					audio -->
-						<audio id="cSound">
-							<source src="c.wav" type="audio/x-wav">
-						</audio>
-						<audio id="cHSound">
-							<source src="cH.wav" type="audio/x-wav">
-						</audio>
-						<audio id="dSound">
-							<source src="d.wav" type="audio/x-wav">
-						</audio>
-						<audio id="dHSound">
-							<source src="dH.wav" type="audio/x-wav">
-						</audio>
-						<audio id="eSound">
-							<source src="e.wav" type="audio/x-wav">
-						</audio>
-						<audio id="fSound">
-							<source src="f.wav" type="audio/x-wav">
-						</audio>
-						<audio id="fHSound">
-							<source src="fH.wav" type="audio/x-wav">
-						</audio>
-						<audio id="gSound">
-							<source src="g.wav" type="audio/x-wav">
-						</audio>
-						<audio id="gHSound">
-							<source src="gH.wav" type="audio/x-wav">
-						</audio>
-						<audio id="aSound">
-							<source src="a.wav" type="audio/x-wav">
-						</audio>
-						<audio id="aHSound">
-							<source src="aH.wav" type="audio/x-wav">
-						</audio>
-						<audio id="bSound">
-							<source src="b.wav" type="audio/x-wav">
-						</audio>
 
-						<!-- 						keyboard -->
-						<!-- cKey -->
-						<button onclick="cPlay()" id="cKey">
-							<div class="key-container">
-								<span>장르</span>
+
+			<div class="ipod-body">
+				<div class="ipod-container">
+					<div class="ipod">
+						<div class="ipod-screen">
+							<div class="screen-header">
+								<button>^</button>
+								<p>IPOD</p>
+								<div>wifi</div>
+							</div>
+							<div class="screen-inner">
+
+								<ul class="screen-inner-ul">
+									<li class="ipod-item hot">지금 핫한곡!</li>
+									<li class="ipod-item newMusic">최신곡!</li>
+									<li class="ipod-item genre">장르</li>
+									<li class="ipod-item mood">분위기</li>
+								</ul>
 							</div>
 
-						</button>
-						<!--div c오른쪽 c샵 d왼쪽-->
-						<div id="cRHLKey">
-							<button onclick="cHPlay()" id="cHKey"></button>
-							<button onclick="cPlay()" id="cRKey"></button>
-							<button onclick="dPlay()" id="dLKey"></button>
 						</div>
-						<!-- dKey -->
-						<button onclick="dPlay()" id="dKey">
-							<div class="key-container">
-								<span>분위기</span>
-							</div>
-						</button>
-						<!--div d오른쪽 d샵 f왼쪽-->
-						<div id="dRHLKey">
-							<button onclick="dHPlay()" id="dHKey"></button>
-							<button onclick="dPlay()" id="dRKey"></button>
-							<button onclick="ePlay()" id="eLKey"></button>
-						</div>
-						<!-- eKey -->
-						<button onclick="ePlay()" id="eKey">
-							<div class="key-container">
-								<span>악기</span>
-							</div>
-						</button>
-						<!-- fKey -->
-						<button onclick="fPlay()" id="fKey">
-							<div class="key-container">
-								<span>아티스트</span>
-							</div>
-						</button>
-						<!--div f오른쪽 f샵 g왼쪽-->
-						<div id="fRHLKey">
-							<button onclick="fHPlay()" id="fHKey"></button>
-							<button onclick="fPlay()" id="fRKey"></button>
+						<div class="ipod-buttons">
 
-							<button onclick="gPlay()" id="gLKey"></button>
-						</div>
-						<!-- gKey -->
-						<button onclick="gPlay()" id="gKey">
-							<div class="key-container">
-								<span>인기순</span>
+							<div class="ipod-button left">&#9668;</div>
+							<div class="ipod-button-middle">
+								<div class="ipod-button up">&#9650;</div>
+								<div class="ipod-button center">&#9675;</div>
+								<div class="ipod-button down">&#9660;</div>
 							</div>
-						</button>
-						<!--div g오른쪽 g샵 a왼쪽-->
-						<div id="gRHLKey">
-							<button onclick="gHPlay()" id="gHKey"></button>
-							<button onclick="gPlay()" id="gRKey"></button>
-
-							<button onclick="aPlay()" id="aLKey"></button>
+							<div class="ipod-button right">&#9658;</div>
 						</div>
-						<!-- aKey -->
-						<button onclick="aPlay()" id="aKey">
-							<div class="key-container">
-								<span>최신순</span>
-							</div>
-						</button>
-						<!--div a오른쪽 a샵 b왼쪽-->
-						<div id="aRHLKey">
-							<button onclick="aHPlay()" id="aHKey"></button>
-							<button onclick="aPlay()" id="aRKey"></button>
-
-							<button onclick="bPlay()" id="bLKey"></button>
-						</div>
-						<!-- bKey -->
-						<button onclick="bPlay()" id="bKey"></button>
-
 					</div>
-					<div class="musicMenu-searchTag"></div>
-					<div id="data-container">
-
-						<div class="musicList">
-							<div class="musicList-inner">
-								<div class="musicList-menu">
-									<div class="musicList-menu-title">
-										<span> 피아노를 눌러서 원하는 곡을 찾아보세요!</span>
-									</div>
-
-									<div class="musicList-title">
-										<div></div>
-										<div>
-											<div></div>
-											<div></div>
-										</div>
-									</div>
-									<div class="musicList-PlaySpace"></div>
-									<div class="musicList-info">
-										<div></div>
-										<div></div>
-									</div>
-									<div class="musicList-option"></div>
-								</div>
-							</div>
-						</div>
-						<div id="pagination"></div>
-					</div>
+					<div class="ipod-result">result~</div>
 				</div>
 			</div>
 
+
+
 			<div class="artist-slider">
-			<div class="artist-slider-inner">
+				<div class="artist-slider-inner">
 					<div class="artist-slider-title">
 						<h1>여러 아티스트들을 만나보세요!!</h1>
 
@@ -217,12 +111,8 @@
 
 
 		</div>
-
-
-
-
-
 	</div>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script
@@ -231,5 +121,7 @@
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
 </body>
+
+
 </html>
 
