@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>타이틀 | 마이 페이지</title>
+
 <link rel="stylesheet" href="css/mypage.css">
 </head>
 <body>
@@ -12,7 +13,11 @@
 	    </div>
 	    
 		 <div class="menu-container">
+				
+			<span th:text="${session.getAttribute('username')}"></span>
+		
 	        <div class="menu-box">
+				
 	            <a href="#user-info">회원 정보 수정</a>
 	        </div>
 	        <div class="menu-box">
@@ -21,8 +26,8 @@
 	        <div class="menu-box">
 	            <a href="#inquiry">1:1 문의</a>
 	        </div>
-	        <div class="menu-box">
-	            <a href="#withdrawal">회원 탈퇴</a>
+	        <div class="">
+	            회원 탈퇴
 	        </div>
 	    </div>
 	</main>    
