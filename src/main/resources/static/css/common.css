@@ -15,6 +15,7 @@ header {
 	padding: 10px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	height: 4em; /* 헤더 높이를 2배로 조절 */
+	/* height: 80; */
 }
 
 a {
