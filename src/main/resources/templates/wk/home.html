@@ -2,10 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="css/home.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <title>Home</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="css/home.css" />
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -172,7 +174,10 @@
 						<div class="musicList">
 							<div class="musicList-inner">
 								<div class="musicList-menu">
-									
+									<div class="musicList-menu-title">
+										<span> 피아노를 눌러서 원하는 곡을 찾아보세요!</span>
+									</div>
+
 									<div class="musicList-title">
 										<div></div>
 										<div>
@@ -194,6 +199,22 @@
 				</div>
 			</div>
 
+			<div class="artist-slider">
+			<div class="artist-slider-inner">
+					<div class="artist-slider-title">
+						<h1>여러 아티스트들을 만나보세요!!</h1>
+
+					</div>
+
+					<ul class="bxslider">
+						<li th:each="artist : ${artists}"><img
+							th:src="'/images/profile/' + ${artist.composer_img}"
+							th:data-composer-id="${artist.composer_id}" /></li>
+					</ul>
+
+				</div>
+			</div>
+
 
 		</div>
 
@@ -202,7 +223,11 @@
 
 
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<!-- 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
 </body>
