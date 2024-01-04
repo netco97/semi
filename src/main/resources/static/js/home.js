@@ -381,3 +381,20 @@ function bPlay() {
 
 // keboard click action
 
+
+
+
+// slider
+
+$(document).ready(function() {
+	$('.bxslider').bxSlider({
+  minSlides: 12,
+  maxSlides: 12,
+  slideWidth: 200,
+  slideMargin: 20,
+  ticker: true,
+  speed: 20000
+});
+});
+
+
