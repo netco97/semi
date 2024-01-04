@@ -11,4 +11,5 @@ public interface ArtistRatingMapper {
     void updateRating(ArtistRatingDTO ratingDTO);
     void deleteRating(ArtistRatingDTO ratingDTO);
     String getRatingByUserAndComposer(ArtistRatingDTO ratingDTO);
+    int hasUserRatedArtist(@Param("userfullphonenumber") String userfullphonenumber, @Param("composer_id") String composer_id);
 }

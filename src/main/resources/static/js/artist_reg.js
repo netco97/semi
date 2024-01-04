@@ -11,6 +11,15 @@ function showProfilePicture(input) {
 	}
 }
 
+function useDefaultProfile() {
+	// 프로필 사진의 소스를 기본 이미지 경로로 설정
+	document.getElementById("ProfilePreview").src = "/images/profile/default_profile.png";
+	// 파일 입력 값을 지우어 새 파일 업로드를 방지
+	document.getElementById("file").value = "";
+	// 선택적: 기본 이미지가 사용 중임을 나타내는 숨겨진 입력 필드를 업데이트
+	// document.getElementById("useDefaultProfileFlag").value = "true";
+}
+
 function submitForm() {
 	var form = document.getElementById('artistForm');
 	var formData = new FormData(form);
@@ -22,7 +31,7 @@ function submitForm() {
 	// 파일명을 FormData에 추가
 	var fileName = document.getElementById('file').files[0].name;
 	formData.append('fileName', fileName);
-	
+
 	// 입력된 값들을 확인하기 위한 예제
 	console.log('아티스트 명:', formData.get('composer_name'));
 	console.log('주 장르:', formData.get('composer_genre'));
@@ -44,7 +53,7 @@ function submitForm() {
 	};
 
 	// 폼 데이터를 서버로 전송
-	
+
 	xhr.send(formData);
 
 }

@@ -17,19 +17,25 @@
 		<div class="left-side">
 
 			<!-- Artist Registration Box -->
-			<div th:if="${session.iscomposer == 0}" class="left-box" id="artist-box" onclick="redirectToArtistRegistration()">
-				<h2><a href="/artist_reg">아티스트 등록</a></h2>
+			<div th:if="${session.iscomposer == 0}" class="left-box"
+				id="artist-box" onclick="redirectToArtistRegistration()">
+					<a class="artist-a" href="/artist_reg">아티스트 등록</a>
 				<div>아티스트가 되어 세상에 당신을 알려주세요.</div>
 			</div>
 
-			<div th:if="${session.iscomposer == 1}" class="left-box" id="music-upload-box"  onclick="redirectToMusicUpload()">
-				<h2><a href="/musicUpload">음악 업로드</a></h2>
+			<div th:if="${session.iscomposer == 1}" class="left-box"
+				id="music-upload-box" onclick="redirectToMusicUpload()">
+				<div><i class="fas fa-music"></i></div> 
+					<h2>음악 업로드</h2>
 				<div>당신의 음악을 세상에 보여주세요.</div>
 			</div>
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
-				<h2>팔로우 아티스트</h2>
+			<div><i class="far fa-smile"></i></div>
+				<div>
+					<h2>팔로우 아티스트</h2>
+				내가 좋아하는 아티스트를 보고 싶나요?</div>
 			</div>
 		</div>
 
@@ -38,7 +44,8 @@
 
 			<!-- Search Box -->
 			<div class="search-box">
-				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색">
+				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색"
+				 onfocus="hidePlaceholder()" onblur="showPlaceholder()">
 				<i class="fas fa-search" id="searchButton"></i>
 			</div>
 
@@ -50,18 +57,22 @@
 			<div class="pagination" id="pagination">
 				<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
 			</div>
-
 		</div>
 	</main>
 	<script type="text/javascript" src="/js/artist_main.js"></script>
-	    <script type="text/javascript">
-	    
-	    function redirectToArtistRegistration(){
-	    	window.location.href = "/artist_reg";
+	<script type="text/javascript">
+		function redirectToArtistRegistration() {
+			window.location.href = "/artist_reg";
+		}
+		function redirectToMusicUpload() {
+			window.location.href = "/musicUpload";
+		}
+	    function hidePlaceholder() {
+	        document.getElementById('searchInput').placeholder = '';
 	    }
-        function redirectToMusicUpload() {
-            window.location.href = "/musicUpload";
-        }
-    </script>
+	    function showPlaceholder() {
+	        document.getElementById('searchInput').placeholder = '아티스트 키워드 검색';
+	    }
+	</script>
 </body>
 </html>

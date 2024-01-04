@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -43,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		artists.forEach(artist => {
 			const artistHtml = `
                 <div class="artist-container">
-                    <div class="artist-details">
-                        <img src="/images/profile/${artist.composer_img}" data-composer-id="${artist.composer_id}">
+                    <div class="artist-details" data-composer-id="${artist.composer_id}">
+                        <img src="/images/profile/${artist.composer_img}">
                         <div class="artist-details-word">
                             <h3>${artist.composer_name}</h3>
                             <p>${artist.composer_genre}</p>
@@ -53,33 +54,37 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 </div>
             `;
-            artistsContainer.append(artistHtml);
-        });
-		
-		
+			artistsContainer.append(artistHtml);
+		});
+
+
 		//폰넘버 감추기
-        artistsContainer.on("click", "img", function() {
-	    const composerId = $(this).data("composer-id");
-	    const detailPageUrl = "/artist_detail";
-	    
-	    // 폼 동적 생성
-	    const form = $('<form>', {
-	        'action': detailPageUrl,
-	        'method': 'post',
-	        'style': 'display:none;'
-	    });
-	
-	    // input 추가
-	    $('<input>').attr({
-	        'type': 'hidden',
-	        'name': 'userFullPhoneNumber',
-	        'value': composerId
-	    }).appendTo(form);
-	
-	    // 폼을 body에 추가하고 submit
-	    form.appendTo('body').submit();
-	});
-	    }
+		artistsContainer.on("click", ".artist-details", function() {
+			const composerId = $(this).data("composer-id");
+			const detailPageUrl = "/artist_detail";
+
+			// 폼 동적 생성
+			const form = $('<form>', {
+				'action': detailPageUrl,
+				'method': 'post',
+				'style': 'display:none;'
+			});
+
+			// input 추가
+			$('<input>').attr({
+				'type': 'hidden',
+				'name': 'userFullPhoneNumber',
+				'value': composerId
+			}).appendTo(form);
+
+			// 폼을 body에 추가하고 submit
+			form.appendTo('body').submit();
+		});
+
+
+
+
+	}
 
 	function displayPagination(currentPage, totalPages) {
 		const paginationContainer = $("#pagination");
@@ -111,10 +116,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		currentPage = clickedPage;
 		loadArtists(currentPage);
 	});
-	
-		// 검색 기능 추가
+
+	// 검색 기능 추가
 	$("#searchInput").on("input", function() {
 		const query = $(this).val();
 		loadAllArtists(query);
 	});
 });
+

@@ -4,55 +4,52 @@
     margin: 0;
     padding: 0;
 } */
-
 main {
-    background-color: #fff;
-    width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+	background-color: #fff;
+	width: 800px;
+	margin: 50px auto;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-section{
+section {
 	width: 350px;
 	padding: 20px;
 }
 
-.title{
+.title {
 	width: 100%;
 }
 
 h2 {
-    text-align: center;
-    color: #333;
+	text-align: center;
+	color: #333;
 }
 
 .profileTitle {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 15px;
 }
 
-input[type="text"],
-select,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 5px;
+input[type="text"], select, textarea {
+	width: 100%;
+	padding: 10px;
+	margin-top: 8px;
+	margin-bottom: 20px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
 }
 
 input[type="file"] {
-    display: none;
-/*  background-color: #fff;
+	display: none;
+	/*  background-color: #fff;
     color: #333;
     padding: 10px 20px;
     border: none;
@@ -60,21 +57,26 @@ input[type="file"] {
     cursor: pointer; */
 }
 
-.btn-upload {
-  width: 150px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid rgb(77,77,77);
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background: black;
-    color: #fff;
-  }
+.Profile-btn {
+	padding: 10px;
+}
+
+.btn-upload, .btn-useDefault {
+	width: 200px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 4px;
+	font-weight: 500;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-upload:hover, .btn-useDefault:hover {
+	background: black;
+	color: #fff;
 }
 
 #ProfileContainer {
@@ -83,51 +85,50 @@ input[type="file"] {
 	justify-content: center;
 }
 
-#OldProfilePreview{
+/* #OldProfilePreview {
 	width: 200px;
-    margin: 30px;
-	
-}
-
+	margin: 20px;
+} */
 #ProfilePreview {
-	width: 200px;
-    margin: 30px;
-    
+	height: 250px;
+	margin: 20px;
+	border-radius: 4px;
 }
 
-#profilePicture{
-}
-
+/* #profilePicture {
+	
+} */
 #musicGenre {
 	text-align: center;
 }
 
-.buttonContainer{
+.buttonContainer {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 }
 
 button {
-    background-color: black;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 10px;
+	background-color: #efefef;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 10px;
 }
 
+button:hover {
+	
+}
 
-.button-box{
+.button-box {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
 }
 
-.introduce{
+.introduce {
 	height: 300px;
 	resize: none;
 }
-
