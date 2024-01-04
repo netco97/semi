@@ -37,12 +37,15 @@
     border-radius: 8px;
 }
 
-.artist-profile-text-name,
-.artist-profile-text-genre {
+.artist-profile-text-name {
     display: flex;
     flex-direction: column;
     height: 20%;
-    margin-bottom: 15px;
+}
+.artist-profile-text-genre {
+	display: flex;
+    flex-direction: column;
+    height: 20%;
 }
 
 .artist-profile-text-introduce {
