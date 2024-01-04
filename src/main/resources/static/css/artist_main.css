@@ -5,15 +5,14 @@
     필요한 경우 추가 스타일을 넣어주세요
 } */
 
+
+
 #musicMenuB .highlight-bar {
     display: block;
+    width: 100%;
+    transition: width 0.0s ease;
 }
 
-
-body {
-    margin: 0;
-    padding: 0;
-}
 
 main {
     display: flex;
@@ -22,9 +21,9 @@ main {
     overflow: hidden;
 }
 
-a {
+#artist-a {
+	font-size: 14pt;
 	color: white;
-	text-decoration: none;
 }
 
 .left-side {
@@ -37,7 +36,7 @@ a {
 
 .left-side h2 {
 	color: white;
-	font-size: 20pt;
+	font-size: 14pt;
 	margin: 10px;
 }
 
@@ -54,17 +53,17 @@ a {
 .left-box div {
 	color: white;
 }
-
+/* 
 .icon-container {
     text-align: center;
     margin-bottom: 10px;
 }
 
 .icon-container i {
-    font-size: 26px; /* 아이콘 크기 조절 */
+    font-size: 26px; 아이콘 크기 조절
     color: white;
 }
-
+ */
 .right-side {
 	display: flex;
 	flex-flow: column;

@@ -1,11 +1,6 @@
 #musicMenuA .highlight-bar {
     display: block;
-}
-
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+    width: 100%;
 }
 
 .musicMenu-container {

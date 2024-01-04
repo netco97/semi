@@ -17,6 +17,18 @@ header {
 	height: 4em; /* 헤더 높이를 2배로 조절 */
 }
 
+a {
+	text-decoration: none;
+}
+
+.header-leftSection {
+	display: flex;
+}
+
+.header-rightSection {
+	display: flex;
+}
+
 #simple-login {
 	text-decoration: none;
 	font-size: 16px;
@@ -29,35 +41,34 @@ header {
 	margin-left: 20px;
 	margin-right: 20px; /* 왼쪽 여백 추가 */
 	font-size: 1.5em; /* 크기를 좀만 키워줌 */
+	align-self: center;
 }
 
 #musicMenuA,
 #musicMenuB,
-#musicMenuC {
+#musicMenuC,
+#musicMenuD,
+#musicMenuE {
 	text-decoration: none;
 	position: relative;
-	
 }
 
-#music-icon-container, #user-icon-container {
+.icon-container{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 60px;
+	width: 75px;
 }
 
 #music-search-container {
+	display: flex;
+	align-items: center;
+	position: relative;
 	font-size: 24px;
 	color: white;
 	cursor: pointer;
 	margin-left: 10px;
 	margin-right: 5px;
-}
-
-#music-search-container {
-	display: flex;
-	align-items: center;
-	position: relative;
 }
 
 #music-search-container span {
@@ -67,18 +78,23 @@ header {
 	margin-top: 10px;
 }
 
-#profile-icon {
-    align-items: center; /* 수직 가운데 정렬을 위해 추가 */
+.user-menu{
+	display: flex;
+}
+
+/* 드롭다운 메뉴 */
+/* #profile-icon {
+    align-items: center; 수직 가운데 정렬을 위해 추가
     font-size: 24px;
     color: white;
     cursor: pointer;
     margin-left: auto;
     position: relative;
-}
+} */
 
-#profile-icon i {
-    margin-right: 10px; /* 아이콘 간격을 조절하기 위해 추가 */
-}
+/* #profile-icon i {
+    margin-right: 10px; 아이콘 간격을 조절하기 위해 추가
+} */
 
 #profile-icon-link {
     text-decoration: none;
@@ -93,7 +109,8 @@ header {
 	min-width: 160px;
 	z-index: 1;
 	right: 0;
-	top: 40px; /* 아래로 이동시키기 */
+	top: 85px; /* 아래로 이동시키기 */
+	border-radius: 4px;
 }
 
 .dropdown-content a {
@@ -102,6 +119,17 @@ header {
 	padding: 8px 16px; /* 크기를 작게 조절 */
 	display: block;
 	text-decoration: none;
+	border-radius: 4px;
+}
+
+.dropdown-content a:hover {
+	background-color: black;
+	color: white; /* 글자 색상을 검은색으로 변경 */
+	font-size: 14px; /* 글자 크기를 작게 조절 */
+	padding: 8px 16px; /* 크기를 작게 조절 */
+	display: block;
+	text-decoration: none;
+	border-radius: 4px;
 }
 
 /* 흰색 바 스타일 */
@@ -112,14 +140,27 @@ header {
 	bottom: -15px;
 	left: 0;
 	right: 0;
+	width: 0; /* 초기 너비를 0으로 설정 */
+    transition: width 0.3s ease; /* 변화가 일어날 속성과 시간, 이징 함수 설정 */
 	display: none;
+}
+
+#musicMenuA .highlight-bar,
+#musicMenuB .highlight-bar,
+#musicMenuC .highlight-bar,
+#musicMenuD .highlight-bar,
+#musicMenuE .highlight-bar {
+    display: block;
 }
 
 /* 링크에 호버될 때 흰색 바 표시 */
 #musicMenuA:hover .highlight-bar,
 #musicMenuB:hover .highlight-bar,
-#profile-icon:hover .highlight-bar {
+#musicMenuC:hover .highlight-bar,
+#musicMenuD:hover .highlight-bar,
+#musicMenuE:hover .highlight-bar {
 	display: block;
+	width: 100%;
 }
 
 /* 푸터 */

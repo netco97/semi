@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// 별점 조회 함수
 	function fetchRatingFromServer() {
-		const userFullNumber = followerUserId1;
-		const composerId = targetUserId1;
+		//const userFullNumber = followerUserId1;
+		//const composerId = targetUserId1;
 		console.log("나: " + userFullNumber);
 		console.log("상대: " + composerId);
 		$.ajax({
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			const value = parseInt(star.getAttribute('data-value'));
 			console.log(value);
 			
-			if (value === 4) {
+			if (value === ratingValue) {
 				deleteRatingOnServer();
 			} else {
 				ratingValue.innerText = `평가: ${value}점`;
@@ -144,26 +144,26 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	
 	// 별점 삭제 함수 추가
-function deleteRatingOnServer() {
-    const userFullNumber = followerUserId1;
-    const composerId = targetUserId1;
-    $.ajax({
-        type: "DELETE",
-        url: "/ratings/delete-rating",
-        contentType: "application/json;charset=UTF-8",
-        data: JSON.stringify({
-            "userfullphonenumber": userFullNumber,
-            "composer_id": composerId
-        }),
-        success: function(result) {
-            console.log("별점이 성공적으로 삭제되었습니다.");
-            displayRating(undefined); // 또는 원하는 초기 상태로 설정
-        },
-        error: function(error) {
-            console.error("별점 삭제 중 오류", error);
-        }
-    });
-}
+	function deleteRatingOnServer() {
+	    const userFullNumber = followerUserId1;
+	    const composerId = targetUserId1;
+	    $.ajax({
+	        type: "DELETE",
+	        url: "/ratings/delete-rating",
+	        contentType: "application/json;charset=UTF-8",
+	        data: JSON.stringify({
+	            "userfullphonenumber": userFullNumber,
+	            "composer_id": composerId
+	        }),
+	        success: function(result) {
+	            console.log("별점이 성공적으로 삭제되었습니다.");
+	            displayRating(undefined); // 또는 원하는 초기 상태로 설정
+	        },
+	        error: function(error) {
+	            console.error("별점 삭제 중 오류", error);
+	        }
+	    });
+	}
 	
 	
 	//////////////////////////////////////////////////////////	

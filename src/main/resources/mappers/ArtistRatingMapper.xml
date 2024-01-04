@@ -32,5 +32,10 @@
 		FROM ratings 
 		WHERE userfullphonenumber = #{userfullphonenumber} AND composer_id = #{composer_id}
     </select>
-
+    
+    <select id="hasUserRatedArtist" resultType="int">
+    	SELECT COUNT(*) FROM ratings WHERE userfullphonenumber = #{userfullphonenumber} 
+    	AND composer_id = #{composer_id}
+	</select>
+	
 </mapper>
