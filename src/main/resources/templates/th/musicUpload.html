@@ -8,50 +8,50 @@
 <body>
     <form action="/upload" method="post" enctype="multipart/form-data">
 	    <main>
-	        <h2 class="title">음악 등록</h2>
+	        <h2 class="title">音楽 登録</h2>
 			<section class="sectionLeft">
-		       <label for="musicFile">음악 제목</label>
+		       <label for="musicFile">音楽·タイトル</label>
 		        <input type="text" id="musicFile" name="musicTitle">
 		
-		        <label for="albumArt">앨범 아트</label>
+		        <label for="albumArt">アルバム·アート</label>
 		            <div id="albumArtContainer">
 		          	  <img id="albumArtPreview" src="https://files.readme.io/f2e91bb-portalDocs-sonosApp-defaultArtAlone.png" alt="앨범 아트 미리보기">
 		        	</div>
 		        <input type="file" id="albumArt" name="albumArt" accept="image/*" onchange="showAlbumArt(this)">
-		        <label for="musicFile">음악 파일</label>
+		        <label for="musicFile">音楽·ファイル</label>
 		        <input type="file" id="musicFile" name="musicFile" accept=".mp3">	
 		
 		
-		        <label for="musicGenre">장르</label>
+		        <label for="musicGenre">ジャンル</label>
 		        <select id="musicGenre" name="musicGenre" multiple>
-		            <option value="팝">팝</option>
-		            <option value="댄스">댄스</option>
-		            <option value="일렉트로닉">일렉트로닉</option>
-		            <option value="힙합">힙합</option>
-		            <option value="R&B">R&B</option>
-		            <option value="클래식">클래식</option>
-		            <option value="뉴에이지">뉴에이지</option>
-		            <option value="락">락</option>
-		            <option value="발라드">발라드</option>
-				    <option value="인디">인디</option>
-				    <option value="재즈/스윙">재즈/스윙</option>
-				    <option value="라틴">라틴</option>
-				    <option value="국악">국악</option>
-				    <option value="월드뮤직">월드뮤직</option>
-				    <option value="앰비언트">앰비언트</option>
-				    <option value="트로트">트로트</option>
-				    <option value="기타">기타</option>
+		            <option value="ポップ">ポップ</option>
+		            <option value="ダンス">ダンス</option>
+		            <option value="エレクトロニック">エレクトロニック</option>
+		            <option value="ヒップホップ">ヒップホップ</option>
+		            <option value="RB">R&B</option>
+		            <option value="クラシック">クラシック</option>
+		            <option value="ニューエイジ">ニューエイジ</option>
+		            <option value="ロック">ロック</option>
+		            <option value="バラード">バラード</option>
+				    <option value="インディ">インディ</option>
+				    <option value="ジャズ／スウィング">ジャズ／スウィング</option>
+				    <option value="ラテン">ラテン</option>
+				    <option value="伝統音楽">伝統音楽</option>
+				    <option value="ワールドミュージック">ワールドミュージック</option>
+				    <option value="アンビエント">アンビエント</option>
+				    <option value="演歌">演歌</option>
+				    <option value="その他">その他</option>
 		        </select>
 		        
 		        <label for="musicInstrument">악기</label>
 		        <select id="musicInstrument" name="musicInstrument" multiple>
-		            <option value="기타">기타</option>
-		            <option value="피아노">피아노</option>
-		            <option value="베이스">베이스</option>
-		            <option value="바이올린">바이올린</option>
-		            <option value="드럼">드럼</option>
-		            <option value="첼로">첼로</option>
-		            <option value="그외">그외</option>
+		            <option value="ギター">ギター</option>
+		            <option value="ピアノ">ピアノ</option>
+		            <option value="ベース">ベース</option>
+		            <option value="バイオリン">バイオリン</option>
+		            <option value="ドラム">ドラム</option>
+		            <option value="チェロ">チェロ</option>
+		            <option value="その他">その他</option>
 		        </select>
 		        
 		        <div id="selectedGenresContainer">
@@ -64,109 +64,109 @@
 				<article class="musicMood-text">
 				
 				<div id="musicMoodTitle" >
-				<label for="musicMood">분위기</label>
+				<label for="musicMood">ムード</label>
 				</div>
 					<div class="musicMood">
-					<div class="musicMoodMax">분위기는 최대 10개까지 선택 가능합니다.</div>
+					<div class="musicMoodMax">ムードは最大10個まで選べます。</div>
 						<div class="musicMood-box">
-						<input  onclick="CountChecked(this)" type="checkbox" id="bright" name="musicMood" value="밝은">
-						<label for="bright">밝은</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="bright" name="musicMood" value="明るい">
+						<label for="bright">明るい</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="exciting" name="musicMood" value="신나는">
-						<label for="exciting">신나는</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="exciting" name="musicMood" value="楽しい">
+						<label for="exciting">楽しい</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="lively" name="musicMood" value="경쾌한">
-						<label for="lively">경쾌한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="lively" name="musicMood" value="軽快な">
+						<label for="lively">軽快な</label>
 						
-						<input onclick="CountChecked(this)" type="checkbox" id="happy" name="musicMood" value="행복한">
-						<label for="happy">행복한</label>
+						<input onclick="CountChecked(this)" type="checkbox" id="happy" name="musicMood" value="幸せな">
+						<label for="happy">幸せな</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="fresh" name="musicMood" value="청량한">
-						<label for="fresh">청량한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="fresh" name="musicMood" value="清涼な">
+						<label for="fresh">清涼な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="cute" name="musicMood" value="귀여운">
-						<label for="cute">귀여운</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="cute" name="musicMood" value="可愛い">
+						<label for="cute">可愛い</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="comic" name="musicMood" value="코믹한">
-						<label for="comic">코믹한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="comic" name="musicMood" value="コミカルな">
+						<label for="comic">コミカルな</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="hopeful" name="musicMood" value="희망찬">
-						<label for="hopeful">희망찬</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="hopeful" name="musicMood" value="希望的な">
+						<label for="hopeful">希望的な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="romantic" name="musicMood" value="로맨틱">
-						<label for="romantic">로맨틱</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="romantic" name="musicMood" value="ロマンティック">
+						<label for="romantic">ロマンティック</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="lovely" name="musicMood" value="사랑스러운">
-						<label for="lovely">사랑스러운</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="lovely" name="musicMood" value="可愛らしい">
+						<label for="lovely">可愛らしい</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="sad" name="musicMood" value="슬픈">
-						<label for="sad">슬픈</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="sad" name="musicMood" value="悲しい">
+						<label for="sad">悲しい</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="dark" name="musicMood" value="어두운">
-						<label for="dark">어두운</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="dark" name="musicMood" value="暗い">
+						<label for="dark">暗い</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="melancholy" name="musicMood" value="우울한">
-						<label for="melancholy">우울한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="melancholy" name="musicMood" value="憂鬱な">
+						<label for="melancholy">憂鬱な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="lonely" name="musicMood" value="쓸쓸한">
-						<label for="lonely">쓸쓸한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="lonely" name="musicMood" value="寂しい">
+						<label for="lonely">寂しい</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="nostalgic" name="musicMood" value="아련한">
-						<label for="nostalgic">아련한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="nostalgic" name="musicMood" value="切ない">
+						<label for="nostalgic">切ない</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="calm" name="musicMood" value="잔잔한">
-						<label for="calm">잔잔한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="calm" name="musicMood" value="静かな">
+						<label for="calm">静かな</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="grand" name="musicMood" value="웅장한">
-						<label for="grand">웅장한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="grand" name="musicMood" value="壮大な">
+						<label for="grand">壮大な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="dynamic" name="musicMood" value="비장한">
-						<label for="dynamic">비장한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="dynamic" name="musicMood" value="強烈な">
+						<label for="dynamic">強烈な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="tense" name="musicMood" value="긴장감">
-						<label for="tense">긴장감</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="tense" name="musicMood" value="緊張感">
+						<label for="tense">緊張感</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="angry" name="musicMood" value="화난">
-						<label for="angry">화난</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="angry" name="musicMood" value="過激な">
+						<label for="angry">過激な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="forceful" name="musicMood" value="박력">
-						<label for="forceful">박력</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="forceful" name="musicMood" value="力強い">
+						<label for="forceful">力強い</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="fearful" name="musicMood" value="공포">
-						<label for="fearful">공포</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="fearful" name="musicMood" value="恐怖">
+						<label for="fearful">恐怖</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="dreamy" name="musicMood" value="몽환적인">
-						<label for="dreamy">몽환적인</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="dreamy" name="musicMood" value="夢幻的な">
+						<label for="dreamy">夢幻的な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="mysterious" name="musicMood" value="신비로운">
-						<label for="mysterious">신비로운</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="mysterious" name="musicMood" value="神秘的な">
+						<label for="mysterious">神秘的な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="lethargic" name="musicMood" value="나른한">
-						<label for="lethargic">나른한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="lethargic" name="musicMood" value="余裕のある">
+						<label for="lethargic">余裕のある</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="futuristic" name="musicMood" value="미래적인">
-						<label for="futuristic">미래적인</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="futuristic" name="musicMood" value="未来的な">
+						<label for="futuristic">未来的な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="groovy" name="musicMood" value="그루브">
-						<label for="groovy">그루브</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="groovy" name="musicMood" value="グルーヴ">
+						<label for="groovy">グルーヴ</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="sexy" name="musicMood" value="섹시한">
-						<label for="sexy">섹시한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="sexy" name="musicMood" value="セクシーな">
+						<label for="sexy">セクシーな</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="simple" name="musicMood" value="단순한">
-						<label for="simple">단순한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="simple" name="musicMood" value="単純な">
+						<label for="simple">単純な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="addictive" name="musicMood" value="중독성">
-						<label for="addictive">중독성</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="addictive" name="musicMood" value="ハマる">
+						<label for="addictive">ハマる</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="complex" name="musicMood" value="난해한">
-						<label for="complex">난해한</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="complex" name="musicMood" value="難解な">
+						<label for="complex">難解な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="exotic" name="musicMood" value="이국적인">
-						<label for="exotic">이국적인</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="exotic" name="musicMood" value="異国風な">
+						<label for="exotic">異国風な</label>
 						
-						<input  onclick="CountChecked(this)" type="checkbox" id="koreatic" name="musicMood" value="한국적인">
-						<label for="koreatic">한국적인</label>
+						<input  onclick="CountChecked(this)" type="checkbox" id="koreatic" name="musicMood" value="和風">
+						<label for="koreatic">和風</label>
 						</div>
 					</div>
 					</article>
