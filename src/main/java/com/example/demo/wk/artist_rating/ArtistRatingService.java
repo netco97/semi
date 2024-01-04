@@ -26,8 +26,8 @@ public class ArtistRatingService {
 		artistRatingMapper.deleteRating(ratingDTO);
 	}
 	
-	public int getRatingByUserAndComposer(String userfullphonenumber, String composer_id) {
-		return artistRatingMapper.getRatingByUserAndComposer(userfullphonenumber, composer_id);
+	public String getRatingByUserAndComposer(ArtistRatingDTO ratingDTO) {
+		return artistRatingMapper.getRatingByUserAndComposer(ratingDTO);
 	}
 	
 }

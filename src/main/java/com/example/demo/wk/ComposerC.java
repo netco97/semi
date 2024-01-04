@@ -136,14 +136,25 @@ public class ComposerC {
 	@PostMapping("/artist_upload")
 	public String updateArtist(@RequestParam("userFullPhoneNumber") String composer_id, @ModelAttribute ComposerDTO composer, Model model,HttpSession session) {
 		try {
-			
-			
 			System.out.println("composer_id test" + composer_id);
 			System.out.println("composer test" + composer);
 			composer.setComposer_id(composer_id);
+			
 			// 프로필 사진 저장 및 파일명 설정
 			String fileName = saveProfilePicture(composer.getComposer_profilePicture());
 			composer.setComposer_img(fileName);
+			
+			 // 이미지를 변경했는지 여부 확인
+//	        MultipartFile profilePicture = composer.getComposer_profilePicture();
+//	        if (profilePicture != null && !profilePicture.isEmpty()) {
+//	            // 이미지를 변경한 경우에만 저장하고 파일명 설정
+//	            String newFileName = saveProfilePicture(profilePicture);
+//	            composer.setComposer_img(fileName);
+//	        } else {
+//	            // 이미지를 변경하지 않은 경우 기존 이미지 유지
+//	            ComposerDTO existingComposer = composerService.getComposerById(composer_id);
+//	            composer.setComposer_img(existingComposer.getComposer_img());
+//	        }
 			
 			// songs table update 로직
 			if(composerService.updateSongs(composer.getComposer_name(), composer_id)>=1) {
@@ -158,13 +169,10 @@ public class ComposerC {
 			if(composerService.updateCommentTable(composer.getComposer_name(),composer_id)>=1) {
 				System.out.println("comment table update success");
 			}
-
+			
 			// 업데이트 로직 수행
 			composerService.updateComposer(composer);
 			
-			
-			
-
 			// 업데이트된 composer 다시 가져오기
 			ComposerDTO updatedComposer = composerService.getComposerById(composer_id);
 			model.addAttribute("composer", updatedComposer);
@@ -175,18 +183,15 @@ public class ComposerC {
 			System.out.println("장르: " + updatedComposer.getComposer_genre());
 			System.out.println("자기소개: " + updatedComposer.getComposer_text());
 			System.out.println("음악 사진: " + updatedComposer.getComposer_profilePicture());
-//			System.out.println("음악 사진 이름: " + updatedComposer.getComposer_profilePicture().getOriginalFilename());
-			
-			//return "forward:/artist_detail?userFullPhoneNumber=" + updatedComposer.getComposer_id();
-			//model.addAttribute("content", "wk/artist_detail");
+			//System.out.println("음악 사진 이름: " + updatedComposer.getComposer_profilePicture().getOriginalFilename());
 			
 			// 세션수정(composer_name)
 			// 세션 지우고 다시 usernickname 갱신해야함
 			session.removeAttribute("userNickname");
 			session.setAttribute("userNickname", updatedComposer.getComposer_name());
 
-			return "forward:/artist_detail"; 
-			// 이것도 됩니다.return getComposerById(composer_id, model);
+			return "forward:/artist_detail";
+			//return getComposerById(composer_id, model);
 			
 		} catch (Exception e) {
 			// 업데이트 실패시 에러 메시지 추가

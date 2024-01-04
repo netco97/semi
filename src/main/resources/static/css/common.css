@@ -1,100 +1,119 @@
 @charset "UTF-8";
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial', sans-serif;
 }
 
 header {
-    background-color: black;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 2em; /* 헤더 높이를 2배로 조절 */
+	background-color: black;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	height: 4em; /* 헤더 높이를 2배로 조절 */
 }
 
 #simple-login {
-    text-decoration: none;
-    font-size: 16px;
-    color: white;
-    margin-right: 10px;
+	text-decoration: none;
+	font-size: 16px;
+	color: white;
+	margin-right: 10px;
 }
 
 #title {
-    color: white;
-    margin-left: 20px;
-    margin-right: 20px; /* 왼쪽 여백 추가 */
-    font-size: 1.5em; /* 크기를 좀만 키워줌 */
+	color: white;
+	margin-left: 20px;
+	margin-right: 20px; /* 왼쪽 여백 추가 */
+	font-size: 1.5em; /* 크기를 좀만 키워줌 */
 }
 
-#musicMenuA{
+#musicMenuA,
+#musicMenuB {
 	text-decoration: none;
+	position: relative;
 }
 
 #music-icon-container, #user-icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-#music-search-container {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-right: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 60px;
 }
 
 #music-search-container {
-    display: flex;
-    align-items: center;
+	font-size: 24px;
+	color: white;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+#music-search-container {
+	display: flex;
+	align-items: center;
+	position: relative;
 }
 
 #music-search-container span {
-    text-decoration: none; /* 하이퍼링크 밑줄 제거 */
-    font-size: 12px; /* 텍스트 크기를 작게 조절 */
-    color: white;
-    margin-left: 5px; /* 간격을 조절하기 위해 좌측 여백 추가 */
+	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
+	font-size: 14px; /* 텍스트 크기를 작게 조절 */
+	color: white;
+	margin-top: 10px;
 }
 
-
 #profile-icon {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    margin-left: auto; /* 프로필 아이콘만 오른쪽으로 밀어내기 */
-    position: relative;
+	font-size: 24px;
+	color: white;
+	cursor: pointer;
+	margin-left: auto; /* 프로필 아이콘만 오른쪽으로 밀어내기 */
+	position: relative;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white; /* 흰색 배경 추가 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-    min-width: 160px;
-    z-index: 1;
-    right: 0;
-    top: 40px; /* 아래로 이동시키기 */
+	display: none;
+	position: absolute;
+	background-color: white; /* 흰색 배경 추가 */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+	min-width: 160px;
+	z-index: 1;
+	right: 0;
+	top: 40px; /* 아래로 이동시키기 */
 }
 
 .dropdown-content a {
-    color: black; /* 글자 색상을 검은색으로 변경 */
-    font-size: 14px; /* 글자 크기를 작게 조절 */
-    padding: 8px 16px; /* 크기를 작게 조절 */
-    display: block;
-    text-decoration: none;
+	color: black; /* 글자 색상을 검은색으로 변경 */
+	font-size: 14px; /* 글자 크기를 작게 조절 */
+	padding: 8px 16px; /* 크기를 작게 조절 */
+	display: block;
+	text-decoration: none;
 }
 
+/* 흰색 바 스타일 */
+.highlight-bar {
+	position: absolute;
+	height: 4px;
+	background-color: white;
+	bottom: -15px;
+	left: 0;
+	right: 0;
+	display: none;
+}
 
+/* 링크에 호버될 때 흰색 바 표시 */
+#musicMenuA:hover .highlight-bar,
+#musicMenuB:hover .highlight-bar,
+#profile-icon:hover .highlight-bar {
+	display: block;
+}
 
+/* 푸터 */
 footer {
-    height: 200px;
-    background-color: black;
-    color: white;
-    padding: 20px;
+	height: 200px;
+	background-color: black;
+	color: white;
+	padding: 20px;
 }

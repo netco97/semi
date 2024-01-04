@@ -2,6 +2,7 @@ package com.example.demo.wk.artist_rating;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper
 public interface ArtistRatingMapper {
@@ -9,8 +10,5 @@ public interface ArtistRatingMapper {
     double getAverageRating(String composer_id);
     void updateRating(ArtistRatingDTO ratingDTO);
     void deleteRating(ArtistRatingDTO ratingDTO);
-    int getRatingByUserAndComposer(
-            @Param("userfullphonenumber") String userfullphonenumber,
-            @Param("composer_id") String composer_id
-        );
+    String getRatingByUserAndComposer(ArtistRatingDTO ratingDTO);
 }

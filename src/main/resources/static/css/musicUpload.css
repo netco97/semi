@@ -71,9 +71,12 @@ button:hover {
 }
 
 #musicGenre {
-	height: 150px;
 	text-align: center;
 	
+}
+
+#musicInstrument {
+	text-align: center;
 }
 
 .musicMood {
