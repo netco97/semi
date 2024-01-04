@@ -66,11 +66,21 @@ header {
 }
 
 #profile-icon {
-	font-size: 24px;
-	color: white;
-	cursor: pointer;
-	margin-left: auto; /* 프로필 아이콘만 오른쪽으로 밀어내기 */
-	position: relative;
+    align-items: center; /* 수직 가운데 정렬을 위해 추가 */
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+}
+
+#profile-icon i {
+    margin-right: 10px; /* 아이콘 간격을 조절하기 위해 추가 */
+}
+
+#profile-icon-link {
+    text-decoration: none;
+    color: white;
 }
 
 .dropdown-content {
