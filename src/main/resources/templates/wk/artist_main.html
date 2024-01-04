@@ -13,23 +13,37 @@
 </head>
 <body>
 	<main>
+	
 		<!-- Left Side -->
 		<div class="left-side">
 
 			<!-- Artist Registration Box -->
-			<div th:if="${session.iscomposer == 0}" class="left-box" id="artist-box" onclick="redirectToArtistRegistration()">
-				<h2><a href="/artist_reg">아티스트 등록</a></h2>
+			<div th:if="${session.iscomposer == 0}" class="left-box"
+				id="artist-box" onclick="redirectToArtistRegistration()">
+				<h2>
+					<a href="/artist_reg">아티스트 등록</a>
+				</h2>
 				<div>아티스트가 되어 세상에 당신을 알려주세요.</div>
 			</div>
 
-			<div th:if="${session.iscomposer == 1}" class="left-box" id="music-upload-box"  onclick="redirectToMusicUpload()">
-				<h2><a href="/musicUpload">음악 업로드</a></h2>
+			<div th:if="${session.iscomposer == 1}" class="left-box"
+				id="music-upload-box" onclick="redirectToMusicUpload()">
+				<div class="icon-container">
+					<i class="fas fa-music"></i>
+				</div>
+				<h2>
+					<a href="/musicUpload">음악 업로드</a>
+				</h2>
 				<div>당신의 음악을 세상에 보여주세요.</div>
 			</div>
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
-				<h2>팔로우 아티스트</h2>
+				<div class="icon-container">
+					<i class="far fa-smile"></i>
+					<h2>팔로우 아티스트</h2>
+				</div>
+				<div>내가 좋아하는 아티스트를 보고 싶나요?</div>
 			</div>
 		</div>
 
@@ -50,18 +64,16 @@
 			<div class="pagination" id="pagination">
 				<!-- 페이지 버튼이 여기에 추가될 것입니다. -->
 			</div>
-
 		</div>
 	</main>
 	<script type="text/javascript" src="/js/artist_main.js"></script>
-	    <script type="text/javascript">
-	    
-	    function redirectToArtistRegistration(){
-	    	window.location.href = "/artist_reg";
-	    }
-        function redirectToMusicUpload() {
-            window.location.href = "/musicUpload";
-        }
-    </script>
+	<script type="text/javascript">
+		function redirectToArtistRegistration() {
+			window.location.href = "/artist_reg";
+		}
+		function redirectToMusicUpload() {
+			window.location.href = "/musicUpload";
+		}
+	</script>
 </body>
 </html>

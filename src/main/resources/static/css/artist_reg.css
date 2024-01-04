@@ -57,6 +57,10 @@ input[type="file"] {
     cursor: pointer; */
 }
 
+.Profile-btn {
+	padding: 10px;
+}
+
 .btn-upload, .btn-useDefault {
 	width: 200px;
 	height: 30px;
@@ -70,75 +74,30 @@ input[type="file"] {
 	justify-content: center;
 }
 
-.btn-upload:hover {
-	background : black;
+.btn-upload:hover, .btn-useDefault:hover {
+	background: black;
 	color: #fff;
-	
 }
 
-/* .btn-useDefault {
-	margin-top: 10px;
-	padding: 10px;
-	width: 80%;
-	color: black;
-	cursor: pointer;
-	border: none;
-	border-radius: 4px;
-} */
-
-/* .artist-profile-funtion a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px;
-    width: 80%;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background-color: #efefef; 배경색을 지정하거나 필요에 따라 수정하세요
-    font-size: 10pt;
-}
-
-.artist-profile-funtion a:hover {
-    background-color: #CCCCCC; 호버 시 배경색을 원하는 색으로 변경하세요
-} */
-
-/* .artist-profile-funtion button {
-    margin-top: 10px;
-    padding: 10px;
-    width: 80%;
-    color: black;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-}
-
-.artist-profile-funtion button:hover {
-    background: linear-gradient(45deg, #333, #222); 그라데이션 배경색을 지정하세요
-    color: white; 호버 시 텍스트 색상을 변경합니다
-} */
 #ProfileContainer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
-#OldProfilePreview {
+/* #OldProfilePreview {
 	width: 200px;
-	margin: 30px;
-}
-
+	margin: 20px;
+} */
 #ProfilePreview {
-	width: 200px;
-	margin: 30px;
+	height: 250px;
+	margin: 20px;
+	border-radius: 4px;
 }
 
-#profilePicture {
+/* #profilePicture {
 	
-}
-
+} */
 #musicGenre {
 	text-align: center;
 }

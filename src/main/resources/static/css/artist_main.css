@@ -55,6 +55,16 @@ a {
 	color: white;
 }
 
+.icon-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.icon-container i {
+    font-size: 26px; /* 아이콘 크기 조절 */
+    color: white;
+}
+
 .right-side {
 	display: flex;
 	flex-flow: column;
@@ -96,6 +106,7 @@ a {
     border-radius: 15px;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 .artist-details:hover {
@@ -121,6 +132,11 @@ a {
 
 .artist-details-word p{
 	font-size: 10pt;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 표시할 줄 수 */
+    -webkit-box-orient: vertical;
 }
 
 

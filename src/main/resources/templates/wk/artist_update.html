@@ -18,17 +18,19 @@
             <div id="ProfileContainer">
         	<!-- <img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}"> -->
         	<img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}">
+        	<div class="Profile-btn">
         	<label for="file">
         	  <div class="btn-upload">사진 등록</div>
 			</label>
         	<input type="file" id="file" name="composer_profilePicture" accept="image/*" onchange="showProfilePicture(this);">
 			</div>
 			<p id="fileName"></p>
-        	  <button class="btn-useDefault" type="button" onclick="useDefaultProfile()">기본 프로필 사진 사용</button>
+        	  <div class="btn-useDefault" onclick="useDefaultProfile()">기본 프로필 사진 사용</div>
+        	  </div>
        	</section>
         <section>
 	       <div class="profileTitle">아티스트 명</div>
-	        <input type="text" name="composer_name" th:value="${composer.composer_name}">
+	        <input type="text" name="composer_name" maxlength="10" th:value="${composer.composer_name}">
 	        <div class="profileTitle">주 장르</div>
 	        <select id="musicGenre" name="composer_genre" multiple>
 	            <!-- 선택된 장르 데이터에 따라 option에 selected 속성 추가 -->
@@ -52,7 +54,7 @@
 	            <!-- 나머지 장르들도 동일하게 처리 -->
 	        </select>
 	        	<div class="profileTitle">자기 소개</div>
-	        	<textarea class="introduce" name="composer_text" th:text="${composer.composer_text}"></textarea>
+	        	<textarea class="introduce" name="composer_text" maxlength="100" th:text="${composer.composer_text}"></textarea>
         	</section>
         		<input type="hidden" name="userFullPhoneNumber" th:value="${composer.composer_id}">
 			<div class="button-box">
