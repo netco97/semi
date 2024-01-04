@@ -32,9 +32,11 @@ header {
 }
 
 #musicMenuA,
-#musicMenuB {
+#musicMenuB,
+#musicMenuC {
 	text-decoration: none;
 	position: relative;
+	
 }
 
 #music-icon-container, #user-icon-container {

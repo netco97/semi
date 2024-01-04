@@ -52,7 +52,8 @@
 
 			<!-- Search Box -->
 			<div class="search-box">
-				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색">
+				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색"
+				 onfocus="hidePlaceholder()" onblur="showPlaceholder()">
 				<i class="fas fa-search" id="searchButton"></i>
 			</div>
 
@@ -74,6 +75,12 @@
 		function redirectToMusicUpload() {
 			window.location.href = "/musicUpload";
 		}
+	    function hidePlaceholder() {
+	        document.getElementById('searchInput').placeholder = '';
+	    }
+	    function showPlaceholder() {
+	        document.getElementById('searchInput').placeholder = '아티스트 키워드 검색';
+	    }
 	</script>
 </body>
 </html>

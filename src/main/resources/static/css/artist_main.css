@@ -154,6 +154,7 @@ a {
 
 /* 아티스트 검색 */
 .search-box {
+	position: relative;
 	width: 30%;
     display: flex;
     align-items: center;
@@ -166,14 +167,16 @@ a {
 
 #searchInput {
     flex: 1;
-    padding: 8px;
+    padding: 9px;
+    padding-left: 35px;
 }
 
 #searchButton {
+	position: absolute;
     padding: 9px 9px;
-    cursor: pointer;
+    cursor: default;
     border-radius: 2px;
-    border: 1px solid #767676;
+    /* border: 1px solid #767676; */
 }
 
 /* #searchButton:hover {

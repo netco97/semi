@@ -1,4 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function() {
+
 
 	var pageSize = 5;
 	var currentPage = 1;

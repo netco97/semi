@@ -180,6 +180,7 @@ function deleteRatingOnServer() {
 	//	});
 
 	//////////////////////////////////////////////////////
+	
 	// 코멘트 기능
 	$(document).ready(function() {
 		var composerId = $("#commentBtn").data('composer-id');
@@ -358,43 +359,44 @@ function deleteRatingOnServer() {
 			}
 		});
 	});
-}); // DOM
+});
 
+//////////////////////////////////////////////////////////////////
+// 아티스트 디테일 음악 리스트 페이징
 
-/* 아티스트 뮤직 리스트 */
+document.addEventListener("DOMContentLoaded", function() {
+    let currentPage = 1; // 현재 페이지
+    const pageSize = 10; // 페이지당 음악 수
 
-//async function songLikeCheck(song_id) {
-//	
-//	console.log("송라이크쳌 들어오나 화인~ 송아이디 :::" + song_id)
-//    try {
-//        const response = await $.ajax({
-//            type: 'GET',
-//            url: 'MusicLikeCheckC',
-//            data: {
-//                song_id: song_id
-//            }
-//        });
-//
-//        console.log('좋아요 정보 불러오기 성공.');
-//        console.log(response);
-//
-//        // 가져온 음악 정보를 사용하여 페이지를 업데이트
-//        if (response == 1) {
-//            console.log("리스폰 확인 : " + response)
-//            // 이미 좋아요한 경우
-//            return 1;
-//        } else {
-//            // 좋아요하지 않은 경우
-//            return 0;
-//        }
-//    } catch (error) {
-//        console.error('좋아요 정보 가져 못해');
-//        throw error; // 에러를 호출자에게 전파
-//    }
-//}
+    // 초기 데이터 로드
+    loadMusicList(currentPage);
+
+    // 페이지 번호 클릭 시 이벤트 핸들러
+    $(document).on("click", ".pagination-link", function() {
+        event.preventDefault();
+        currentPage = parseInt($(this).data("page"));
+        loadMusicList(currentPage);
+    });
+
+    // 음악 리스트 로드 함수
+    function loadMusicList(page) {
+        $.ajax({
+            url: '/getComposerMusic?page=' + page + '&size=' + pageSize,
+            type: 'GET',
+            success: function(response) {
+                console.log('음악 리스트 로딩 성공');
+                outPutSearch(response); // 음악 리스트를 표시하는 함수 호출
+                displayPagination(page, Math.ceil(response.length / pageSize));
+            },
+            error: function(error) {
+                console.error('음악 리스트 로딩 중 오류가 발생했습니다.');
+            }
+        });
+    }
+
+});
 
 async function outPutSearch(data) {
-
 	console.log(data);
 	let $musicList = $('.musicList-inner');
 
@@ -412,7 +414,7 @@ async function outPutSearch(data) {
 			// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 			$musicListTitle.append(`
             <div>
-                <img src=img/${song.song_img} />
+                <img src=img/${song.song_img}/>
             </div>
             <div>
                 <div style="font-size: 9pt"; onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
@@ -450,7 +452,6 @@ async function outPutSearch(data) {
 			//            `);
 			//        }
 
-
 			// 각 섹션을 노래 컨테이너에 추가
 			$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
 
@@ -473,13 +474,36 @@ function createAudioPlayer(audioSrc) {
 	$audio.append($source);
 	$audioPlayer.append($audio);
 
-
-
-
 	return $audioPlayer;
 }
 
-//function songLike(song_id, heartElement) {
+
+
+// 내프로필 수정 post로 감추기
+function updateProfile() {
+        // Create a hidden form dynamically
+        var form = document.createElement('form');
+        form.action = "/artist_update";
+        form.method = "POST";
+
+        // Create an input element for composer_id
+        var input = document.createElement('input');
+        input.type = "hidden";
+        input.name = "userFullPhoneNumber";
+        input.value = composerId;
+
+        // Append the input to the form
+        form.appendChild(input);
+
+        // Append the form to the document body
+        document.body.appendChild(form);
+
+        // Submit the form
+        form.submit();
+    }
+    
+    
+    //function songLike(song_id, heartElement) {
 //	console.log(heartElement);
 //
 //	let user_id = 1;
@@ -512,27 +536,34 @@ function createAudioPlayer(audioSrc) {
 //	}
 //}
 
-// 내프로필 수정 post로 감추기
-function updateProfile() {
-        // Create a hidden form dynamically
-        var form = document.createElement('form');
-        form.action = "/artist_update";
-        form.method = "POST";
+/* 아티스트 뮤직 리스트 */
 
-        // Create an input element for composer_id
-        var input = document.createElement('input');
-        input.type = "hidden";
-        input.name = "userFullPhoneNumber";
-        input.value = composerId;
-
-        // Append the input to the form
-        form.appendChild(input);
-
-        // Append the form to the document body
-        document.body.appendChild(form);
-
-        // Submit the form
-        form.submit();
-    }
-
-
+//async function songLikeCheck(song_id) {
+//	
+//	console.log("송라이크쳌 들어오나 화인~ 송아이디 :::" + song_id)
+//    try {
+//        const response = await $.ajax({
+//            type: 'GET',
+//            url: 'MusicLikeCheckC',
+//            data: {
+//                song_id: song_id
+//            }
+//        });
+//
+//        console.log('좋아요 정보 불러오기 성공.');
+//        console.log(response);
+//
+//        // 가져온 음악 정보를 사용하여 페이지를 업데이트
+//        if (response == 1) {
+//            console.log("리스폰 확인 : " + response)
+//            // 이미 좋아요한 경우
+//            return 1;
+//        } else {
+//            // 좋아요하지 않은 경우
+//            return 0;
+//        }
+//    } catch (error) {
+//        console.error('좋아요 정보 가져 못해');
+//        throw error; // 에러를 호출자에게 전파
+//    }
+//}
