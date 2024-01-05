@@ -34,7 +34,7 @@ public class MyPageController {
 		
 		String SK= myPageService.deleteUser(myPK);
 		
-		if(SK.equals("sucess")) {
+		if(SK.equals("sucesss")) {
 			
 			httpsession.invalidate(); 
 			
