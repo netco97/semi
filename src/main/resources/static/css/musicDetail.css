@@ -3,46 +3,56 @@ body {
 }
 
 .container {
-	margin-top: 5%; /* 여기서 조절 가능 */
 	width: 100vw;
 	display: flex;
+	flex-flow: column;
 	justify-content: center;
-	background-color: black;
 }
 
+/* 음악 정보 영역 */
 .content {
-	width: 75%;
+	display: flex;
+	/* width: 80%; */
+	height: 600px;
+	flex-flow: column;
 	padding: 0 15%;
 	box-sizing: border-box;
+	justify-content: center;
+}
+
+/* 코멘트 영역 */
+.content2 {
 }
 
 .musicDetail-content-music {
 	display: flex;
+	padding: 20px;
 	flex-direction: row;
-	background-color: white;
-	margin-top: 5%;
-	border-radius: 10px;
+	background-color: black;
+	border-radius: 50px;
 }
 
 .musicDetail-items1 {
+	color: white;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start; /* 왼쪽 정렬 추가 */
 	width: 80%;
-	padding: 10px;
+	padding: 30px;
 	box-sizing: border-box;
 	justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
 }
 
 .musicDetail-title {
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 	width: 100%;
 }
 
 .musicDetail-title-img img {
 	height: 100%; /* 이미지 높이 100%로 설정 */
-	width: auto; /* 이미지 너비 자동 조정 */
+	width: 200px; /* 이미지 너비 자동 조정 */
+	border-radius: 30px;
 }
 
 .musicDetail-title-img {
@@ -51,13 +61,18 @@ body {
 }
 
 .musicDetail-title>div {
-	display: flex;
+	/* display: flex; */
+	width: 23%;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.musicDetail-title-title, .musicDetail-title-composer {
-	margin: 0; /* 기본 마진 제거 */
+.musicDetail-title-title {
+	font-size: 30pt;
+}
+
+.musicDetail-title-composer {
+	font-size: 20pt;
 }
 
 .musicDetail-playSpace {
@@ -72,7 +87,7 @@ body {
 }
 
 audio {
-	width: 80%;
+	width: 100%;
 }
 
 .musicDetail-option {
@@ -91,18 +106,26 @@ audio {
 }
 
 .musicDetail-content-items2 {
-	width: 20%;
+	display: flex;
+	font-size: 24pt;
+	color: white;
+	align-self: center;
+}
+
+.genre-area,
+.mood-area,
+.instrument-area {
+	font-size: 16pt;
 }
 
 /* items2의 내용에 대한 스타일 */
 .musicDetail-content-items2>div {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 20px;
 }
 
 .musicDetail-content-comment {
-	padding: 10px; /* 시각적 구분을 위한 여백 추가 */
 }
 
 .musicDetail-content-comment-title {
@@ -110,7 +133,7 @@ audio {
 }
 
 .heart-filled {
-	font-size: x-large;
+	font-size: xxx-large;
 	color: red;
 }
 
@@ -212,7 +235,7 @@ audio {
 }
 
 .musicDetail-title-img {
-	max-width: 50px;
+	/* max-width: 50px; */
 }
 
 /* 하단 코멘트 섹션 */
@@ -313,6 +336,7 @@ audio {
 	background-color: white; /* 페이지 번호가 가려지는 것을 방지하기 위해 배경색을 지정 */
 	padding: 10px;
 	border: 1px solid #ccc;
+	border-radius: 4px;
 }
 
 /* 페이지 번호를 감싸는 영역 스타일 */
@@ -341,14 +365,14 @@ audio {
 
 /* hover 효과 */
 .pagination a:hover {
-	background-color: #007bff;
+	background-color: black;
 	color: #fff;
-	border: 1px solid #007bff;
+	border: 1px solid black;
 }
 
 /* 활성화된 페이지 번호의 스타일 */
 .pagination-link.active {
-	background-color: #007bff;
+	background-color: black;
 	color: #fff;
-	border: 1px solid #007bff;
+	border: 1px solid black;
 }
