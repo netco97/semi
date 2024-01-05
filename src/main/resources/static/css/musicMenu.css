@@ -4,6 +4,8 @@
 }
 
 .musicMenu-container {
+	display: flex;
+	justify-content: center;
 	position: relative;
 	width: 100vw;
 	height: 100vw;
@@ -11,9 +13,8 @@
 }
 
 .musicMenu-inner {
-	width: 100%;
+	width: 1200px;
 	margin: 0 auto;
-	padding: 20px;
 	background-color: black;
 }
 
