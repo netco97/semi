@@ -102,12 +102,13 @@ public class ComposerC {
 		System.out.println("음악 사진 이름 " + composer.getComposer_profilePicture().getOriginalFilename());
 
 		composer.setComposer_id(userFullPhoneNumber);
-		// 아티스트 등록 로직 수행
-		composerService.regComposer(composer);
 
 		// 프로필 사진 저장 및 파일명 설정
 		String fileName = saveProfilePicture(composer.getComposer_profilePicture());
 		composer.setComposer_img(fileName);
+		
+		// 아티스트 등록 로직 수행
+		composerService.regComposer(composer);
 
 		// 세션의 userId를 이용해서 iscomposer를 업데이트
 		composerService.updateIsComposer(userFullPhoneNumber);
