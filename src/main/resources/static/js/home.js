@@ -69,50 +69,11 @@ function ipodMusic(data) {
 
 
 	};
-
-	// 아이팟 옆 노래 재생구역
-
-
-//	let $musicList = $('.musicList-inner');
-//
-//	// musicList 내용 초기화
-//	$swiperWrapper.empty(); // 이전 내용 초기화
-//
-//	for (const song of data) {
-//		let $musicListSlide = $('<div class="swiper-slide"></div>');
-//		let $musicListContainer = $('<div class="musicList"></div>');
-//
-//		let $songContainer = $('<div class="musicList-menu"></div>');
-//		let $musicListTitle = $('<div class="musicList-title"></div>');
-//		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
-//		let $musicListInfo = $('<div class="musicList-info"></div>');
-//
-//		$musicListTitle.append(`
-//        <div>
-//            <img src=img/${song.song_img} />
-//        </div>
-//        <div>
-//            <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
-//            <div onclick="location.href=''">${song.composer_name}</div>
-//        </div>
-//    `);
-//
-//		$musicListInfo.append(`
-//        <div>${song.mood_id}</div>
-//        <div>${song.genre_id}</div>
-//        <div>${song.instrument_id}</div>
-//    `);
-//
-//		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
-//		$musicListContainer.append($songContainer);
-//		$musicListSlide.append($musicListContainer);
-//		$swiperWrapper.append($musicListSlide);
-//	}
 }
 
-function ipodMusicPlayer(song_id){
-		alert(song_id);
-		$.ajax({
+function ipodMusicPlayer(song_id) {
+	alert(song_id);
+	$.ajax({
 		type: 'GET',
 		url: 'getMusicDetail', // 실제 서버 엔드포인트 주소로 변경
 		data: {
@@ -122,33 +83,188 @@ function ipodMusicPlayer(song_id){
 			console.log('태그가 성공적으로 전송되었습니다.');
 			console.log(response);
 
+			getMusic(response);
+
+
 		},
 		error: function(error) {
 			console.error('태그 전송 중 오류가 발생했습니다.');
 		}
 	});
-	
 
-	
-	
-	
-	
-	
-	
+
+
 }
 
+async function getMusic(song) {
+
+	$('.musicDetail-content-music').empty();
+
+	$('.musicDetail-content-music').append(`
+		< div class= "musicDetail-items1" >
+					<div class="musicDetail-title">
+						<div class="musicDetail-title-img"></div>
+						<div>
+							<div class="musicDetail-title-title"></div>
+							<div class="musicDetail-title-composer"></div>
+					<!-- 좋아요 하트 -->
+					<div class="musicDetail-option">
+						<div class="musicDetail-option-inner"></div>
+					</div>
+						</div>
+					</div>
+					
+					<div class="musicDetail-playSpace">
+						<!-- 여기에 오디오 플레이어가 들어갈 것입니다. -->
+					</div>
+				</div >
+		<div class="musicDetail-content-items2">
+			<div>
+				<div>
+					<div>ジャンル</div>
+					<div class="genre-area"></div>
+				</div>
+				<div>
+					<div>ムード</div>
+					<div class="mood-area"></div>
+				</div>
+				<div>
+					<div>楽器</div>
+					<div class="instrument-area"></div>
+				</div>
+			</div>
+		</div>
+			</div >
+
+
+		`)
+
+	$('.musicDetail-title-img').append(`<img src=img/${song[0].song_img}>`)
+	$('.musicDetail-title-title').append(`<div class="musicDetail-title-title">${song[0].song_name}</div>`);
+	// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
+	$('.musicDetail-title-composer').append(`<div onclick="location.href=''" class="musicDetail-title-composer">${song[0].composer_name}</div>`);
+	// 여기에서 좋아요 여부를 확인하고 하트 표시를 결정
+	const likeCheck = await songLikeCheck(song[0].song_id);
+
+	if (likeCheck == 1) {
+		// 이미 좋아요한 경우
+		$('.musicDetail-option').append(`
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♥</div>
+                        `);
+	} else {
+		// 좋아요하지 않은 경우
+		$('.musicDetail-option').append(`
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♡</div>
+                        `);
+	}
+
+	// 장르, 분위기, 악기 정보 업데이트
+	$('.genre-area').text(song[0].genre_id);
+	$('.mood-area').text(song[0].mood_id);
+	$('.instrument-area').text(song[0].instrument_id);
+
+	// 오디오 플레이어 업데이트
+	let $musicPlaySpace = $('.musicDetail-playSpace');
+	$musicPlaySpace.empty(); // 플레이어를 비우고 다시 생성
+	let $audioPlayer = createAudioPlayer(`audio/${song[0].song_audio}`);
+	$musicPlaySpace.append($audioPlayer);
+}
+
+// 오디오 플레이어 생성 함수
 
 
 
 
 
+function createAudioPlayer(audioSrc) {
+	let $audioPlayer = $('<div class="audio-player"></div>');
+
+	// 오디오 태그 생성
+	let $audio = $('<audio controls></audio>');
+	let $source = $('<source src="' + audioSrc + '" type="audio/mp3">');
+
+	// 플레이어 UI 생성
+	let $progressBar = $('<div class="progress-bar"></div>');
+
+	// 오디오 태그와 플레이어 UI를 조합하여 플레이어 생성
+	$audio.append($source);
+	$audioPlayer.append($audio, $progressBar);
+
+	$audio.on('timeupdate', function() {
+		// 재생 시간이 업데이트될 때마다 호출되는 이벤트
+		let percentage = ($audio[0].currentTime / $audio[0].duration) * 100;
+		$progressBar.css('width', percentage + '%');
+	});
+
+	return $audioPlayer;
+
+}
+
+async function songLike(song_id) {
+	console.log(song_id);
 
 
+	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야됨
+	if (isLogin == 1) {
+		try {
+			const response = await $.ajax({
+				type: 'GET',
+				url: 'MusicLikeC',
+				data: {
+					song_id: song_id
+				}
+			});
 
+			console.log('좋아요 정보 갱신 성공.');
+			console.log(response);
 
+			// 기존에 추가된 하트 모두 제거
+			$('.musicDetail-option').empty();
 
+			// 가져온 음악 정보를 사용하여 페이지를 업데이트
+			if (response == 1) {
+				// 이미 좋아요한 경우
+				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♥</div>`);
+			} else {
+				// 좋아요하지 않은 경우
+				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♡</div>`);
+			}
+		} catch (error) {
+			console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+		}
+	} else {
+		alert('로그인 후 이용가능합니다')
+	}
+}
 
+async function songLikeCheck(song_id) {
+	console.log(song_id);
 
+	try {
+		const response = await $.ajax({
+			type: 'GET',
+			url: 'MusicLikeCheckC',
+			data: {
+				song_id: song_id
+			}
+		});
+
+		console.log('좋아요 정보 불러오기 성공.');
+		console.log("라이크 체크 :" + response);
+
+		if (response == 1) {
+			console.log("리스폰 확인 : " + response);
+			// 이미 좋아요한 경우
+			return 1;
+		} else {
+			// 좋아요하지 않은 경우
+			return 0;
+		}
+	} catch (error) {
+		console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
+		return 0; // 에러 발생 시 기본적으로 좋아요하지 않은 것으로 처리
+	}
+}
 
 function updateSearchTag(tags) {
 	// 기존 태그들을 비우고 선택한 태그들을 추가
@@ -253,58 +369,6 @@ function sendTextToServer(text) {
 }
 
 
-function createAudioPlayer(audioSrc) {
-	let $audioPlayer = $('<div class="audio-player"></div>');
-
-	// 오디오 태그 생성
-	let $audio = $('<audio controls></audio>');
-	let $source = $('<source src="' + audioSrc + '" type="audio/mp3">');
-
-
-	// 오디오 태그와 플레이어 UI를 조합하여 플레이어 생성
-	$audio.append($source);
-	$audioPlayer.append($audio);
-
-
-
-
-	return $audioPlayer;
-}
-
-function songLike(song_id, heartElement) {
-	console.log(heartElement);
-
-
-	// session 에 userid 가져와서 "" 이랑 비교해서 있으면 넘어가게 해야댐 
-	if (isLogin == 1) {
-		$.ajax({
-			type: 'GET',
-			url: 'MusicLikeC',
-			data: {
-				song_id: song_id
-			},
-			success: function(response) {
-				console.log('좋아요 정보 갱신 성공.');
-				console.log(response);
-
-
-				// 가져온 음악 정보를 사용하여 페이지를 업데이트
-				if (response == 1) {
-					// 이미 좋아요한 경우
-					$(heartElement).html('♥');
-				} else {
-					// 좋아요하지 않은 경우
-					$(heartElement).html('♡');
-				}
-			},
-			error: function(error) {
-				console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
-			}
-		});
-	} else {
-		alert('로그인 후 이용 가능합니다')
-	}
-}
 
 
 
