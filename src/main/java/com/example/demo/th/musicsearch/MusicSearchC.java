@@ -22,10 +22,11 @@ public class MusicSearchC {
         
     	
     	List<SongsDTO> result = musicSearch_Model.searchMusicByTags(genre, mood, instrument);
+    	
     	for(SongsDTO s : result) {
-    		//s.setPHONenumber = fdfdfs;
+    		s.setUserFullPhoneNumber(musicSearch_Model.getComposerFullPhoneNumber(s.getComposer_name()));
     	}
-    	System.out.println(result);
+    	
     	return result;
     }
 //    @GetMapping("/MusicSearchTag")
