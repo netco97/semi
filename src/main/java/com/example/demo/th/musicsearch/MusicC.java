@@ -1,3 +1,4 @@
+
 package com.example.demo.th.musicsearch;
 
 
@@ -7,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +39,7 @@ public class MusicC {
 	    return modelAndView;
 	}
 
-	@GetMapping("/musicDetail")
+	@PostMapping("/musicDetail")
 	public String musicDetail(@RequestParam("song_id") int song_id,Model model) {
 		
 		List<MusicCommentDTOwithNickName> getComments = new ArrayList<>();
@@ -51,4 +53,7 @@ public class MusicC {
 		
 		return "wk/index";
 	}
+	
+
+	
 }
