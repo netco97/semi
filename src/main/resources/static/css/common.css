@@ -15,7 +15,6 @@ header {
 	padding: 10px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	height: 4em; /* 헤더 높이를 2배로 조절 */
-	/* height: 80; */
 }
 
 a {
@@ -74,7 +73,7 @@ a {
 
 #music-search-container span {
 	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
-	font-size: 14px; /* 텍스트 크기를 작게 조절 */
+	font-size: 12px; /* 텍스트 크기를 작게 조절 */
 	color: white;
 	margin-top: 10px;
 }

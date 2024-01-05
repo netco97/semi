@@ -23,12 +23,12 @@ main {
     justify-content: space-between;
 }
 
-/* section{
+.sectionLeft{
 	width: 350px;
-	padding: 25px;
-} */
+}
 
 .sectionRight{
+	width: 350px;
 	justify-content: center;
 }
 
