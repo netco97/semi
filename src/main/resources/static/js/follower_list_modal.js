@@ -1,5 +1,3 @@
-// follower_list_modal.js
-
 // 모달창 닫기
 function closeFollowerListModal() {
 	$('#followerListModal').hide();

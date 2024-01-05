@@ -30,6 +30,8 @@ public interface MyPageMapper {
 	int deletecomposerid(String myPK);
 
 	int deleteUser(String myPK);
+
+	String getUserImageByPhoneNumber(String phoneNumber);
 	
 
 }

@@ -91,6 +91,14 @@ public class MyPageService {
 			 return "fail";
 		 }
 
+	}
+
+	public String getUserImageByPhoneNumber(String phoneNumber) {
+		
+		 String imageUrl = myPageMapper.getUserImageByPhoneNumber(phoneNumber);
+		
+		
+		return imageUrl;
 	};
 	
 	
