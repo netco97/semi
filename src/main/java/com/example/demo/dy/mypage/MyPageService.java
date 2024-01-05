@@ -44,31 +44,61 @@ public class MyPageService {
 			System.out.println("deletefolloweruserid 성공");
 			
 		}  
+		
+		if (myPageMapper.deletetargetuserid(myPK) >=1) {
+			System.out.println("deletetargetuserid 성공");
+			
+		}  
          
-         myPageMapper.deletetargetuserid(myPK);
+		if (myPageMapper.deleteratingid(myPK) >=1) {
+			System.out.println("deleteratingid 성공");
+			
+		}  
          
-         myPageMapper.deleteratingid(myPK);
+		
+		if (myPageMapper.deleteratingid1(myPK) >=1) {
+			System.out.println("deleteratingid1 성공");
+			
+		}  
      	
-         myPageMapper.deleteratingid1(myPK);
+		if (myPageMapper.deletechatid(myPK) >=1) {
+			System.out.println("deletechatid 성공");
+			
+		}  
      	
-         myPageMapper.deletechatid(myPK);
+		if (myPageMapper.deleteroom1(myPK) >=1) {
+			System.out.println("deleteroom1 성공");
+			
+		}  
+		
+		if (myPageMapper.deleteroom2(myPK) >=1) {
+			System.out.println("deleteroom2 성공");
+			
+		}  
      	
-         myPageMapper.deleteroom1(myPK);
-     	
-         myPageMapper.deleteroom2(myPK);
-         
-         myPageMapper.deletecomposerid(myPK);
+		if (myPageMapper.deletecomposerid(myPK) >=1) {
+			System.out.println("deletecomposerid 성공");
+			
+		}  
 
 		 int deleteResult = myPageMapper.deleteUser(myPK);
 		
-		 if(deleteResult > 0) {
+		 if(deleteResult >= 1) {
 			 
 			return "sucesss";
-			 
-			 
 		 }
-		 return "fail";
+		 else{
+			 return "fail";
+		 }
 
+	}
+
+	public String getUserImageByPhoneNumber(String phoneNumber) {
+		
+		 String imageUrl = myPageMapper.getUserImageByPhoneNumber(phoneNumber);
+		
+		
+		return imageUrl;
 	};
 	
 	

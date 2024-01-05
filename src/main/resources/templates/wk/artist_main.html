@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/artist_main.css">
+<link rel="stylesheet" href="/css/follower_list_modal.css">
 <script th:inline="javascript">
 	const userNickname = `[(${session.userNickname})]`;
 	var currentPage = `[[${currentPage}]]`;
@@ -13,6 +14,14 @@
 </head>
 <body>
 	<main>
+		<div id="followerListModal">
+		<div id="followerListModalContent">
+			<ul id="followerList">
+				<!-- 여기에 동적으로 팔로워 목록이 추가될 예정 -->
+			</ul>
+		</div>
+		<button class="closeModalBtn" onclick="closeFollowerListModal()">닫기</button>
+	</div>
 		<!-- Left Side -->
 		<div class="left-side">
 
@@ -33,7 +42,7 @@
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
 			<div><i class="far fa-smile"></i></div>
-				<div>
+				<div id="showFollowerListBtn">
 					<h2>팔로우 아티스트</h2>
 				내가 좋아하는 아티스트를 보고 싶나요?</div>
 			</div>
@@ -74,5 +83,42 @@
 	        document.getElementById('searchInput').placeholder = '아티스트 키워드 검색';
 	    }
 	</script>
+	<script src="/js/follower_list_modal.js"></script>
+	<script>
+		function openFollowerListModal() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // 모달창에 반환된 HTML을 삽입하고 모달창 열기
+                document.getElementById('followerListModalContent').innerHTML = xhr.responseText;
+                document.getElementById('followerListModal').style.display = 'block';
+            } else {
+                console.error('팔로워 리스트 가져오기 오류:', xhr.status, xhr.statusText);
+            }
+        }
+    };
+
+    xhr.open('GET', '/follow/follower_list', true);
+    xhr.send();
+}
+	// artist_detail.html에서 팔로우 리스트 모달 열기
+		$('#showFollowerListBtn').on('click', function () {
+			// 팔로우 리스트 정보를 가져와서 모달에 표시
+			$.ajax({
+				type: 'GET',
+				url: '/follow/follower_list',
+				success: function (response) {
+					showFollowerListModal(response);
+				},
+				error: function (error) {
+					console.error('팔로워 리스트 가져오기 오류:', error);
+				}
+			});
+		});
+		
+	</script>
+	
 </body>
 </html>
