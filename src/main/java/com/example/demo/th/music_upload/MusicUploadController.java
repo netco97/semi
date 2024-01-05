@@ -83,8 +83,9 @@ public class MusicUploadController {
 	    // DB save
 	    musicUploadService.saveSongs(songsDTO);
 	    
+	    int result_song_id = musicUploadService.getSongId(songsDTO.getSong_name());
 	    
-	    return "redirect:/musicUpload";
+	    return "redirect:/musicDetail?song_id="+result_song_id;
 	}
 	
 }

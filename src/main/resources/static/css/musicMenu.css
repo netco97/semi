@@ -214,6 +214,10 @@
 	flex-direction: column;
 }
 
+.musicListTitle-hover:hover{
+	cursor: pointer;
+}
+
 .musicList-info {
 	display: flex;
 	flex-direction: column;
