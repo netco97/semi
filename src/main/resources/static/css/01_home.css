@@ -12,14 +12,14 @@ header {
     justify-content: space-between;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 2em; /* 헤더 높이를 2배로 조절 */
+
 }
 
 #title {
     color: white;
     margin-left: 20px;
     margin-right: 20px; /* 왼쪽 여백 추가 */
-    font-size: 1.5em; /* 크기를 좀만 키워줌 */
+    font-size: 25px; /* 크기를 좀만 키워줌 */
 }
 
 #music-icon, #user-icon {
