@@ -77,4 +77,9 @@ public class MusicUploadService {
 			System.out.println("songs DB 등록 성공 ");
 		}
 	}
+
+	public int getSongId(String song_name) {
+		return musicUploadMapper.getSongId(song_name);
+		
+	}
 }

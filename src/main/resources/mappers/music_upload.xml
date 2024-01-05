@@ -13,4 +13,7 @@
 	       #{song_audio},
 	       #{song_like})
   </insert>
+  <select id="getSongId" resultType="Integer">
+  	select song_id from songs where song_name = #{song_name}
+  </select>
 </mapper>

@@ -240,7 +240,7 @@ function pagination(jsonArray) {
             <div>
                 <img src=img/${song.song_img} />
             </div>
-            <div>
+            <div class="musicListTitle-hover">
                 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
                 <div onclick="location.href=''">${song.composer_name}</div>

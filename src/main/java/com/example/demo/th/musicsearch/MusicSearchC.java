@@ -22,7 +22,9 @@ public class MusicSearchC {
         
     	
     	List<SongsDTO> result = musicSearch_Model.searchMusicByTags(genre, mood, instrument);
-    	
+    	for(SongsDTO s : result) {
+    		//s.setPHONenumber = fdfdfs;
+    	}
     	System.out.println(result);
     	return result;
     }
