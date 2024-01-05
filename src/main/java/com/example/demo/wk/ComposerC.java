@@ -140,21 +140,15 @@ public class ComposerC {
 			System.out.println("composer test" + composer);
 			composer.setComposer_id(composer_id);
 			
-			// 프로필 사진 저장 및 파일명 설정
-			String fileName = saveProfilePicture(composer.getComposer_profilePicture());
-			composer.setComposer_img(fileName);
-			
-			 // 이미지를 변경했는지 여부 확인
-//	        MultipartFile profilePicture = composer.getComposer_profilePicture();
-//	        if (profilePicture != null && !profilePicture.isEmpty()) {
-//	            // 이미지를 변경한 경우에만 저장하고 파일명 설정
-//	            String newFileName = saveProfilePicture(profilePicture);
-//	            composer.setComposer_img(fileName);
-//	        } else {
-//	            // 이미지를 변경하지 않은 경우 기존 이미지 유지
-//	            ComposerDTO existingComposer = composerService.getComposerById(composer_id);
-//	            composer.setComposer_img(existingComposer.getComposer_img());
-//	        }
+			if (composer.getComposer_profilePicture() == null || composer.getComposer_profilePicture().isEmpty()) {
+			    // 기존 이미지를 가져와서 설정
+			    ComposerDTO existingComposer = composerService.getComposerById(composer_id);
+			    composer.setComposer_img(existingComposer.getComposer_img());
+			} else {
+			    // 이미지를 변경한 경우에만 저장하고 파일명 설정
+			    String newFileName = saveProfilePicture(composer.getComposer_profilePicture());
+			    composer.setComposer_img(newFileName);
+			}
 			
 			// songs table update 로직
 			if(composerService.updateSongs(composer.getComposer_name(), composer_id)>=1) {

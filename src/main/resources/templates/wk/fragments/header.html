@@ -3,65 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-    <header>
-    <a href="/" style="text-decoration: none;"><div id="title">タイトル</div></a>
-    <a id = "musicMenuA" href="musicMenu">
-	    <div id="music-search-container">
-	        <div id="music-icon-container">
-	            <i class="fas fa-music"></i>
-	            <span>음악</span>
-	        </div>
-	        <div class="highlight-bar"></div>
-	    </div>
-	</a>
-
-    <a id= "musicMenuB" href="/artist_main">
-		<div id="music-search-container">
-			<div id="user-icon-container">
-				<i class="far fa-smile"></i>
-				<span>아티스트</span>
-			</div>
-			<div class="highlight-bar"></div>
-		</div>
-	</a>
-    
-    <p th:text="${iscomposer}" style="color:white;"></p>
-    
-    
-    <div th:if="${session.userFullPhoneNumber == null}" id="profile-icon">
-		<a id="simple-login" href="/login">간편 로그인</a>
-		<i class="fas fa-user"></i>
-        <div class="dropdown-content" id="myDropdown">
-            <a href="/login">간편 로그인</a>
-        </div>
-    </div>
-    
-    <div th:if="${session.userFullPhoneNumber != null}" id="profile-icon">
-		<a id="profile-icon-link" href="/chatlist" style="text-decoration: none; color: white; margin-right: 5px;" ><i class="fa-brands fa-rocketchat"></i></a>
-		<a id="profile-icon-link" href="/musicUpload" style="text-decoration: none; color: white;"><i class="fas fa-solid fa-cloud-arrow-up"></i>&nbsp;</a>
-        <i class="fas fa-user"></i>
-        <div class="dropdown-content" id="myDropdown">
-            
-    		<div th:if="${session.iscomposer == 1}" id="profile-icon">
-            	<a href="/mypage">내 프로필</a>
-    		</div>
-    		
-    		<!--여기 마이페이지 분기점 -->
-    		
-    		<div th:if="${session.iscomposer == 0}" id="profile-icon">
-            	<a href="/artist_reg">아티스트 등록</a>
-            	<a href="/mypage">마이 페이지</a>
-    		</div>
-    		
-            <a href="/">팔로우 아티스트</a>
-            <a href="/">음악 보관함</a>
-            <a href="/logout">로그아웃</a>
-        </div>
-    </div>
-    
-</div>
-</header>
+	<header>
+		<section class="header-leftSection">
+				
+				<a id="title" href="/">
+					<div>タイトル</div>
+				</a>
+				
+				<a id="musicMenuA" class="musicMenu" href="/musicMenu">
+					<div id="music-search-container">
+						<div class="icon-container">
+							<i class="fas fa-music"></i> <span>ミュージック</span>
+						</div>
+						<div class="highlight-bar"></div>
+					</div>
+				</a>
+ 
+				<a id="musicMenuB" class="musicMenu" href="/artist_main">
+					<div id="music-search-container">
+						<div class="icon-container">
+							<i class="far fa-smile"></i> <span>アーティスト</span>
+						</div>
+						<div class="highlight-bar"></div>
+					</div>
+				</a>
+			</section>	
+			
+			<section class="header-rightSection">
+			
+				<p th:text="${iscomposer}" style="color: white;"></p>
+				<div th:if="${session.userFullPhoneNumber == null}" id="profile-icon">
+					<a id="simple-login" href="/login">간편 로그인</a> <i class="fas fa-user"></i>
+					<div class="dropdown-content" id="myDropdown">
+						<a href="/login">간편 로그인</a>
+					</div>
+				</div>	
+			
+ 				<div th:if="${session.userFullPhoneNumber != null}" class="user-menu">
+					
+					<a id="musicMenuC" class="musicMenu" href="/chatlist">
+						<div id="music-search-container">
+							<div class="icon-container">
+								<i class="fa-solid fa-message"></i> <span>チャット</span>
+							</div>
+							<div class="highlight-bar"></div>
+						</div>
+					</a>
+					
+ 					<a id="musicMenuD" class="musicMenu" href="/musicUpload">
+						<div id="music-search-container">
+							<div class="icon-container">
+								<i class="fas fa-solid fa-cloud-arrow-up"></i> <span>アップロード</span>
+							</div>
+							<div class="highlight-bar"></div>
+						</div>
+					</a>
+					
+					 <a id="musicMenuE" class="musicMenu">
+						<div id="music-search-container">
+							<div th:if="${session.iscomposer == 1}" class="icon-container" id="profile-icon">
+								<i class="fas fa-user"></i> <span>アカウント</span>
+							</div>
+							<div class="highlight-bar"></div>
+						</div>
+					</a>
+					
+<!-- 				<p th:text="${iscomposer}" style="color: white;"></p>
+				<div th:if="${session.iscomposer == 1}" class="icon-container" id="profile-icon">
+					<a id="simple-login" href="/login"></a> <i class="fas fa-user"></i><span>アカウント</span>
+					<div class="dropdown-content" id="myDropdown">
+						<a href="/login">간편 로그인</a>
+					</div>
+				</div> -->
+					
+					<div class="dropdown-content" id="myDropdown">
+					
+						<div th:if="${session.iscomposer == 1}" id="profile-icon">
+							<a href="/mypage">マイページ</a>
+							<a onclick="redirectToArtistDetail();">アーティストページ</a>
+						</div>
+	
+						<!-- 여기 마이페이지 분기점 -->
+	
+						<div th:if="${session.iscomposer == 0}" id="profile-icon">
+							<a href="/artist_reg">アーティスト登録</a>
+							<a href="/mypage">マイページ</a>
+						</div>
+						<a href="/">フォローアーティスト</a> <a href="/">音楽ライブラリー</a> <a href="/logout">ログアウト</a>
+					</div>
+				</div>
+			</section>
+	</header>
 </body>
 </html>

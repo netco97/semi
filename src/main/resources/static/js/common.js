@@ -25,3 +25,24 @@ window.onclick = function (event) {
         }
     }
 }
+
+function redirectToArtistDetail() {
+		
+		// 폼 동적으로 생성
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/artist_detail');
+
+        // 전화번호 입력 필드 추가
+        var phoneNumberInput = document.createElement('input');
+        phoneNumberInput.setAttribute('type', 'hidden');
+        phoneNumberInput.setAttribute('name', 'userFullPhoneNumber');
+        phoneNumberInput.setAttribute('value', userphone1);
+
+        // 폼에 입력 필드 추가
+        form.appendChild(phoneNumberInput);
+
+        // 폼을 body에 추가하고 서브밋
+        document.body.appendChild(form);
+        form.submit();
+   }

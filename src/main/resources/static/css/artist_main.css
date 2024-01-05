@@ -5,15 +5,14 @@
     필요한 경우 추가 스타일을 넣어주세요
 } */
 
+
+
 #musicMenuB .highlight-bar {
     display: block;
+    width: 100%;
+    transition: width 0.0s ease;
 }
 
-
-body {
-    margin: 0;
-    padding: 0;
-}
 
 main {
     display: flex;
@@ -22,9 +21,9 @@ main {
     overflow: hidden;
 }
 
-a {
+#artist-a {
+	font-size: 14pt;
 	color: white;
-	text-decoration: none;
 }
 
 .left-side {
@@ -37,7 +36,7 @@ a {
 
 .left-side h2 {
 	color: white;
-	font-size: 20pt;
+	font-size: 14pt;
 	margin: 10px;
 }
 
@@ -54,7 +53,17 @@ a {
 .left-box div {
 	color: white;
 }
+/* 
+.icon-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
+.icon-container i {
+    font-size: 26px; 아이콘 크기 조절
+    color: white;
+}
+ */
 .right-side {
 	display: flex;
 	flex-flow: column;
@@ -96,6 +105,7 @@ a {
     border-radius: 15px;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 .artist-details:hover {
@@ -121,6 +131,11 @@ a {
 
 .artist-details-word p{
 	font-size: 10pt;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 표시할 줄 수 */
+    -webkit-box-orient: vertical;
 }
 
 
@@ -138,6 +153,7 @@ a {
 
 /* 아티스트 검색 */
 .search-box {
+	position: relative;
 	width: 30%;
     display: flex;
     align-items: center;
@@ -150,14 +166,16 @@ a {
 
 #searchInput {
     flex: 1;
-    padding: 8px;
+    padding: 9px;
+    padding-left: 35px;
 }
 
 #searchButton {
+	position: absolute;
     padding: 9px 9px;
-    cursor: pointer;
+    cursor: default;
     border-radius: 2px;
-    border: 1px solid #767676;
+    /* border: 1px solid #767676; */
 }
 
 /* #searchButton:hover {

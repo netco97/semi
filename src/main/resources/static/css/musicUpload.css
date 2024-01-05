@@ -1,3 +1,9 @@
+#musicMenuD .highlight-bar {
+    display: block;
+    width: 100%;
+    transition: width 0.0s ease;
+}
+
 form {
 	width: 100vw;
 	display: flex;
@@ -17,16 +23,14 @@ main {
     justify-content: space-between;
 }
 
-section{
+/* section{
 	width: 350px;
 	padding: 25px;
-}
+} */
 
 .sectionRight{
 	justify-content: center;
 }
-
-
 
 .title{
 	width:100%;

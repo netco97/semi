@@ -8,7 +8,6 @@ form {
 main {
     max-width: 800px;
 	padding: 30px;
-    width: 100%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,16 +16,14 @@ main {
     justify-content: space-between;
 }
 
-section{
+/* section{
 	width: 350px;
 	padding: 25px;
-}
+} */
 
 .sectionRight{
 	justify-content: center;
 }
-
-
 
 .title{
 	width:100%;
