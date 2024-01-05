@@ -451,6 +451,10 @@ async function outPutSearch(data) {
 			//                <div class="heart-filled" id="heart-${song.song_id}" onclick="songLike(${song.song_id}, this)">♡</div>
 			//            `);
 			//        }
+			
+			$songContainer.click(() => {
+                location.href = 'musicDetail?song_id=' + song.song_id;
+            });
 
 			// 각 섹션을 노래 컨테이너에 추가
 			$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);

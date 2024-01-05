@@ -4,6 +4,8 @@
 }
 
 .musicMenu-container {
+	display: flex;
+	justify-content: center;
 	position: relative;
 	width: 100vw;
 	height: 100vw;
@@ -11,9 +13,8 @@
 }
 
 .musicMenu-inner {
-	width: 100%;
+	width: 1200px;
 	margin: 0 auto;
-	padding: 20px;
 	background-color: black;
 }
 
@@ -177,7 +178,7 @@
 }
 
 .musicList-inner {
-	width: 60%;
+	width: 100%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -187,7 +188,7 @@
 
 .musicList-menu {
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	align-items: center;
 	background-color: white;
 	color: black;
@@ -201,10 +202,11 @@
 .musicList-title {
 	display: flex;
 	align-items: center;
+	width: 100px;
 }
 
 .musicList-title img {
-	max-width: 50px; /* 이미지의 최대 너비를 조절합니다. 원하는 크기로 조절하세요. */
+	width: 50px; /* 이미지의 최대 너비를 조절합니다. 원하는 크기로 조절하세요. */
 	margin-right: 10px;
 	border-radius: 5px; /* 이미지 테두리 둥글게 설정 */
 }
@@ -239,6 +241,7 @@ audio {
 
 .musicList-title div, .musicList-option div {
 	margin: 5px 0; /* 각 섹션의 요소들 사이의 간격 설정 */
+	width: 100px;
 }
 
 .musicList-option-inner {
