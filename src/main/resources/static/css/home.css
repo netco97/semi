@@ -75,8 +75,6 @@ body {
 	margin-block-start: 1em;
 }
 
-/*  keyboard */
-
 /* ipod playList */
 .ipod-musicList {
 	position: relative;
@@ -147,81 +145,6 @@ body {
 
 .ipod-audio-player {
 	width: 70%;
-}
-
-
-/*  playList */
-.musicList {
-	width: 100%;
-	position: relative;
-	background-color: black;
-	color: white;
-	position: relative;
-}
-
-.musicList-inner {
-	width: 60%;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.musicList-menu {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: white;
-	color: black;
-	padding: 10px;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	width: 100%; /* 노래 컨테이너를 100%로 설정 */
-	box-sizing: border-box; /* padding을 포함한 크기로 설정 */
-}
-
-.musicList-title {
-	display: flex;
-	align-items: center;
-}
-
-.musicList-title img {
-	max-width: 50px; /* 이미지의 최대 너비를 조절합니다. 원하는 크기로 조절하세요. */
-	margin-right: 10px;
-	border-radius: 5px; /* 이미지 테두리 둥글게 설정 */
-}
-
-.musicList-title, .musicList-option {
-	display: contents;
-	flex-direction: column;
-}
-
-.musicList-info {
-	display: flex;
-	flex-direction: column;
-	font-size: 10px;
-}
-
-.musicList-PlaySpace {
-	display: flex;
-	align-items: center;
-}
-
-.audio-player {
-	width: 70%; /* 플레이어를 노래 컨테이너에 꽉 차게 설정 */
-}
-
-audio {
-	width: 100%;
-}
-
-.musicList-title div, .musicList-option div {
-	margin: 5px 0; /* 각 섹션의 요소들 사이의 간격 설정 */
-}
-
-.musicList-option-inner {
-	max-width: 3%;
 }
 
 .ipod-musicList-title div, .musicList-option div {
@@ -398,4 +321,132 @@ audio {
 .swiper {
 	width: 500px;
 	height: 300px;
+}
+
+/* playList */
+.content {
+	display: flex;
+	/* width: 80%; */
+	height: 600px;
+	flex-flow: column;
+	padding: 0 15%;
+	box-sizing: border-box;
+	justify-content: center;
+}
+
+/* 코멘트 영역 */
+.content2 {
+	
+}
+
+.musicDetail-content-music {
+	display: flex;
+	padding: 20px;
+	flex-direction: row;
+	background-color: black;
+	border-radius: 50px;
+}
+
+.musicDetail-items1 {
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; /* 왼쪽 정렬 추가 */
+	width: 80%;
+	padding: 30px;
+	box-sizing: border-box;
+	justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
+}
+
+.musicDetail-title {
+	display: flex;
+	/* align-items: center; */
+	width: 100%;
+}
+
+.musicDetail-title-img img {
+	height: 100%; /* 이미지 높이 100%로 설정 */
+	width: 200px; /* 이미지 너비 자동 조정 */
+	border-radius: 30px;
+}
+
+.musicDetail-title-img {
+	flex: 0 0 auto; /* 이미지 크기 유지 */
+	margin-right: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+}
+
+.musicDetail-title>div {
+	/* display: flex; */
+	width: 23%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.musicDetail-title-title {
+	font-size: 30pt;
+}
+
+.musicDetail-title-composer {
+	font-size: 20pt;
+}
+
+.musicDetail-playSpace {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.audio-player {
+	width: 100%;
+}
+
+audio {
+	width: 100%;
+}
+
+.musicDetail-option {
+	margin-top: 10px;
+	display: flex;
+	align-items: flex-end;
+}
+
+.musicDetail-option-inner {
+	display: flex;
+	flex-direction: row; /* 가로로 정렬 */
+}
+
+.musicDetail-option-inner>div {
+	margin-right: 10px; /* 각 아이템 사이 간격 조절 */
+}
+
+.musicDetail-content-items2 {
+	display: flex;
+	font-size: 24pt;
+	color: white;
+	align-self: center;
+}
+
+.genre-area, .mood-area, .instrument-area {
+	font-size: 16pt;
+}
+
+/* items2의 내용에 대한 스타일 */
+.musicDetail-content-items2>div {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.musicDetail-content-comment {
+	
+}
+
+.musicDetail-content-comment-title {
+	margin-bottom: 10px; /* 여백 추가 */
+}
+
+.heart-filled {
+	font-size: xxx-large;
+	color: red;
 }
