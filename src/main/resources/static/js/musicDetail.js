@@ -208,7 +208,6 @@ function loadMusicDetailPage(songId) {
 
 // 페이지 업데이트 함수
 async function updateMusicDetailPage(song) {
-	console.log('업데이트뮤직디테일페이지')
 
 	// 음악 타이틀 및 작곡가 정보 업데이트
 	$('.musicDetail-title-img').append(`<img src=img/${song[0].song_img}>`)
