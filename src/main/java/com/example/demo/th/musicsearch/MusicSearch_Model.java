@@ -81,5 +81,9 @@ public class MusicSearch_Model {
         return result;
     }
 
+	public String getComposerFullPhoneNumber(String composer_name) {
+		return musicSearchMapper.getComposerFullPhoneNumber(composer_name);
+	}
+
 	
 }

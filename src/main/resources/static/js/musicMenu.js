@@ -240,10 +240,10 @@ function pagination(jsonArray) {
             <div>
                 <img src=img/${song.song_img} />
             </div>
-            <div>
+            <div class="musicListTitle-hover">
                 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
-                <div onclick="location.href=''">${song.composer_name}</div>
+                <div onclick="goToArtistdetail('${song.userFullPhoneNumber}')">${song.composer_name}</div>
             </div>
         `);
 
@@ -297,6 +297,26 @@ function pagination(jsonArray) {
 	})
 
 
+}
+
+function goToArtistdetail(phonenum){
+	// 폼 동적으로 생성
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/artist_detail');
+
+        // 전화번호 입력 필드 추가
+        var phoneNumberInput = document.createElement('input');
+        phoneNumberInput.setAttribute('type', 'hidden');
+        phoneNumberInput.setAttribute('name', 'userFullPhoneNumber');
+        phoneNumberInput.setAttribute('value', phonenum);
+
+        // 폼에 입력 필드 추가
+        form.appendChild(phoneNumberInput);
+
+        // 폼을 body에 추가하고 서브밋
+        document.body.appendChild(form);
+        form.submit();
 }
 //async function outPutSearch(data) {
 //	let $musicList = $('.musicList-inner');

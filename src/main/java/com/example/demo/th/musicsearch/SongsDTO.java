@@ -20,6 +20,7 @@ public class SongsDTO {
 	private String song_img;
 	private String song_audio;
 	private int song_like;
+	private String userFullPhoneNumber;
 
 	@Builder
 	public SongsDTO(String song_name, String genre_id, String instrument_id, String mood_id, String composer_name,
