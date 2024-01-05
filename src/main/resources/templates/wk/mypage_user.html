@@ -6,9 +6,9 @@
 	<title>타이틀 | 마이 페이지</title>
 
 	<link rel="stylesheet" href="css/mypage.css">
-	
+
 	<script th:inline="javascript">
-    var userPhoneNumber = `[(${session.userFullPhoneNumber})]`;
+		var userPhoneNumber = `[(${session.userFullPhoneNumber})]`;
 	</script>
 </head>
 
@@ -21,13 +21,8 @@
 
 		<div class="menu-container-mypage">
 			
-	
-
 			<div class="text-container-mypage">
 
-				
-				
-				
 				<p></p>
 				<div>이름 : <span th:text="${session.userNickname}"></span> </div>
 				<p></p>
@@ -46,8 +41,8 @@
 			</div>
 		</div>
 	</main>
-	
-		<script src="/js/mypage_user.js"></script>
+
+	<script src="/js/mypage_user.js"></script>
 </body>
 
 </html>
