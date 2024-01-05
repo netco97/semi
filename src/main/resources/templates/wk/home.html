@@ -6,6 +6,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <title>Home</title>
 <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
 <script th:inline="javascript">
@@ -87,36 +89,66 @@
 							<div class="ipod-button right">&#9658;</div>
 						</div>
 					</div>
-					<div class="ipod-result">result~</div>
-				</div>
-			</div>
+					<div class="ipod-result">
+						<div class="musicList">
+							<div class="musicList-inner">
+								<div class="musicList-menu">
+									<div class="musicList-title">
+										<div></div>
+										<div>
+											<div></div>
+											<div></div>
+										</div>
+									</div>
+									<div class="musicList-PlaySpace"></div>
+									<div class="musicList-info">
+										<div></div>
+										<div></div>
+									</div>
+									<div class="musicList-option"></div>
+								</div>
+							</div>
+						</div>
 
 
-
-			<div class="artist-slider">
-				<div class="artist-slider-inner">
-					<div class="artist-slider-title">
-						<h1>여러 아티스트들을 만나보세요!!</h1>
 
 					</div>
+					<!-- If we need pagination -->
 
-					<ul class="bxslider">
-						<li th:each="artist : ${artists}"><img
-							th:src="'/images/profile/' + ${artist.composer_img}"
-							th:data-composer-id="${artist.composer_id}" /></li>
-					</ul>
+					<!-- If we need navigation buttons -->
 
+					<!-- If we need scrollbar -->
 				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="artist-slider">
+		<div class="artist-slider-inner">
+			<div class="artist-slider-title">
+				<h1>여러 아티스트들을 만나보세요!!</h1>
+
 			</div>
 
+			<ul class="bxslider">
+				<li th:each="artist : ${artists}"><img
+					th:src="'/images/profile/' + ${artist.composer_img}"
+					th:data-composer-id="${artist.composer_id}" /></li>
+			</ul>
 
 		</div>
 	</div>
+
+
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<!-- 	<script -->
 	<!-- 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
