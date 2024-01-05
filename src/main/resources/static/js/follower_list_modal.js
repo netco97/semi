@@ -19,8 +19,10 @@ function buildFollowerListHTML(followerList) {
 
 	for (var i = 0; i < followerList.length; i++) {
 		html += '<div onclick="gotodetail(' + "" + followerList[i].targetUserId + ');">' +
-		'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
-		'<p>'+'</p>' + followerList[i].composer_name + 
+			'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
+			'&nbsp;' +
+			followerList[i].composer_name +
+			'<p>' + '</p>' +
 			'</div>';
 		console.log(JSON.stringify(followerList[i]))
 	}
