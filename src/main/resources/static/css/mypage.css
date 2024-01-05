@@ -21,7 +21,7 @@ a {
 	margin: 20px 0; /* 위아래 간격 설정 */
 }
 
-.menu-container {
+.menu-container-mypage {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 20px;

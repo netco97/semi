@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +36,7 @@ public class MyPageController {
 		
 		String SK= myPageService.deleteUser(myPK);
 		
-		if(SK.equals("sucess")) {
+		if(SK.equals("sucesss")) {
 			
 			httpsession.invalidate(); 
 			
@@ -50,6 +52,19 @@ public class MyPageController {
 		
 		
 	}
+	
+	
+	@GetMapping("/api/getUserImage")
+	@ResponseBody
+	public String getUserImage(@RequestParam String phoneNumber) {
+	    
+	    String imageUrl = myPageService.getUserImageByPhoneNumber(phoneNumber);
+
+	   
+	    return imageUrl;
+	}
+	
+	
 	
 	
 	

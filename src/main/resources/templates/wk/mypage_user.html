@@ -4,9 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>타이틀 | 마이 페이지</title>
-	<script src="/js/mypage_user.js"></script>
+
 	<link rel="stylesheet" href="css/mypage.css">
+	
+	<script th:inline="javascript">
+    var userPhoneNumber = `[(${session.userFullPhoneNumber})]`;
+	</script>
 </head>
+
 
 <body>
 	<main>
@@ -14,26 +19,35 @@
 			<h1>마이 페이지</h1>
 		</div>
 
-		<div class="menu-container">
+		<div class="menu-container-mypage">
+			
+	
 
-			<p></p>
-			<div>이름 : <span th:text="${session.userNickname}"></span> </div>
-			<p></p>
+			<div class="text-container-mypage">
 
-			<div>이메일 : <span th:text="${session.userEmail}"></span> </div>
-			<p></p>
-			<div>휴대전화 : <span th:text="${session.userFullPhoneNumber}"></span> </div>
+				
+				
+				
+				<p></p>
+				<div>이름 : <span th:text="${session.userNickname}"></span> </div>
+				<p></p>
+
+				<div>이메일 : <span th:text="${session.userEmail}"></span> </div>
+				<p></p>
+				<div>휴대전화 : <span th:text="${session.userFullPhoneNumber}"></span> </div>
 
 
 
-			<p></p>
+				<p></p>
 
-			<div onclick="realout();">
-				회원 탈퇴
+				<div onclick="realout();">
+					회원 탈퇴
+				</div>
 			</div>
-
 		</div>
 	</main>
+	
+		<script src="/js/mypage_user.js"></script>
 </body>
 
 </html>

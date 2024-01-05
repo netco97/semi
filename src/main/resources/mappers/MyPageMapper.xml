@@ -91,6 +91,12 @@
 		DELETE FROM USERTABLE
 		WHERE USERFULLPHONENUMBER = #{myPK}
 	</delete>
+	
+	<select id="getUserImageByPhoneNumber" resultType="java.lang.String">
+    SELECT COMPOSER_IMG
+    FROM COMPOSERS
+    WHERE COMPOSER_ID = #{phoneNumber}
+</select>
 
 
 </mapper>
