@@ -45,10 +45,10 @@ function ipodMusic(data) {
 		// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 		$(".screen-inner-ul").append(`
 			
-			<div class="musicList">
-					<div class="musicList-inner">
-						<div class="musicList-menu">
-							<div class="musicList-title">
+			<div class="ipod-musicList">
+					<div class="ipod-musicList-inner">
+						<div class="ipod-musicList-menu">
+							<div class="ipod-musicList-title">
             	<div>
                	 <img src=img/${song.song_img} />
             	</div>
@@ -58,7 +58,7 @@ function ipodMusic(data) {
                	 <div onclick="location.href=''">${song.composer_name}</div>
             	</div>
             	<div>
-            	<button>▶</button>
+            	 <button onclick="ipodMusicPlayer(${song.song_id})">▶</button>
             	</div>
             	</div>
             	</div>
@@ -67,8 +67,79 @@ function ipodMusic(data) {
   
         `);
 
+
 	};
+
+	// 아이팟 옆 노래 재생구역
+
+
+//	let $musicList = $('.musicList-inner');
+//
+//	// musicList 내용 초기화
+//	$swiperWrapper.empty(); // 이전 내용 초기화
+//
+//	for (const song of data) {
+//		let $musicListSlide = $('<div class="swiper-slide"></div>');
+//		let $musicListContainer = $('<div class="musicList"></div>');
+//
+//		let $songContainer = $('<div class="musicList-menu"></div>');
+//		let $musicListTitle = $('<div class="musicList-title"></div>');
+//		let $musicListPlaySpace = createAudioPlayer(`audio/${song.song_audio}`);
+//		let $musicListInfo = $('<div class="musicList-info"></div>');
+//
+//		$musicListTitle.append(`
+//        <div>
+//            <img src=img/${song.song_img} />
+//        </div>
+//        <div>
+//            <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+//            <div onclick="location.href=''">${song.composer_name}</div>
+//        </div>
+//    `);
+//
+//		$musicListInfo.append(`
+//        <div>${song.mood_id}</div>
+//        <div>${song.genre_id}</div>
+//        <div>${song.instrument_id}</div>
+//    `);
+//
+//		$songContainer.append($musicListTitle, $musicListPlaySpace, $musicListInfo);
+//		$musicListContainer.append($songContainer);
+//		$musicListSlide.append($musicListContainer);
+//		$swiperWrapper.append($musicListSlide);
+//	}
 }
+
+function ipodMusicPlayer(song_id){
+		alert(song_id);
+		$.ajax({
+		type: 'GET',
+		url: 'getMusicDetail', // 실제 서버 엔드포인트 주소로 변경
+		data: {
+			song_id: song_id
+		},
+		success: function(response) {
+			console.log('태그가 성공적으로 전송되었습니다.');
+			console.log(response);
+
+		},
+		error: function(error) {
+			console.error('태그 전송 중 오류가 발생했습니다.');
+		}
+	});
+	
+
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
 
 
 
@@ -254,6 +325,11 @@ $(document).ready(function() {
 		ticker: true,
 		speed: 20000
 	});
+
+
+
 });
+
+
 
 

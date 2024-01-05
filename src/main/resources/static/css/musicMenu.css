@@ -1,6 +1,6 @@
 #musicMenuA .highlight-bar {
-    display: block;
-    width: 100%;
+	display: block;
+	width: 100%;
 }
 
 .musicMenu-container {
@@ -164,20 +164,20 @@
 }
 
 /* musicList */
-
-#data-container{
+#data-container {
 	width: 100%;
-	
 }
+
 .musicList {
-	width: 100%; position : relative;
+	width: 100%;
+	position: relative;
 	background-color: black;
 	color: white;
 	position: relative;
 }
 
 .musicList-inner {
-	width: 100%;
+	width: 60%;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -254,7 +254,7 @@ audio {
 	box-sizing: initial;
 	width: 70%;
 	margin: 0 auto;
-/* 	padding: 20px; */
+	/* 	padding: 20px; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
