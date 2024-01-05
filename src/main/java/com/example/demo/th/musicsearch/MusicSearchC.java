@@ -47,6 +47,9 @@ public class MusicSearchC {
     	
     	List<SongsDTO> result = musicSearch_Model.searchMusicByText(text);
     	
+    	for(SongsDTO s : result) {
+    		s.setUserFullPhoneNumber(musicSearch_Model.getComposerFullPhoneNumber(s.getComposer_name()));
+    	}
     	
     	return result;
     }
