@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>타이틀 | 마이 페이지</title>
 
-<link rel="stylesheet" href="css/mypage.css">
+<head>
+	<meta charset="UTF-8">
+	<title>타이틀 | 마이 페이지</title>
+	<script src="/js/mypage_user.js"></script>
+	<link rel="stylesheet" href="css/mypage.css">
 </head>
+
 <body>
 	<main>
-	    <div class="my-page-title">
-	        <h1>마이 페이지</h1>
-	    </div>
-	    
-		 <div class="menu-container">
-				
-			<span th:text="${session.getAttribute('username')}"></span>
-		
-	        <div class="menu-box">
-				
-	            <a href="#user-info">회원 정보 수정</a>
-	        </div>
-	        <div class="menu-box">
-	            <a href="#purchase-history">음원 구매 내역</a>
-	        </div>
-	        <div class="menu-box">
-	            <a href="#inquiry">1:1 문의</a>
-	        </div>
-	        <div class="">
-	            회원 탈퇴
-	        </div>
-	    </div>
-	</main>    
+		<div class="my-page-title">
+			<h1>마이 페이지</h1>
+		</div>
+
+		<div class="menu-container">
+
+			<p></p>
+			<div>이름 : <span th:text="${session.userNickname}"></span> </div>
+			<p></p>
+
+			<div>이메일 : <span th:text="${session.userEmail}"></span> </div>
+			<p></p>
+			<div>휴대전화 : <span th:text="${session.userFullPhoneNumber}"></span> </div>
+
+
+
+			<p></p>
+
+			<div onclick="realout();">
+				회원 탈퇴
+			</div>
+
+		</div>
+	</main>
 </body>
+
 </html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dy.mypage.MyPageMapper">
+	<delete id="deletecomments" parameterType="java.lang.String">
+		DELETE FROM COMMENTS
+		WHERE COMPOSER_ID = #{myPK}
+
+	</delete>
+
+	<delete id="deletesonglike" parameterType="java.lang.String">
+		DELETE FROM SONG_LIKE
+		WHERE USERFULLPHONENUMBER = #{myPK}
+	</delete>
+
+	<delete id="deletesongcomment" parameterType="java.lang.String">
+		DELETE FROM
+		SONG_COMMENT WHERE USERFULLPHONENUMBER = #{myPK}
+	</delete>
+
+	<delete id="deletesongdouble" parameterType="java.lang.String">
+		DELETE FROM SONGS
+		WHERE COMPOSER_NAME IN
+		(
+		SELECT USERNICKNAME FROM USERTABLE WHERE
+		USERFULLPHONENUMBER = #{myPK}
+		)
+	</delete>
+
+	<delete id="deletefolloweruserid"
+		parameterType="java.lang.String">
+		DELETE FROM FOLLOWTABLE WHERE FOLLOWERUSERID = #{myPK}
+
+	</delete>
+
+	<delete id="deletetargetuserid" parameterType="java.lang.String">
+		DELETE FROM
+		FOLLOWTABLE WHERE TARGETUSERID = #{myPK}
+
+	</delete>
+
+	<delete id="deleteratingid" parameterType="java.lang.String">
+		DELETE FROM RATINGS
+		WHERE COMPOSER_ID = #{myPK}
+
+	</delete>
+
+	<delete id="deleteratingid1" parameterType="java.lang.String">
+		DELETE FROM RATINGS
+		WHERE USERFULLPHONENUMBER = #{myPK}
+
+	</delete>
+
+
+	<delete id="deletechatid" parameterType="java.lang.String">
+		delete from chat where
+		roomid IN (select roomId from createroom where user1
+		IN
+		(select
+		usernickname from usertable where userfullphonenumber = #{myPK})
+		or
+		user2 IN(select usernickname from usertable where userfullphonenumber
+		= #{myPK}))
+
+	</delete>
+
+	<delete id="deleteroom1" parameterType="java.lang.String">
+		delete from createroom
+		where user1 IN (select usernickname from usertable
+		where userfullphonenumber = #{myPK})
+
+	</delete>
+
+
+
+	<delete id="deleteroom2" parameterType="java.lang.String">
+		delete from createroom
+		where user2 IN (select usernickname from usertable
+		where
+		userfullphonenumber = #{myPK})
+	</delete>
+
+
+
+	<delete id="deletecomposerid" parameterType="java.lang.String">
+		DELETE FROM
+		COMPOSERS WHERE Composer_ID =#{myPK}
+
+	</delete>
+
+	<delete id="deleteUser" parameterType="java.lang.String">
+		DELETE FROM USERTABLE
+		WHERE USERFULLPHONENUMBER = #{myPK}
+	</delete>
+
+
+</mapper>
