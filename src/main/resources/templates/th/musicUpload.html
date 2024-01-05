@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/musicUpload.css">
 </head>
 <body>
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
 	    <main>
 	        <h2 class="title">音楽 登録</h2>
 			<section class="sectionLeft">
@@ -23,6 +23,7 @@
 		
 		
 		        <label for="musicGenre">ジャンル</label>
+		        <div class="musicGenreMax">ジャンルは一つだけ選んでください</div>
 		        <select id="musicGenre" name="musicGenre" multiple>
 		            <option value="ポップ">ポップ</option>
 		            <option value="ダンス">ダンス</option>
@@ -43,7 +44,7 @@
 				    <option value="その他">その他</option>
 		        </select>
 		        
-		        <label for="musicInstrument">악기</label>
+		        <label for="musicInstrument">楽器</label>
 		        <select id="musicInstrument" name="musicInstrument" multiple>
 		            <option value="ギター">ギター</option>
 		            <option value="ピアノ">ピアノ</option>
@@ -173,8 +174,8 @@
 
 			</section>
 					<div class="button-box">
-						<button type="submit">등록</button>
-						<button type="button" onclick="cancelRegistration()">취소</button>
+						<button type="submit">登録</button>
+						<button type="button" onclick="cancelRegistration()">キャンセル</button>
 				    </div>
 		</main>
     </form>
@@ -184,6 +185,18 @@
             // 브라우저의 히스토리에서 뒤로가기
             window.history.back();
         }
+        function validateForm() {
+        var selectedGenres = document.getElementById("musicGenre").selectedOptions;
+
+        if (selectedGenres.length > 1) {
+            alert("ジャンルは一つだけ選んでください");
+            return false; // 폼 전송을 막습니다.
+        }
+
+        // 나머지 폼 검증 로직 추가
+
+        return true; // 폼 전송을 허용합니다.
+    }
     </script>
 </body>
 </html>
