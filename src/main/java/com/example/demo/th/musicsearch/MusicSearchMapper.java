@@ -18,6 +18,8 @@ public interface MusicSearchMapper {
 
 	List<SongsDTO> getComposerMusic(String composer_id);
 
+	String getComposerFullPhoneNumber(@Param("composer_name") String composer_name);
+
 
 
 }
