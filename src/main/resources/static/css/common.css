@@ -73,7 +73,7 @@ a {
 
 #music-search-container span {
 	text-decoration: none; /* 하이퍼링크 밑줄 제거 */
-	font-size: 14px; /* 텍스트 크기를 작게 조절 */
+	font-size: 12px; /* 텍스트 크기를 작게 조절 */
 	color: white;
 	margin-top: 10px;
 }

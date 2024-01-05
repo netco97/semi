@@ -239,6 +239,7 @@ audio {
 	background-color: #fff;
 	border-radius: 10px;
 	margin-bottom: 10px;
+	
 }
 
 .screen-inner {
@@ -251,7 +252,7 @@ audio {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%;
+	width: 88%;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 	display: flex;
 }

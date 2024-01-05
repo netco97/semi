@@ -19,7 +19,7 @@ header {
     color: white;
     margin-left: 20px;
     margin-right: 20px; /* 왼쪽 여백 추가 */
-    font-size: 25px; /* 크기를 좀만 키워줌 */
+    font-size: 10px; /* 크기를 좀만 키워줌 */
 }
 
 #music-icon, #user-icon {
