@@ -26,7 +26,7 @@ body {
 
 .musicDetail-content-music {
 	display: flex;
-	padding: 20px;
+	padding: 25px;
 	flex-direction: row;
 	background-color: black;
 	border-radius: 50px;
@@ -38,7 +38,8 @@ body {
 	flex-direction: column;
 	align-items: flex-start; /* 왼쪽 정렬 추가 */
 	width: 80%;
-	padding: 30px;
+	margin: 20px;
+	padding: 10px;
 	box-sizing: border-box;
 	justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
 }
@@ -47,6 +48,7 @@ body {
 	display: flex;
 	/* align-items: center; */
 	width: 100%;
+	margin: 20px;
 }
 
 .musicDetail-title-img img {
@@ -62,7 +64,7 @@ body {
 
 .musicDetail-title>div {
 	/* display: flex; */
-	width: 23%;
+	width: 25%;
 	flex-direction: column;
 	justify-content: center;
 }
@@ -76,7 +78,7 @@ body {
 }
 
 .musicDetail-playSpace {
-	margin-top: 10px;
+	margin-top: 50px;
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
