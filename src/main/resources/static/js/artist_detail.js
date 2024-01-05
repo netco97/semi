@@ -364,37 +364,37 @@ document.addEventListener("DOMContentLoaded", function() {
 //////////////////////////////////////////////////////////////////
 // 아티스트 디테일 음악 리스트 페이징
 
-document.addEventListener("DOMContentLoaded", function() {
-    let currentPage = 1; // 현재 페이지
-    const pageSize = 10; // 페이지당 음악 수
-
-    // 초기 데이터 로드
-    loadMusicList(currentPage);
-
-    // 페이지 번호 클릭 시 이벤트 핸들러
-    $(document).on("click", ".pagination-link", function() {
-        event.preventDefault();
-        currentPage = parseInt($(this).data("page"));
-        loadMusicList(currentPage);
-    });
-
-    // 음악 리스트 로드 함수
-    function loadMusicList(page) {
-        $.ajax({
-            url: '/getComposerMusic?page=' + page + '&size=' + pageSize,
-            type: 'GET',
-            success: function(response) {
-                console.log('음악 리스트 로딩 성공');
-                outPutSearch(response); // 음악 리스트를 표시하는 함수 호출
-                displayPagination(page, Math.ceil(response.length / pageSize));
-            },
-            error: function(error) {
-                console.error('음악 리스트 로딩 중 오류가 발생했습니다.');
-            }
-        });
-    }
-
-});
+//document.addEventListener("DOMContentLoaded", function() {
+//    let currentPage = 1; // 현재 페이지
+//    const pageSize = 10; // 페이지당 음악 수
+//
+//    // 초기 데이터 로드
+//    loadMusicList(currentPage);
+//
+//    // 페이지 번호 클릭 시 이벤트 핸들러
+//    $(document).on("click", ".pagination-link", function() {
+//        event.preventDefault();
+//        currentPage = parseInt($(this).data("page"));
+//        loadMusicList(currentPage);
+//    });
+//
+//    // 음악 리스트 로드 함수
+//    function loadMusicList(page) {
+//        $.ajax({
+//            url: '/getComposerMusic?page=' + page + '&size=' + pageSize,
+//            type: 'GET',
+//            success: function(response) {
+//                console.log('음악 리스트 로딩 성공');
+//                outPutSearch(response); // 음악 리스트를 표시하는 함수 호출
+//                displayPagination(page, Math.ceil(response.length / pageSize));
+//            },
+//            error: function(error) {
+//                console.error('음악 리스트 로딩 중 오류가 발생했습니다.');
+//            }
+//        });
+//    }
+//
+//});
 
 async function outPutSearch(data) {
 	console.log(data);
