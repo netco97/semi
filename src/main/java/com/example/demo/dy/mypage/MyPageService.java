@@ -12,15 +12,38 @@ public class MyPageService {
 	public String deleteUser(String myPK) {
 		System.out.println(myPK);
 		
-		 myPageMapper.deletecomments(myPK);
+		if (myPageMapper.deletecomments(myPK) >=1) {
+			System.out.println("deletecomments 성공");
+			
+		}  
 		 
-         myPageMapper.deletesonglike(myPK);
+		if (myPageMapper.deletesonglike(myPK) >=1) {
+			System.out.println("deletesonglike 성공");
+			
+		}  
+		
+	
+		if (myPageMapper.deletesongcomment(myPK) >=1) {
+			System.out.println("deletesongcomment 성공");
+			
+		}  
          
-         myPageMapper.deletesongcomment(myPK);
          
-         myPageMapper.deletesongdouble(myPK);
+		if (myPageMapper.deletesongdouble(myPK) >=1) {
+			System.out.println("deletesongdouble 성공");
+			
+		}  
+        
+		
+		if (myPageMapper.deletefolloweruserid(myPK) >=1) {
+			System.out.println("deletefolloweruserid 성공");
+			
+		}  
          
-         myPageMapper.deletefolloweruserid(myPK);
+		if (myPageMapper.deletefolloweruserid(myPK) >=1) {
+			System.out.println("deletefolloweruserid 성공");
+			
+		}  
          
          myPageMapper.deletetargetuserid(myPK);
          
