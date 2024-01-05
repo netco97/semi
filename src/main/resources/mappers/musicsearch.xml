@@ -65,5 +65,8 @@
         WHERE composer_name = (SELECT composer_name FROM composers WHERE composer_id
         = #{composer_id})
     </select>
-
+	
+	<select id="getComposerFullPhoneNumber" resultType="String">
+		SELECT userfullphonenumber from usertable where usernickname = #{composer_name}
+	</select>
 </mapper>
