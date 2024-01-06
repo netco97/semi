@@ -12,6 +12,7 @@ function realout() {
     }
 }
 
+
 document.addEventListener("DOMContentLoaded", function () {
     if (userPhoneNumber) {
         var xhr = new XMLHttpRequest();
