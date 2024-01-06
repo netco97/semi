@@ -68,13 +68,15 @@ public class MusicLikeService {
         if (isLike != null) {
         	if(updateLike(isLike)>=1) {
         		System.out.println("LikeTable update 성공");
+        		
         	}
         } else {
             if(insertLike(song_id, userFullPhoneNumber)==1) {
             	System.out.println("LikeTable insert 성공");
+            	
             }
         }
-
+        musicLikeMapper.updateLikeCount(song_id);
     }
 
     private int updateLike(MusicLikeDTO isLike) {
@@ -83,6 +85,7 @@ public class MusicLikeService {
             // 좋아요를 누른적이 있고 눌러져 있을 때 // 1일때
             // 좋아요를 취소해줘야함
             isLike.setIsLike(0);
+            
             return musicLikeMapper.updateLike(isLike.getSong_like_id(), 0);
         } else {
             // 좋아요를 누른적이 있고 지금은 안눌러져 있을 때 // 0 일때
@@ -90,6 +93,7 @@ public class MusicLikeService {
             isLike.setIsLike(0);
             return musicLikeMapper.updateLike(isLike.getSong_like_id(), 1);
         }
+        
         
     }
 

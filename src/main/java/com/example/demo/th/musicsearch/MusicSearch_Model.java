@@ -85,5 +85,15 @@ public class MusicSearch_Model {
 		return musicSearchMapper.getComposerFullPhoneNumber(composer_name);
 	}
 
+	public List<SongsDTO> getHotMusic() {
+		
+		return musicSearchMapper.getHotMusic();
+	}
+
+	public List<SongsDTO> getNewMusic() {
+		
+		return musicSearchMapper.getNewMusic();
+	}
+
 	
 }

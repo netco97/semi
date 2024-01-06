@@ -1,34 +1,50 @@
 
 
+
 let click = {
 	mood: [],
 	instrument: [],
 	genre: []
 };
+// 현재 아이팟 페이지 분기만들기 위한 변수
+let ipodClickCheck = '';
 
 
 // 아이팟 click event
-$(".ipod-item").on("click", function(e) {
+$(".screen-inner").on("click", ".ipod-item", function(e) {
+	e.stopPropagation();
 	// 한번 초기화
 	$(".ipod-item").removeClass("active")
+	//아이팟페이지 분기를 위해 변수 초기화
+	
 	// 클래스를 부여함으로써 스타일 활성화
 
 	// 클릭 한 요소에 따라 분기 나누기
 
 	if ($(this).hasClass('hot')) {
+		getMusicList('hot')
+		ipodClickCheck = '';
 
 
 	} else if ($(this).hasClass('genre')) {
-		updateSearchTag(genre);
+
+		updateSearchTag(genre, 'genre');
+		ipodClickCheck = '';
 
 
 	} else if ($(this).hasClass('newMusic')) {
+		getMusicList('newMusic')
+		ipodClickCheck = '';
+
 
 	} else if ($(this).hasClass('mood')) {
 
+		updateSearchTag(mood, 'mood');
+		ipodClickCheck = '';
+
+
 
 	}
-
 
 })
 
@@ -101,7 +117,7 @@ async function getMusic(song) {
 	$('.musicDetail-content-music').empty();
 
 	$('.musicDetail-content-music').append(`
-		< div class= "musicDetail-items1" >
+		<div class= "musicDetail-items1">
 					<div class="musicDetail-title">
 						<div class="musicDetail-title-img"></div>
 						<div>
@@ -149,12 +165,22 @@ async function getMusic(song) {
 	if (likeCheck == 1) {
 		// 이미 좋아요한 경우
 		$('.musicDetail-option').append(`
-                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♥</div>
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="w-6 h-6">
+  							<path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+						</svg>
+						</div>
                         `);
 	} else {
 		// 좋아요하지 않은 경우
 		$('.musicDetail-option').append(`
-                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">♡</div>
+                        <div class="heart-filled" onclick="songLike(${song[0].song_id})">
+                        	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="w-6 h-6">
+  								<path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+								</svg>
+
+                        
+                        </div>
                         `);
 	}
 
@@ -224,10 +250,23 @@ async function songLike(song_id) {
 			// 가져온 음악 정보를 사용하여 페이지를 업데이트
 			if (response == 1) {
 				// 이미 좋아요한 경우
-				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♥</div>`);
+				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" class="w-6 h-6">
+  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+</svg>
+				
+				
+				
+				</div>`);
 			} else {
 				// 좋아요하지 않은 경우
-				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">♡</div>`);
+				$('.musicDetail-option').append(`<div class="heart-filled" onclick="songLike(${song_id})">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+</svg>
+				
+				
+				</div>`);
 			}
 		} catch (error) {
 			console.error('좋아요 정보를 가져오는 중 오류가 발생했습니다.');
@@ -266,13 +305,15 @@ async function songLikeCheck(song_id) {
 	}
 }
 
-function updateSearchTag(tags) {
+function updateSearchTag(tags, option) {
 	// 기존 태그들을 비우고 선택한 태그들을 추가
 	$(".screen-inner-ul").empty();
-	console.log(tags);
+	console.log('제발1' + tags);
+	console.log('제발2' + option)
+
 	tags.forEach(tag => {
 		console.log(tag);
-		$(".screen-inner-ul").append(`<li class="ipod-item" name='searchTag' id='${tag}' onclick="sendTagsToServer('${tag}')"><span>＋</span>${tag}</li>`);
+		$(".screen-inner-ul").append(`<li class="ipod-item" name='searchTag' id='${tag}' onclick="sendTagsToServer('${tag}','${option}')"><span>＋</span>${tag}</li>`);
 	})
 }
 
@@ -293,27 +334,23 @@ $(document).ready(function() {
 
 });
 
-function sendTagsToServer() {
+function sendTagsToServer(tag, option) {
 	// 선택된 태그들을 배열에 저장
 	let genre = '';
 	let mood = ''; // 선택된 분위기 값을 저장할 배열
 	let instrument = ''; // 선택된 악기 값을 저장할 배열
 
 
-	$('.musicMenu-searchTagInput div').each(function() {
-		const tag = $(this).text();
+	1
+	if (option == 'genre') {
+		genre = tag;
+		console.log('gg111' + genre);
+	} else if (option == 'mood') {
+		mood = tag;
+	}
 
+	ipodClickCheck = option;
 
-		// 여기서 분위기와 악기를 구분하여 배열에 추가
-		if (click.mood.includes(tag)) {
-			mood = tag;
-		} else if (click.instrument.includes(tag)) {
-			instrument = tag;
-		} else if (click.genre.includes(tag)) {
-			genre = tag;
-
-		}
-	});
 
 
 	//센드투서버 각각 펑션에
@@ -359,7 +396,7 @@ function sendTextToServer(text) {
 			console.log('텍스트가 성공적으로 전송되었습니다.');
 			console.log(response);
 			//			let jsonArray = JSON.stringify(response);
-			pagination(response);
+
 		},
 
 		error: function(error) {
@@ -367,6 +404,58 @@ function sendTextToServer(text) {
 		}
 	});
 }
+
+function getMusicList(keyWord) {
+
+	$.ajax({
+		type: 'GET',
+		url: 'GetIpodMusic', // 실제 서버 엔드포인트로 업데이트
+		data: {
+			keyWord: keyWord
+		},
+		traditional: true,
+		success: function(response) {
+			console.log('텍스트가 성공적으로 전송되었습니다.');
+			console.log(response);
+			ipodMusic(response);
+
+		},
+
+		error: function(error) {
+			console.error('텍스트 전송 중 오류가 발생했습니다.');
+		}
+	});
+
+
+
+
+
+}
+// 뒤로가기 버튼
+$("#backBtn").on("click", function() {
+	console.log('bbaa' + ipodClickCheck);
+
+	if (ipodClickCheck == 'mood') {
+
+		updateSearchTag(mood);
+	} else if (ipodClickCheck == 'genre') {
+		updateSearchTag(genre);
+
+	} else {
+		$(".screen-inner-ul").empty();
+		$(".screen-inner-ul").append(`
+									<li class="ipod-item hot">지금 핫한곡!</li>
+									<li class="ipod-item newMusic">최신곡!</li>
+									<li class="ipod-item genre">장르</li>
+									<li class="ipod-item mood">분위기</li>
+		`)
+	}
+	ipodClickCheck = '';
+	
+
+
+
+})
 
 
 

@@ -39,7 +39,7 @@ public class MusicC {
 	    return modelAndView;
 	}
 
-	@PostMapping("/musicDetail")
+	@GetMapping("/musicDetail")
 	public String musicDetail(@RequestParam("song_id") int song_id,Model model) {
 		
 		List<MusicCommentDTOwithNickName> getComments = new ArrayList<>();

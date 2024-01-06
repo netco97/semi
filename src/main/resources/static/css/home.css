@@ -246,6 +246,10 @@ body {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 	display: flex;
 }
+.screen-header svg{
+	width: 20px;
+	height: 20px
+}
 
 .screen-header button {
 	border: none;
@@ -334,17 +338,12 @@ body {
 	justify-content: center;
 }
 
-/* 코멘트 영역 */
-.content2 {
-	
-}
-
 .musicDetail-content-music {
 	display: flex;
-	padding: 20px;
 	flex-direction: row;
 	background-color: black;
 	border-radius: 50px;
+	padding: 6%;
 }
 
 .musicDetail-items1 {
@@ -352,61 +351,55 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start; /* 왼쪽 정렬 추가 */
-	width: 80%;
-	padding: 30px;
 	box-sizing: border-box;
 	justify-content: space-around; /* 위아래 동일한 간격을 위한 설정 */
 }
 
 .musicDetail-title {
 	display: flex;
-	/* align-items: center; */
-	width: 100%;
 }
 
 .musicDetail-title-img img {
-	height: 100%; /* 이미지 높이 100%로 설정 */
-	width: 200px; /* 이미지 너비 자동 조정 */
+	width: 150px; /* 이미지 너비 자동 조정 */
+	height: 150px;
 	border-radius: 30px;
 }
 
 .musicDetail-title-img {
 	flex: 0 0 auto; /* 이미지 크기 유지 */
-	margin-right: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+	margin-right: 10%;
 }
 
 .musicDetail-title>div {
 	/* display: flex; */
-	width: 23%;
 	flex-direction: column;
 	justify-content: center;
 }
 
 .musicDetail-title-title {
-	font-size: 30pt;
+	font-size: 20pt;
+	width: 200px;
 }
 
 .musicDetail-title-composer {
-	font-size: 20pt;
+	font-size: 10pt;
 }
 
 .musicDetail-playSpace {
 	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
 }
 
 .audio-player {
-	width: 100%;
+	
 }
 
 audio {
-	width: 100%;
+	width: 355px;
 }
 
 .musicDetail-option {
-	margin-top: 10px;
 	display: flex;
 	align-items: flex-end;
 }
@@ -422,13 +415,14 @@ audio {
 
 .musicDetail-content-items2 {
 	display: flex;
-	font-size: 24pt;
+	font-size: 10pt;
 	color: white;
 	align-self: center;
+	margin-left: 20%;
 }
 
 .genre-area, .mood-area, .instrument-area {
-	font-size: 16pt;
+	font-size: 8pt;
 }
 
 /* items2의 내용에 대한 스타일 */
@@ -438,15 +432,9 @@ audio {
 	gap: 20px;
 }
 
-.musicDetail-content-comment {
-	
-}
 
-.musicDetail-content-comment-title {
-	margin-bottom: 10px; /* 여백 추가 */
-}
-
-.heart-filled {
-	font-size: xxx-large;
-	color: red;
+.heart-filled svg{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
 }
