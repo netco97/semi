@@ -65,17 +65,18 @@ function ipodMusic(data) {
 					<div class="ipod-musicList-inner">
 						<div class="ipod-musicList-menu">
 							<div class="ipod-musicList-title">
-            	<div>
-               	 <img src=img/${song.song_img} />
-            	</div>
-            	<div>
-               	 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+            					<div class="ipod-musicList-menu-title-left">
+               						 <img src=img/${song.song_img} />
+            					<div    style=" margin-left: 10px">
+               	 				<div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
-               	 <div onclick="location.href=''">${song.composer_name}</div>
-            	</div>
-            	<div>
-            	 <button onclick="ipodMusicPlayer(${song.song_id})">▶</button>
-            	</div>
+               						 <div onclick="location.href=''">${song.composer_name}</div>
+            					</div>
+            					</div>
+            					</div>
+            					<div>
+            						 <button onclick="ipodMusicPlayer(${song.song_id})">▶</button>
+            					</div>
             	</div>
             	</div>
             	</div>
@@ -88,7 +89,6 @@ function ipodMusic(data) {
 }
 
 function ipodMusicPlayer(song_id) {
-	alert(song_id);
 	$.ajax({
 		type: 'GET',
 		url: 'getMusicDetail', // 실제 서버 엔드포인트 주소로 변경
@@ -344,7 +344,6 @@ function sendTagsToServer(tag, option) {
 	1
 	if (option == 'genre') {
 		genre = tag;
-		console.log('gg111' + genre);
 	} else if (option == 'mood') {
 		mood = tag;
 	}
@@ -437,9 +436,9 @@ $("#backBtn").on("click", function() {
 
 	if (ipodClickCheck == 'mood') {
 
-		updateSearchTag(mood);
+		updateSearchTag(mood,'mood');
 	} else if (ipodClickCheck == 'genre') {
-		updateSearchTag(genre);
+		updateSearchTag(genre,'genre');
 
 	} else {
 		$(".screen-inner-ul").empty();

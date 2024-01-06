@@ -32,7 +32,8 @@ body {
 	width: 100%;
 	height: 50vh;
 	text-align: center;
-	background-color: black;
+	/* 	background: url("images/maintop.jpg") no-repeat top center cover; */
+	background: url("/images/maintop.jpg");
 	border-top: 1px solid white;
 }
 
@@ -108,6 +109,13 @@ body {
 	text-align: center;
 	width: 100%;
 }
+.ipod-musicList-menu-title-left{
+	
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 
 .ipod-musicList-menu button {
 	border: none;
@@ -162,6 +170,7 @@ body {
 	width: 100%;
 	justify-content: center;
 	background-color: black;
+	border-bottom: 1px solid white;
 }
 
 .artist-slider-inner {
@@ -176,9 +185,16 @@ body {
 	border: none;
 	background: black;
 	max-width: none !important;
+	margin-bottom: 170px;
 }
 
+.artist-slider-title h1{
+	font-size: 50px
+	
+}
 .artist-slider-title {
+	margin: 100px;
+	font-size: 50px;
 	color: white;
 }
 
@@ -194,9 +210,14 @@ body {
 }
 
 /* ipod */
+.ipod-title {
+	margin-top: 5%;
+	font-size: 50px;
+}
+
 .ipod-body {
 	font-family: 'Arial', sans-serif;
-	display: flex;
+	display: contents;
 	justify-content: center;
 	align-items: center;
 	height: 50vh;
@@ -209,11 +230,13 @@ body {
 	width: 70%;
 	display: flex;
 	align-items: center;
+	margin-top: 80px;
+	margin-bottom: 150px;
 }
 
 .ipod {
 	width: 23%;
-	height: 400px;
+	height: 500px;
 	background-color: #000;
 	border-radius: 20px;
 	display: flex;
@@ -246,7 +269,8 @@ body {
 	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 	display: flex;
 }
-.screen-header svg{
+
+.screen-header svg {
 	width: 20px;
 	height: 20px
 }
@@ -432,8 +456,7 @@ audio {
 	gap: 20px;
 }
 
-
-.heart-filled svg{
+.heart-filled svg {
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
