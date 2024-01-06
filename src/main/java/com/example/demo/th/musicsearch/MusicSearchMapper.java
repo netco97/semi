@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface MusicSearchMapper {
 
+
 	List<SongsDTO> searchTag(@Param("genreArray") String[] genreArray, @Param("moodArray") String[] moodArray,
 			@Param("instrumentArray") String[] instrumentArray);
 
@@ -20,6 +21,9 @@ public interface MusicSearchMapper {
 
 	String getComposerFullPhoneNumber(@Param("composer_name") String composer_name);
 
+	List<SongsDTO> getHotMusic();
+
+	List<SongsDTO> getNewMusic();
 
 
 }

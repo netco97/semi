@@ -44,10 +44,12 @@
 		SELECT * FROM songs
 		WHERE
 		song_name LIKE '%' || #{text} || '%'
-		OR genre_id LIKE '%' || #{text} || '%'
+		OR genre_id LIKE '%' || #{text} ||
+		'%'
 		OR instrument_id LIKE '%' ||
 		#{text} || '%'
-		OR mood_id LIKE '%' || #{text} || '%'
+		OR mood_id LIKE '%' ||
+		#{text} || '%'
 		OR composer_name
 		LIKE '%' || #{text} || '%'
 	</select>
@@ -58,15 +60,34 @@
 		song_id = #{song_id}
 	</select>
 
-	
+
 	<select id="getComposerMusic" resultType="SongsDTO">
-        SELECT *
-        FROM songs
-        WHERE composer_name = (SELECT composer_name FROM composers WHERE composer_id
-        = #{composer_id})
-    </select>
-	
+		SELECT *
+		FROM songs
+		WHERE composer_name = (SELECT composer_name FROM composers WHERE
+		composer_id
+		= #{composer_id})
+	</select>
+
 	<select id="getComposerFullPhoneNumber" resultType="String">
-		SELECT userfullphonenumber from usertable where usernickname = #{composer_name}
+		SELECT
+		userfullphonenumber from usertable where usernickname =
+		#{composer_name}
+	</select>
+
+	<select id="getHotMusic" resultType="SongsDTO">
+		SELECT *
+		FROM songs
+		ORDER BY
+		song_like DESC
+		FETCH FIRST 10 ROWS ONLY
+
+	</select>
+	<select id="getNewMusic" resultType="SongsDTO">
+		SELECT *
+		FROM songs
+		ORDER BY song_id DESC
+		FETCH FIRST 10 ROWS ONLY
+
 	</select>
 </mapper>

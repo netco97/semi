@@ -15,6 +15,8 @@ public interface MusicLikeMapper {
 
 	int updateLike(@Param("song_like_id") int song_like_id,@Param("isLike") int isLike);
 
+	void updateLikeCount(int song_id);
+
 		
 		
 	

@@ -132,10 +132,13 @@ audio {
 	margin-bottom: 10px; /* 여백 추가 */
 }
 
-.heart-filled {
-	width: 50px;
-	font-size: xxx-large;
-	color: red;
+
+
+
+.heart-filled svg{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
 }
 
 .musicDetail-content-comment-input, .musicDetail-content-comment-comment

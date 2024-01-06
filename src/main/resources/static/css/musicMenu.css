@@ -159,9 +159,15 @@
 	display: block; /* hidden 클래스가 없을 때 요소를 표시 */
 }
 
-.heart-filled {
-	font-size: x-large;
-	color: red;
+
+.heart-filled{
+	
+	margin-left: 5px;
+}
+.heart-filled svg{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
 }
 
 /* musicList */

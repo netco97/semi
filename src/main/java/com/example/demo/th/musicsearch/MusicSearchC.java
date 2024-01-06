@@ -1,5 +1,6 @@
 package com.example.demo.th.musicsearch;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +77,26 @@ public class MusicSearchC {
         return result;
 
     }
+    
+    @GetMapping("/GetIpodMusic")
+    public List<SongsDTO> GetIpodMusic(@RequestParam("keyWord") String keyWord){
+		
+    	List<SongsDTO> result = new ArrayList<>();
+    	
+    	if(keyWord.equals("hot")) {
+    		result = musicSearch_Model.getHotMusic();
+    		
+    		
+    	}else {
+    		result = musicSearch_Model.getNewMusic();
+    		
+    	}
+    	
+    	
+    	return result;
+    	
+    }
+    
     
     
     
