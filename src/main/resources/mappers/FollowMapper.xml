@@ -44,4 +44,31 @@
     WHERE ROWNUM &lt;= #{end}
 </select>
 
+
+
+
+<select id="selectComposerIdByName" resultType="java.lang.String" parameterType="java.lang.String">
+    SELECT COMPOSER_ID FROM COMPOSERS WHERE COMPOSER_NAME = #{COMPOSER_NAME}
+</select>
+
+
+
+<select id="getHisId" resultType="com.example.demo.dy.follow.FollowDTO">
+    SELECT * FROM FOLLOWTABLE WHERE targetUserId = #{composerId}
+</select>
+
+<select id="getFollowerListWithInfo2" resultType="com.example.demo.dy.follow.FollowDTO">
+    SELECT f.*, c.COMPOSER_NAME, c.COMPOSER_IMG, ROWNUM AS rnum
+    FROM (
+        SELECT *
+        FROM FOLLOWTABLE f
+        WHERE f.targetUserId = #{composerId}
+        ORDER BY f.created_at DESC
+    ) f
+    JOIN COMPOSERS c ON f.followerUserId = c.COMPOSER_ID
+    WHERE ROWNUM &lt;= #{end}
+</select>
+
+
+
 </mapper>

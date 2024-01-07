@@ -60,6 +60,30 @@ public class FollowController {
 	}
 	
 	
+	@GetMapping("/follower_list_others")
+	public List<FollowDTO> showFollowerList(@RequestParam String followerId){
+		
+		 System.out.println("받았어요 타겟Id: " + followerId);
+		 
+		String composerId  = followService.selectComposerIdByName(followerId);
+		System.out.println(composerId);
+		 
+		
+		 int start =1 ;
+		 int end = 10;
+		 List<FollowDTO> followerList = followService.getFollowerListWithInfo2(composerId, start, end);
+		 
+		 
+		 
+		 
+		
+		
+		return followerList;
+		
+		
+	}
+	
+	
 	
 		
 }

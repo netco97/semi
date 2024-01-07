@@ -50,4 +50,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 	        return followMapper.getFollowerListWithInfo(userId, start, end);
 	    }
 	    
+	    public List<FollowDTO> getHisId(String userId) {
+	        return followMapper.getHisId(userId);
+	    }
+
+	    public String selectComposerIdByName(String followerId) {
+	    	return followMapper.selectComposerIdByName(followerId);
+	    	
+	    }
+
+		public List<FollowDTO> getFollowerListWithInfo2(String composerId, int start, int end) {
+			return followMapper.getFollowerListWithInfo2(composerId, start, end);
+		}
+	    
 	}

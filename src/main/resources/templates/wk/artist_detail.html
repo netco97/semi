@@ -175,11 +175,13 @@
 				}
 			});
 		});
+		
+		
 		$('#followerlistInfo').on('click', function () {
 			
 			$.ajax({
 				type: 'GET',
-				url: '/follow/follower_list_others',
+				url: '/follow/follower_list_others?followerId='+ followerId,
 				success: function (response) {
 					showFollowerListModal(response);
 				},
