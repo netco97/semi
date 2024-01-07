@@ -18,6 +18,7 @@ function useDefaultProfile() {
 	document.getElementById("file").value = "";
 	// 선택적: 기본 이미지가 사용 중임을 나타내는 숨겨진 입력 필드를 업데이트
 	// document.getElementById("useDefaultProfileFlag").value = "true";
+	document.getElementById("artistForm").delete('composer_profilePicture');
 }
 
 function submitForm() {
