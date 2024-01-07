@@ -36,19 +36,72 @@ document.addEventListener("DOMContentLoaded", function() {
 		displayArtists(artistList);
 		displayPagination(currentPage, totalPages);
 	}
+	
+	function formatGenre(genres) {
+    if (!genres || genres.length === 0) {
+        return "Unknown";
+    }
+    
+    const individualGenres = genres.split(',');
+
+    const formattedGenres = individualGenres.map(genre => {
+        switch (genre.trim()) {
+            case "pop":
+                return "ポップ";
+            case "dance":
+                return "ダンス";
+            case "electronic":
+                return "エレクトロニック";
+            case "hiphop":
+            	return "ヒップホップ";
+            case "rnb":
+            	return "R&B";
+            case "classic":
+            	return "クラシック";
+            case "newage":
+            	return "ニューエイジ";
+            case "rock":
+            	return "ロック";
+            case "ballad":
+            	return "バラード";
+            case "indie":
+            	return "インディ";
+            case "jazz_swing":
+            	return "ジャズ／スウィング";
+            case "latin":
+            	return "ラテン";
+            case "korean":
+            	return "伝統音楽";
+            case "world":
+            	return "ワールドミュージック";
+            case "ambient":
+            	return "アンビエント";
+            case "trot":
+            	return "演歌";
+            case "etc":
+            	return "その他";
+            // ... 다른 장르들에 대한 처리 ...
+            default:
+                return genre.trim(); // 기본적으로는 변환하지 않고 원래 값 사용
+        }
+    });
+
+    return formattedGenres.join(", ");
+}
 
 	function displayArtists(artists) {
 		const artistsContainer = $("#artists-container");
 		artistsContainer.empty();
 
 		artists.forEach(artist => {
+			const formattedGenre = formatGenre(artist.composer_genre);
 			const artistHtml = `
                 <div class="artist-container">
                     <div class="artist-details" data-composer-id="${artist.composer_id}">
                         <img src="/images/profile/${artist.composer_img}">
                         <div class="artist-details-word">
                             <h3>${artist.composer_name}</h3>
-                            <p>${artist.composer_genre}</p>
+                            <p>${formattedGenre}</p>
                             <p>${artist.composer_text}</p>
                         </div>
                     </div>
