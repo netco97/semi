@@ -39,35 +39,81 @@ document.addEventListener("DOMContentLoaded", function() {
 		//const composerId = targetUserId1;
 		console.log("나: " + userFullNumber);
 		console.log("상대: " + composerId);
-		$.ajax({
-			type: "GET",
-			url: "/ratings/getRatingByUserAndComposer",
-			data: {
-				userfullphonenumber: userFullNumber,
-				composer_id: composerId
-			},
-			success: function(result) {
-				console.log(result);
-				const ratingValue = result;
-				console.log(result);
-				displayRating(ratingValue);
-			},
-			error: function(error) {
-				console.error("별점 조회 중 오류", error);
-			}
-		});
+		
+		if (userFullNumber == composerId) {
+	        // 아티스트의 평균 별점을 가져오는 로직
+			$.ajax({
+				type: "GET",
+				url: "/ratings/average-rating/" + composerId,
+				success: function(result) {
+					console.log(result);
+	                disableRatingInsert();
+	                displayAverageRating(result);
+	                displayStarsByRating(result);
+				},
+				error: function(error) {
+					console.log(error);
+					disableRatingInsert();
+					console.error("별점 조회 중 오류", error);
+				}
+			});
+		} else {
+			$.ajax({
+            type: "GET",
+            url: "/ratings/getRatingByUserAndComposer",
+            data: {
+                userfullphonenumber: userFullNumber,
+                composer_id: composerId
+            },
+            success: function (result) {
+                const userRating = result;
+                displayUserRating(userRating);
+            },
+            error: function (error) {
+                console.error("별점 조회 중 오류", error);
+            }
+        });
 	}
-
+}
 	// 별점 표시 함수
-	function displayRating(rating) {
-		const stars = document.querySelectorAll('.star');
-		const ratingValue = document.getElementById('rating-value');
+//	function displayRating(rating) {
+//		const stars = document.querySelectorAll('.star');
+//		const ratingValue = document.getElementById('rating-value');
+//
+//		ratingValue.innerText = `평가: ${rating}점`;
+//		removeActiveStars();
+//		setActiveStars(rating);
+//	}
 
-		ratingValue.innerText = `평가: ${rating}점`;
-		removeActiveStars();
-		setActiveStars(rating);
+	function displayAverageRating(averageRating) {
+	    const ratingValue = document.getElementById('rating-value');
+	    ratingValue.innerText = `평균 평가: ${averageRating.toFixed(2)}점`;
 	}
-
+	
+	// 별점 삽입 기능 비활성화
+	function disableRatingInsert() {
+	    const stars = document.querySelectorAll('.star');
+	    stars.forEach(star => {
+	        star.style.pointerEvents = 'none'; // 클릭 이벤트 비활성화
+	        star.style.cursor = 'not-allowed'; // 커서 변경
+	    });
+	}
+	
+	// 유저가 아티스트에 대한 평점을 표시하는 함수
+	function displayUserRating(userRating) {
+	    const ratingValue = document.getElementById('rating-value');
+	    ratingValue.innerText = `내 평점: ${userRating}점`;
+	    removeActiveStars();
+		setActiveStars(userRating);
+	}
+	
+	// 별점에 따라 별표 표시 함수
+	function displayStarsByRating(rating) {
+	    const starRating = Math.round(rating); // 별점 반올림
+	    removeActiveStars();
+	    setActiveStars(starRating);
+	}
+	
 	const stars = document.querySelectorAll('.star');
 	const ratingValue = document.getElementById('rating-value');
 
@@ -75,15 +121,18 @@ document.addEventListener("DOMContentLoaded", function() {
 		star.addEventListener('click', () => {
 			const value = parseInt(star.getAttribute('data-value'));
 			console.log(value);
+			console.log(ratingValue);
 			
-			if (value === ratingValue) {
+			if (value === parseInt(ratingValue.innerText.replace(/\D/g, '')) || 0) {
+				console.log('삭제 성공')
 				deleteRatingOnServer();
 			} else {
+				console.log('추가 성공')
 				ratingValue.innerText = `평가: ${value}점`;
 				removeActiveStars();
 				setActiveStars(value);
-			// 서버로 별점 전송
-			submitRatingToServer(value);
+				// 서버로 별점 전송
+				submitRatingToServer(value);
 			}
 		});
 
@@ -94,7 +143,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 
 		star.addEventListener('mouseout', () => {
+			const userRating = parseInt(ratingValue.innerText.replace(/\D/g, '')) || 0;
 			removeActiveStars();
+			setActiveStars(userRating);
 		});
 	});
 
@@ -132,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function() {
 				console.log(rating);
 
 				console.log("평가가 성공적으로 제출되었습니다. RatingID: " + createdRatingID);
-				displayRating(rating);
 			},
 			error: function(error) {
 				console.error("평가 제출 중 오류", error);
@@ -157,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	        }),
 	        success: function(result) {
 	            console.log("별점이 성공적으로 삭제되었습니다.");
-	            displayRating(undefined); // 또는 원하는 초기 상태로 설정
+	            displayUserRating(undefined); // 또는 원하는 초기 상태로 설정
 	        },
 	        error: function(error) {
 	            console.error("별점 삭제 중 오류", error);

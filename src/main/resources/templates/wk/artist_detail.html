@@ -57,7 +57,10 @@
 									class="star" data-value="4">&#9733;</span>
 								<span class="star" data-value="5">&#9733;</span>
 							</div>
-							<p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
+							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらった貴方の平均点数は？</p>
+							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストに対するあなたの星占いは？</p>
+
+							<input id="rating-value" type="hidden">
 						</div>
 
 						<div class="artist-profile-funtion">
@@ -69,18 +72,18 @@
 								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
 								>내 프로필 수정</button> -->
 							<button th:if="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="updateProfile()">내 프로필 수정</button>
+								onclick="updateProfile()">プロフィール修正</button>
 							<button id="showFollowerListBtn"
-								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
+								th:if="${session.userFullPhoneNumber == composer.composer_id}">フォロワーを見る</button>
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
 							<button id="followBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="toggleFollow()">팔로우</button>
+								onclick="toggleFollow()">フォロー</button>
 							<button id="messageBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="createChatroom()">1:1채팅</button>
+								onclick="createChatroom()">このアーティストとチャット</button>
 							<button id="followerlistInfo"
 								th:unless="${session.userFullPhoneNumber == composer.composer_id}">
-								팔로워 보기</button>
+								フォロワーを見る</button>
 
 						</div>
 					</div>
@@ -88,15 +91,15 @@
 
 				<div class="artist-profile-text">
 					<div class="artist-profile-text-name">
-						<h2>아티스트 명</h2>
+						<h2>アーティスト名</h2>
 						<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
 					</div>
 					<div class="artist-profile-text-genre">
-						<h2>주 장르</h2>
+						<h2>主にするジャンル</h2>
 						<div th:text="${composer.formattedGenre}">주 장르</div>
 					</div>
 					<div class="artist-profile-text-introduce">
-						<h2>자기소개</h2>
+						<h2>自己紹介</h2>
 						<div th:text="${composer.composer_text}">자기 소개</div>
 					</div>
 				</div>

@@ -37,7 +37,7 @@ public class ArtistRatingC {
             System.out.println("새로운 평가 추가: " + ratingDTO);
         }
     }
-
+    
     @GetMapping("/average-rating/{composer_id}")
     public double getAverageRating(@PathVariable String composer_id) {
         return artistRatingService.getAverageRating(composer_id);

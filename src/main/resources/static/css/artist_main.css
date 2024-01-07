@@ -154,7 +154,7 @@ main {
 /* 아티스트 검색 */
 .search-box {
 	position: relative;
-	width: 30%;
+	width: 200px;
     display: flex;
     align-items: center;
 }

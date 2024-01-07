@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		if (currentPage > 1) {
 			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage - 1) + '">이전</a>');
 		} else {
-			paginationContainer.append('<span class="pagination-link disabled">이전</span>');
+			paginationContainer.append('<span class="pagination-link disabled">前へ</span>');
 		}
 
 		for (var i = startPage; i <= endPage; i++) {
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		if (currentPage < totalPages) {
 			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">다음</a>');
 		} else {
-			paginationContainer.append('<span class="pagination-link disabled">다음</span>');
+			paginationContainer.append('<span class="pagination-link disabled">後へ</span>');
 		}
 	}
 
