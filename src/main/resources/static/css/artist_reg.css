@@ -16,9 +16,13 @@ main {
 	justify-content: center;
 }
 
-section {
+.sectionLeft{
 	width: 350px;
-	padding: 20px;
+}
+
+.sectionRight{
+	width: 350px;
+	justify-content: center;
 }
 
 .title {
