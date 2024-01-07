@@ -13,7 +13,7 @@
 		<main>
         <h2 class="title">アーティストプロフィールの修正</h2>
         
-        <section>
+        <section class="sectionLeft">
         <div class="profileTitle">プロフィール写真</div>
             <div id="ProfileContainer">
         	<!-- <img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}"> -->
@@ -28,7 +28,7 @@
         	  <div class="btn-useDefault" onclick="useDefaultProfile()">基本プロフィール写真を使用</div>
         	  </div>
        	</section>
-        <section>
+        <section class="sectionRight">
 	       <div class="profileTitle">アーティスト名</div>
 	        <input type="text" name="composer_name" maxlength="10" th:value="${composer.composer_name}">
 	        <div class="profileTitle">主にするジャンル</div>
