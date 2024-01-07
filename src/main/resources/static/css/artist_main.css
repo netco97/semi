@@ -134,7 +134,7 @@ main {
 	overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 표시할 줄 수 */
+    -webkit-line-clamp: 2; /* 표시할 줄 수 */
     -webkit-box-orient: vertical;
 }
 
