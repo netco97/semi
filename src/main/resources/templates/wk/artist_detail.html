@@ -28,7 +28,7 @@
 			<span class="close" onclick="closeModal()">&times;</span>
 			<div id="websocketResult"></div>
 			<div id="messageArea" class="message-area"></div>
-			<input type="text" id="chatInput" placeholder="메세지를 입력해주세요."><br>
+			<input type="text" id="chatInput" placeholder="メッセージを入力してください。"><br>
 			<button onclick="sendMessage()">Send</button>
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 
 			</ul>
 		</div>
-		<button class="closeModalBtn" onclick="closeFollowerListModal()">닫기</button>
+		<button class="closeModalBtn" onclick="closeFollowerListModal()">閉じる</button>
 	</div>
 
 	<main>
@@ -57,8 +57,8 @@
 									class="star" data-value="4">&#9733;</span>
 								<span class="star" data-value="5">&#9733;</span>
 							</div>
-							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらった貴方の平均点数は？</p>
-							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストに対するあなたの星占いは？</p>
+							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらった貴方の平均点</p>
+							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストに対する貴方の点数は？</p>
 
 							<input id="rating-value" type="hidden">
 						</div>
@@ -106,7 +106,7 @@
 
 				<article class="music-article">
 					<div class="musicList">
-						<div class="musicList-id-title" th:text="${composer.composer_name + '의 음악 리스트'}"></div>
+						<div class="musicList-id-title" th:text="${composer.composer_name + 'のソングズ'}"></div>
 						<div class="musicList-inner">
 							<div class="musicList-menu">
 								<div class="musicList-title">
@@ -133,15 +133,14 @@
 		<section id="commentTitle" class="comment-container">
 			<div class="comment-container-inner" id="commentContainer">
 				<div style="width: 100%;">
-					<h2>코멘트</h2>
+					<h2>コメント</h2>
 				</div>
 
 				<!-- 코멘트 입력란 -->
 				<div class="commentInputBox">
-					<div th:text="${session.userNickname}" style="align-self: center;">닉네임</div>
-					<textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">코멘트
-						작성</button>
+					<div th:text="${session.userNickname}" style="align-self: center;">ニックネーム</div>
+					<textarea id="commentInput" placeholder="このアーティストへの応援メッセージを残してください！"></textarea>
+					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">コメント作成</button>
 				</div>
 
 				<!-- 댓글 목록을 표시할 영역 -->

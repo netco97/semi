@@ -25,7 +25,7 @@
 }
 
 .artist-profile img {
-	max-height: 350px;
+	max-height: 300px;
 	max-width: 200px;
     border-radius: 5%;
 }
@@ -324,7 +324,7 @@
 .musicList-menu {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #f1f3f4;
     color: black;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -368,10 +368,11 @@
 }
 
 .audio-player {
-	background-color: white;
+	background-color: #f1f3f4;
 }
 
 audio{
+	background-color: #f1f3f4;
 	height: 40px;
 	width: 250px;
 }

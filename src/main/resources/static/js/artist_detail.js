@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			$.each(comments, function(index, comment) {
 				var deleteButton = '';
 				if (comment.userNickname === userNickname) {
-					deleteButton = '<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>';
+					deleteButton = '<div class="delete-btn" data-comment-id="' + comment.comment_id + '">削除</div>';
 				}
 
 				commentsContainer.append(
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		// 코멘트 삭제 버튼 클릭 시 이벤트
 		$("#comments-container").on("click", ".delete-btn", function() {
-			const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
+			const isConfirmed = confirm("コメントを削除しますか？");
 
 			if (isConfirmed) {
 				// 클릭된 버튼의 부모 요소에서 comment_id를 가져옴
@@ -454,7 +454,7 @@ async function outPutSearch(data) {
 	$musicList.empty();
 
 	if (data.length === 0) {
-		$musicList.append('<div class="no-music-message">등록된 음악이 없습니다.</div>');
+		$musicList.append('<div class="no-music-message">登録されたソングスがありません。</div>');
 	} else {
 		// 데이터의 각 노래에 대해 반복
 		for (const song of data) {
