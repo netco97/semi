@@ -16,7 +16,7 @@ function buildFollowerListHTML(followerList) {
 	console.log(followerList)
 
 	for (var i = 0; i < followerList.length; i++) {
-		html += '<div onclick="gotodetail(' + "" + followerList[i].targetUserId + ');">' +
+		html += '<div class="otherfollower" onclick="gotodetail(' + "" + followerList[i].targetUserId + ');">' +
 			'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
 			'&nbsp;' +
 			followerList[i].composer_name +

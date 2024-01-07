@@ -40,6 +40,16 @@
 		</div>
 		<button class="closeModalBtn" onclick="closeFollowerListModal()">閉じる</button>
 	</div>
+	<div id="followerListModal2">
+		<div id="followerListModalContent2">
+			<ul id="followerList2">
+
+			</ul>
+		</div>
+		<button class="closeModalBtn2" onclick="closeFollowerListModal2()">닫기</button>
+	</div>
+
+	
 
 	<main>
 		<section class="artist-section">
@@ -162,6 +172,7 @@
 	<script type="text/javascript" src="/js/follow.js"></script>
 	<script src="/js/follower_list_modal.js"></script>
 	<link rel="stylesheet" href="/css/follower_list_modal.css">
+	<script type="text/javascript" src="/js/follower_others_list_maodal.js"></script>
 	<script>
 		// artist_detail.html에서 팔로우 리스트 모달 열기
 		$('#showFollowerListBtn').on('click', function () {
@@ -185,13 +196,58 @@
 				type: 'GET',
 				url: '/follow/follower_list_others?followerId='+ followerId,
 				success: function (response) {
-					showFollowerListModal(response);
+					showFollowerListModal2(response);
 				},
 				error: function (error) {
 					console.error('팔로워 리스트 가져오기 오류:', error);
 				}
 			});
 		});
+		function showFollowerListModal2(followerList) {
+	$('#followerListModalContent2').html(buildFollowerListHTML2(followerList));
+	$('#followerListModal2').show();
+}
+function closeFollowerListModal2() {
+	$('#followerListModal2').hide();
+}
+function buildFollowerListHTML2(followerList) {
+	var html = '<ul>';
+
+	console.log(followerList)
+
+	for (var i = 0; i < followerList.length; i++) {
+		html += '<div class="otherfollower" onclick="gotodetail2(' + "" + followerList[i].followerUserId + ');">' +
+			'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
+			'&nbsp;' +
+			followerList[i].composer_name +
+			'<p>' + '</p>' +
+			'</div>';
+		console.log(JSON.stringify(followerList[i]))
+	}
+	html += '</ul>';
+	return html;
+}
+
+function gotodetail2(phone_follower) {
+
+	console.log(phone_follower)
+
+	const detailPageUrl = "/artist_detail";
+
+	const form = $('<form>', {
+		'action': detailPageUrl,
+		'method': 'post',
+		'style': 'display:none;'
+	});
+
+	$('<input>').attr({
+		'type': 'hidden',
+		'name': 'userFullPhoneNumber',
+		'value': "0" + phone_follower
+	}).appendTo(form);
+
+	form.appendTo('body').submit();
+}
 		
 	</script>
 </body>
