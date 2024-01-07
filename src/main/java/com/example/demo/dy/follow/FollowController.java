@@ -61,7 +61,7 @@ public class FollowController {
 	
 	
 	@GetMapping("/follower_list_others")
-	public List<FollowDTO> showFollowerList(@RequestParam String followerId){
+	public List<FollowDTO> showFollowerList2(@RequestParam String followerId){
 		
 		 System.out.println("받았어요 타겟Id: " + followerId);
 		 
