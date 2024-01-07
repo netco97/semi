@@ -25,7 +25,7 @@
 }
 
 .artist-profile img {
-	max-height: 350px;
+	max-height: 300px;
 	max-width: 200px;
     border-radius: 5%;
 }
@@ -38,21 +38,6 @@
     border-radius: 8px;
 }
 
-.artist-profile-text-name {
-    display: flex;
-    flex-direction: column;
-    height: 20%;
-}
-.artist-profile-text-genre {
-	display: flex;
-    flex-direction: column;
-    height: 20%;
-}
-
-.artist-profile-text-introduce {
-	height: 60%;
-}
-
 .artist-profile-text h2 {
     color: #333;
     font-size: 24px;
@@ -61,9 +46,26 @@
 
 .artist-profile-text div {
     color: #666;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
+
+.artist-profile-text-name {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+}
+.artist-profile-text-genre {
+	display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+
+.artist-profile-text-introduce {
+	height: 55%;
+}
+
+
 
 .rating-container {
     margin-top: 10px;
@@ -324,7 +326,7 @@
 .musicList-menu {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #f1f3f4;
     color: black;
     margin-bottom: 5px;
     border-radius: 5px;
@@ -368,10 +370,11 @@
 }
 
 .audio-player {
-	background-color: white;
+	background-color: #f1f3f4;
 }
 
 audio{
+	background-color: #f1f3f4;
 	height: 40px;
 	width: 250px;
 }

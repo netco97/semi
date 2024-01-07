@@ -20,7 +20,7 @@
 				<!-- 여기에 동적으로 팔로워 목록이 추가될 예정 -->
 			</ul>
 		</div>
-		<button class="closeModalBtn" onclick="closeFollowerListModal()">닫기</button>
+		<button class="closeModalBtn" onclick="closeFollowerListModal()">閉じる</button>
 	</div>
 		<!-- Left Side -->
 		<div class="left-side">
@@ -28,23 +28,23 @@
 			<!-- Artist Registration Box -->
 			<div th:if="${session.iscomposer == 0}" class="left-box"
 				id="artist-box" onclick="redirectToArtistRegistration()">
-					<a class="artist-a" href="/artist_reg">아티스트 등록</a>
-				<div>아티스트가 되어 세상에 당신을 알려주세요.</div>
+					<a class="artist-a" href="/artist_reg">アーティスト登録</a>
+				<div>アーティストになって世の中にあなたを知らせてください。</div>
 			</div>
 
 			<div th:if="${session.iscomposer == 1}" class="left-box"
 				id="music-upload-box" onclick="redirectToMusicUpload()">
 				<div><i class="fas fa-music"></i></div> 
-					<h2>음악 업로드</h2>
-				<div>당신의 음악을 세상에 보여주세요.</div>
+					<h2>ミュージック·アップロード</h2>
+				<div>あなたの音楽を世界に見せてください。</div>
 			</div>
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
 			<div><i class="far fa-smile"></i></div>
 				<div id="showFollowerListBtn">
-					<h2>팔로우 아티스트</h2>
-				내가 좋아하는 아티스트를 보고 싶나요?</div>
+					<h2>フォローアーティスト</h2>
+				貴方が好きなアーティストを見たいですか?</div>
 			</div>
 		</div>
 
@@ -53,7 +53,7 @@
 
 			<!-- Search Box -->
 			<div class="search-box">
-				<input type="text" id="searchInput" placeholder="아티스트 키워드 검색"
+				<input type="text" id="searchInput" placeholder="アーティストキーワード検索"
 				 onfocus="hidePlaceholder()" onblur="showPlaceholder()">
 				<i class="fas fa-search" id="searchButton"></i>
 			</div>
@@ -80,7 +80,7 @@
 	        document.getElementById('searchInput').placeholder = '';
 	    }
 	    function showPlaceholder() {
-	        document.getElementById('searchInput').placeholder = '아티스트 키워드 검색';
+	        document.getElementById('searchInput').placeholder = 'アーティストキーワード検索';
 	    }
 	</script>
 	

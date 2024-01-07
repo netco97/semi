@@ -9,7 +9,7 @@
     </insert>
 
     <!-- 아티스트 평균 평점 조회 -->
-    <select id="getAverageRating" parameterType="Long" resultType="double">
+    <select id="getAverageRating" parameterType="String" resultType="double">
         SELECT NVL(AVG(rating), 0) FROM ratings WHERE composer_id = #{composer_id}
     </select>
     

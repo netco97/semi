@@ -28,7 +28,7 @@
 			<span class="close" onclick="closeModal()">&times;</span>
 			<div id="websocketResult"></div>
 			<div id="messageArea" class="message-area"></div>
-			<input type="text" id="chatInput" placeholder="메세지를 입력해주세요."><br>
+			<input type="text" id="chatInput" placeholder="メッセージを入力してください。"><br>
 			<button onclick="sendMessage()">Send</button>
 		</div>
 	</div>
@@ -38,7 +38,7 @@
 
 			</ul>
 		</div>
-		<button class="closeModalBtn" onclick="closeFollowerListModal()">닫기</button>
+		<button class="closeModalBtn" onclick="closeFollowerListModal()">閉じる</button>
 	</div>
 
 	<main>
@@ -57,7 +57,10 @@
 									class="star" data-value="4">&#9733;</span>
 								<span class="star" data-value="5">&#9733;</span>
 							</div>
-							<p id="rating-value">이 아티스트에 대한 당신의 별점은?</p>
+							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらった貴方の平均点</p>
+							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストに対する貴方の点数は？</p>
+
+							<input id="rating-value" type="hidden">
 						</div>
 
 						<div class="artist-profile-funtion">
@@ -69,18 +72,18 @@
 								th:onclick="'location.href=\'artist_update/'+ @{${composer.composer_id}} + '\''"
 								>내 프로필 수정</button> -->
 							<button th:if="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="updateProfile()">내 프로필 수정</button>
+								onclick="updateProfile()">プロフィール修正</button>
 							<button id="showFollowerListBtn"
-								th:if="${session.userFullPhoneNumber == composer.composer_id}">내 팔로워 보기</button>
+								th:if="${session.userFullPhoneNumber == composer.composer_id}">フォロワーを見る</button>
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
 							<button id="followBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="toggleFollow()">팔로우</button>
+								onclick="toggleFollow()">フォロー</button>
 							<button id="messageBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="createChatroom()">1:1채팅</button>
+								onclick="createChatroom()">このアーティストとチャット</button>
 							<button id="followerlistInfo"
 								th:unless="${session.userFullPhoneNumber == composer.composer_id}">
-								팔로워 보기</button>
+								フォロワーを見る</button>
 
 						</div>
 					</div>
@@ -88,22 +91,22 @@
 
 				<div class="artist-profile-text">
 					<div class="artist-profile-text-name">
-						<h2>아티스트 명</h2>
+						<h2>アーティスト名</h2>
 						<div id="aritst_nickname" th:text="${composer.composer_name}">이름</div>
 					</div>
 					<div class="artist-profile-text-genre">
-						<h2>주 장르</h2>
-						<div th:text="${composer.composer_genre}">주 장르</div>
+						<h2>主にするジャンル</h2>
+						<div th:text="${composer.formattedGenre}">주 장르</div>
 					</div>
 					<div class="artist-profile-text-introduce">
-						<h2>자기소개</h2>
+						<h2>自己紹介</h2>
 						<div th:text="${composer.composer_text}">자기 소개</div>
 					</div>
 				</div>
 
 				<article class="music-article">
 					<div class="musicList">
-						<div class="musicList-id-title" th:text="${composer.composer_name + '의 음악 리스트'}"></div>
+						<div class="musicList-id-title" th:text="${composer.composer_name + 'のソングズ'}"></div>
 						<div class="musicList-inner">
 							<div class="musicList-menu">
 								<div class="musicList-title">
@@ -130,15 +133,14 @@
 		<section id="commentTitle" class="comment-container">
 			<div class="comment-container-inner" id="commentContainer">
 				<div style="width: 100%;">
-					<h2>코멘트</h2>
+					<h2>コメント</h2>
 				</div>
 
 				<!-- 코멘트 입력란 -->
 				<div class="commentInputBox">
-					<div th:text="${session.userNickname}" style="align-self: center;">닉네임</div>
-					<textarea id="commentInput" placeholder="이 아티스트에 대한 응원 메세지를 남겨주세요!"></textarea>
-					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">코멘트
-						작성</button>
+					<div th:text="${session.userNickname}" style="align-self: center;">ニックネーム</div>
+					<textarea id="commentInput" placeholder="このアーティストへの応援メッセージを残してください！"></textarea>
+					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">コメント作成</button>
 				</div>
 
 				<!-- 댓글 목록을 표시할 영역 -->

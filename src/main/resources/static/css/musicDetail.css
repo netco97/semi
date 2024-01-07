@@ -29,6 +29,7 @@ body {
 	flex-direction: row;
 	background-color: black;
 	border-radius: 50px;
+	padding: 20px;
 }
 
 .musicDetail-items1 {
@@ -63,7 +64,6 @@ body {
 
 .musicDetail-title>div {
 	/* display: flex; */
-	width: 30%;
 	flex-direction: column;
 }
 
