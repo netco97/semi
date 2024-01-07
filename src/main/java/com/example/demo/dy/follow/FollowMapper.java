@@ -18,5 +18,11 @@ public interface FollowMapper {
     List<FollowDTO> getFollowerList(@Param("userId") String userId);
 
 	List<FollowDTO> getFollowerListWithInfo(@Param("userId") String userId,@Param("start") int start, @Param("end")int end);
+
+	List<FollowDTO> getHisId(@Param("followerId")String followerId);
+	
+	List<FollowDTO> getFollowerListWithInfo2(@Param("composerId") String composerId,@Param("start") int start, @Param("end")int end);
+	
+	String selectComposerIdByName(String followerId);
     
 }
