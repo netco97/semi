@@ -34,23 +34,23 @@
 	        <div class="profileTitle">主にするジャンル</div>
 	        <select id="musicGenre" name="composer_genre" multiple>
 	            <!-- 선택된 장르 데이터에 따라 option에 selected 속성 추가 -->
-	            <option value="pop" th:selected="${#strings.contains(composer.composer_genre, 'pop')}">ポップ</option>
-	            <option value="dance" th:selected="${#strings.contains(composer.composer_genre, 'dance')}">ダンス</option>
-	            <option value="electronic" th:selected="${#strings.contains(composer.composer_genre, 'electronic')}">エレクトロニック</option>
-	            <option value="hiphop" th:selected="${#strings.contains(composer.composer_genre, 'hiphop')}">ヒップホップ</option>
-	            <option value="rnb" th:selected="${#strings.contains(composer.composer_genre, 'rnb')}">R&B</option>
-	            <option value="classic" th:selected="${#strings.contains(composer.composer_genre, 'classic')}">クラシック</option>
-	            <option value="newage" th:selected="${#strings.contains(composer.composer_genre, 'newage')}">ニューエイジ</option>
-	            <option value="rock" th:selected="${#strings.contains(composer.composer_genre, 'rock')}">ロック</option>
-	            <option value="ballad" th:selected="${#strings.contains(composer.composer_genre, 'ballad')}">バラード</option>
-			    <option value="indie" th:selected="${#strings.contains(composer.composer_genre, 'indie')}">インディ</option>
-			    <option value="jazz_swing" th:selected="${#strings.contains(composer.composer_genre, 'jazz_swing')}">ジャズ／スウィング</option>
-			    <option value="latin" th:selected="${#strings.contains(composer.composer_genre, 'latin')}">ラテン</option>
-			    <option value="korean" th:selected="${#strings.contains(composer.composer_genre, 'korean')}">伝統音楽</option>
-			    <option value="world" th:selected="${#strings.contains(composer.composer_genre, 'world')}">ワールドミュージック</option>
-			    <option value="ambient" th:selected="${#strings.contains(composer.composer_genre, 'ambient')}">アンビエント</option>
-			    <option value="trot" th:selected="${#strings.contains(composer.composer_genre, 'trot')}">演歌</option>
-			    <option value="etc" th:selected="${#strings.contains(composer.composer_genre, 'etc')}">その他</option>
+	            <option value="ポップ" th:selected="${#strings.contains(composer.composer_genre, 'ポップ')}">ポップ</option>
+	            <option value="ダンス" th:selected="${#strings.contains(composer.composer_genre, 'ダンス')}">ダンス</option>
+	            <option value="エレクトロニック" th:selected="${#strings.contains(composer.composer_genre, 'エレクトロニック')}">エレクトロニック</option>
+	            <option value="ヒップホップ" th:selected="${#strings.contains(composer.composer_genre, 'ヒップホップ')}">ヒップホップ</option>
+	            <option value="R&B" th:selected="${#strings.contains(composer.composer_genre, 'R&B')}">R&B</option>
+	            <option value="クラシック" th:selected="${#strings.contains(composer.composer_genre, 'クラシック')}">クラシック</option>
+	            <option value="ニューエイジ" th:selected="${#strings.contains(composer.composer_genre, 'ニューエイジ')}">ニューエイジ</option>
+	            <option value="ロック" th:selected="${#strings.contains(composer.composer_genre, 'ロック')}">ロック</option>
+	            <option value="バラード" th:selected="${#strings.contains(composer.composer_genre, 'バラード')}">バラード</option>
+			    <option value="インディ" th:selected="${#strings.contains(composer.composer_genre, 'インディ')}">インディ</option>
+			    <option value="ジャズ／スウィング" th:selected="${#strings.contains(composer.composer_genre, 'ジャズ／スウィング')}">ジャズ／スウィング</option>
+			    <option value="ラテン" th:selected="${#strings.contains(composer.composer_genre, 'ラテン')}">ラテン</option>
+			    <option value="伝統音楽" th:selected="${#strings.contains(composer.composer_genre, '伝統音楽')}">伝統音楽</option>
+			    <option value="ワールドミュージック" th:selected="${#strings.contains(composer.composer_genre, 'ワールドミュージック')}">ワールドミュージック</option>
+			    <option value="アンビエント" th:selected="${#strings.contains(composer.composer_genre, 'アンビエント')}">アンビエント</option>
+			    <option value="演歌" th:selected="${#strings.contains(composer.composer_genre, '演歌')}">演歌</option>
+			    <option value="その他" th:selected="${#strings.contains(composer.composer_genre, 'その他')}">その他</option>
 	            <!-- 나머지 장르들도 동일하게 처리 -->
 	        </select>
 	        	<div class="profileTitle">自己紹介</div>

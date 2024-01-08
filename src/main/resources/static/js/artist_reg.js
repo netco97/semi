@@ -11,6 +11,15 @@ function showProfilePicture(input) {
 	}
 }
 
+function cancelProfileReg() {
+	// 확인 대화상자를 통해 사용자에게 수정 취소 여부를 물어봅니다.
+	var isConfirmed = confirm('登録を辞めますか？');
+	// 브라우저의 히스토리에서 뒤로가기
+	if (isConfirmed) {
+		window.history.back();
+	}
+}
+
 function useDefaultProfile() {
 	// 프로필 사진의 소스를 기본 이미지 경로로 설정
 	document.getElementById("ProfilePreview").src = "/images/profile/default_profile.png";
