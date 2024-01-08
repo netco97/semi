@@ -70,7 +70,7 @@ function ipodMusic(data) {
             					<div    style=" margin-left: 10px">
                	 				<div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
-               						 <div onclick="location.href=''">${song.composer_name}</div>
+               						 <div onclick="goToArtistdetail2('${song.userFullPhoneNumber}')">${song.composer_name}</div>
             					</div>
             					</div>
             					</div>
@@ -482,6 +482,26 @@ $(document).ready(function() {
 
 });
 
+
+function goToArtistdetail2(phonenum) {
+	// 폼 동적으로 생성
+	var form = document.createElement('form');
+	form.setAttribute('method', 'post');
+	form.setAttribute('action', '/artist_detail');
+
+	// 전화번호 입력 필드 추가
+	var phoneNumberInput = document.createElement('input');
+	phoneNumberInput.setAttribute('type', 'hidden');
+	phoneNumberInput.setAttribute('name', 'userFullPhoneNumber');
+	phoneNumberInput.setAttribute('value', phonenum);
+
+	// 폼에 입력 필드 추가
+	form.appendChild(phoneNumberInput);
+
+	// 폼을 body에 추가하고 서브밋
+	document.body.appendChild(form);
+	form.submit();
+}
 
 
 

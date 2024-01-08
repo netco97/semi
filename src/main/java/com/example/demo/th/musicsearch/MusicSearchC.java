@@ -92,6 +92,9 @@ public class MusicSearchC {
     		
     	}
     	
+    	for(SongsDTO s : result) {
+    		s.setUserFullPhoneNumber(musicSearch_Model.getComposerFullPhoneNumber(s.getComposer_name()));
+    	}
     	
     	return result;
     	
