@@ -139,7 +139,7 @@ public class ComposerC {
 		try {
 			System.out.println("composer_id test" + composer_id);
 			System.out.println("composer test" + composer);
-			composer.setComposer_id(composer_id);
+			//composer.setComposer_id(composer_id);
 			
 			if (composer.getComposer_profilePicture() == null || composer.getComposer_profilePicture().isEmpty()) {
 			    // 기존 이미지를 가져와서 설정
@@ -181,7 +181,11 @@ public class ComposerC {
 				System.out.println("chat table update success");
 			}
 			
-			
+			System.out.println("단위 테스트 " + composer.getComposer_name());
+			System.out.println("단위 테스트 " + composer.getComposer_genre());
+			System.out.println("단위 테스트 " + composer.getComposer_text());
+			System.out.println("단위 테스트 " + composer.getComposer_img());
+			composer.setComposer_id(composer_id);
 			// 업데이트 로직 수행
 			composerService.updateComposer(composer);
 			
