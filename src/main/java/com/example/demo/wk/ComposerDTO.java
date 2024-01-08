@@ -84,4 +84,12 @@ public class ComposerDTO {
                 return genre; // 기본적으로는 변환하지 않고 원래 값 사용
         }
     }
+    
+    public String getFormattedText() {
+        if (composer_text != null && !composer_text.isEmpty()) {
+            return composer_text.replace("\r\n", "<br>").replace("\n", "<br>").replace("\r", "<br>");
+        } else {
+            return "";
+        }
+    }
 }

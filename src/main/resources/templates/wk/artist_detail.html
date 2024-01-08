@@ -149,7 +149,7 @@
 				<!-- 코멘트 입력란 -->
 				<div class="commentInputBox">
 					<div th:text="${session.userNickname}" style="align-self: center;">ニックネーム</div>
-					<textarea id="commentInput" placeholder="このアーティストへの応援メッセージを残してください！"></textarea>
+					<textarea id="commentInput" maxlength="150" placeholder="このアーティストへの応援メッセージを残してください！"></textarea>
 					<button style="margin: 0px;" id="commentBtn" th:attr="data-composer-id=${composer.composer_id}">コメント作成</button>
 				</div>
 
