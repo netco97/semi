@@ -169,9 +169,10 @@
 			</div>
 
 			<ul class="bxslider">
-				<li th:each="artist : ${artists}"><img
-					th:src="'/images/profile/' + ${artist.composer_img}"
-					th:data-composer-id="${artist.composer_id}" /></li>
+				<li th:each="artist : ${artists}">
+					<img th:src="'/images/profile/' + ${artist.composer_img}"
+					th:data-composer-id="${artist.composer_id}" 
+					th:onclick="goToArtistdetail2([[${artist.composer_id}]])"/></li>
 			</ul>
 
 		</div>
