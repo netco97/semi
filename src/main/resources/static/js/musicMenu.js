@@ -238,7 +238,7 @@ function pagination(jsonArray) {
 				// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 				$musicListTitle.append(`
             <div>
-                <img src=img/${song.song_img} />
+                <img src=img/${song.song_img} onerror="this.src='/images/default_albumart.png'" />
             </div>
             <div class="musicListTitle-hover">
                 <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>

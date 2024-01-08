@@ -24,7 +24,7 @@
 	</div>
 		<!-- Left Side -->
 		<div class="left-side">
-
+		
 			<!-- Artist Registration Box -->
 			<div th:if="${session.iscomposer == 0}" class="left-box"
 				id="artist-box" onclick="redirectToArtistRegistration()">
@@ -38,6 +38,7 @@
 					<h2>ミュージック·アップロード</h2>
 				<div>あなたの音楽を世界に見せてください。</div>
 			</div>
+			
 
 			<!-- Production Box -->
 			<div class="left-box" id="production-box">
@@ -50,7 +51,6 @@
 
 		<!-- Right Side -->
 		<div class="right-side">
-
 			<!-- Search Box -->
 			<div class="search-box">
 				<input type="text" id="searchInput" placeholder="アーティストキーワード検索"
@@ -83,9 +83,6 @@
 	        document.getElementById('searchInput').placeholder = 'アーティストキーワード検索';
 	    }
 	</script>
-	
-	
-	
 	<script src="/js/follower_list_modal.js"></script>
 	<script>
 		function openFollowerListModal() {
@@ -120,8 +117,19 @@
 				}
 			});
 		});
-		
 	</script>
-	
+	    <script>
+        // JavaScript를 사용하여 소리 파동의 크기를 조절할 수 있습니다.
+        function adjustSoundWave(amplitude) {
+            const soundWave = document.getElementById('soundWave');
+            soundWave.style.height = amplitude + 'px';
+        }
+
+        // 테스트를 위해 100ms마다 랜덤한 높이로 소리 파동을 업데이트합니다.
+        setInterval(() => {
+            const randomAmplitude = Math.random() * 150 + 50; // 높이를 랜덤으로 설정
+            adjustSoundWave(randomAmplitude);
+        }, 100);
+    </script>
 </body>
 </html>

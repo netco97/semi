@@ -48,7 +48,7 @@ function useDefaultProfile() {
 	// 프로필 사진의 소스를 기본 이미지 경로로 설정
 	document.getElementById("ProfilePreview").src = "/images/profile/default_profile.png";
 	// 파일 입력 값을 지우어 새 파일 업로드를 방지
-	document.getElementById("file").value = "";
+	document.getElementById("file").value = "default_profile.png";
 	// 선택적: 기본 이미지가 사용 중임을 나타내는 숨겨진 입력 필드를 업데이트
 	// document.getElementById("useDefaultProfileFlag").value = "true";
 	//document.getElementById("artistForm").delete('composer_profilePicture');

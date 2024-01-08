@@ -17,7 +17,7 @@
         <div class="profileTitle">プロフィール写真</div>
             <div id="ProfileContainer">
         	<!-- <img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}"> -->
-        	<img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}">
+        	<img id="ProfilePreview" th:src="@{'/images/profile/' + ${composer.composer_img}}" onerror="this.src='/images/profile/default_profile.png'">
         	<div class="Profile-btn">
         	<label for="file">
         	  <div class="btn-upload">写真登録</div>
@@ -25,7 +25,7 @@
         	<input type="file" id="file" name="composer_profilePicture" accept="image/*" onchange="showProfilePicture(this);">
 			</div>
 			<p id="fileName"></p>
-        	  <div class="btn-useDefault" onclick="useDefaultProfile()">基本プロフィール写真を使用</div>
+        	  <!-- <div class="btn-useDefault" onclick="useDefaultProfile()">基本プロフィール写真を使用</div> -->
         	  </div>
        	</section>
         <section class="sectionRight">

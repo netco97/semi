@@ -57,7 +57,7 @@
 				<article class="artist-article">
 					<div class="artist-profile">
 						<!-- <img th:src="@{${composer.getImgOrDefault()}}" alt="아티스트 프로필 사진"> -->
-						<img th:src="@{'/images/profile/' + ${composer.composer_img}}" alt="아티스트 프로필 사진">
+						<img th:src="@{'/images/profile/' + ${composer.composer_img}}" onerror="this.src='/images/profile/default_profile.png'">
 
 
 						<div class="rating-container">

@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			const artistHtml = `
                 <div class="artist-container">
                     <div class="artist-details" data-composer-id="${artist.composer_id}">
-                        <img src="/images/profile/${artist.composer_img}">
+                        <img src="/images/profile/${artist.composer_img}" onerror="this.src='/images/profile/default_profile.png'">
                         <div class="artist-details-word">
                             <h3>${artist.composer_name}</h3>
                             <p>${formattedGenre}</p>

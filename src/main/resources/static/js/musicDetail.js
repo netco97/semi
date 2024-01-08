@@ -210,7 +210,7 @@ function loadMusicDetailPage(songId) {
 async function updateMusicDetailPage(song) {
 
 	// 음악 타이틀 및 작곡가 정보 업데이트
-	$('.musicDetail-title-img').append(`<img src=img/${song[0].song_img}>`)
+	$('.musicDetail-title-img').append(`<img src="img/${song[0].song_img}>" onerror="this.src='/images/default_albumart.png'">`)
 	$('.musicDetail-title-title').append(`<div class="musicDetail-title-title">${song[0].song_name}</div>`);
 	// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 	$('.musicDetail-title-composer').append(`<div onclick="location.href=''" class="musicDetail-title-composer">${song[0].composer_name}</div>`);
