@@ -68,6 +68,18 @@
 		)
 	</update>
 	
+	<update id="updateChatTable" parameterType="String">
+		UPDATE chat SET sender=#{composer_name} where sender = (select composer_name from composers where composer_id = #{composer_id})
+	</update>
+	
+	<update id="updateCreateRoomTable1" parameterType="String">
+		update createroom set user1 = #{composer_name} where user1 = (select composer_name from composers where composer_id = #{composer_id})
+	</update>
+	
+	<update id="updateCreateRoomTable2" parameterType="String">
+		update createroom set user2 = #{composer_name} where user2 = (select composer_name from composers where composer_id = #{composer_id})
+	</update>
+	
 	<select id="searchArtists" parameterType="String" resultType="ComposerDTO">
         SELECT * FROM composers
         WHERE composer_name LIKE '%' || #{keyword} || '%'

@@ -32,4 +32,10 @@ public interface ComposerMapper {
 	int updateUserTable(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
 
 	int updateCommentTable(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
+
+	int updateChatTable(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
+
+	int updateCreateRoomTable1(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
+
+	int updateCreateRoomTable2(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
 }

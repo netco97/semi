@@ -79,4 +79,16 @@ public class ComposerService {
 	public int updateCommentTable(String composer_name, String composer_id) {
 		return composerMapper.updateCommentTable(composer_name,composer_id);
 	}
+
+	public int updateChatTable(String composer_name, String composer_id) {
+		return composerMapper.updateChatTable(composer_name, composer_id);
+	}
+
+	public int updateCreateRoomTable1(String composer_name, String composer_id) {
+		return composerMapper.updateCreateRoomTable1(composer_name, composer_id);
+	}
+
+	public int updateCreateRoomTable2(String composer_name, String composer_id) {
+		return composerMapper.updateCreateRoomTable2(composer_name, composer_id);
+	}
 }
