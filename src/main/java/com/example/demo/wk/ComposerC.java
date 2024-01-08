@@ -161,9 +161,26 @@ public class ComposerC {
 				System.out.println("user table update success");
 			}
 			
+			//comment table update 로직
 			if(composerService.updateCommentTable(composer.getComposer_name(),composer_id)>=1) {
 				System.out.println("comment table update success");
 			}
+			
+			// CreateRoomTable user1 update 로직
+			if(composerService.updateCreateRoomTable1(composer.getComposer_name(),composer_id)>=1) {
+				System.out.println("CreateRoom table update success");
+			}
+			
+			// CreateRoomTable user2 update 로직
+			if(composerService.updateCreateRoomTable2(composer.getComposer_name(),composer_id)>=1) {
+				System.out.println("CreateRoom table update success");
+			}
+			
+			// ChatTable update 로직
+			if(composerService.updateChatTable(composer.getComposer_name(),composer_id)>=1) {
+				System.out.println("chat table update success");
+			}
+			
 			
 			// 업데이트 로직 수행
 			composerService.updateComposer(composer);
