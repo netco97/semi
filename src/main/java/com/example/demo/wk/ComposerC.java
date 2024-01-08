@@ -141,7 +141,7 @@ public class ComposerC {
 			System.out.println("composer test" + composer);
 			composer.setComposer_id(composer_id);
 			
-			if (composer.getComposer_profilePicture() == null) {
+			if (composer.getComposer_profilePicture() == null || composer.getComposer_profilePicture().isEmpty()) {
 			    // 기존 이미지를 가져와서 설정
 			    ComposerDTO existingComposer = composerService.getComposerById(composer_id);
 			    composer.setComposer_img(existingComposer.getComposer_img());
