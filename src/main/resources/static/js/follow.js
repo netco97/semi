@@ -21,8 +21,8 @@ function toggleFollow() {
 
 function updateFollowButton(isFollowing) {
 	if (isFollowing) {
-		$('#followBtn').text('팔로우');
+		$('#followBtn').text('フォロー');
 	} else {
-		$('#followBtn').text('언팔로우');
+		$('#followBtn').text('アン·フォロー');
 	}
 }
