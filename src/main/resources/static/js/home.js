@@ -113,8 +113,12 @@ function ipodMusicPlayer(song_id) {
 }
 
 async function getMusic(song) {
+	
+//	$('.ipod-result').append(`<div class="musicDetail-content-music"`)
 
 	$('.musicDetail-content-music').empty();
+	$('.musicDetail-content-music').css('text-align','left')
+	$('.musicDetail-content-music').css('justify-content','left')
 
 	$('.musicDetail-content-music').append(`
 		<div class= "musicDetail-items1">

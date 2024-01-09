@@ -59,7 +59,7 @@
 
 
 			<div class="ipod-body">
-					<div class="ipod-title">여러가지 태그를 이용해 원하시는 노래를 검색하세요!</div>
+				<div class="ipod-title">여러가지 태그를 이용해 원하시는 노래를 검색하세요!</div>
 				<div class="ipod-container">
 					<div class="ipod">
 						<div class="ipod-screen">
@@ -110,39 +110,42 @@
 					</div>
 					<div class="ipod-result">
 						<div class="musicDetail-content-music">
-							<div class="musicDetail-items1">
-								<div class="musicDetail-title">
-									<div>
-										<div class="musicDetail-title-img"></div>
-										<div class="musicDetail-title-title"></div>
-										<div class="musicDetail-title-composer"></div>
-										<!-- 좋아요 하트 -->
-									</div>
-									<div class="musicDetail-option">
-											<div class="musicDetail-option-inner"></div>
-										</div>
-								</div>
+							<div class="musicDetail-content-music-title">
+								<span>뮤직 플레이어를 이용해 음악을 검색해 보세요!</span>
+							</div>
+<!-- 							<div class="musicDetail-items1"> -->
+<!-- 								<div class="musicDetail-title"> -->
+<!-- 									<div> -->
+<!-- 										<div class="musicDetail-title-img"></div> -->
+<!-- 										<div class="musicDetail-title-title"></div> -->
+<!-- 										<div class="musicDetail-title-composer"></div> -->
+<!-- 										좋아요 하트 -->
+<!-- 									</div> -->
+<!-- 									<div class="musicDetail-option"> -->
+<!-- 										<div class="musicDetail-option-inner"></div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 
-								<div class="musicDetail-playSpace">
-									<!-- 여기에 오디오 플레이어가 들어갈 것입니다. -->
-								</div>
-							</div>
-							<div class="musicDetail-content-items2">
-								<div>
-									<div>
-										<div></div>
-										<div class="genre-area"></div>
-									</div>
-									<div>
-										<div></div>
-										<div class="mood-area"></div>
-									</div>
-									<div>
-										<div></div>
-										<div class="instrument-area"></div>
-									</div>
-								</div>
-							</div>
+<!-- 								<div class="musicDetail-playSpace"> -->
+<!-- 									여기에 오디오 플레이어가 들어갈 것입니다. -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="musicDetail-content-items2"> -->
+<!-- 								<div> -->
+<!-- 									<div> -->
+<!-- 										<div></div> -->
+<!-- 										<div class="genre-area"></div> -->
+<!-- 									</div> -->
+<!-- 									<div> -->
+<!-- 										<div></div> -->
+<!-- 										<div class="mood-area"></div> -->
+<!-- 									</div> -->
+<!-- 									<div> -->
+<!-- 										<div></div> -->
+<!-- 										<div class="instrument-area"></div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 						</div>
 
 
@@ -169,10 +172,10 @@
 			</div>
 
 			<ul class="bxslider">
-				<li th:each="artist : ${artists}">
-					<img th:src="'/images/profile/' + ${artist.composer_img}"
-					th:data-composer-id="${artist.composer_id}" 
-					th:onclick="goToArtistdetail2([[${artist.composer_id}]])"/></li>
+				<li th:each="artist : ${artists}"><img
+					th:src="'/images/profile/' + ${artist.composer_img}"
+					th:data-composer-id="${artist.composer_id}"
+					th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
 			</ul>
 
 		</div>
