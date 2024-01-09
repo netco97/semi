@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 
-	var pageSize = 5;
+	var pageSize = 9;
 	var currentPage = 1;
 	var allArtists = []; // 모든 아티스트를 저장하는 변수
 
@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			const artistHtml = `
                 <div class="artist-container">
                     <div class="artist-details" data-composer-id="${artist.composer_id}">
-                        <img src="/images/profile/${artist.composer_img}" onerror="this.src='/images/profile/default_profile.png'">
+                        <img src="/images/profile/${artist.composer_img}"
+                        onerror="this.src='/images/profile/default_profile.png'">
                         <div class="artist-details-word">
                             <h3>${artist.composer_name}</h3>
                             <p>${formattedGenre}</p>
@@ -147,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		var endPage = Math.min(totalPages, startPage + 9);
 
 		if (currentPage > 1) {
-			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage - 1) + '">이전</a>');
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage - 1) + '">前へ</a>');
 		} else {
 			paginationContainer.append('<span class="pagination-link disabled">前へ</span>');
 		}
@@ -158,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		if (currentPage < totalPages) {
-			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">다음</a>');
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">後へ</a>');
 		} else {
 			paginationContainer.append('<span class="pagination-link disabled">後へ</span>');
 		}
