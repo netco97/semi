@@ -12,19 +12,19 @@
 	<div class="my-page-container">
     <div class="my-page">
         <div class="my-page-title">
-            <h1>마이 페이지</h1>
+            <h1>マイページ</h1>
         </div>
 
         <div class="menu-container-mypage">
           
 
             <div class="text-container-mypage">
-                <div>이름 : <span th:text="${session.userNickname}"></span></div>
-                <div>이메일 : <span th:text="${session.userEmail}"></span></div>
-                <div>휴대전화 : <span th:text="${session.userFullPhoneNumber}"></span></div>
+                <div>名前 : <span th:text="${session.userNickname}"></span></div>
+                <div>E-mail : <span th:text="${session.userEmail}"></span></div>
+                <div>電話番号 : <span th:text="${session.userFullPhoneNumber}"></span></div>
 
                 <div class="delete-button" onclick="realout();">
-                    회원 탈퇴
+                    会員 退会
                 </div>
             </div>
         </div>

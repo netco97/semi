@@ -46,8 +46,9 @@
 
 .artist-profile-text div {
     color: #666;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
+    word-wrap: break-word;
 }
 
 .artist-profile-text-name {
@@ -150,7 +151,7 @@
 
 /* 하단 코멘트 섹션 */
 .comment-container {
-	height: 750px;
+	height: fit-content;
     background-color: black;
     color: white;
     display: flex;
@@ -189,6 +190,11 @@
     cursor: pointer;
     align-self: center;
     height: 35px;
+    
+}
+
+#commentBtn:hover {
+	background-color: #e0e0e0;
 }
 
 #commentList {
@@ -207,6 +213,7 @@
 	align-items: center;
     margin-bottom: 30px; /* 아래쪽 여백 추가 */
     position: relative; /* 상대적인 위치 설정 */
+    word-break: break-all;
 }
 
 /* 사용자 닉네임 스타일링 */
@@ -219,6 +226,7 @@
 /* 코멘트 내용 스타일링 */
 .comment-item .comment-content {
 	width: 55%;
+	margin-right: 20px;
 }
 
 /* 작성 시간 스타일링 */

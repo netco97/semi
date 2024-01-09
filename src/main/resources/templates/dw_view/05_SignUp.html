@@ -16,18 +16,18 @@
         <div id="section-container">
             <div id="section">
                 <form id="signupForm" action="/signup" method="post">
-                    <div id="signup-text">회원가입</div>
+                    <div id="signup-text">会員登録</div>
 
                     <div class="article_name">
-                        이름 : <input class="user-info" name="userNickname" id="user_nickname"
+                        名前 : <input class="user-info" name="userNickname" id="user_nickname"
                             th:value="${session.userNickname}" readonly>
                     </div>
                     <div class="article_email">
-                        이메일 : <input class="user-info" name="userEmail" id="user_email"
+                        メール : <input class="user-info" name="userEmail" id="user_email"
                             th:value="${session.userEmail}" readonly>
                     </div>
                     <div class="article_phone">
-                        휴대전화 :
+                        電話番号 :
                         <input type="text" class="phone-input" maxlength="3" pattern="\d*"
                             style="background: #4b4949" id="phoneNumberPart1" name="phoneNumberPart1" value="010">
                         -
@@ -38,7 +38,7 @@
                             style="background: #4b4949" id="phoneNumberPart3" name="phoneNumberPart3">
                     </div>
 
-                    <button type="button" onclick="checkDuplicatePhoneNumber();">전송</button>
+                    <button type="button" onclick="checkDuplicatePhoneNumber();">登録</button>
                 </form>
             </div>
         </div>
