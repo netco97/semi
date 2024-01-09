@@ -241,9 +241,9 @@ function pagination(jsonArray) {
                 <img src=img/${song.song_img} onerror="this.src='/images/default_albumart.png'" />
             </div>
             <div class="musicListTitle-hover">
-                <div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
+                <div id="music-title" onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
-                <div onclick="goToArtistdetail('${song.userFullPhoneNumber}')">${song.composer_name}</div>
+                <div id="music-composer" onclick="goToArtistdetail('${song.userFullPhoneNumber}')">${song.composer_name}</div>
             </div>
         `);
 

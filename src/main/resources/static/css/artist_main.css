@@ -20,7 +20,7 @@ main {
     overflow: hidden;
 }
 
-#artist-a {
+.artist-a {
 	font-size: 14pt;
 	color: white;
 }
@@ -86,6 +86,7 @@ main {
 	min-width: 600px;
     display: flex;
     flex-wrap: wrap;
+    margin: 20px;
 }
 
 /* 개별 아티스트 박스 */
@@ -105,6 +106,7 @@ main {
     border-radius: 15px;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     
 }
 
@@ -144,6 +146,7 @@ main {
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .left-box:hover {
@@ -167,7 +170,7 @@ main {
 
 #searchInput {
     flex: 1;
-    padding: 9px;
+    padding: 10px;
     padding-left: 35px;
 }
 
@@ -203,6 +206,7 @@ main {
     text-decoration: none;
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
 .pagination-link.active {
