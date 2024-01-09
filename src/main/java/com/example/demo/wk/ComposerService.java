@@ -91,4 +91,11 @@ public class ComposerService {
 	public int updateCreateRoomTable2(String composer_name, String composer_id) {
 		return composerMapper.updateCreateRoomTable2(composer_name, composer_id);
 	}
+	
+	public String selectIsFollow(String followUserId, String targetUserId) {
+		return composerMapper.selectIsFollow(followUserId , targetUserId);
+		
+	} 
+	
+	
 }

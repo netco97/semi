@@ -69,16 +69,30 @@ public class ComposerC {
 	}
 
 	@PostMapping("/artist_detail")
-	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model) {
-		
+	public String getComposerById(@RequestParam String userFullPhoneNumber, Model model,HttpSession httpSession) {
 		System.out.println("detail확인" + userFullPhoneNumber);
 		System.out.println(model.getAttribute("composer"));
+		
 		ComposerDTO composer = composerService.getComposerById(userFullPhoneNumber);
-
+		
+	   String followId= (String) httpSession.getAttribute("userFullPhoneNumber");
+		
+	   String isfollow = composerService.selectIsFollow(followId, userFullPhoneNumber);
+		
+	   System.out.println("팔로우 입니다");
+	   System.out.println(isfollow);
+	   if(isfollow.equals("1")) {
+		composer.setIsFollow("1");
+	   }else
+	   {
+		composer.setIsFollow("0");
+	   }
+		
 		// 이미지 파일의 경로 설정 (기본 이미지 포함)
 		// composer.setComposer_img(composer.getImgOrDefault());
 
 		model.addAttribute("composer", composer);
+		System.out.println(composer);
 
 		model.addAttribute("content", "wk/artist_detail");
 		return "wk/index";

@@ -85,4 +85,19 @@
         WHERE composer_name LIKE '%' || #{keyword} || '%'
         OR composer_genre LIKE '%' || #{keyword} || '%'
     </select>
+    
+    
+<select id="selectIsFollow" parameterType="String" resultType="String">
+  SELECT
+    CASE
+      WHEN EXISTS (
+        SELECT 1 FROM FOLLOWTABLE
+        WHERE FOLLOWERUSERID = #{followUserId} AND TARGETUSERID = #{targetUserId}
+      )
+      THEN '1'
+      ELSE '0'
+    END
+  FROM DUAL
+</select>
+    
 </mapper>

@@ -88,7 +88,8 @@
 
 							<!-- HTML 요소에 직접 th:unless를 사용합니다. -->
 							<button id="followBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
-								onclick="toggleFollow()">フォロー</button>
+								onclick="toggleFollow()" th:text="${composer.isFollow == '1' ? 'アン·フォロー' : 'フォロー'}"></button>
+								
 							<button id="messageBtn" th:unless="${session.userFullPhoneNumber == composer.composer_id}"
 								onclick="createChatroom()">このアーティストとチャット</button>
 							<button id="followerlistInfo"
