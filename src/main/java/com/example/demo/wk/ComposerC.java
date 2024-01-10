@@ -133,6 +133,9 @@ public class ComposerC {
 		// 세션 지우고 다시 iscomposer를 1로 만들어야함
 		session.removeAttribute("iscomposer");
 		session.setAttribute("iscomposer", 1);
+		
+		session.removeAttribute("userNickname");
+		session.setAttribute("userNickname", composer.getComposer_name());
 
 		model.addAttribute("content", "wk/home");
 		return "redirect:/";

@@ -33,6 +33,8 @@
 		</div>
 	</div>
 	<div id="followerListModal">
+		<span style="font-weight: 1000; font-size:large;">フォローリスト</span>
+		<p></p>
 		<div id="followerListModalContent">
 			<ul id="followerList">
 
@@ -41,6 +43,8 @@
 		<button class="closeModalBtn" onclick="closeFollowerListModal()">&times;</button>
 	</div>
 	<div id="followerListModal2">
+		<span style="font-weight:1000; font-size:large;">フォロワーリスト</span>
+		<p></p>
 		<div id="followerListModalContent2">
 			<ul id="followerList2">
 
@@ -212,20 +216,20 @@ function closeFollowerListModal2() {
 	$('#followerListModal2').hide();
 }
 function buildFollowerListHTML2(followerList) {
-	var html = '<ul>';
+	var html = '<div>';
 
 	console.log(followerList)
 
 	for (var i = 0; i < followerList.length; i++) {
 		html += '<div class="otherfollower" onclick="gotodetail2(' + "" + followerList[i].followerUserId + ');">' +
-			'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
+			'<img src="/images/profile/' + followerList[i].composer_img + '">' +
 			'&nbsp;' +
 			followerList[i].composer_name +
 			'<p>' + '</p>' +
 			'</div>';
 		console.log(JSON.stringify(followerList[i]))
 	}
-	html += '</ul>';
+	html += '</div>';
 	return html;
 }
 
