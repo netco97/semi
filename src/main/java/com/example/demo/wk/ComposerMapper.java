@@ -38,4 +38,8 @@ public interface ComposerMapper {
 	int updateCreateRoomTable1(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
 
 	int updateCreateRoomTable2(@Param("composer_name") String composer_name, @Param("composer_id") String composer_id);
+
+	String selectIsFollow(@Param("followUserId") String followUserId,@Param("targetUserId") String targetUserId);
+	
+	
 }
