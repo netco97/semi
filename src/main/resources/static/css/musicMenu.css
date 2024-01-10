@@ -68,6 +68,10 @@
 	cursor: pointer;
 }
 
+.musicMenu-searchInput button:hover {
+	background-color: #555; /* 호버 시 배경색 변경 */
+}
+
 .musicMenu-searchOption {
 	display: flex;
 	justify-content: center; /* 가운데 정렬을 추가 */
