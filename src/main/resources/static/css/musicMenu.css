@@ -31,7 +31,8 @@
 .musicMenu-title {
 	color: white;
 	font-size: 24px;
-	margin-bottom: 20px;
+	margin: 20px;
+	
 }
 
 .musicMenu-search {
