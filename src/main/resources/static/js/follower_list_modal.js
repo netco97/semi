@@ -11,20 +11,20 @@ function showFollowerListModal(followerList) {
 
 // 팔로우 리스트 HTML 생성
 function buildFollowerListHTML(followerList) {
-	var html = '<ul>';
+	var html = '<div>';
 
 	console.log(followerList)
 
 	for (var i = 0; i < followerList.length; i++) {
 		html += '<div class="otherfollower" onclick="gotodetail(' + "" + followerList[i].targetUserId + ');">' +
-			'<img src="/images/profile/' + followerList[i].composer_img + '" style="width: 100px; height: 100px;">' +
+			'<img src="/images/profile/' + followerList[i].composer_img + '">' +
 			'&nbsp;' +
 			followerList[i].composer_name +
 			'<p>' + '</p>' +
 			'</div>';
 		console.log(JSON.stringify(followerList[i]))
 	}
-	html += '</ul>';
+	html += '</div>';
 	return html;
 }
 
