@@ -13,6 +13,7 @@ public class ComposerDTO {
 	private String composer_text;
 	private String composer_img;
 	private MultipartFile composer_profilePicture;
+	private String isFollow;
 	
 	
 	// 이미지가 없을 때 기본 이미지 파일 경로 반환
