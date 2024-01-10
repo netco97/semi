@@ -121,18 +121,5 @@
 			});
 		});
 	</script>
-	    <script>
-        // JavaScript를 사용하여 소리 파동의 크기를 조절할 수 있습니다.
-        function adjustSoundWave(amplitude) {
-            const soundWave = document.getElementById('soundWave');
-            soundWave.style.height = amplitude + 'px';
-        }
-
-        // 테스트를 위해 100ms마다 랜덤한 높이로 소리 파동을 업데이트합니다.
-        setInterval(() => {
-            const randomAmplitude = Math.random() * 150 + 50; // 높이를 랜덤으로 설정
-            adjustSoundWave(randomAmplitude);
-        }, 100);
-    </script>
 </body>
 </html>
