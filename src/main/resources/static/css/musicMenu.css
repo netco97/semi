@@ -31,7 +31,8 @@
 .musicMenu-title {
 	color: white;
 	font-size: 24px;
-	margin-bottom: 20px;
+	margin: 20px;
+	
 }
 
 .musicMenu-search {
@@ -65,6 +66,10 @@
 	background-color: #333;
 	color: #fff;
 	cursor: pointer;
+}
+
+.musicMenu-searchInput button:hover {
+	background-color: #555; /* 호버 시 배경색 변경 */
 }
 
 .musicMenu-searchOption {

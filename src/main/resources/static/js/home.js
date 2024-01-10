@@ -66,7 +66,7 @@ function ipodMusic(data) {
 						<div class="ipod-musicList-menu">
 							<div class="ipod-musicList-title">
             					<div class="ipod-musicList-menu-title-left">
-               						 <img src=img/${song.song_img} />
+               						 <img src=img/${song.song_img} onerror="this.src='/images/default_albumart.png'"/>
             					<div    style=" margin-left: 10px">
                	 				<div onclick="location.href='musicDetail?song_id=${song.song_id}'">${song.song_name}</div>
               
@@ -159,7 +159,7 @@ async function getMusic(song) {
 
 		`)
 
-	$('.musicDetail-title-img').append(`<img src=img/${song[0].song_img}>`)
+	$('.musicDetail-title-img').append(`<img src=img/${song[0].song_img} onerror="this.src='/images/default_albumart.png'"> `)
 	$('.musicDetail-title-title').append(`<div class="musicDetail-title-title">${song[0].song_name}</div>`);
 	// 추후 컴포져 네임 div 에 컴포져 상세페이지 가는 링크 걸어야함
 	$('.musicDetail-title-composer').append(`<div onclick="location.href=''" class="musicDetail-title-composer">${song[0].composer_name}</div>`);

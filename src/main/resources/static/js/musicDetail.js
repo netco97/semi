@@ -60,7 +60,7 @@ $(document).ready(function() {
 				'<div class="user-nickname">' + comment.user_nickName + '</div>' +
 				'<div class="comment-content">' + comment.comment_text + '</div>' +
 				'<div class="created-at">' + convertToKoreanTime(comment.comment_date) + '</div>' +
-				'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">삭제</div>' +
+				'<div class="delete-btn" data-comment-id="' + comment.comment_id + '">削除</div>' +
 				'</div>'
 
 			);
@@ -85,7 +85,7 @@ $(document).ready(function() {
 		var endPage = Math.min(totalPages, startPage + 9);
 
 		if (currentPage > 10) {
-			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (startPage - 1) + '">이전</a>');
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (startPage - 1) + '">前へ</a>');
 		}
 
 		for (var i = startPage; i <= endPage; i++) {
@@ -94,7 +94,7 @@ $(document).ready(function() {
 		}
 
 		if (endPage < totalPages) {
-			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (endPage + 1) + '">다음</a>');
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (endPage + 1) + '">次へ</a>');
 		}
 	}
 
@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 	//	 코멘트 삭제 버튼 클릭 시 이벤트
 	$("#comments-container").on("click", ".delete-btn", function() {
-		const isConfirmed = confirm("코멘트를 삭제하시겠습니까?");
+		const isConfirmed = confirm("コメントを削除しますか？");
 
 		if (isConfirmed) {
 			// 클릭된 버튼의 부모 요소에서 comment_id를 가져옴

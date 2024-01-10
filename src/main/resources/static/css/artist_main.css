@@ -16,7 +16,6 @@
 main {
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
     overflow: hidden;
 }
 
@@ -95,6 +94,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .artist-details {
@@ -194,7 +195,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
 }
 
 .pagination-link {
@@ -207,6 +207,7 @@ main {
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    background-color: white;
 }
 
 .pagination-link.active {

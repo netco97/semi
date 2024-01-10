@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 var imageUrl = xhr.responseText;
                 var imgContainer = document.createElement("div");
                 imgContainer.className = "img-container-mypage";
-                imgContainer.innerHTML = '<img src="' + '/images/profile/'+ imageUrl + '" alt="User Image">';
-                
+                imgContainer.innerHTML = '<img  src="' + '/images/profile/'+ imageUrl + '" alt="User Image">';
+                												//onerror="this.src='/images/profile/default_profile.png'"			
                 
                 document.querySelector('.menu-container-mypage').prepend(imgContainer);
                 
