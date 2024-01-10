@@ -159,9 +159,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 
 		if (currentPage < totalPages) {
-			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">後へ</a>');
+			paginationContainer.append('<a href="#" class="pagination-link" data-page="' + (currentPage + 1) + '">次へ</a>');
 		} else {
-			paginationContainer.append('<span class="pagination-link disabled">後へ</span>');
+			paginationContainer.append('<span class="pagination-link disabled">次へ</span>');
 		}
 	}
 
