@@ -219,7 +219,7 @@ function pagination(jsonArray) {
 	let container = $('#pagination');
 	container.pagination({
 		dataSource: jsonArray,
-		pageSize: 3,
+		pageSize: 5,
 		callback: function(data, pagination) {
 			console.log("데이타아아아 : " + data);
 
@@ -452,7 +452,7 @@ function songLike(song_id, heartElement) {
 			}
 		});
 	} else {
-		alert('로그인 후 이용 가능합니다')
+		alert('ログインした後、利用してください。')
 	}
 }
 
