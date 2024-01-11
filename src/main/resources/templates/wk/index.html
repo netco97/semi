@@ -10,6 +10,18 @@
   />
 <script th:inline="javascript">
 	const userphone1 = `[(${session.userFullPhoneNumber})]`;
+	const iscomposer2 = `[(${session.iscomposer})]`;
+</script>
+<script>
+	function goToMusicUpload(){
+		if(iscomposer2==='1'){
+			location.href="/musicUpload";
+		}
+		else{
+			alert("アーティスト登録をしないとご利用いただけません")
+			location.href="/artist_reg";
+		}
+	}
 </script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
