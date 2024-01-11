@@ -137,8 +137,8 @@ public class ComposerC {
 		session.removeAttribute("userNickname");
 		session.setAttribute("userNickname", composer.getComposer_name());
 
-		model.addAttribute("content", "wk/home");
-		return "redirect:/";
+		model.addAttribute("content", "wk/artist_main");
+		return "wk/index";
 	}
 
 	@PostMapping("/artist_update")

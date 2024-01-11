@@ -16,6 +16,7 @@ function cancelProfileReg() {
 	var isConfirmed = confirm('登録を辞めますか？');
 	// 브라우저의 히스토리에서 뒤로가기
 	if (isConfirmed) {
+		event.preventDefault();
 		window.history.back();
 	}
 }
@@ -65,5 +66,4 @@ function submitForm() {
 	// 폼 데이터를 서버로 전송
 
 	xhr.send(formData);
-
 }
