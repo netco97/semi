@@ -10,6 +10,8 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -37,14 +39,23 @@
 
 	<!--     keyBoard -->
 	<!---출처 http://theremin.music.uiowa.edu/MISpiano.html-->
-	<div class="homeContainer">
-		<div class="homeContainer-inner">
-			<div class="homeContent-inputSearch">
+	<div class="swiper-container homeContainer" style="height: 60rem;width: 90rem;">
+		<div class="swiper-wrapper homeContainer-inner">
+			<!--section1-->
+			<div class="swiper-slide main_video_area">
+				<video width="100%" autoplay loop muted>
+					<source src="/video/main_video.mp4" type="video/mp4">
+					</video>
+			</div>
+			
+			<!--section2-->
+			<div class="swiper-slide homeContent-inputSearch">
+				
 				<div class="homeContent-inputSearch-inner">
 
 					<div class="homeContent-inputSearch-text">
 						<h1 class="inputSearch-text1">好きな歌を探してみてください!</h1>
-						<p class="inputSearch-text2">미정</p>
+						<p class="inputSearch-text2"> </p>
 					</div>
 					<div class="homeInputSearch">
 						<div>
@@ -57,8 +68,8 @@
 				</div>
 			</div>
 
-
-			<div class="ipod-body">
+			<!--section3-->
+			<div class="swiper-slide ipod-body">
 					<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
 				<div class="ipod-container">
 					<div class="ipod">
@@ -113,43 +124,7 @@
 							<div class="musicDetail-content-music-title">
 								<span>뮤직 플레이어를 이용해 음악을 검색해 보세요!</span>
 							</div>
-<!-- 							<div class="musicDetail-items1"> -->
-<!-- 								<div class="musicDetail-title"> -->
-<!-- 									<div> -->
-<!-- 										<div class="musicDetail-title-img"></div> -->
-<!-- 										<div class="musicDetail-title-title"></div> -->
-<!-- 										<div class="musicDetail-title-composer"></div> -->
-<!-- 										좋아요 하트 -->
-<!-- 									</div> -->
-<!-- 									<div class="musicDetail-option"> -->
-<!-- 										<div class="musicDetail-option-inner"></div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="musicDetail-playSpace"> -->
-<!-- 									여기에 오디오 플레이어가 들어갈 것입니다. -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="musicDetail-content-items2"> -->
-<!-- 								<div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="genre-area"></div> -->
-<!-- 									</div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="mood-area"></div> -->
-<!-- 									</div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="instrument-area"></div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
 						</div>
-
-
-
 					</div>
 					<!-- If we need pagination -->
 
@@ -159,27 +134,36 @@
 				</div>
 
 			</div>
-		</div>
-	</div>
+			
+			<!--section4-->
+			<div class="swiper-slide artist-slider">
+				<div class="artist-slider-inner">
+					<div class="artist-slider-title">
+						<h1>いろんなアーティストたちに会ってみてください！！</h1>
+		
+					</div>
+		
+					<ul class="bxslider">
+						<li th:each="artist : ${artists}"><img
+							th:src="'/images/profile/' + ${artist.composer_img}"
+							th:data-composer-id="${artist.composer_id}"
+							th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
+					</ul>
 
-
-
-	<div class="artist-slider">
-		<div class="artist-slider-inner">
-			<div class="artist-slider-title">
-				<h1>いろんなアーティストたちに会ってみてください！！</h1>
-
+				</div>
 			</div>
-
-			<ul class="bxslider">
-				<li th:each="artist : ${artists}"><img
-					th:src="'/images/profile/' + ${artist.composer_img}"
-					th:data-composer-id="${artist.composer_id}"
-					th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
-			</ul>
-
-		</div>
 	</div>
+		<!-- If we need pagination -->
+	      <div class="swiper-pagination"></div>
+	
+	      <!-- If we need navigation buttons -->
+	      <div class="swiper-button-prev"></div>
+	      <div class="swiper-button-next"></div>
+	</div>
+
+
+
+	
 
 
 
@@ -191,6 +175,34 @@
 	<!-- 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
+	<script>
+		var mySwiper = new Swiper('.swiper-container', {
+		// 슬라이드를 버튼으로 움직일 수 있습니다.
+		direction: 'vertical',
+		slidesPerView: 1,//보여줄 이미지갯수
+        //spaceBetween: 15,
+        slidesPerGroup: 1,//페이징 그룹핑할 갯수(슬라이드할 이미지 갯수)
+		loop: true,
+        loopFillGroupWithBlank: true,
+		  navigation: {
+		    nextEl: '.swiper-button-next',
+		    prevEl: '.swiper-button-prev',
+		  },
+		    
+		// 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+		  pagination: {
+		    el: '.swiper-pagination',
+		    type: 'bullets',
+		  },
+		 /*autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },*/
+		
+		    
+		
+		});
+	</script>
 </body>
 
 
