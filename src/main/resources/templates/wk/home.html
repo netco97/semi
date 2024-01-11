@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <title>Home</title>
@@ -10,6 +10,9 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css" integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -37,14 +40,27 @@
 
 	<!--     keyBoard -->
 	<!---출처 http://theremin.music.uiowa.edu/MISpiano.html-->
-	<div class="homeContainer">
-		<div class="homeContainer-inner">
-			<div class="homeContent-inputSearch">
+<!--	<div class="swiper-container homeContainer">-->
+		<div id="fullpage">
+			<!--section1-->
+			<div class="swiper-slide main_video_area section">
+				<div class="asd" style="    height: 100%;
+    overflow: hidden;">
+					
+				<video width="100%" autoplay loop muted>
+					<source src="/video/main_video.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+			
+			<!--section2-->
+			<div class="swiper-slide homeContent-inputSearch section">
+				
 				<div class="homeContent-inputSearch-inner">
 
 					<div class="homeContent-inputSearch-text">
 						<h1 class="inputSearch-text1">好きな歌を探してみてください!</h1>
-						<p class="inputSearch-text2">미정</p>
+						<p class="inputSearch-text2"> </p>
 					</div>
 					<div class="homeInputSearch">
 						<div>
@@ -57,8 +73,8 @@
 				</div>
 			</div>
 
-
-			<div class="ipod-body">
+			<!--section3-->
+			<div class="swiper-slide ipod-body section">
 					<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
 				<div class="ipod-container">
 					<div class="ipod">
@@ -113,43 +129,7 @@
 							<div class="musicDetail-content-music-title">
 								<span>MusicPlayerをつかって、ご希望の曲を検索してください！</span>
 							</div>
-<!-- 							<div class="musicDetail-items1"> -->
-<!-- 								<div class="musicDetail-title"> -->
-<!-- 									<div> -->
-<!-- 										<div class="musicDetail-title-img"></div> -->
-<!-- 										<div class="musicDetail-title-title"></div> -->
-<!-- 										<div class="musicDetail-title-composer"></div> -->
-<!-- 										좋아요 하트 -->
-<!-- 									</div> -->
-<!-- 									<div class="musicDetail-option"> -->
-<!-- 										<div class="musicDetail-option-inner"></div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="musicDetail-playSpace"> -->
-<!-- 									여기에 오디오 플레이어가 들어갈 것입니다. -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="musicDetail-content-items2"> -->
-<!-- 								<div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="genre-area"></div> -->
-<!-- 									</div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="mood-area"></div> -->
-<!-- 									</div> -->
-<!-- 									<div> -->
-<!-- 										<div></div> -->
-<!-- 										<div class="instrument-area"></div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
 						</div>
-
-
-
 					</div>
 					<!-- If we need pagination -->
 
@@ -159,29 +139,28 @@
 				</div>
 
 			</div>
-		</div>
-	</div>
+			
+			<!--section4-->
+			<div class="swiper-slide artist-slider section">
+				<div class="artist-slider-inner">
+					<div class="artist-slider-title">
+						<h1>いろんなアーティストたちに会ってみてください！！</h1>
+		
+					</div>
+		
+					<ul class="bxslider">
+						<li th:each="artist : ${artists}"><img
+							th:src="'/images/profile/' + ${artist.composer_img}"
+							th:data-composer-id="${artist.composer_id}"
+							th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
+					</ul>
 
-
-
-	<div class="artist-slider">
-		<div class="artist-slider-inner">
-			<div class="artist-slider-title">
-				<h1>いろんなアーティストたちに会ってみてください！！</h1>
-
+				</div>
 			</div>
-
-			<ul class="bxslider">
-				<li th:each="artist : ${artists}"><img
-					th:src="'/images/profile/' + ${artist.composer_img}"
-					th:data-composer-id="${artist.composer_id}"
-					th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
-			</ul>
-
-		</div>
+<!--	</div>-->
+		<!-- If we need pagination -->
+	      <!-- If we need navigation buttons -->
 	</div>
-
-
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -191,6 +170,18 @@
 	<!-- 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
+<script>
+	console.log(11);
+new fullpage('#fullpage', {
+	//options here
+	autoScrolling:true,
+	scrollHorizontally: true,
+	fitToSection: true, // 각 섹션에 맞게 컨텐츠를 맞추도록 설정
+	 paddingTop: 0 // 각 섹션의 상단 패딩을 0으로 설정하여 스크롤바가 가려지도록 함
+});
+	
+</script>
+
 </body>
 
 

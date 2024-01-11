@@ -7,15 +7,15 @@ body {
 }
 
 header {
+	position: relative;
+    z-index: 99;
 	background-color: black;
 	color: white;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	height: 4em; /* 헤더 높이를 2배로 조절 */
-	border-bottom: 1px solid white;
 }
 
 a {
@@ -166,6 +166,8 @@ a {
 
 /* 푸터 */
 footer {
+	position: relative;
+	z-index: 99;
 	height: 200px;
 	background-color: black;
 	color: white;
