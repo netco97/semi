@@ -32,7 +32,6 @@
 	color: white;
 	font-size: 24px;
 	margin: 20px;
-	
 }
 
 .musicMenu-search {
@@ -168,15 +167,17 @@
 	display: block; /* hidden 클래스가 없을 때 요소를 표시 */
 }
 
-
-.heart-filled{
-	
+.heart-filled {
 	margin-left: 5px;
+	display: flex;
+	align-items: center;
 }
-.heart-filled svg{
+
+.heart-filled svg {
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
+	margin-right: 4px;
 }
 
 /* musicList */
@@ -231,7 +232,7 @@
 	flex-direction: column;
 }
 
-.musicListTitle-hover:hover{
+.musicListTitle-hover:hover {
 	cursor: pointer;
 }
 
@@ -249,6 +250,7 @@
 }
 
 .audio-player {
+	
 }
 
 audio {

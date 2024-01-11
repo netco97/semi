@@ -17,6 +17,8 @@ public interface MusicLikeMapper {
 
 	void updateLikeCount(int song_id);
 
+	int checkLikeCount(int song_id);
+
 		
 		
 	

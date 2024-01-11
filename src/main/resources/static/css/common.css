@@ -8,6 +8,7 @@ body {
 
 header {
 	position: relative;
+	top:0;
     z-index: 99;
 	background-color: black;
 	color: white;
@@ -15,7 +16,7 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px;
-	height: 4em; /* 헤더 높이를 2배로 조절 */
+	height: 84px; /* 헤더 높이를 2배로 조절 */
 }
 
 a {

@@ -34,5 +34,11 @@
 		WHERE song_id = #{song_id}
 
 	</update>
+	
+	<select id="checkLikeCount" resultType="int">
+	
+	select song_like from songs where song_id = #{song_id}
+	
+	</select>
 
 </mapper>

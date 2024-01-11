@@ -10,9 +10,16 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css" integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
+	integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"
+	integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -40,126 +47,125 @@
 
 	<!--     keyBoard -->
 	<!---출처 http://theremin.music.uiowa.edu/MISpiano.html-->
-<!--	<div class="swiper-container homeContainer">-->
-		<div id="fullpage">
-			<!--section1-->
-			<div class="swiper-slide main_video_area section">
-				<div class="asd" style="    height: 100%;
-    overflow: hidden;">
-					
+	<!--	<div class="swiper-container homeContainer">-->
+	<div id="fullpage">
+		<!--section1-->
+		<div class="swiper-slide main_video_area section">
+			<div class="asd" style="overflow: hidden; height: 100%;">
+				<!-- 				 style="    -->
+				<!-- 				 height: 100%;   overflow: hidden;">  -->
+
 				<video width="100%" autoplay loop muted>
 					<source src="/video/main_video.mp4" type="video/mp4">
-					</video>
-				</div>
+				</video>
 			</div>
-			
-			<!--section2-->
-			<div class="swiper-slide homeContent-inputSearch section">
-				
-				<div class="homeContent-inputSearch-inner">
+		</div>
 
-					<div class="homeContent-inputSearch-text">
-						<h1 class="inputSearch-text1">好きな歌を探してみてください!</h1>
-						<p class="inputSearch-text2"> </p>
-					</div>
-					<div class="homeInputSearch">
-						<div>
-							<input id="searchInput"
-								placeholder="曲名、アーティスト名、ハッシュタグキーワードで検索してみてください！" />
-							<button>検索</button>
-						</div>
-					</div>
+		<!--section2-->
+		<div class="swiper-slide homeContent-inputSearch section">
+			<div class="homeContent-inputSearch-inner">
 
+				<div class="homeContent-inputSearch-text">
+					<h1 class="inputSearch-text1">好きな歌を探してみてください!</h1>
+					<p class="inputSearch-text2"></p>
 				</div>
-			</div>
+				<div class="homeInputSearch">
+					<div>
+						<input id="searchInput"
+							placeholder="曲名、アーティスト名、ハッシュタグキーワードで検索してみてください！" />
+						<button>検索</button>
+					</div>
+				</div>
 
-			<!--section3-->
-			<div class="swiper-slide ipod-body section">
-					<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
-				<div class="ipod-container">
-					<div class="ipod">
-						<div class="ipod-screen">
-							<div class="screen-header">
-								<button id="backBtn">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-										viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										class="w-6 h-6">
+			</div>
+		</div>
+		<!--section3-->
+		<div class="swiper-slide ipod-body section">
+			<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
+			<div class="ipod-container">
+				<div class="ipod">
+					<div class="ipod-screen">
+						<div class="screen-header">
+							<button id="backBtn">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+									viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+									class="w-6 h-6">
   											<path stroke-linecap="round" stroke-linejoin="round"
-											d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+										d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
 											</svg>
 
 
-								</button>
-								<p>MusicPlayer</p>
-								<div>
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-										viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										class="w-6 h-6">
+							</button>
+							<p>MusicPlayer</p>
+							<div>
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+									viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+									class="w-6 h-6">
  										<path stroke-linecap="round" stroke-linejoin="round"
-											d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+										d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
 											</svg>
 
 
-								</div>
 							</div>
-							<div class="screen-inner">
-
-								<ul class="screen-inner-ul">
-									<li class="ipod-item hot">HOT🔥</li>
-									<li class="ipod-item newMusic">NEW</li>
-									<li class="ipod-item genre">GENRE</li>
-									<li class="ipod-item mood">MOOD</li>
-								</ul>
-							</div>
-
 						</div>
-						<div class="ipod-buttons">
+						<div class="screen-inner">
 
-							<div class="ipod-button left">&#9668;</div>
-							<div class="ipod-button-middle">
-								<div class="ipod-button up">&#9650;</div>
-								<div class="ipod-button center">&#9675;</div>
-								<div class="ipod-button down">&#9660;</div>
-							</div>
-							<div class="ipod-button right">&#9658;</div>
+							<ul class="screen-inner-ul">
+								<li class="ipod-item hot">HOT🔥</li>
+								<li class="ipod-item newMusic">NEW</li>
+								<li class="ipod-item genre">GENRE</li>
+								<li class="ipod-item mood">MOOD</li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="ipod-buttons">
+
+						<div class="ipod-button left">&#9668;</div>
+						<div class="ipod-button-middle">
+							<div class="ipod-button up">&#9650;</div>
+							<div class="ipod-button center">&#9675;</div>
+							<div class="ipod-button down">&#9660;</div>
+						</div>
+						<div class="ipod-button right">&#9658;</div>
+					</div>
+				</div>
+				<div class="ipod-result">
+					<div class="musicDetail-content-music">
+						<div class="musicDetail-content-music-title">
+							<span>MusicPlayerをつかって、ご希望の曲を検索してください！</span>
 						</div>
 					</div>
-					<div class="ipod-result">
-						<div class="musicDetail-content-music">
-							<div class="musicDetail-content-music-title">
-								<span>MusicPlayerをつかって、ご希望の曲を検索してください！</span>
-							</div>
-						</div>
-					</div>
-					<!-- If we need pagination -->
+				</div>
+				<!-- If we need pagination -->
 
-					<!-- If we need navigation buttons -->
+				<!-- If we need navigation buttons -->
 
-					<!-- If we need scrollbar -->
+				<!-- If we need scrollbar -->
+			</div>
+
+		</div>
+
+		<!--section4-->
+		<div class="swiper-slide artist-slider section">
+			<div class="artist-slider-inner">
+				<div class="artist-slider-title">
+					<h1>いろんなアーティストたちに会ってみてください！！</h1>
+
 				</div>
 
-			</div>
-			
-			<!--section4-->
-			<div class="swiper-slide artist-slider section">
-				<div class="artist-slider-inner">
-					<div class="artist-slider-title">
-						<h1>いろんなアーティストたちに会ってみてください！！</h1>
-		
-					</div>
-		
-					<ul class="bxslider">
-						<li th:each="artist : ${artists}"><img
-							th:src="'/images/profile/' + ${artist.composer_img}"
-							th:data-composer-id="${artist.composer_id}"
-							th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
-					</ul>
+				<ul class="bxslider">
+					<li th:each="artist : ${artists}"><img
+						th:src="'/images/profile/' + ${artist.composer_img}"
+						th:data-composer-id="${artist.composer_id}"
+						th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
+				</ul>
 
-				</div>
 			</div>
-<!--	</div>-->
+		</div>
+		<!--	</div>-->
 		<!-- If we need pagination -->
-	      <!-- If we need navigation buttons -->
+		<!-- If we need navigation buttons -->
 	</div>
 
 	<script
@@ -170,17 +176,17 @@
 	<!-- 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
-<script>
-	console.log(11);
-new fullpage('#fullpage', {
-	//options here
-	autoScrolling:true,
-	scrollHorizontally: true,
-	fitToSection: true, // 각 섹션에 맞게 컨텐츠를 맞추도록 설정
-	 paddingTop: 0 // 각 섹션의 상단 패딩을 0으로 설정하여 스크롤바가 가려지도록 함
-});
-	
-</script>
+	<script>
+		console.log(11);
+		new fullpage('#fullpage', {
+			//options here
+			autoScrolling : true,
+			scrollHorizontally : true,
+			fitToSection : true, // 각 섹션에 맞게 컨텐츠를 맞추도록 설정
+			paddingTop : 0
+		// 각 섹션의 상단 패딩을 0으로 설정하여 스크롤바가 가려지도록 함
+		});
+	</script>
 
 </body>
 

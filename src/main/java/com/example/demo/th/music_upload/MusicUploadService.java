@@ -35,12 +35,23 @@ public class MusicUploadService {
 	    
 	    try {
 	    	// 랜덤ID + 파일 이름 핸들링
+	    	
 		    String imgFileName = UUID.randomUUID().toString() + "_" + img_file.getOriginalFilename();
 		    String audioFileName = UUID.randomUUID().toString() + "_" + audio_file.getOriginalFilename();
 			
 		    // controller 에 반환할 String List
-		    result.add(imgFileName);
-		    result.add(audioFileName);
+		    if(img_file.getOriginalFilename().toString().equals("")) {
+		    	result.add("default_albumart.png");
+		    	result.add(audioFileName);
+		    	System.out.println(result);
+		    }else {
+		    	result.add(imgFileName);
+			    result.add(audioFileName);
+			    System.out.println(result);
+			    
+		    	
+		    }
+		    
 		    
 		    // 파일 서버에 저장
 		    saveServerFile(img_file , imgFileName, "static/img");
