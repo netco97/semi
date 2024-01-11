@@ -16,7 +16,7 @@ function buildFollowerListHTML(followerList) {
 	console.log(followerList)
 
 	for (var i = 0; i < followerList.length; i++) {
-		html += '<div class="otherfollower" onclick="gotodetail(' + "" + followerList[i].targetUserId + ');">' +
+		html += '<div class="otherfollower" onclick="gotodetail23(' + "" + followerList[i].targetUserId + ');">' +
 			'<img src="/images/profile/' + followerList[i].composer_img + '">' +
 			'&nbsp;' +
 			followerList[i].composer_name +
@@ -28,7 +28,7 @@ function buildFollowerListHTML(followerList) {
 	return html;
 }
 
-function gotodetail(phone_follower) {
+function gotodetail23(phone_follower) {
 
 	console.log(phone_follower)
 
