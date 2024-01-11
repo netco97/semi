@@ -93,4 +93,14 @@ public class MusicLikeService {
 		return isLike.getIsLike();
 	}
 
+	public int checkLikeCount(int song_id) {
+		
+		int LikeCount = musicLikeMapper.checkLikeCount(song_id);
+		
+		
+		return LikeCount;
+		
+		
+	}
+
 }

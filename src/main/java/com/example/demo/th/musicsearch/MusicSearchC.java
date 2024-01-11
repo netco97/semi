@@ -100,6 +100,15 @@ public class MusicSearchC {
     	
     }
     
+//    @GetMapping("/MainTextSearch")
+//    public List<SongsDTO> MainTextSearch(@RequestParam("text")String text){
+//    	
+//    	
+//    	
+//    	
+//    	return result;
+//    }
+    
     
     
     

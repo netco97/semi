@@ -137,11 +137,16 @@ audio {
 
 
 
-
+.heart-filled{
+	display: flex;
+	align-items: center;
+	
+}
 .heart-filled svg{
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
+	margin-right: 5px;
 }
 
 .musicDetail-content-comment-input, .musicDetail-content-comment-comment
