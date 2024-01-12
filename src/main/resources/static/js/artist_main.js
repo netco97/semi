@@ -16,9 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			url: url,
 
 			success: function(artistMap) {
+				console.log(artistMap);
 				allArtists = artistMap.artistList;
+				//allArtists = artistMap.artistList;
+				console.log(artistMap.totalArtists);
+				artists = artistMap.totalArtists;
 				currentPage = 1;
-				loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
+				loadArtists(currentPage, artists); // 현재 페이지에 해당하는 아티스트를 가져오기
 			},
 			error: function(error) {
 				console.error("아티스트를 가져오는 중 오류 발생", error);
@@ -26,13 +30,16 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	function loadArtists(page) {
+	function loadArtists(page, artists) {
+		console.log("현재 페이지 :" + page);
+		console.log(artists);
+		//const totalPages = Math.ceil(allArtists.length / pageSize);
 		const totalPages = Math.ceil(allArtists.length / pageSize);
-
 		const startIndex = (page - 1) * pageSize;
 		const endIndex = Math.min(startIndex + pageSize, allArtists.length);
 		const artistList = allArtists.slice(startIndex, endIndex);
-
+		
+		console.log(artistList);
 		displayArtists(artistList);
 		displayPagination(currentPage, totalPages);
 	}

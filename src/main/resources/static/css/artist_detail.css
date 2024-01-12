@@ -371,6 +371,20 @@
 	flex-direction: column;
 	font-size: 10px;
 	margin: 5px;
+	white-space: nowrap;
+}
+
+.musicList-info:hover {
+    animation: scrollText 5s linear infinite; /* 애니메이션 지속 시간 및 속도 조절 가능 */
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* 왼쪽으로 이동하는 효과 */
+    }
 }
 
 .musicList-PlaySpace {

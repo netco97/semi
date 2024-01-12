@@ -27,7 +27,7 @@ main {
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
-    flex: 1; /* 또는 다른 적절한 비율 */
+    flex: 0.7; /* 또는 다른 적절한 비율 */
 }
 
 .left-side h2 {
@@ -98,7 +98,7 @@ main {
 
 .artist-details {
     display: flex;
-    width: 250px;
+    width: 300px;
     height: 150px;
     flex-direction: row;
     padding: 3px;
@@ -114,7 +114,7 @@ main {
 }
 
 .artist-details img {
-	width: 100px;
+	max-width: 150px;
 	height: auto;
 	padding: 10px;
 	border-radius: 20px;

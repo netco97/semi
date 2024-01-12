@@ -48,6 +48,7 @@ public class ComposerMainC {
 			
 			// 전체 아티스트 수를 가져옴 (페이징 계산을 위해)
 			int totalArtists = composerService.getTotalArtistsCount();
+			System.out.println("total Artists" + totalArtists);
 			
 			// 전체 페이지 수를 계산
 			int totalPages = (int) Math.ceil((double) totalArtists / pageSize);
