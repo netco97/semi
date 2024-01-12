@@ -178,11 +178,12 @@ body {
 
 .artist-slider-inner {
 	width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    justify-items: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	justify-items: center;
+	margin-bottom: 100px;
 }
 
 .bx-wrapper {
@@ -197,7 +198,8 @@ body {
 }
 
 .bx-wrapper img {
-	height: 230px;
+	height: 150px;
+	width: 150px
 }
 
 .artist-slider-title h1 {
@@ -238,8 +240,14 @@ body {
 	/* 	width: 100% */
 }
 
+.ipod-body-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .ipod-container {
-	width: 100%;
+	width: 70%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -486,13 +494,12 @@ audio {
 	flex-direction: column;
 	gap: 20px;
 }
+
 .heart-filled {
 	display: flex;
 	align-items: center;
-	
-	
-	
 }
+
 .heart-filled svg {
 	width: 20px;
 	height: 20px;

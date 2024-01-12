@@ -10,16 +10,20 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"
+	integrity="sha512-XOpdFagEEv9XMxN/2EdvFL/PfGtFDjX+AkRznsFHDtdC05YWdkMnz5JZUfrbnEabOQaMc7YNTl2xPbOu3J858Q=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
-	integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow=="
+	href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css"
+	integrity="sha512-q54FvbV+gGBn+NvgaD4gpJ7w4wrO00DgW7Rx503PIhrf0CuMwLOwbS+bXgOBFSob+6GVy1HDPfaRLJ8w2jiS4g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"
-	integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg=="
+	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"
+	integrity="sha512-bxzECOBohzcTcWocMAlNDE2kYs0QgwGs4eD8TlAN2vfovq13kfDfp95sJSZrNpt0VMkpP93ZxLC/+WN/7Trw2g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -81,67 +85,69 @@
 		</div>
 		<!--section3-->
 		<div class="swiper-slide ipod-body section">
-			<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
-			<div class="ipod-container">
-				<div class="ipod">
-					<div class="ipod-screen">
-						<div class="screen-header">
-							<button id="backBtn">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-									viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-									class="w-6 h-6">
+		<div class="ipod-body-inner">
+				<div class="ipod-title">様様なタグを使用して、ご希望の曲を検索してください！</div>
+				<div class="ipod-container">
+					<div class="ipod">
+						<div class="ipod-screen">
+							<div class="screen-header">
+								<button id="backBtn">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+										viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+										class="w-6 h-6">
   											<path stroke-linecap="round" stroke-linejoin="round"
-										d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+											d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
 											</svg>
 
 
-							</button>
-							<p>MusicPlayer</p>
-							<div>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none"
-									viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-									class="w-6 h-6">
+								</button>
+								<p>MusicPlayer</p>
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+										viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+										class="w-6 h-6">
  										<path stroke-linecap="round" stroke-linejoin="round"
-										d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+											d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
 											</svg>
 
 
+								</div>
+							</div>
+							<div class="screen-inner">
+
+								<ul class="screen-inner-ul">
+									<li class="ipod-item hot">HOT🔥</li>
+									<li class="ipod-item newMusic">NEW</li>
+									<li class="ipod-item genre">GENRE</li>
+									<li class="ipod-item mood">MOOD</li>
+								</ul>
+							</div>
+
+						</div>
+						<div class="ipod-buttons">
+
+							<div class="ipod-button left">&#9668;</div>
+							<div class="ipod-button-middle">
+								<div class="ipod-button up">&#9650;</div>
+								<div class="ipod-button center">&#9675;</div>
+								<div class="ipod-button down">&#9660;</div>
+							</div>
+							<div class="ipod-button right">&#9658;</div>
+						</div>
+					</div>
+					<div class="ipod-result">
+						<div class="musicDetail-content-music">
+							<div class="musicDetail-content-music-title">
+								<span>MusicPlayerをつかって、ご希望の曲を検索してください！</span>
 							</div>
 						</div>
-						<div class="screen-inner">
-
-							<ul class="screen-inner-ul">
-								<li class="ipod-item hot">HOT🔥</li>
-								<li class="ipod-item newMusic">NEW</li>
-								<li class="ipod-item genre">GENRE</li>
-								<li class="ipod-item mood">MOOD</li>
-							</ul>
-						</div>
-
 					</div>
-					<div class="ipod-buttons">
+					<!-- If we need pagination -->
 
-						<div class="ipod-button left">&#9668;</div>
-						<div class="ipod-button-middle">
-							<div class="ipod-button up">&#9650;</div>
-							<div class="ipod-button center">&#9675;</div>
-							<div class="ipod-button down">&#9660;</div>
-						</div>
-						<div class="ipod-button right">&#9658;</div>
-					</div>
+					<!-- If we need navigation buttons -->
+
+					<!-- If we need scrollbar -->
 				</div>
-				<div class="ipod-result">
-					<div class="musicDetail-content-music">
-						<div class="musicDetail-content-music-title">
-							<span>MusicPlayerをつかって、ご希望の曲を検索してください！</span>
-						</div>
-					</div>
-				</div>
-				<!-- If we need pagination -->
-
-				<!-- If we need navigation buttons -->
-
-				<!-- If we need scrollbar -->
 			</div>
 
 		</div>
@@ -160,6 +166,16 @@
 						th:data-composer-id="${artist.composer_id}"
 						th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
 				</ul>
+				<ul style="color: white; list-style: none;">
+					<li>
+						<p>&copy; 2024 ソルデスク セミプロゼクト ミュージック ウェブサイト</p>
+					</li>
+					<li>
+						<p>オ·テフン、キム·ドンユル、イ·サンミン、カン·ウギュ</p>
+					</li>
+
+
+				</ul>
 
 			</div>
 		</div>
@@ -168,8 +184,7 @@
 		<!-- If we need navigation buttons -->
 	</div>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 	<script
 		src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<!-- 	<script -->
@@ -177,14 +192,25 @@
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
 	<script>
-		console.log(11);
-		new fullpage('#fullpage', {
-			//options here
-			autoScrolling : true,
-			scrollHorizontally : true,
-			fitToSection : true, // 각 섹션에 맞게 컨텐츠를 맞추도록 설정
-			paddingTop : 0
-		// 각 섹션의 상단 패딩을 0으로 설정하여 스크롤바가 가려지도록 함
+		$(document).ready(function() {
+			$('#fullpage').fullpage(
+					{
+						 afterLoad: function(origin, destination, direction) {
+						        	var videoElement = $('.main_video_area video')[0];
+						            if (videoElement) {
+						                videoElement.play();
+						            }
+						    },
+					});
+			
+			$('.bxslider').bxSlider({
+				minSlides: 12,
+				maxSlides: 12,
+				slideWidth: 200,
+				slideMargin: 1,
+				ticker: true,
+				speed: 20000
+			});
 		});
 	</script>
 
