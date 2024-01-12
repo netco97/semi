@@ -472,20 +472,6 @@ $("#backBtn").on("click", function() {
 
 // slider
 
-$(document).ready(function() {
-	$('.bxslider').bxSlider({
-		minSlides: 12,
-		maxSlides: 12,
-		slideWidth: 200,
-		slideMargin: 1,
-		ticker: true,
-		speed: 20000
-	});
-
-
-
-});
-
 
 function goToArtistdetail2(phonenum) {
 	// 폼 동적으로 생성

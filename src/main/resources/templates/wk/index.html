@@ -28,13 +28,13 @@
 <body>
 
 	<!-- 헤더 -->
-    <div th:replace="~{wk/fragments/header :: header}"></div>
+    <header th:replace="~{wk/fragments/header :: header}"></header>
     
     <!-- 중간 페이지 내용 -->
     <div th:insert="~{${content}}"></div>
     
     <!-- 푸터 -->
-    <div th:replace="~{wk/fragments/footer :: footer}"></div>
+    <footer th:replace="~{wk/fragments/footer :: footer}"></footer>
 <script src="js/common.js"></script>
 </body>
 </html>
