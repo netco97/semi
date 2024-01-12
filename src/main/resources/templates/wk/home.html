@@ -10,16 +10,20 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="css/home.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"
+	integrity="sha512-XOpdFagEEv9XMxN/2EdvFL/PfGtFDjX+AkRznsFHDtdC05YWdkMnz5JZUfrbnEabOQaMc7YNTl2xPbOu3J858Q=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.css"
-	integrity="sha512-wCVOuVtxsXqrQK7tj9j4BvyfITQmpp7UE7mVilD7aieGLYFEIAa5UKTP1RapOf6dxQ9JIKAneakcyykWG4r4Ow=="
+	href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css"
+	integrity="sha512-q54FvbV+gGBn+NvgaD4gpJ7w4wrO00DgW7Rx503PIhrf0CuMwLOwbS+bXgOBFSob+6GVy1HDPfaRLJ8w2jiS4g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"
-	integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg=="
+	src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"
+	integrity="sha512-bxzECOBohzcTcWocMAlNDE2kYs0QgwGs4eD8TlAN2vfovq13kfDfp95sJSZrNpt0VMkpP93ZxLC/+WN/7Trw2g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script th:inline="javascript">
 	const genre = /*[[${tags.genre}]]*/[];
 	const mood = /*[[${tags.mood}]]*/[];
@@ -160,6 +164,16 @@
 						th:data-composer-id="${artist.composer_id}"
 						th:onclick="goToArtistdetail2([[${artist.composer_id}]])" /></li>
 				</ul>
+				<ul style="color: white; list-style: none;">
+					<li>
+						<p>&copy; 2024 ソルデスク セミプロゼクト ミュージック ウェブサイト</p>
+					</li>
+					<li>
+						<p>オ·テフン、キム·ドンユル、イ·サンミン、カン·ウギュ</p>
+					</li>
+
+
+				</ul>
 
 			</div>
 		</div>
@@ -168,8 +182,7 @@
 		<!-- If we need navigation buttons -->
 	</div>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 	<script
 		src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<!-- 	<script -->
@@ -177,14 +190,17 @@
 	<script src="/js/pagination.min.js"></script>
 	<script src="/js/home.js"></script>
 	<script>
-		console.log(11);
-		new fullpage('#fullpage', {
-			//options here
-			autoScrolling : true,
-			scrollHorizontally : true,
-			fitToSection : true, // 각 섹션에 맞게 컨텐츠를 맞추도록 설정
-			paddingTop : 0
-		// 각 섹션의 상단 패딩을 0으로 설정하여 스크롤바가 가려지도록 함
+		$(document).ready(function() {
+			$('#fullpage').fullpage();
+			
+			$('.bxslider').bxSlider({
+				minSlides: 12,
+				maxSlides: 12,
+				slideWidth: 200,
+				slideMargin: 1,
+				ticker: true,
+				speed: 20000
+			});
 		});
 	</script>
 
