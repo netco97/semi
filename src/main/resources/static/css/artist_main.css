@@ -28,6 +28,7 @@ main {
 	align-items: center;
 	justify-content: center;
     flex: 0.7; /* 또는 다른 적절한 비율 */
+    background-color: black;
 }
 
 .left-side h2 {
@@ -102,7 +103,7 @@ main {
     height: 150px;
     flex-direction: row;
     padding: 3px;
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid black;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -113,11 +114,16 @@ main {
     transform: scale(1.1); /* 아티스트 디테일 박스를 1.1배로 확대합니다. */
 }
 
-.artist-details img {
-	max-width: 150px;
-	height: auto;
+.artist-details-img {
+	display: flex;
+	justify-content: center;
+	width: 50%;
 	padding: 10px;
-	border-radius: 20px;
+}
+
+.artist-details-img img {
+	max-width: 150px;
+	border-radius: 10px;
 }
 
 .artist-details:hover img {
@@ -126,6 +132,10 @@ main {
 }
 
 /* 아티스트 개별 박스 */
+.artist-details-word {
+	width: 50%;
+}
+
 .artist-details-word h3{
 	font-size: 12pt;
 }
@@ -139,7 +149,6 @@ main {
     -webkit-box-orient: vertical;
     word-break: break-word;
 }
-
 
 .left-box {
     padding: 15px;

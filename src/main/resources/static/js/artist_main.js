@@ -1,10 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", function() {
-
-
 	var pageSize = 9;
 	var currentPage = 1;
-	var allArtists = []; // 모든 아티스트를 저장하는 변수
+	//var allArtists = []; // 모든 아티스트를 저장하는 변수
 
 	// 초기에 모든 아티스트를 가져오기
 	loadAllArtists();
@@ -18,11 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
 			success: function(artistMap) {
 				console.log(artistMap);
 				allArtists = artistMap.artistList;
+				console.log(allArtists);
 				//allArtists = artistMap.artistList;
 				console.log(artistMap.totalArtists);
-				artists = artistMap.totalArtists;
+				totalArtists = artistMap.totalArtists;
+				console.log(totalArtists);
 				currentPage = 1;
-				loadArtists(currentPage, artists); // 현재 페이지에 해당하는 아티스트를 가져오기
+				loadArtists(currentPage); // 현재 페이지에 해당하는 아티스트를 가져오기
 			},
 			error: function(error) {
 				console.error("아티스트를 가져오는 중 오류 발생", error);
@@ -30,10 +29,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		});
 	}
 
-	function loadArtists(page, artists) {
+	function loadArtists(page) {
 		console.log("현재 페이지 :" + page);
-		console.log(artists);
-		//const totalPages = Math.ceil(allArtists.length / pageSize);
+		console.log(totalArtists);
+		console.log(allArtists);
 		const totalPages = Math.ceil(allArtists.length / pageSize);
 		const startIndex = (page - 1) * pageSize;
 		const endIndex = Math.min(startIndex + pageSize, allArtists.length);
@@ -105,8 +104,10 @@ document.addEventListener("DOMContentLoaded", function() {
 			const artistHtml = `
                 <div class="artist-container">
                     <div class="artist-details" data-composer-id="${artist.composer_id}">
-                        <img src="/images/profile/${artist.composer_img}"
+                    	<div class="artist-details-img">
+                        	<img src="/images/profile/${artist.composer_img}"
                         onerror="this.src='/images/profile/default_profile.png'">
+                        </div>
                         <div class="artist-details-word">
                             <h3>${artist.composer_name}</h3>
                             <p>${formattedGenre}</p>
@@ -141,10 +142,6 @@ document.addEventListener("DOMContentLoaded", function() {
 			// 폼을 body에 추가하고 submit
 			form.appendTo('body').submit();
 		});
-
-
-
-
 	}
 
 	function displayPagination(currentPage, totalPages) {
