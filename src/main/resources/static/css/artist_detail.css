@@ -311,6 +311,7 @@
 	background-color: black;
 	color: white;
 	border-radius: 10px;
+	overflow: auto;
 	
 }
 .musicList-inner {
@@ -353,8 +354,8 @@
 }
 
 .musicList-title img {
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	margin: 10px;
     border-radius: 50%;
     border: 1px solid black;
@@ -371,6 +372,8 @@
 	flex-direction: column;
 	font-size: 10px;
 	margin: 5px;
+	white-space: nowrap;
+	overflow: auto;
 }
 
 .musicList-PlaySpace {
@@ -394,7 +397,7 @@ audio{
 .musicList-title div img{
 }
 .musicList-title div div{
-	width: 80px;
+	width: 75px;
 }
 
 .musicList-option div {

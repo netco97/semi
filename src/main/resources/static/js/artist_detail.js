@@ -481,6 +481,8 @@ async function outPutSearch(data) {
             <div>${song.genre_id}</div>
             <div>${song.instrument_id}</div>
         `);
+        
+
 
 			//		let $musicListOption = $('<div class="musicList-option"></div>');
 			//		// 여기서 좋아요 여부에 따라 하트 초기 상태를 설정

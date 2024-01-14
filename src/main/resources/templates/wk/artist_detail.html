@@ -71,8 +71,8 @@
 									class="star" data-value="4">&#9733;</span>
 								<span class="star" data-value="5">&#9733;</span>
 							</div>
-							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらった貴方の平均点</p>
-							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストに対する貴方の点数は？</p>
+							<p th:if="${session.userFullPhoneNumber == composer.composer_id}">ユーザーからもらったあなたの平均星は？</p>
+							<p th:if="${session.userFullPhoneNumber != composer.composer_id}">このアーティストにあげたいあなたの星の数は？</p>
 
 							<input id="rating-value" type="hidden">
 						</div>
@@ -253,7 +253,6 @@ function gotodetail2(phone_follower) {
 
 	form.appendTo('body').submit();
 }
-		
 	</script>
 </body>
 
