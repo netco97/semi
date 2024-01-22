@@ -148,7 +148,8 @@ public class ComposerC {
 		session.removeAttribute("userNickname");
 		session.setAttribute("userNickname", composer.getComposer_name());
 
-		return "redirect:/artist_main";
+		//return "redirect:/artist_main";
+		return "redirect:/";
 	}
 
 	@PostMapping("/artist_update")
