@@ -20,8 +20,7 @@
 
 
 | **オ・テフン** | **リ・サンミン** | **カン・ウギュ** | **キム・ドンユル** |
-| :------: |  :------: | :------: | :------: |
-| [<img src="![ohtae](https://github.com/netco97/semi/assets/101931428/b13215a0-8fe3-4e91-ae5a-736cbcb392f2)" height=150 width=150> <br/> @yeon1615](https://github.com/yeon1615) | [<img src="https://avatars.githubusercontent.com/u/112460466?v=4" height=150 width=150> <br/> @Cheorizzang](https://github.com/Cheorizzang) | [<img src="https://avatars.githubusercontent.com/u/112460506?v=4" height=150 width=150> <br/> @heejiyang](https://github.com/heejiyang) | [<img src="https://avatars.githubusercontent.com/u/76766459?v=4" height=150 width=150> <br/> @journey-ji](https://github.com/journey-ji) |
+
 
 </div>
 
