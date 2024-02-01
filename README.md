@@ -17,9 +17,7 @@
 
 <div align="center">
 
-<img width="825" alt="스크린샷 2024-02-01 오전 10 49 26" src="https://github.com/netco97/semi/assets/101931428/71e1f235-118d-4572-af09-f9ee8c349e44">
-
-
+<img width="1212" alt="스크린샷 2024-02-01 오후 12 03 14" src="https://github.com/netco97/semi/assets/101931428/bd387956-84d4-49a8-932f-11b70d40750f">
 
 </div>
 
@@ -102,17 +100,17 @@
 ### [アティスト]
 
 #### 1. アティスト検索
-<img width="829" alt="스크린샷 2024-02-01 오전 11 39 25" src="https://github.com/netco97/semi/assets/101931428/66ed475c-baec-48bc-b4e0-3f564e7b365e">
+<img width="829" alt="스크린샷 2024-02-01 오후 12 04 14" src="https://github.com/netco97/semi/assets/101931428/92655771-fe0a-4d07-b39f-0b06d779d1cb">
 
 <br>
 
 #### 2. アティストRating
-<img width="829" alt="스크린샷 2024-02-01 오전 11 39 54" src="https://github.com/netco97/semi/assets/101931428/e2420576-8246-4d85-a44b-eacdfa087480">
+<img width="829" alt="스크린샷 2024-02-01 오후 12 04 34" src="https://github.com/netco97/semi/assets/101931428/19ca48dc-fa4f-40bb-a3a9-837ccd7bcd81">
 
 <br>
 
 #### 3. アティストComment & Paging
-<img width="829" alt="스크린샷 2024-02-01 오전 11 40 22" src="https://github.com/netco97/semi/assets/101931428/0c5ac34a-be59-4609-84f7-355ccfe74ff1">
+<img width="829" alt="스크린샷 2024-02-01 오후 12 04 48" src="https://github.com/netco97/semi/assets/101931428/58ee0a7f-6384-4ea6-af0f-778f23647756">
 
 <br>
 
