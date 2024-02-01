@@ -18,8 +18,7 @@
 <div align="center">
 
 
-
-| **オ・テフン** | **リ・サンミン** | **カン・ウギュ** | **キム・ドンユル** |
+<img width="700" height="700" alt="스크린샷 2024-02-01 오전 10 48 27" src="https://github.com/netco97/semi/assets/101931428/3b51c2c0-31db-4a68-9e4c-738b350c0452">
 
 
 </div>
