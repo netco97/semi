@@ -115,16 +115,16 @@
 <br>
 
 ### [Logout & Mypage]
-<img width="829" alt="스크린샷 2024-02-01 오전 11 41 56" src="https://github.com/netco97/semi/assets/101931428/34c90da9-c18f-4bda-a275-ec807211a8db">
+<img width="829" alt="스크린샷 2024-02-01 오후 12 05 57" src="https://github.com/netco97/semi/assets/101931428/56c32115-f146-477d-9b06-e316b7b1e797">
 
 <br>
 
 ### [チャット]
 #### 1. Create Room
-<img width="829" alt="스크린샷 2024-02-01 오전 11 42 33" src="https://github.com/netco97/semi/assets/101931428/5c246039-3171-43a7-974f-39140a5e179c">
-<br>
-#### 2. チャットリスト
-<img width="829" alt="스크린샷 2024-02-01 오전 11 43 33" src="https://github.com/netco97/semi/assets/101931428/aee412a5-f1b6-4c3f-ad7b-c02d8cee312a">
+<img width="829" alt="스크린샷 2024-02-01 오후 12 06 24" src="https://github.com/netco97/semi/assets/101931428/22c4a7d9-c179-4f44-9dfb-ab1e68fe757e">
+
+#### 2. chat
+<img width="829" alt="스크린샷 2024-02-01 오후 12 06 38" src="https://github.com/netco97/semi/assets/101931428/d0ac14c8-a568-415e-a381-d7f76e6e4f02">
 
 ### [follow]
 
