@@ -52,12 +52,14 @@
 
 | メインページ |
 - Webサイトにアクセスする場合に表示される画面
-<img width="1439" alt="스크린샷 2024-02-01 오전 11 03 51" src="https://github.com/netco97/semi/assets/101931428/d3690fac-89ba-4525-9e5c-6e9971dc40ea">
+<img width="1440" alt="스크린샷 2024-02-01 오전 11 50 00" src="https://github.com/netco97/semi/assets/101931428/08cd282b-c106-4f5a-aeeb-2cb03e37477e">
+
 
 <br>
 | MusicPlayer |
 ー 人気曲、最新曲などをPlayerで検索できる画面
-![화면 기록 2024-02-01 오전 11 06 18](https://github.com/netco97/semi/assets/101931428/34f3cbeb-f1f0-44cb-8e1a-271438e8bed2)
+![화면 기록 2024-02-01 오전 11 06 18](https://github.com/netco97/semi/assets/101931428/5800ebf1-3d0d-49e9-aa80-b3eec565811c)
+
 
 | Artist紹介ページ |
 ー データベースに登録されているアカウントをランダムで紹介するページ
