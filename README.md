@@ -1,4 +1,4 @@
-# 🎹 音楽を作る人のための&使う人のための音楽ウェブサイト
+# 🎹 音楽を作る人のため&使う人のための音楽ウェブサイト
 
 <img width="983" alt="스크린샷 2024-02-01 오전 10 40 25" src="https://github.com/netco97/semi/assets/101931428/bf9630ff-2585-45a9-bda1-1788ebac10f2">
 
@@ -57,8 +57,10 @@
 
 <br>
 | MusicPlayer |
-ー 人気曲、最新曲などをPlayerで検索できる画面
-![화면 기록 2024-02-01 오전 11 06 18](https://github.com/netco97/semi/assets/101931428/5800ebf1-3d0d-49e9-aa80-b3eec565811c)
+
+![화면 기록 2024-02-01 오전 11 06 18](https://github.com/netco97/semi/assets/101931428/882a8e77-e872-4b75-bd72-3838d3671a7f)
+<br>
+
 
 
 | Artist紹介ページ |
@@ -114,7 +116,7 @@
 
 <br>
 
-### Logout & Mypage
+### [Logout & Mypage]
 <img width="829" alt="스크린샷 2024-02-01 오전 11 41 56" src="https://github.com/netco97/semi/assets/101931428/34c90da9-c18f-4bda-a275-ec807211a8db">
 
 <br>
@@ -126,7 +128,7 @@
 #### 2. チャットリスト
 <img width="829" alt="스크린샷 2024-02-01 오전 11 43 33" src="https://github.com/netco97/semi/assets/101931428/aee412a5-f1b6-4c3f-ad7b-c02d8cee312a">
 
-### follow
+### [follow]
 
 #### 1. Follow Button
 <img width="829" alt="스크린샷 2024-02-01 오전 11 44 28" src="https://github.com/netco97/semi/assets/101931428/5e14fd87-9cb5-448e-89f5-6657e8f2dd19">
